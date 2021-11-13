@@ -38,7 +38,7 @@ val shortVersion = mcVersion.substring(0, mcVersion.lastIndexOf("."))
 val strippedVersion = shortVersion.replace(".", "") + "0";
 
 version = "$mcVersion-$modVersion"
-group = "gcym"
+group = "gregicality"
 
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -46,7 +46,7 @@ configure<JavaPluginConvention> {
 }
 
 configure<BasePluginConvention> {
-    archivesBaseName = "GregicalityMultiblocks"
+    archivesBaseName = "GregicalityMachines"
 }
 
 configure<UserBaseExtension> {
@@ -54,7 +54,7 @@ configure<UserBaseExtension> {
     mappings = config["mcp.version"] as String
     runDir = "run"
     replace("@VERSION@", modVersion)
-    replaceIn("GregicalityMultiblocks.java")
+    replaceIn("GregicalityMachines.java")
 }
 
 repositories {
