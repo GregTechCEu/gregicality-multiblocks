@@ -1,0 +1,12 @@
+[{
+  "modid": "gcym",
+  "name": "Gregicality: Multiblocks",
+  "description": "Multiblock Machines module of Gregicality.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "authorList": [
+      "TechLord22"
+  ],
+  "credits": "GregoriusT for making GregTech and textures, various GT community members and the Gregicality Dev Team for help in development.",
+  "dependencies": ["codechickenlib", "gregtech"]
+}]
