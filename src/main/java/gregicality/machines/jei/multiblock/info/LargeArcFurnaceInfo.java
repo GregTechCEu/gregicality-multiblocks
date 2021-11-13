@@ -1,6 +1,7 @@
 package gregicality.machines.jei.multiblock.info;
 
 import com.google.common.collect.Lists;
+import gregicality.machines.GregicalityMachines;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -53,7 +54,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gcym.multiblock.large_arc_furnace.description")};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_arc_furnace.description", GregicalityMachines.MODID))};
     }
 
     @Override

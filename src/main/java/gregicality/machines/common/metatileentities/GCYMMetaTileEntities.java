@@ -16,17 +16,19 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeBrewery LARGE_BREWERY;
     public static MetaTileEntityLargeCentrifuge LARGE_CENTRIFUGE;
     public static MetaTileEntityLargeChemicalBath LARGE_CHEMICAL_BATH;
+    public static MetaTileEntityLargeExtractor LARGE_EXTRACTOR;
 
     public static void init() {
-        LARGE_MACERATOR = registerMetaTileEntity(4900, new MetaTileEntityLargeMacerator(gcymId("large_macerator")));
-        LARGE_ARC_FURNACE = registerMetaTileEntity(4901, new MetaTileEntityLargeArcFurnace(gcymId("large_arc_furnace")));
-        LARGE_ASSEMBLER = registerMetaTileEntity(4902, new MetaTileEntityLargeAssembler(gcymId("large_assembler")));
+        LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcymId("large_macerator")));
+        LARGE_ARC_FURNACE = registerMetaTileEntity(2001, new MetaTileEntityLargeArcFurnace(gcymId("large_arc_furnace")));
+        LARGE_ASSEMBLER = registerMetaTileEntity(2002, new MetaTileEntityLargeAssembler(gcymId("large_assembler")));
         // LARGE_ALLOY_SMELTER
-        LARGE_AUTOCLAVE = registerMetaTileEntity(4903, new MetaTileEntityLargeAutoclave(gcymId("large_autoclave")));
-        LARGE_BENDER = registerMetaTileEntity(4904, new MetaTileEntityLargeBender(gcymId("large_bender")));
-        LARGE_BREWERY = registerMetaTileEntity(4905, new MetaTileEntityLargeBrewery(gcymId("large_brewer")));
-        LARGE_CENTRIFUGE = registerMetaTileEntity(4906, new MetaTileEntityLargeCentrifuge(gcymId("large_centrifuge")));
-        LARGE_CHEMICAL_BATH = registerMetaTileEntity(4907, new MetaTileEntityLargeChemicalBath(gcymId("large_chemical_bath")));
+        LARGE_AUTOCLAVE = registerMetaTileEntity(2003, new MetaTileEntityLargeAutoclave(gcymId("large_autoclave")));
+        LARGE_BENDER = registerMetaTileEntity(2004, new MetaTileEntityLargeBender(gcymId("large_bender")));
+        LARGE_BREWERY = registerMetaTileEntity(2005, new MetaTileEntityLargeBrewery(gcymId("large_brewer")));
+        LARGE_CENTRIFUGE = registerMetaTileEntity(2006, new MetaTileEntityLargeCentrifuge(gcymId("large_centrifuge")));
+        LARGE_CHEMICAL_BATH = registerMetaTileEntity(2007, new MetaTileEntityLargeChemicalBath(gcymId("large_chemical_bath")));
+        LARGE_EXTRACTOR = registerMetaTileEntity(2008, new MetaTileEntityLargeExtractor(gcymId("large_extractor")));
     }
 
     private static ResourceLocation gcymId(String name) {

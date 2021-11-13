@@ -1,5 +1,6 @@
 package gregicality.machines.jei.multiblock.info;
 
+import gregicality.machines.GregicalityMachines;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -81,7 +82,7 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gcym.multiblock.large_assembler.description")};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_assembler.description", GregicalityMachines.MODID))};
     }
 
     @Override

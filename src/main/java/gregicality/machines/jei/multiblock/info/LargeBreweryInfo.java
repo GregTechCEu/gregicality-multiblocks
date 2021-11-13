@@ -1,5 +1,6 @@
 package gregicality.machines.jei.multiblock.info;
 
+import gregicality.machines.GregicalityMachines;
 import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -90,7 +91,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gcym.multiblock.large_brewer.description")};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_brewer.description", GregicalityMachines.MODID))};
     }
 
     @Override
