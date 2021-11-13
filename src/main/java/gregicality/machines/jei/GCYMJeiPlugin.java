@@ -1,34 +1,27 @@
 package gregicality.machines.jei;
 
-import gregtech.integration.jei.multiblock.MultiblockInfoPage;
-import gregicality.machines.jei.multiblock.GCYMMultiblockInfoCategory;
+import gregicality.machines.jei.multiblock.info.*;
+import gregtech.integration.jei.multiblock.MultiInfoPageEvent;
+import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
 import mezz.jei.api.IModPlugin;
-import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.ingredients.VanillaTypes;
-import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-
-import javax.annotation.Nonnull;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @JEIPlugin
+@Mod.EventBusSubscriber
 public class GCYMJeiPlugin implements IModPlugin {
 
-    @Override
-    public void registerCategories(IRecipeCategoryRegistration registry) {
-        registry.addRecipeCategories(new GCYMMultiblockInfoCategory(registry.getJeiHelpers()));
-    }
-
-    @Override
-    public void register(@Nonnull IModRegistry registry) {
-        GCYMMultiblockInfoCategory.registerRecipes(registry);
-
-        //Multiblock info page registration
-        GCYMMultiblockInfoCategory.multiblockRecipes.values().forEach(v -> {
-            MultiblockInfoPage infoPage = v.getInfoPage();
-            registry.addIngredientInfo(infoPage.getController().getStackForm(),
-                    VanillaTypes.ITEM,
-                    infoPage.getDescription());
-        });
-
+    @SubscribeEvent
+    public static void registerInfoPages(MultiInfoPageEvent event) {
+        event.register("large_macerator", new MultiblockInfoRecipeWrapper(new LargeMaceratorInfo()));
+        event.register("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()));
+        event.register("large_assembler", new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()));
+        // event.register("large_alloy_smelter", new MultiblockInfoRecipeWrapper(new LargeAlloySmelterInfo()));
+        event.register("large_autoclave", new MultiblockInfoRecipeWrapper(new LargeAutoclaveInfo()));
+        event.register("large_bender", new MultiblockInfoRecipeWrapper(new LargeBenderInfo()));
+        event.register("large_brewery", new MultiblockInfoRecipeWrapper(new LargeBreweryInfo()));
+        event.register("large_centrifuge", new MultiblockInfoRecipeWrapper(new LargeCentrifugeInfo()));
+        event.register("large_chemical_bath", new MultiblockInfoRecipeWrapper(new LargeChemicalBathInfo()));
     }
 }
