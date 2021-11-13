@@ -1,4 +1,4 @@
-package gregicality.machines.common.metatileentities.multiblock;
+package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.render.GCYMTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -22,44 +22,42 @@ import javax.annotation.Nonnull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
+public class MetaTileEntityLargeExtractor extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
+            MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityLargeBrewery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BREWING_RECIPES); //todo make this also a fermenter
+    public MetaTileEntityLargeExtractor(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.EXTRACTOR_RECIPES); //todo make this also a canner
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLargeBrewery(this.metaTileEntityId);
+        return new MetaTileEntityLargeExtractor(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
-                .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
-                .aisle("#XSX#", "XAAAX", "XACAX", "XAAAX", "#XXX#")
-                .aisle("#XXX#", "XAAAX", "XACAX", "XAAAX", "#XXX#").setRepeatable(1, 3)
-                .aisle("#XXX#", "XXAXX", "XACAX", "XXAXX", "#XXX#")
-                .aisle("#####", "##X##", "#XMX#", "##X##", "#####")
+                .aisle("XXXXX", "XXXXX", "XXXXX")
+                .aisle("XXSXX", "XCACX", "XXXXX")
+                .aisle("XXXXX", "XCACX", "XXXXX").setRepeatable(0, 2)
+                .aisle("XXXXX", "XXXXX", "XXXXX")
                 .setAmountAtLeast('L', 30)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
                 .where('C', statePredicate(getCasingState2()))
-                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
                 .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
                 .build();
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     private IBlockState getCasingState2() {
@@ -68,17 +66,12 @@ public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.CLEAN_STAINLESS_STEEL_CASING;
+        return Textures.SOLID_STEEL_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_BREWERY_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMufflerMechanics() {
-        return true;
+        return GCYMTextures.LARGE_EXTRACTOR_OVERLAY;
     }
 }

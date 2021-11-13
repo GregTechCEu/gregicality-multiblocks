@@ -1,4 +1,4 @@
-package gregicality.machines.common.metatileentities.multiblock;
+package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.render.GCYMTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -22,32 +22,30 @@ import javax.annotation.Nonnull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityLargeCentrifuge extends RecipeMapMultiblockController {
+public class MetaTileEntityLargeChemicalBath extends RecipeMapMultiblockController { //todo render liquid in the structure that looks the same as what is in the fluid hatches
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityLargeCentrifuge(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CENTRIFUGE_RECIPES); //todo make this also a thermal centrifuge
+    public MetaTileEntityLargeChemicalBath(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.CHEMICAL_BATH_RECIPES); //todo make this also an ore washer
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLargeCentrifuge(this.metaTileEntityId);
+        return new MetaTileEntityLargeChemicalBath(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
-                .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
-                .aisle("XXXXX", "XACAX", "XCACX", "XACAX", "XXXXX").setRepeatable(0, 1)
-                .aisle("XXSXX", "XACAX", "XCACX", "XACAX", "XXXXX")
-                .aisle("XXXXX", "XACAX", "XCACX", "XACAX", "XXXXX").setRepeatable(0, 1)
-                .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
-                .setAmountAtLeast('L', 30)
+                .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
+                .aisle("XXSXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX")
+                .aisle("XXXXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX").setRepeatable(0, 2)
+                .aisle("XXXXX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XXXXX")
+                .setAmountAtLeast('L', 55)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
@@ -59,21 +57,21 @@ public class MetaTileEntityLargeCentrifuge extends RecipeMapMultiblockController
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE);
+        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.SOLID_STEEL_CASING;
+        return Textures.STABLE_TITANIUM_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_CENTRIFUGE_OVERLAY;
+        return GCYMTextures.LARGE_CHEMICAL_BATH_OVERLAY;
     }
 }

@@ -1,15 +1,16 @@
-package gregicality.machines.jei.multiblock.info;
+package gregicality.machines.jei.multiblock.info.standard;
 
 import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockUniqueCasing;
+import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -21,11 +22,11 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LargeExtractorInfo extends MultiblockInfoPage {
+public class LargeMaceratorInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_EXTRACTOR;
+        return GCYMMetaTileEntities.LARGE_MACERATOR;
     }
 
     @Override
@@ -33,51 +34,51 @@ public class LargeExtractorInfo extends MultiblockInfoPage {
         List<MultiblockShapeInfo> shapeInfos = new ArrayList<>();
 
         shapeInfos.add(MultiblockShapeInfo.builder()
-                .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XC#CX", "XXXXX")
-                .aisle("XOMAX", "XISFX", "XXEXX")
+                .aisle("#XXX#", "#XXX#", "#XXX#", "XXXXX")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X")
+                .aisle("#OME#", "#ISX#", "#XXX#", "XXXXX")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
-                .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
+                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+                .where('C', GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)), EnumFacing.WEST)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
-                .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XC#CX", "XC#CX", "XXXXX")
-                .aisle("XOMAX", "XISFX", "XXEXX", "XXXXX")
+                .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#", "XXXXX")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "X###X")
+                .aisle("#OME#", "#ISX#", "#XXX#", "#XXX#", "XXXXX")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
-                .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
+                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+                .where('C', GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)), EnumFacing.WEST)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
-                .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XC#CX", "XC#CX", "XC#CX", "XXXXX")
-                .aisle("XOMAX", "XISFX", "XXEXX", "XXXXX", "XXXXX")
+                .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#", "#XXX#", "XXXXX")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "XCCCX", "X###X")
+                .aisle("#OME#", "#ISX#", "#XXX#", "#XXX#", "#XXX#", "XXXXX")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
-                .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
+                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+                .where('C', GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)), EnumFacing.WEST)
                 .build());
 
         return shapeInfos;
@@ -85,7 +86,7 @@ public class LargeExtractorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_extractor.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_macerator.description", GregicalityMachines.MODID))};
     }
 
     @Override
@@ -98,6 +99,6 @@ public class LargeExtractorInfo extends MultiblockInfoPage {
         super.generateBlockTooltips();
 
         ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 30).setStyle(new Style().setColor(TextFormatting.AQUA));
-        addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID), tooltip);
+        addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), tooltip);
     }
 }

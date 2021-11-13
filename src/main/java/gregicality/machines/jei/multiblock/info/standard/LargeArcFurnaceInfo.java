@@ -1,4 +1,4 @@
-package gregicality.machines.jei.multiblock.info;
+package gregicality.machines.jei.multiblock.info.standard;
 
 import com.google.common.collect.Lists;
 import gregicality.machines.GregicalityMachines;

@@ -1,4 +1,4 @@
-package gregicality.machines.common.metatileentities.multiblock;
+package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.render.GCYMTextures;
 import gregtech.api.metatileentity.MetaTileEntity;

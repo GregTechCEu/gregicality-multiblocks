@@ -1,6 +1,7 @@
 package gregicality.machines.jei;
 
-import gregicality.machines.jei.multiblock.info.*;
+import gregicality.machines.jei.multiblock.info.standard.*;
+import gregicality.machines.jei.multiblock.info.unique.ChemicalPlantInfo;
 import gregtech.integration.jei.multiblock.MultiInfoPageEvent;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
 import mezz.jei.api.IModPlugin;
@@ -14,6 +15,7 @@ public class GCYMJeiPlugin implements IModPlugin {
 
     @SubscribeEvent
     public static void registerInfoPages(MultiInfoPageEvent event) {
+        // Standard
         event.register("large_macerator", new MultiblockInfoRecipeWrapper(new LargeMaceratorInfo()));
         event.register("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()));
         event.register("large_assembler", new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()));
@@ -24,5 +26,8 @@ public class GCYMJeiPlugin implements IModPlugin {
         event.register("large_centrifuge", new MultiblockInfoRecipeWrapper(new LargeCentrifugeInfo()));
         event.register("large_chemical_bath", new MultiblockInfoRecipeWrapper(new LargeChemicalBathInfo()));
         event.register("large_extractor", new MultiblockInfoRecipeWrapper(new LargeExtractorInfo()));
+
+        // Unique
+        event.register("chemical_plant", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()));
     }
 }

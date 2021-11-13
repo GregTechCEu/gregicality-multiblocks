@@ -1,4 +1,4 @@
-package gregicality.machines.common.metatileentities.multiblock;
+package gregicality.machines.common.metatileentities.multiblock.unique;
 
 import gregicality.machines.render.GCYMTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -12,16 +12,13 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
-import gregicality.machines.common.block.GCYMMetaBlocks;
-import gregicality.machines.common.block.blocks.BlockUniqueCasing;
+import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class MetaTileEntityLargeArcFurnace extends RecipeMapMultiblockController {
+public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
@@ -29,28 +26,30 @@ public class MetaTileEntityLargeArcFurnace extends RecipeMapMultiblockController
             MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityLargeArcFurnace(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.ARC_FURNACE_RECIPES);
+    public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES); //todo also chemical plant recipemap
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLargeArcFurnace(this.metaTileEntityId);
+        return new MetaTileEntityChemicalPlant(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#", "#####")
-                .aisle("XXXXX", "XCACX", "XCACX", "XCXCX", "#C#C#")
-                .aisle("XXXXX", "XAAAX", "XAAAX", "XXXXX", "#####")
-                .aisle("XXXXX", "XACAX", "XACAX", "XXCXX", "##C##")
-                .aisle("#XXX#", "#XSX#", "#XXX#", "#XXX#", "#####")
-                .setAmountAtLeast('L', 30)
+                .aisle("X###X", "XXXXX", "XGGGX", "XXXXX", "X###X")
+                .aisle("X###X", "XXXXX", "XAAAX", "XXXXX", "X###X")
+                .aisle("XPPPX", "XAAAX", "XCCCX", "XAAAX", "XPPPX")
+                .aisle("X###X", "XXXXX", "XAAAX", "XXXXX", "X###X")
+                .aisle("X###X", "XXSXX", "XGGGX", "XXXXX", "X###X")
+                .setAmountAtLeast('L', 50)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
-                .where('C', statePredicate(getCasingState2()))
+                .where('G', statePredicate(getCasingState2()))
+                .where('P', statePredicate(getCasingState3()))
+                .where('C', statePredicate(getCasingState4()))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
@@ -58,21 +57,29 @@ public class MetaTileEntityLargeArcFurnace extends RecipeMapMultiblockController
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING);
     }
 
     private IBlockState getCasingState2() {
-        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.LARGE_ELECTRODE);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
+    }
+
+    private IBlockState getCasingState3() {
+        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE);
+    }
+
+    private IBlockState getCasingState4() {
+        return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.SOLID_STEEL_CASING;
+        return Textures.INERT_PTFE_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_ARC_FURNACE_OVERLAY;
+        return GCYMTextures.CHEMICAL_PLANT_OVERLAY;
     }
 }

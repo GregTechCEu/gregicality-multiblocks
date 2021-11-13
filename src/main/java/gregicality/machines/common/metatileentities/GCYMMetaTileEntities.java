@@ -1,13 +1,15 @@
 package gregicality.machines.common.metatileentities;
 
 import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.multiblock.*;
+import gregicality.machines.common.metatileentities.multiblock.standard.*;
+import gregicality.machines.common.metatileentities.multiblock.unique.MetaTileEntityChemicalPlant;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
 public class GCYMMetaTileEntities {
 
+    // Standard Multiblocks
     public static MetaTileEntityLargeMacerator LARGE_MACERATOR;
     public static MetaTileEntityLargeArcFurnace LARGE_ARC_FURNACE;
     public static MetaTileEntityLargeAssembler LARGE_ASSEMBLER;
@@ -18,7 +20,11 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeChemicalBath LARGE_CHEMICAL_BATH;
     public static MetaTileEntityLargeExtractor LARGE_EXTRACTOR;
 
+    // Unique Multiblocks
+    public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
+
     public static void init() {
+        // Standard Multiblocks
         LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcymId("large_macerator")));
         LARGE_ARC_FURNACE = registerMetaTileEntity(2001, new MetaTileEntityLargeArcFurnace(gcymId("large_arc_furnace")));
         LARGE_ASSEMBLER = registerMetaTileEntity(2002, new MetaTileEntityLargeAssembler(gcymId("large_assembler")));
@@ -29,6 +35,9 @@ public class GCYMMetaTileEntities {
         LARGE_CENTRIFUGE = registerMetaTileEntity(2006, new MetaTileEntityLargeCentrifuge(gcymId("large_centrifuge")));
         LARGE_CHEMICAL_BATH = registerMetaTileEntity(2007, new MetaTileEntityLargeChemicalBath(gcymId("large_chemical_bath")));
         LARGE_EXTRACTOR = registerMetaTileEntity(2008, new MetaTileEntityLargeExtractor(gcymId("large_extractor")));
+
+        // Unique Multiblocks
+        CHEMICAL_PLANT = registerMetaTileEntity(2020, new MetaTileEntityChemicalPlant(gcymId("chemical_plant")));
     }
 
     private static ResourceLocation gcymId(String name) {
