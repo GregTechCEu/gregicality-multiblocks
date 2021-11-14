@@ -21,29 +21,31 @@ public class GCYMultiMetaTileEntities {
     public static MetaTileEntityLargeExtractor LARGE_EXTRACTOR;
     public static MetaTileEntityLargeCompressor LARGE_COMPRESSOR;
     public static MetaTileEntityLargeCutter LARGE_CUTTER;
+    public static MetaTileEntityLargeDistillery LARGE_DISTILLERY;
 
     // Unique Multiblocks
     public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
 
     public static void init() {
         // Standard Multiblocks
-        LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcymId("large_macerator")));
-        LARGE_ARC_FURNACE = registerMetaTileEntity(2001, new MetaTileEntityLargeArcFurnace(gcymId("large_arc_furnace")));
-        LARGE_ASSEMBLER = registerMetaTileEntity(2002, new MetaTileEntityLargeAssembler(gcymId("large_assembler")));
-        LARGE_AUTOCLAVE = registerMetaTileEntity(2003, new MetaTileEntityLargeAutoclave(gcymId("large_autoclave")));
-        LARGE_BENDER = registerMetaTileEntity(2004, new MetaTileEntityLargeBender(gcymId("large_bender")));
-        LARGE_BREWERY = registerMetaTileEntity(2005, new MetaTileEntityLargeBrewery(gcymId("large_brewer")));
-        LARGE_CENTRIFUGE = registerMetaTileEntity(2006, new MetaTileEntityLargeCentrifuge(gcymId("large_centrifuge")));
-        LARGE_CHEMICAL_BATH = registerMetaTileEntity(2007, new MetaTileEntityLargeChemicalBath(gcymId("large_chemical_bath")));
-        LARGE_EXTRACTOR = registerMetaTileEntity(2008, new MetaTileEntityLargeExtractor(gcymId("large_extractor")));
-        LARGE_COMPRESSOR = registerMetaTileEntity(2009, new MetaTileEntityLargeCompressor(gcymId("large_compressor")));
-        LARGE_CUTTER = registerMetaTileEntity(2010, new MetaTileEntityLargeCutter(gcymId("large_cutter")));
+        LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcyMultiId("large_macerator")));
+        LARGE_ARC_FURNACE = registerMetaTileEntity(2001, new MetaTileEntityLargeArcFurnace(gcyMultiId("large_arc_furnace")));
+        LARGE_ASSEMBLER = registerMetaTileEntity(2002, new MetaTileEntityLargeAssembler(gcyMultiId("large_assembler")));
+        LARGE_AUTOCLAVE = registerMetaTileEntity(2003, new MetaTileEntityLargeAutoclave(gcyMultiId("large_autoclave")));
+        LARGE_BENDER = registerMetaTileEntity(2004, new MetaTileEntityLargeBender(gcyMultiId("large_bender")));
+        LARGE_BREWERY = registerMetaTileEntity(2005, new MetaTileEntityLargeBrewery(gcyMultiId("large_brewer")));
+        LARGE_CENTRIFUGE = registerMetaTileEntity(2006, new MetaTileEntityLargeCentrifuge(gcyMultiId("large_centrifuge")));
+        LARGE_CHEMICAL_BATH = registerMetaTileEntity(2007, new MetaTileEntityLargeChemicalBath(gcyMultiId("large_chemical_bath")));
+        LARGE_EXTRACTOR = registerMetaTileEntity(2008, new MetaTileEntityLargeExtractor(gcyMultiId("large_extractor")));
+        LARGE_COMPRESSOR = registerMetaTileEntity(2009, new MetaTileEntityLargeCompressor(gcyMultiId("large_compressor")));
+        LARGE_CUTTER = registerMetaTileEntity(2010, new MetaTileEntityLargeCutter(gcyMultiId("large_cutter")));
+        LARGE_DISTILLERY = registerMetaTileEntity(2011, new MetaTileEntityLargeDistillery(gcyMultiId("large_distillery")));
 
         // Unique Multiblocks
-        CHEMICAL_PLANT = registerMetaTileEntity(2020, new MetaTileEntityChemicalPlant(gcymId("chemical_plant")));
+        CHEMICAL_PLANT = registerMetaTileEntity(2020, new MetaTileEntityChemicalPlant(gcyMultiId("chemical_plant")));
     }
 
-    private static ResourceLocation gcymId(String name) {
+    private static ResourceLocation gcyMultiId(String name) {
         return new ResourceLocation(GregicalityMultiblocks.MODID, name);
     }
 }

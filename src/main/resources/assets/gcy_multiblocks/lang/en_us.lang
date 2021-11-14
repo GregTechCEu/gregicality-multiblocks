@@ -13,6 +13,7 @@ gcy_multiblocks.machine.large_chemical_bath.name=Large Chemical Bath
 gcy_multiblocks.machine.large_extractor.name=Large Extracting Machine
 gcy_multiblocks.machine.large_compressor.name=Large Compressor
 gcy_multiblocks.machine.large_cutter.name=Large Cutting Machine
+gcy_multiblocks.machine.large_distillery.name=Large Fractionating Distiller
 
 # unique
 gcy_multiblocks.machine.chemical_plant.name=Chemical Plant
@@ -31,6 +32,7 @@ gcy_multiblocks.multiblock.large_chemical_bath.description=A multiblock Chemical
 gcy_multiblocks.multiblock.large_extractor.description=A multiblock Extractor and Canning Machine for moving materials.
 gcy_multiblocks.multiblock.large_compressor.description=A multiblock Compressor, Forming Press and Forge Hammer for flatting materials.
 gcy_multiblocks.multiblock.large_cutter.description=A multiblock Cutting Machine for cutting things into smaller pieces.
+gcy_multiblocks.multiblock.large_distillery.description=A multiblock Distillery and Distillation Tower for separating fluids into fractions.
 
 # unique
 gcy_multiblocks.multiblock.chemical_plant.description=A Chemical Plant and a parallel Large Chemical Reactor for advanced chemistry.

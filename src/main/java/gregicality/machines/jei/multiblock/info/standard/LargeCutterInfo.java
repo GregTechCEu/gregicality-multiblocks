@@ -91,7 +91,7 @@ public class LargeCutterInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_assembler.description", GregicalityMultiblocks.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_cutter.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override
