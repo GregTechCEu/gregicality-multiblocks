@@ -6,8 +6,10 @@ import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.*;
+import gregtech.common.blocks.BlockFusionCoil;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockTransparentCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -19,35 +21,35 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ElectricImplosionCompressorInfo extends MultiblockInfoPage {
+public class LargeReplicatorInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMultiMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR;
+        return GCYMultiMetaTileEntities.LARGE_REPLICATOR;
     }
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         return Collections.singletonList(MultiblockShapeInfo.builder()
-                .aisle("XXXXX", "F###F", "F###F", "F###F", "F###F", "XXXXX")
-                .aisle("XXXXX", "#PGP#", "#PGP#", "#PGP#", "#PGP#", "XXXXX")
-                .aisle("XXXXX", "#G#G#", "#G#G#", "#G#G#", "#G#G#", "XXAXX")
-                .aisle("XXXXX", "#PGP#", "#PGP#", "#PGP#", "#PGP#", "XXXXX")
-                .aisle("IESMO", "F###F", "F###F", "F###F", "F###F", "XXXXX")
+                .aisle("XXXXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
+                .aisle("XXXXX", "VCCCV", "G###G", "G###G", "VCCCV", "XXXXX")
+                .aisle("XXXXX", "VCCCV", "G#C#G", "G#C#G", "VCCCV", "XXXXX")
+                .aisle("XXXXX", "VCCCV", "G###G", "G###G", "VCCCV", "XXXXX")
+                .aisle("IMSEO", "FVVVA", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
                 .where('S', getController(), EnumFacing.WEST)
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+                .where('C', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.FUSION_COIL))
                 .where('G', MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS))
-                .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
-                .where('F', MetaBlocks.FRAMES.get(Materials.TungstenSteel).getDefaultState())
+                .where('V', GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('A', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
+                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
+                .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)), EnumFacing.WEST)
                 .build());
     }
@@ -55,7 +57,7 @@ public class ElectricImplosionCompressorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.electric_implosion_compressor.description", GregicalityMultiblocks.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_replicator.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override
@@ -67,10 +69,7 @@ public class ElectricImplosionCompressorInfo extends MultiblockInfoPage {
     protected void generateBlockTooltips() {
         super.generateBlockTooltips();
 
-        ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 40).setStyle(new Style().setColor(TextFormatting.AQUA));
+        ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 50).setStyle(new Style().setColor(TextFormatting.AQUA));
         addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), tooltip);
-
-        ITextComponent mufflerTooltip = new TextComponentTranslation("gregtech.multiblock.preview.only_location", I18n.format("gregtech.multiblock.preview.location.t_c")).setStyle(new Style().setColor(TextFormatting.DARK_RED));
-        addBlockTooltip(MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1].getStackForm(), mufflerTooltip);
     }
 }

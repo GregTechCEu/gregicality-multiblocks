@@ -40,5 +40,7 @@ public class GCYMultiJeiPlugin implements IModPlugin {
         event.register("large_sifter", new MultiblockInfoRecipeWrapper(new LargeSifterInfo()));
         event.register("large_wiremill", new MultiblockInfoRecipeWrapper(new LargeWiremillInfo()));
         event.register("electric_implosion_compressor", new MultiblockInfoRecipeWrapper(new ElectricImplosionCompressorInfo()));
+        event.register("large_mass_fabricator", new MultiblockInfoRecipeWrapper(new LargeMassFabricatorInfo()));
+        event.register("large_replicator", new MultiblockInfoRecipeWrapper(new LargeReplicatorInfo()));
     }
 }

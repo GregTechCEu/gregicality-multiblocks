@@ -25,6 +25,8 @@ gcy_multiblocks.machine.large_engraver.name=Large Engraving Machine
 gcy_multiblocks.machine.large_sifter.name=Large Sifting Funnel
 gcy_multiblocks.machine.large_wiremill.name=Large Wire Factory
 gcy_multiblocks.machine.electric_implosion_compressor.name=Electric Implosion Compressor
+gcy_multiblocks.machine.large_mass_fabricator.name=Large Mass Fabrication Chamber
+gcy_multiblocks.machine.large_replicator.name=Large Replication Chamber
 
 
 
@@ -54,6 +56,8 @@ gcy_multiblocks.multiblock.large_engraver.description=A multiblock Laser Engrave
 gcy_multiblocks.multiblock.large_sifter.description=A multiblock Sifting Machine for filtering materials.
 gcy_multiblocks.multiblock.large_wiremill.description=A multiblock Wiremill for producing wires.
 gcy_multiblocks.multiblock.electric_implosion_compressor.description=An electric version of the implosion compressor for extreme compression.
+gcy_multiblocks.multiblock.large_mass_fabricator.description=A multiblock Mass Fabricator for turning matter into elementary particles.
+gcy_multiblocks.multiblock.large_replicator.description=A multiblock Replicator for turning elementary particles into materials.
 
 
 # casings

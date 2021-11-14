@@ -1,5 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -12,8 +14,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockFusionCoil;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockTransparentCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -22,43 +23,41 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregtech.api.util.RelativeDirection.*;
-
-public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
+public class MetaTileEntityLargeReplicator extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
+            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityElectricImplosionCompressor(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.IMPLOSION_RECIPES);
+    public MetaTileEntityLargeReplicator(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.REPLICATOR_RECIPES);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityElectricImplosionCompressor(this.metaTileEntityId);
+        return new MetaTileEntityLargeReplicator(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "F###F", "F###F", "F###F", "F###F", "XXXXX")
-                .aisle("XXXXX", "#PGP#", "#PGP#", "#PGP#", "#PGP#", "XXXXX")
-                .aisle("XXXXX", "#GAG#", "#GAG#", "#GAG#", "#GAG#", "XXMXX")
-                .aisle("XXXXX", "#PGP#", "#PGP#", "#PGP#", "#PGP#", "XXXXX")
-                .aisle("XXSXX", "F###F", "F###F", "F###F", "F###F", "XXXXX")
-                .setAmountAtLeast('L', 40)
+                .aisle("XXXXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
+                .aisle("XXXXX", "VCCCV", "GAAAG", "GAAAG", "VCCCV", "XXXXX")
+                .aisle("XXXXX", "VCCCV", "GACAG", "GACAG", "VCCCV", "XXXXX")
+                .aisle("XXXXX", "VCCCV", "GAAAG", "GAAAG", "VCCCV", "XXXXX")
+                .aisle("XXSXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
+                .setAmountAtLeast('L', 50)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
-                .where('P', statePredicate(getCasingState2()))
+                .where('C', statePredicate(getCasingState2()))
                 .where('G', statePredicate(getCasingState3()))
-                .where('F', statePredicate(getFrameState()))
+                .where('V', statePredicate(getCasingState4()))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
-                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
                 .build();
     }
 
@@ -67,15 +66,15 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE);
+        return MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.FUSION_COIL);
     }
 
     private IBlockState getCasingState3() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
     }
 
-    private IBlockState getFrameState() {
-        return MetaBlocks.FRAMES.get(Materials.TungstenSteel).getDefaultState();
+    private IBlockState getCasingState4() {
+        return GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
     }
 
     @Override
@@ -86,11 +85,6 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.ELECTRIC_IMPLOSION_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMufflerMechanics() {
-        return true;
+        return GCYMultiTextures.LARGE_MASS_FABRICATOR_OVERLAY;
     }
 }
