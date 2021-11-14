@@ -42,6 +42,18 @@
         "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
         "bottom": "#side"
       }
+    },
+    "active=false,variant=electrolytic_cell": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "gcy_multiblocks:blocks/casings/unique/electrolytic_cell"
+      }
+    },
+    "active=true,variant=electrolytic_cell": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "gcy_multiblocks:blocks/casings/unique/electrolytic_cell_on"
+      }
     }
   }
 }

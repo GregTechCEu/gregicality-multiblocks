@@ -90,7 +90,7 @@ public class LargeDistilleryInfo extends MultiblockInfoPage {
     protected void generateBlockTooltips() {
         super.generateBlockTooltips();
 
-        ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 35).setStyle(new Style().setColor(TextFormatting.AQUA));
+        ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 40).setStyle(new Style().setColor(TextFormatting.AQUA));
         addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN), tooltip);
 
         ITextComponent fluidTooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit_per_layer", 1).setStyle(new Style().setColor(TextFormatting.DARK_RED));

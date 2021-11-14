@@ -65,7 +65,7 @@ public class MetaTileEntityLargeDistillery extends RecipeMapMultiblockController
                 .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##")
                 .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(0, 11)
                 .aisle("#####", "#ZZZ#", "#ZCZ#", "#ZZZ#", "#####")
-                .setAmountAtLeast('L', 35)
+                .setAmountAtLeast('L', 40)
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))

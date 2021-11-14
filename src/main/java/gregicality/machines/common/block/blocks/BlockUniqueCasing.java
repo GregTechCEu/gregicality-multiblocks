@@ -33,7 +33,8 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
 
         CRUSHING_WHEELS("crushing_wheels"),
         LARGE_ELECTRODE("large_electrode"),
-        SLICING_BLADES("slicing_blades");
+        SLICING_BLADES("slicing_blades"),
+        ELECTROLYTIC_CELL("electrolytic_cell");
 
         private final String name;
 
