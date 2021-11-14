@@ -34,6 +34,7 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer LARGE_ENGRAVER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_SIFTER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_WIREMILL_OVERLAY;
+    public static OrientedOverlayRenderer ELECTRIC_IMPLOSION_OVERLAY;
 
 
     public static void preInit() {
@@ -61,5 +62,6 @@ public class GCYMultiTextures {
         LARGE_ENGRAVER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_engraver", FRONT);
         LARGE_SIFTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_sifter", FRONT);
         LARGE_WIREMILL_OVERLAY = new OrientedOverlayRenderer("multiblock/large_wiremill", FRONT);
+        ELECTRIC_IMPLOSION_OVERLAY = new OrientedOverlayRenderer("multiblock/electric_implosion", FRONT);
     }
 }
