@@ -50,7 +50,7 @@ public class LargeDistilleryInfo extends MultiblockInfoPage {
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.DOWN)
                 .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('C', MetaTileEntities.MUFFLER_HATCH[GTValues.HV], EnumFacing.UP)
+                .where('C', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
                 .build());
 
@@ -69,7 +69,7 @@ public class LargeDistilleryInfo extends MultiblockInfoPage {
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.DOWN)
                 .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('C', MetaTileEntities.MUFFLER_HATCH[GTValues.HV], EnumFacing.UP)
+                .where('C', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
                 .build());
 
@@ -103,8 +103,7 @@ public class LargeDistilleryInfo extends MultiblockInfoPage {
         addBlockTooltip(MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV].getStackForm(), inputTooltip);
         addBlockTooltip(MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV].getStackForm(), outputTooltip);
 
-
         ITextComponent mufflerTooltip = new TextComponentTranslation("gregtech.multiblock.preview.only_location", I18n.format("gregtech.multiblock.preview.location.t_c")).setStyle(new Style().setColor(TextFormatting.DARK_RED));
-        addBlockTooltip(MetaTileEntities.MUFFLER_HATCH[GTValues.HV].getStackForm(), mufflerTooltip);
+        addBlockTooltip(MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1].getStackForm(), mufflerTooltip);
     }
 }

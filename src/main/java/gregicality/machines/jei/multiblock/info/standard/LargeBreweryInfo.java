@@ -47,7 +47,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('A', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
-                .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.HV], EnumFacing.UP)
+                .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
@@ -65,7 +65,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('A', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
-                .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.HV], EnumFacing.UP)
+                .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
@@ -83,7 +83,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('A', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
-                .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.HV], EnumFacing.UP)
+                .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
                 .build());
 
         return shapeInfos;
@@ -105,5 +105,8 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
 
         ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 30).setStyle(new Style().setColor(TextFormatting.AQUA));
         addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN), tooltip);
+
+        ITextComponent mufflerTooltip = new TextComponentTranslation("gregtech.multiblock.preview.only_location", I18n.format("gregtech.multiblock.preview.location.t_c")).setStyle(new Style().setColor(TextFormatting.DARK_RED));
+        addBlockTooltip(MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1].getStackForm(), mufflerTooltip);
     }
 }
