@@ -31,6 +31,7 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer LARGE_MIXER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_PACKAGER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ENGRAVER_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_SIFTER_OVERLAY;
 
 
     public static void preInit() {
@@ -55,5 +56,6 @@ public class GCYMultiTextures {
         LARGE_MIXER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mixer", FRONT);
         LARGE_PACKAGER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_packager", FRONT);
         LARGE_ENGRAVER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_engraver", FRONT);
+        LARGE_SIFTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_sifter", FRONT);
     }
 }

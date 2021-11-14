@@ -21,6 +21,7 @@ gcy_multiblocks.machine.large_solidifier.name=Large Solidification Array
 gcy_multiblocks.machine.large_mixer.name=Large Mixing Vessel
 gcy_multiblocks.machine.large_packager.name=Large Packaging Machine
 gcy_multiblocks.machine.large_engraver.name=Large Engraving Machine
+gcy_multiblocks.machine.large_sifter.name=Large Sifting Funnel
 
 
 # unique
@@ -48,6 +49,7 @@ gcy_multiblocks.multiblock.large_solidifier.description=A multiblock Fluid Solid
 gcy_multiblocks.multiblock.large_mixer.description=A multiblock Mixer for blending materials.
 gcy_multiblocks.multiblock.large_packager.description=A multiblock Packager for boxinating items.
 gcy_multiblocks.multiblock.large_engraver.description=A multiblock Laser Engraver for etching objects.
+gcy_multiblocks.multiblock.large_sifter.description=A multiblock Sifting Machine for filtering materials.
 
 
 # unique

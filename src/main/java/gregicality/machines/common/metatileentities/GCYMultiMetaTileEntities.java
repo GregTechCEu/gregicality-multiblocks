@@ -29,6 +29,7 @@ public class GCYMultiMetaTileEntities {
     public static MetaTileEntityLargeMixer LARGE_MIXER;
     public static MetaTileEntityLargePackager LARGE_PACKAGER;
     public static MetaTileEntityLargeEngraver LARGE_ENGRAVER;
+    public static MetaTileEntityLargeSifter LARGE_SIFTER;
 
     public static void init() {
         LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcyMultiId("large_macerator")));
@@ -51,6 +52,7 @@ public class GCYMultiMetaTileEntities {
         LARGE_MIXER = registerMetaTileEntity(2017, new MetaTileEntityLargeMixer(gcyMultiId("large_mixer")));
         LARGE_PACKAGER = registerMetaTileEntity(2018, new MetaTileEntityLargePackager(gcyMultiId("large_packager")));
         LARGE_ENGRAVER = registerMetaTileEntity(2019, new MetaTileEntityLargeEngraver(gcyMultiId("large_engraver")));
+        LARGE_SIFTER = registerMetaTileEntity(2020, new MetaTileEntityLargeSifter(gcyMultiId("large_sifter")));
     }
 
     private static ResourceLocation gcyMultiId(String name) {
