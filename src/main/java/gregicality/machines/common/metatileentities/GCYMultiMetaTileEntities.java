@@ -10,6 +10,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTile
 public class GCYMultiMetaTileEntities {
 
     public static MetaTileEntityLargeMacerator LARGE_MACERATOR;
+    public static MetaTileEntityAlloyBlastSmelter ALLOY_BLAST_SMELTER;
     public static MetaTileEntityLargeArcFurnace LARGE_ARC_FURNACE;
     public static MetaTileEntityLargeAssembler LARGE_ASSEMBLER;
     public static MetaTileEntityLargeAutoclave LARGE_AUTOCLAVE;
@@ -34,27 +35,28 @@ public class GCYMultiMetaTileEntities {
 
     public static void init() {
         LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcyMultiId("large_macerator")));
-        LARGE_ARC_FURNACE = registerMetaTileEntity(2001, new MetaTileEntityLargeArcFurnace(gcyMultiId("large_arc_furnace")));
-        LARGE_ASSEMBLER = registerMetaTileEntity(2002, new MetaTileEntityLargeAssembler(gcyMultiId("large_assembler")));
-        LARGE_AUTOCLAVE = registerMetaTileEntity(2003, new MetaTileEntityLargeAutoclave(gcyMultiId("large_autoclave")));
-        LARGE_BENDER = registerMetaTileEntity(2004, new MetaTileEntityLargeBender(gcyMultiId("large_bender")));
-        LARGE_BREWERY = registerMetaTileEntity(2005, new MetaTileEntityLargeBrewery(gcyMultiId("large_brewer")));
-        LARGE_CENTRIFUGE = registerMetaTileEntity(2006, new MetaTileEntityLargeCentrifuge(gcyMultiId("large_centrifuge")));
-        LARGE_CHEMICAL_BATH = registerMetaTileEntity(2007, new MetaTileEntityLargeChemicalBath(gcyMultiId("large_chemical_bath")));
-        CHEMICAL_PLANT = registerMetaTileEntity(2008, new MetaTileEntityChemicalPlant(gcyMultiId("chemical_plant")));
-        LARGE_EXTRACTOR = registerMetaTileEntity(2009, new MetaTileEntityLargeExtractor(gcyMultiId("large_extractor")));
-        LARGE_COMPRESSOR = registerMetaTileEntity(2010, new MetaTileEntityLargeCompressor(gcyMultiId("large_compressor")));
-        LARGE_CUTTER = registerMetaTileEntity(2011, new MetaTileEntityLargeCutter(gcyMultiId("large_cutter")));
-        LARGE_DISTILLERY = registerMetaTileEntity(2012, new MetaTileEntityLargeDistillery(gcyMultiId("large_distillery")));
-        LARGE_ELECTROLYZER = registerMetaTileEntity(2013, new MetaTileEntityLargeElectrolyzer(gcyMultiId("large_electrolyzer")));
-        LARGE_POLARIZER = registerMetaTileEntity(2014, new MetaTileEntityLargePolarizer(gcyMultiId("large_polarizer")));
-        LARGE_EXTRUDER = registerMetaTileEntity(2015, new MetaTileEntityLargeExtruder(gcyMultiId("large_extruder")));
-        LARGE_SOLIDIFIER = registerMetaTileEntity(2016, new MetaTileEntityLargeSolidifier(gcyMultiId("large_solidifier")));
-        LARGE_MIXER = registerMetaTileEntity(2017, new MetaTileEntityLargeMixer(gcyMultiId("large_mixer")));
-        LARGE_PACKAGER = registerMetaTileEntity(2018, new MetaTileEntityLargePackager(gcyMultiId("large_packager")));
-        LARGE_ENGRAVER = registerMetaTileEntity(2019, new MetaTileEntityLargeEngraver(gcyMultiId("large_engraver")));
-        LARGE_SIFTER = registerMetaTileEntity(2020, new MetaTileEntityLargeSifter(gcyMultiId("large_sifter")));
-        LARGE_WIREMILL = registerMetaTileEntity(2021, new MetaTileEntityLargeWiremill(gcyMultiId("large_wiremill")));
+        ALLOY_BLAST_SMELTER = registerMetaTileEntity(2001, new MetaTileEntityAlloyBlastSmelter(gcyMultiId("alloy_blast_smelter")));
+        LARGE_ARC_FURNACE = registerMetaTileEntity(2002, new MetaTileEntityLargeArcFurnace(gcyMultiId("large_arc_furnace")));
+        LARGE_ASSEMBLER = registerMetaTileEntity(2003, new MetaTileEntityLargeAssembler(gcyMultiId("large_assembler")));
+        LARGE_AUTOCLAVE = registerMetaTileEntity(2004, new MetaTileEntityLargeAutoclave(gcyMultiId("large_autoclave")));
+        LARGE_BENDER = registerMetaTileEntity(2005, new MetaTileEntityLargeBender(gcyMultiId("large_bender")));
+        LARGE_BREWERY = registerMetaTileEntity(2006, new MetaTileEntityLargeBrewery(gcyMultiId("large_brewer")));
+        LARGE_CENTRIFUGE = registerMetaTileEntity(2007, new MetaTileEntityLargeCentrifuge(gcyMultiId("large_centrifuge")));
+        LARGE_CHEMICAL_BATH = registerMetaTileEntity(2008, new MetaTileEntityLargeChemicalBath(gcyMultiId("large_chemical_bath")));
+        CHEMICAL_PLANT = registerMetaTileEntity(2009, new MetaTileEntityChemicalPlant(gcyMultiId("chemical_plant")));
+        LARGE_EXTRACTOR = registerMetaTileEntity(2010, new MetaTileEntityLargeExtractor(gcyMultiId("large_extractor")));
+        LARGE_COMPRESSOR = registerMetaTileEntity(2011, new MetaTileEntityLargeCompressor(gcyMultiId("large_compressor")));
+        LARGE_CUTTER = registerMetaTileEntity(2012, new MetaTileEntityLargeCutter(gcyMultiId("large_cutter")));
+        LARGE_DISTILLERY = registerMetaTileEntity(2013, new MetaTileEntityLargeDistillery(gcyMultiId("large_distillery")));
+        LARGE_ELECTROLYZER = registerMetaTileEntity(2014, new MetaTileEntityLargeElectrolyzer(gcyMultiId("large_electrolyzer")));
+        LARGE_POLARIZER = registerMetaTileEntity(2015, new MetaTileEntityLargePolarizer(gcyMultiId("large_polarizer")));
+        LARGE_EXTRUDER = registerMetaTileEntity(2016, new MetaTileEntityLargeExtruder(gcyMultiId("large_extruder")));
+        LARGE_SOLIDIFIER = registerMetaTileEntity(2017, new MetaTileEntityLargeSolidifier(gcyMultiId("large_solidifier")));
+        LARGE_MIXER = registerMetaTileEntity(2018, new MetaTileEntityLargeMixer(gcyMultiId("large_mixer")));
+        LARGE_PACKAGER = registerMetaTileEntity(2019, new MetaTileEntityLargePackager(gcyMultiId("large_packager")));
+        LARGE_ENGRAVER = registerMetaTileEntity(2020, new MetaTileEntityLargeEngraver(gcyMultiId("large_engraver")));
+        LARGE_SIFTER = registerMetaTileEntity(2021, new MetaTileEntityLargeSifter(gcyMultiId("large_sifter")));
+        LARGE_WIREMILL = registerMetaTileEntity(2022, new MetaTileEntityLargeWiremill(gcyMultiId("large_wiremill")));
     }
 
     private static ResourceLocation gcyMultiId(String name) {

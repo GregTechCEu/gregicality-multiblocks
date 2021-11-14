@@ -1,8 +1,8 @@
 
 
 # multiblocks
-# standard
 gcy_multiblocks.machine.large_macerator.name=Large Maceration Tower
+gcy_multiblocks.machine.alloy_blast_smelter.name=Alloy Blast Smelter
 gcy_multiblocks.machine.large_arc_furnace.name=Large Arc Smelter
 gcy_multiblocks.machine.large_assembler.name=Large Assembling Factory
 gcy_multiblocks.machine.large_autoclave.name=Large Autoclave Chamber
@@ -10,6 +10,7 @@ gcy_multiblocks.machine.large_bender.name=Large Bending Machine
 gcy_multiblocks.machine.large_brewer.name=Large Brewing Vat
 gcy_multiblocks.machine.large_centrifuge.name=Large Centrifuge Unit
 gcy_multiblocks.machine.large_chemical_bath.name=Large Chemical Bath
+gcy_multiblocks.machine.chemical_plant.name=Chemical Plant
 gcy_multiblocks.machine.large_extractor.name=Large Extracting Machine
 gcy_multiblocks.machine.large_compressor.name=Large Compressor
 gcy_multiblocks.machine.large_cutter.name=Large Cutting Machine
@@ -25,13 +26,11 @@ gcy_multiblocks.machine.large_sifter.name=Large Sifting Funnel
 gcy_multiblocks.machine.large_wiremill.name=Large Wire Factory
 
 
-# unique
-gcy_multiblocks.machine.chemical_plant.name=Chemical Plant
 
 
 # multiblock descriptions
-#standard
 gcy_multiblocks.multiblock.large_macerator.description=A multiblock Macerator for grinding.
+gcy_multiblocks.multiblock.alloy_blast_smelter.description=A Blast Furnace built for creating alloys in high volumes.
 gcy_multiblocks.multiblock.large_arc_furnace.description=A multiblock Arc Furnace for recycling.
 gcy_multiblocks.multiblock.large_assembler.description=A multiblock Assembling Machine for putting things together.
 gcy_multiblocks.multiblock.large_autoclave.description=A multiblock Autoclave for pressurizing things.
@@ -39,6 +38,7 @@ gcy_multiblocks.multiblock.large_bender.description=A multiblock Bending Machine
 gcy_multiblocks.multiblock.large_brewer.description=A multiblock Brewing Machine and Fermenter for producing brews.
 gcy_multiblocks.multiblock.large_centrifuge.description=A multiblock Centrifuge and Thermal Centrifuge for separating materials.
 gcy_multiblocks.multiblock.large_chemical_bath.description=A multiblock Chemical Bath and Ore Washing Plant for cleaning materials.
+gcy_multiblocks.multiblock.chemical_plant.description=A Chemical Plant and a parallel Large Chemical Reactor for advanced chemistry.
 gcy_multiblocks.multiblock.large_extractor.description=A multiblock Extractor and Canning Machine for moving materials.
 gcy_multiblocks.multiblock.large_compressor.description=A multiblock Compressor, Forming Press and Forge Hammer for flatting materials.
 gcy_multiblocks.multiblock.large_cutter.description=A multiblock Cutting Machine and Lathe for cutting things into smaller pieces.
@@ -54,12 +54,9 @@ gcy_multiblocks.multiblock.large_sifter.description=A multiblock Sifting Machine
 gcy_multiblocks.multiblock.large_wiremill.description=A multiblock Wiremill for producing wires.
 
 
-# unique
-gcy_multiblocks.multiblock.chemical_plant.description=A Chemical Plant and a parallel Large Chemical Reactor for advanced chemistry.
-
-
 # casings
 tile.unique_casing.crushing_wheels.name=Crushing Wheels
 tile.unique_casing.large_electrode.name=Large Electrode
 tile.unique_casing.slicing_blades.name=Slicing Blades
 tile.unique_casing.electrolytic_cell.name=Electrolytic Cell
+tile.unique_casing.heat_vent.name=Heat Vent

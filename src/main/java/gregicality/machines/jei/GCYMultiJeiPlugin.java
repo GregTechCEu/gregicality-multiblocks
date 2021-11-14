@@ -17,6 +17,7 @@ public class GCYMultiJeiPlugin implements IModPlugin {
     public static void registerInfoPages(MultiInfoPageEvent event) {
         // Standard
         event.register("large_macerator", new MultiblockInfoRecipeWrapper(new LargeMaceratorInfo()));
+        event.register("alloy_blast_smelter", new MultiblockInfoRecipeWrapper(new AlloyBlastSmelterInfo()));
         event.register("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()));
         event.register("large_assembler", new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()));
         event.register("large_autoclave", new MultiblockInfoRecipeWrapper(new LargeAutoclaveInfo()));

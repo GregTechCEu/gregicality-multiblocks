@@ -12,6 +12,7 @@ public class GCYMultiTextures {
 
     // Multiblock Controllers
     public static OrientedOverlayRenderer LARGE_MACERATOR_OVERLAY;
+    public static OrientedOverlayRenderer ALLOY_BLAST_SMELTER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ARC_FURNACE_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ASSEMBLER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_AUTOCLAVE_OVERLAY;
@@ -32,11 +33,13 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer LARGE_PACKAGER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ENGRAVER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_SIFTER_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_WIREMILL_OVERLAY;
 
 
     public static void preInit() {
         // Multiblock Controllers
         LARGE_MACERATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_macerator", FRONT);
+        ALLOY_BLAST_SMELTER_OVERLAY = new OrientedOverlayRenderer("multiblock/alloy_blast_smelter", FRONT);
         LARGE_ARC_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_arc_furnace", FRONT);
         LARGE_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_assembler", FRONT);
         LARGE_AUTOCLAVE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_autoclave", FRONT);
@@ -57,5 +60,6 @@ public class GCYMultiTextures {
         LARGE_PACKAGER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_packager", FRONT);
         LARGE_ENGRAVER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_engraver", FRONT);
         LARGE_SIFTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_sifter", FRONT);
+        LARGE_WIREMILL_OVERLAY = new OrientedOverlayRenderer("multiblock/large_wiremill", FRONT);
     }
 }

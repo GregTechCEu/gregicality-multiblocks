@@ -74,6 +74,6 @@ public class MetaTileEntityLargeWiremill extends RecipeMapMultiblockController {
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_ASSEMBLER_OVERLAY;
+        return GCYMultiTextures.LARGE_WIREMILL_OVERLAY;
     }
 }

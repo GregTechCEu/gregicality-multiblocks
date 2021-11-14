@@ -54,6 +54,18 @@
       "textures": {
         "all": "gcy_multiblocks:blocks/casings/unique/electrolytic_cell_on"
       }
+    },
+    "active=false,variant=heat_vent": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "gcy_multiblocks:blocks/casings/unique/heat_vent"
+      }
+    },
+    "active=true,variant=heat_vent": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "gcy_multiblocks:blocks/casings/unique/heat_vent_on"
+      }
     }
   }
 }
