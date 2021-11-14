@@ -19,6 +19,7 @@ gcy_multiblocks.machine.large_polarizer.name=Large Electromagnetic Polarizer
 gcy_multiblocks.machine.large_extruder.name=Large Extrusion Machine
 gcy_multiblocks.machine.large_solidifier.name=Large Solidification Array
 gcy_multiblocks.machine.large_mixer.name=Large Mixing Vessel
+gcy_multiblocks.machine.large_packager.name=Large Packaging Machine
 
 
 # unique
@@ -44,6 +45,7 @@ gcy_multiblocks.multiblock.large_polarizer.description=A multiblock Polarizer an
 gcy_multiblocks.multiblock.large_extruder.description=A multiblock Extruder for shaping materials.
 gcy_multiblocks.multiblock.large_solidifier.description=A multiblock Fluid Solidifier for casting materials.
 gcy_multiblocks.multiblock.large_mixer.description=A multiblock Mixer for blending materials.
+gcy_multiblocks.multiblock.large_packager.description=A multiblock Packager for boxinating items.
 
 
 # unique
