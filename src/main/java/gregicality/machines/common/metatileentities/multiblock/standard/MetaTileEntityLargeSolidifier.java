@@ -14,6 +14,7 @@ import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -22,36 +23,34 @@ import javax.annotation.Nonnull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
+public class MetaTileEntityLargeSolidifier extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityLargeBrewery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BREWING_RECIPES); //todo make this also a fermenter, fluid heater
+    public MetaTileEntityLargeSolidifier(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.FLUID_SOLIDFICATION_RECIPES);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLargeBrewery(this.metaTileEntityId);
+        return new MetaTileEntityLargeSolidifier(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
-                .aisle("#XSX#", "XAAAX", "XACAX", "XAAAX", "#XXX#")
-                .aisle("#XXX#", "XAAAX", "XACAX", "XAAAX", "#XXX#").setRepeatable(1, 3)
-                .aisle("#XXX#", "XXAXX", "XACAX", "XXAXX", "#XXX#")
-                .aisle("#####", "##X##", "#XMX#", "##X##", "#####")
-                .setAmountAtLeast('L', 30)
+                .aisle("#XSX#", "XCACX", "XAAAX", "XCACX", "#XXX#")
+                .aisle("#XXX#", "XCACX", "XAAAX", "XCACX", "#XXX#").setRepeatable(0, 2)
+                .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
+                .setAmountAtLeast('L', 35)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
                 .where('C', statePredicate(getCasingState2()))
-                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
@@ -59,7 +58,7 @@ public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
     }
 
     private IBlockState getCasingState2() {
@@ -68,17 +67,12 @@ public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.CLEAN_STAINLESS_STEEL_CASING;
+        return Textures.FROST_PROOF_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_BREWERY_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMufflerMechanics() {
-        return true;
+        return GCYMultiTextures.LARGE_SOLIDIFIER_OVERLAY;
     }
 }

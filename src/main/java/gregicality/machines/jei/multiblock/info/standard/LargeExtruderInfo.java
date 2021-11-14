@@ -32,7 +32,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 
         shapeInfos.add(MultiblockShapeInfo.builder()
                 .aisle("##XXX", "##XOX", "##XXX")
-                .aisle("##XXX", "XXXPX", "XXXGX")
+                .aisle("##XXX", "##XPX", "##XGX")
                 .aisle("XXXXX", "XXXPX", "XXXGX")
                 .aisle("XXXXX", "X#XPX", "XXXGX")
                 .aisle("XMXEX", "XSXIX", "XXXXX")
@@ -49,7 +49,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 
         shapeInfos.add(MultiblockShapeInfo.builder()
                 .aisle("##XXXX", "##XOXX", "##XXXX")
-                .aisle("##XXXX", "XXXPPX", "XXXGGX")
+                .aisle("##XXXX", "##XPPX", "##XGGX")
                 .aisle("XXXXXX", "XXXPPX", "XXXGGX")
                 .aisle("XXXXXX", "X#XPPX", "XXXGGX")
                 .aisle("XMXEXX", "XSXIXX", "XXXXXX")
@@ -67,7 +67,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 
         shapeInfos.add(MultiblockShapeInfo.builder()
                 .aisle("##XXXXX", "##XOXXX", "##XXXXX")
-                .aisle("##XXXXX", "XXXPPPX", "XXXGGGX")
+                .aisle("##XXXXX", "##XPPPX", "##XGGGX")
                 .aisle("XXXXXXX", "XXXPPPX", "XXXGGGX")
                 .aisle("XXXXXXX", "X#XPPPX", "XXXGGGX")
                 .aisle("XMXEXXX", "XSXIXXX", "XXXXXXX")
@@ -84,7 +84,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 
         shapeInfos.add(MultiblockShapeInfo.builder()
                 .aisle("##XXXXXX", "##XOXXXX", "##XXXXXX")
-                .aisle("##XXXXXX", "XXXPPPPX", "XXXGGGGX")
+                .aisle("##XXXXXX", "##XPPPPX", "##XGGGGX")
                 .aisle("XXXXXXXX", "XXXPPPPX", "XXXGGGGX")
                 .aisle("XXXXXXXX", "X#XPPPPX", "XXXGGGGX")
                 .aisle("XMXEXXXX", "XSXIXXXX", "XXXXXXXX")
