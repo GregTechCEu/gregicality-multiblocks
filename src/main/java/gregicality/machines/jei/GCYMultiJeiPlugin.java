@@ -32,6 +32,7 @@ public class GCYMultiJeiPlugin implements IModPlugin {
         event.register("large_polarizer", new MultiblockInfoRecipeWrapper(new LargePolarizerInfo()));
         event.register("large_extruder", new MultiblockInfoRecipeWrapper(new LargeExtruderInfo()));
         event.register("large_solidifier", new MultiblockInfoRecipeWrapper(new LargeSolidifierInfo()));
+        event.register("large_mixer", new MultiblockInfoRecipeWrapper(new LargeMixerInfo()));
 
         // Unique
         event.register("chemical_plant", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()));

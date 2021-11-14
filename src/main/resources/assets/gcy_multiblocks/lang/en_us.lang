@@ -18,6 +18,7 @@ gcy_multiblocks.machine.large_electrolyzer.name=Large Electrolysis Plant
 gcy_multiblocks.machine.large_polarizer.name=Large Electromagnetic Polarizer
 gcy_multiblocks.machine.large_extruder.name=Large Extrusion Machine
 gcy_multiblocks.machine.large_solidifier.name=Large Solidification Array
+gcy_multiblocks.machine.large_mixer.name=Large Mixing Vessel
 
 
 # unique
@@ -36,12 +37,13 @@ gcy_multiblocks.multiblock.large_centrifuge.description=A multiblock Centrifuge 
 gcy_multiblocks.multiblock.large_chemical_bath.description=A multiblock Chemical Bath and Ore Washing Plant for cleaning materials.
 gcy_multiblocks.multiblock.large_extractor.description=A multiblock Extractor and Canning Machine for moving materials.
 gcy_multiblocks.multiblock.large_compressor.description=A multiblock Compressor, Forming Press and Forge Hammer for flatting materials.
-gcy_multiblocks.multiblock.large_cutter.description=A multiblock Cutting Machine for cutting things into smaller pieces.
+gcy_multiblocks.multiblock.large_cutter.description=A multiblock Cutting Machine and Lathe for cutting things into smaller pieces.
 gcy_multiblocks.multiblock.large_distillery.description=A multiblock Distillery and Distillation Tower for separating fluids into fractions.
 gcy_multiblocks.multiblock.large_electrolyzer.description=A multiblock Electrolyzer for separating molecules.
 gcy_multiblocks.multiblock.large_polarizer.description=A multiblock Polarizer and Electromagnetic Separator for magnetizing materials.
 gcy_multiblocks.multiblock.large_extruder.description=A multiblock Extruder for shaping materials.
 gcy_multiblocks.multiblock.large_solidifier.description=A multiblock Fluid Solidifier for casting materials.
+gcy_multiblocks.multiblock.large_mixer.description=A multiblock Mixer for blending materials.
 
 
 # unique
