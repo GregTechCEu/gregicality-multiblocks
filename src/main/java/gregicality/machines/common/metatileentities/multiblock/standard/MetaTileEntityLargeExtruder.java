@@ -12,42 +12,44 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class MetaTileEntityLargePolarizer extends RecipeMapMultiblockController {
+import static gregtech.api.util.RelativeDirection.*;
+
+public class MetaTileEntityLargeExtruder extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityLargePolarizer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.POLARIZER_RECIPES); //todo make this allow the electromagnetic separator
+    public MetaTileEntityLargeExtruder(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.EXTRUDER_RECIPES);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLargePolarizer(this.metaTileEntityId);
+        return new MetaTileEntityLargeExtruder(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
+        return FactoryBlockPattern.start(FRONT, UP, RIGHT)
+                .aisle("XXX##", "XXX##", "XXX##")
+                .aisle("XXX##", "SAX##", "XXX##")
                 .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XCACX", "XCXCX").setRepeatable(2, 4)
-                .aisle("XXXXX", "XXSXX", "XXXXX")
-                .setAmountAtLeast('L', 35)
+                .aisle("XXXXX", "XPPPX", "XGGGX").setRepeatable(1, 4)
+                .aisle("XXXXX", "XXXXX", "XXXXX")
+                .setAmountAtLeast('L', 40)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
-                .where('C', statePredicate(getCasingState2()))
+                .where('P', statePredicate(getCasingState2()))
+                .where('G', statePredicate(getCasingState3()))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
@@ -55,21 +57,25 @@ public class MetaTileEntityLargePolarizer extends RecipeMapMultiblockController 
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL);
+        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE);
+    }
+
+    private IBlockState getCasingState3() {
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.SOLID_STEEL_CASING;
+        return Textures.STABLE_TITANIUM_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_POLARIZER_OVERLAY;
+        return GCYMultiTextures.LARGE_EXTRUDER_OVERLAY;
     }
 }

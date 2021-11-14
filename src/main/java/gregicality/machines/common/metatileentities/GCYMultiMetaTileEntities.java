@@ -24,6 +24,7 @@ public class GCYMultiMetaTileEntities {
     public static MetaTileEntityLargeDistillery LARGE_DISTILLERY;
     public static MetaTileEntityLargeElectrolyzer LARGE_ELECTROLYZER;
     public static MetaTileEntityLargePolarizer LARGE_POLARIZER;
+    public static MetaTileEntityLargeExtruder LARGE_EXTRUDER;
 
     // Unique Multiblocks
     public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
@@ -44,6 +45,7 @@ public class GCYMultiMetaTileEntities {
         LARGE_DISTILLERY = registerMetaTileEntity(2011, new MetaTileEntityLargeDistillery(gcyMultiId("large_distillery")));
         LARGE_ELECTROLYZER = registerMetaTileEntity(2012, new MetaTileEntityLargeElectrolyzer(gcyMultiId("large_electrolyzer")));
         LARGE_POLARIZER = registerMetaTileEntity(2013, new MetaTileEntityLargePolarizer(gcyMultiId("large_polarizer")));
+        LARGE_EXTRUDER = registerMetaTileEntity(2014, new MetaTileEntityLargeExtruder(gcyMultiId("large_extruder")));
 
         // Unique Multiblocks
         CHEMICAL_PLANT = registerMetaTileEntity(2020, new MetaTileEntityChemicalPlant(gcyMultiId("chemical_plant")));

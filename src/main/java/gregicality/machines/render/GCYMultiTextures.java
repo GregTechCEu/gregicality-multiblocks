@@ -26,6 +26,7 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer LARGE_DISTILLERY_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ELECTROLYZER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_POLARIZER_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_EXTRUDER_OVERLAY;
 
     // Unique
     public static OrientedOverlayRenderer CHEMICAL_PLANT_OVERLAY;
@@ -48,6 +49,7 @@ public class GCYMultiTextures {
         LARGE_DISTILLERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_distillery", FRONT);
         LARGE_ELECTROLYZER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_electrolyzer", FRONT);
         LARGE_POLARIZER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_polarizer", FRONT);
+        LARGE_EXTRUDER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extruder", FRONT);
 
         // Unique
         CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant", FRONT);

@@ -16,6 +16,7 @@ gcy_multiblocks.machine.large_cutter.name=Large Cutting Machine
 gcy_multiblocks.machine.large_distillery.name=Large Fractionating Distiller
 gcy_multiblocks.machine.large_electrolyzer.name=Large Electrolysis Plant
 gcy_multiblocks.machine.large_polarizer.name=Large Electromagnetic Polarizer
+gcy_multiblocks.machine.large_extruder.name=Large Extrusion Machine
 
 # unique
 gcy_multiblocks.machine.chemical_plant.name=Chemical Plant
@@ -37,6 +38,7 @@ gcy_multiblocks.multiblock.large_cutter.description=A multiblock Cutting Machine
 gcy_multiblocks.multiblock.large_distillery.description=A multiblock Distillery and Distillation Tower for separating fluids into fractions.
 gcy_multiblocks.multiblock.large_electrolyzer.description=A multiblock Electrolyzer for separating molecules.
 gcy_multiblocks.multiblock.large_polarizer.description=A multiblock Polarizer and Electromagnetic Separator for magnetizing materials.
+gcy_multiblocks.multiblock.large_extruder.description=A multiblock Extruder for shaping materials.
 
 # unique
 gcy_multiblocks.multiblock.chemical_plant.description=A Chemical Plant and a parallel Large Chemical Reactor for advanced chemistry.
