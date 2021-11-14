@@ -11,7 +11,6 @@ import static gregtech.api.render.OrientedOverlayRenderer.OverlayFace.*;
 public class GCYMultiTextures {
 
     // Multiblock Controllers
-    // Standard
     public static OrientedOverlayRenderer LARGE_MACERATOR_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ARC_FURNACE_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ASSEMBLER_OVERLAY;
@@ -20,6 +19,7 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer LARGE_BREWERY_OVERLAY;
     public static OrientedOverlayRenderer LARGE_CENTRIFUGE_OVERLAY;
     public static OrientedOverlayRenderer LARGE_CHEMICAL_BATH_OVERLAY;
+    public static OrientedOverlayRenderer CHEMICAL_PLANT_OVERLAY;
     public static OrientedOverlayRenderer LARGE_EXTRACTOR_OVERLAY;
     public static OrientedOverlayRenderer LARGE_COMPRESSOR_OVERLAY;
     public static OrientedOverlayRenderer LARGE_CUTTER_OVERLAY;
@@ -30,14 +30,11 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer LARGE_SOLIDIFIER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_MIXER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_PACKAGER_OVERLAY;
-
-    // Unique
-    public static OrientedOverlayRenderer CHEMICAL_PLANT_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_ENGRAVER_OVERLAY;
 
 
     public static void preInit() {
         // Multiblock Controllers
-        // Standard
         LARGE_MACERATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_macerator", FRONT);
         LARGE_ARC_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_arc_furnace", FRONT);
         LARGE_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_assembler", FRONT);
@@ -46,6 +43,7 @@ public class GCYMultiTextures {
         LARGE_BREWERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_brewery", FRONT);
         LARGE_CENTRIFUGE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_centrifuge", FRONT);
         LARGE_CHEMICAL_BATH_OVERLAY = new OrientedOverlayRenderer("multiblock/large_chemical_bath", FRONT);
+        CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant", FRONT);
         LARGE_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extractor", FRONT);
         LARGE_COMPRESSOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_compressor", FRONT);
         LARGE_CUTTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_cutter", FRONT);
@@ -56,9 +54,6 @@ public class GCYMultiTextures {
         LARGE_SOLIDIFIER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_solidifier", FRONT);
         LARGE_MIXER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mixer", FRONT);
         LARGE_PACKAGER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_packager", FRONT);
-
-
-        // Unique
-        CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant", FRONT);
+        LARGE_ENGRAVER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_engraver", FRONT);
     }
 }

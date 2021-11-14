@@ -20,6 +20,7 @@ gcy_multiblocks.machine.large_extruder.name=Large Extrusion Machine
 gcy_multiblocks.machine.large_solidifier.name=Large Solidification Array
 gcy_multiblocks.machine.large_mixer.name=Large Mixing Vessel
 gcy_multiblocks.machine.large_packager.name=Large Packaging Machine
+gcy_multiblocks.machine.large_engraver.name=Large Engraving Machine
 
 
 # unique
@@ -46,6 +47,7 @@ gcy_multiblocks.multiblock.large_extruder.description=A multiblock Extruder for 
 gcy_multiblocks.multiblock.large_solidifier.description=A multiblock Fluid Solidifier for casting materials.
 gcy_multiblocks.multiblock.large_mixer.description=A multiblock Mixer for blending materials.
 gcy_multiblocks.multiblock.large_packager.description=A multiblock Packager for boxinating items.
+gcy_multiblocks.multiblock.large_engraver.description=A multiblock Laser Engraver for etching objects.
 
 
 # unique

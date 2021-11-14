@@ -1,7 +1,7 @@
 package gregicality.machines.jei;
 
 import gregicality.machines.jei.multiblock.info.standard.*;
-import gregicality.machines.jei.multiblock.info.unique.ChemicalPlantInfo;
+import gregicality.machines.jei.multiblock.info.standard.ChemicalPlantInfo;
 import gregtech.integration.jei.multiblock.MultiInfoPageEvent;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
 import mezz.jei.api.IModPlugin;
@@ -24,6 +24,7 @@ public class GCYMultiJeiPlugin implements IModPlugin {
         event.register("large_brewery", new MultiblockInfoRecipeWrapper(new LargeBreweryInfo()));
         event.register("large_centrifuge", new MultiblockInfoRecipeWrapper(new LargeCentrifugeInfo()));
         event.register("large_chemical_bath", new MultiblockInfoRecipeWrapper(new LargeChemicalBathInfo()));
+        event.register("chemical_plant", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()));
         event.register("large_extractor", new MultiblockInfoRecipeWrapper(new LargeExtractorInfo()));
         event.register("large_compressor", new MultiblockInfoRecipeWrapper(new LargeCompressorInfo()));
         event.register("large_cutter", new MultiblockInfoRecipeWrapper(new LargeCutterInfo()));
@@ -34,8 +35,6 @@ public class GCYMultiJeiPlugin implements IModPlugin {
         event.register("large_solidifier", new MultiblockInfoRecipeWrapper(new LargeSolidifierInfo()));
         event.register("large_mixer", new MultiblockInfoRecipeWrapper(new LargeMixerInfo()));
         event.register("large_packager", new MultiblockInfoRecipeWrapper(new LargePackagerInfo()));
-
-        // Unique
-        event.register("chemical_plant", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()));
+        event.register("large_engraver", new MultiblockInfoRecipeWrapper(new LargeEngraverInfo()));
     }
 }

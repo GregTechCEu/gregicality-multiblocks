@@ -1,4 +1,4 @@
-package gregicality.machines.jei.multiblock.info.unique;
+package gregicality.machines.jei.multiblock.info.standard;
 
 import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
