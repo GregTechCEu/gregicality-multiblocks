@@ -27,6 +27,7 @@ gcy_multiblocks.machine.large_wiremill.name=Large Wire Factory
 gcy_multiblocks.machine.electric_implosion_compressor.name=Electric Implosion Compressor
 gcy_multiblocks.machine.large_mass_fabricator.name=Large Mass Fabrication Chamber
 gcy_multiblocks.machine.large_replicator.name=Large Replication Chamber
+gcy_multiblocks.machine.mega_blast_furnace.name=Rotary Hearth Furnace
 
 
 
@@ -58,6 +59,7 @@ gcy_multiblocks.multiblock.large_wiremill.description=A multiblock Wiremill for 
 gcy_multiblocks.multiblock.electric_implosion_compressor.description=An electric version of the implosion compressor for extreme compression.
 gcy_multiblocks.multiblock.large_mass_fabricator.description=A multiblock Mass Fabricator for turning matter into elementary particles.
 gcy_multiblocks.multiblock.large_replicator.description=A multiblock Replicator for turning elementary particles into materials.
+gcy_multiblocks.multiblock.mega_blast_furnace.description=A massive Electric Blast Furnace for extreme volume smelting.
 
 
 # casings

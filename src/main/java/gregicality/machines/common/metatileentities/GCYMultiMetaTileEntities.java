@@ -35,6 +35,7 @@ public class GCYMultiMetaTileEntities {
     public static MetaTileEntityElectricImplosionCompressor ELECTRIC_IMPLOSION_COMPRESSOR;
     public static MetaTileEntityLargeMassFabricator LARGE_MASS_FABRICATOR;
     public static MetaTileEntityLargeReplicator LARGE_REPLICATOR;
+    public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
 
 
     public static void init() {
@@ -64,6 +65,7 @@ public class GCYMultiMetaTileEntities {
         ELECTRIC_IMPLOSION_COMPRESSOR = registerMetaTileEntity(2023, new MetaTileEntityElectricImplosionCompressor(gcyMultiId("electric_implosion_compressor")));
         LARGE_MASS_FABRICATOR = registerMetaTileEntity(2024, new MetaTileEntityLargeMassFabricator(gcyMultiId("large_mass_fabricator")));
         LARGE_REPLICATOR = registerMetaTileEntity(2025, new MetaTileEntityLargeReplicator(gcyMultiId("large_replicator")));
+        MEGA_BLAST_FURNACE = registerMetaTileEntity(2026, new MetaTileEntityMegaBlastFurnace(gcyMultiId("mega_blast_furnace")));
     }
 
     private static ResourceLocation gcyMultiId(String name) {

@@ -37,6 +37,7 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer ELECTRIC_IMPLOSION_OVERLAY;
     public static OrientedOverlayRenderer LARGE_MASS_FABRICATOR_OVERLAY;
     public static OrientedOverlayRenderer LARGE_REPLICATOR_OVERLAY;
+    public static OrientedOverlayRenderer MEGA_BLAST_FURNACE_OVERLAY;
 
 
     public static void preInit() {
@@ -67,5 +68,6 @@ public class GCYMultiTextures {
         ELECTRIC_IMPLOSION_OVERLAY = new OrientedOverlayRenderer("multiblock/electric_implosion", FRONT);
         LARGE_MASS_FABRICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mass_fabricator", FRONT);
         LARGE_REPLICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_replicator", FRONT);
+        MEGA_BLAST_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_blast_furnace", FRONT);
     }
 }
