@@ -19,6 +19,7 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeCentrifuge LARGE_CENTRIFUGE;
     public static MetaTileEntityLargeChemicalBath LARGE_CHEMICAL_BATH;
     public static MetaTileEntityLargeExtractor LARGE_EXTRACTOR;
+    public static MetaTileEntityLargeCompressor LARGE_COMPRESSOR;
 
     // Unique Multiblocks
     public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
@@ -35,6 +36,7 @@ public class GCYMMetaTileEntities {
         LARGE_CENTRIFUGE = registerMetaTileEntity(2006, new MetaTileEntityLargeCentrifuge(gcymId("large_centrifuge")));
         LARGE_CHEMICAL_BATH = registerMetaTileEntity(2007, new MetaTileEntityLargeChemicalBath(gcymId("large_chemical_bath")));
         LARGE_EXTRACTOR = registerMetaTileEntity(2008, new MetaTileEntityLargeExtractor(gcymId("large_extractor")));
+        LARGE_COMPRESSOR = registerMetaTileEntity(2009, new MetaTileEntityLargeCompressor(gcymId("large_compressor")));
 
         // Unique Multiblocks
         CHEMICAL_PLANT = registerMetaTileEntity(2020, new MetaTileEntityChemicalPlant(gcymId("chemical_plant")));

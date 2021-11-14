@@ -1,8 +1,6 @@
 package gregicality.machines.jei.multiblock.info.unique;
 
 import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.block.GCYMMetaBlocks;
-import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -17,9 +15,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import scala.tools.cmd.Meta;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ChemicalPlantInfo extends MultiblockInfoPage {
@@ -31,9 +28,7 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
-        List<MultiblockShapeInfo> shapeInfos = new ArrayList<>();
-
-        shapeInfos.add(MultiblockShapeInfo.builder()
+        return Collections.singletonList(MultiblockShapeInfo.builder()
                 .aisle("X###X", "XXXXX", "XGGGX", "XXXXX", "X###X")
                 .aisle("X###X", "FXXXA", "X###X", "FXXXA", "X###X")
                 .aisle("EPPPX", "X###X", "ICCCO", "X###X", "XPPPX")
@@ -52,8 +47,6 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
                 .where('A', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)), EnumFacing.WEST)
                 .build());
-
-        return shapeInfos;
     }
 
     @Override

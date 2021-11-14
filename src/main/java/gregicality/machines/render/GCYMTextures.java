@@ -22,6 +22,7 @@ public class GCYMTextures {
     public static OrientedOverlayRenderer LARGE_CENTRIFUGE_OVERLAY;
     public static OrientedOverlayRenderer LARGE_CHEMICAL_BATH_OVERLAY;
     public static OrientedOverlayRenderer LARGE_EXTRACTOR_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_COMPRESSOR_OVERLAY;
 
     // Unique
     public static OrientedOverlayRenderer CHEMICAL_PLANT_OVERLAY;
@@ -40,6 +41,7 @@ public class GCYMTextures {
         LARGE_CENTRIFUGE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_centrifuge", FRONT);
         LARGE_CHEMICAL_BATH_OVERLAY = new OrientedOverlayRenderer("multiblock/large_chemical_bath", FRONT);
         LARGE_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extractor", FRONT);
+        LARGE_COMPRESSOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_compressor", FRONT);
 
         // Unique
         CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant", FRONT);

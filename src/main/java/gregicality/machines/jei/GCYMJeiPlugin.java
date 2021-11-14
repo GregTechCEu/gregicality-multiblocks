@@ -26,6 +26,7 @@ public class GCYMJeiPlugin implements IModPlugin {
         event.register("large_centrifuge", new MultiblockInfoRecipeWrapper(new LargeCentrifugeInfo()));
         event.register("large_chemical_bath", new MultiblockInfoRecipeWrapper(new LargeChemicalBathInfo()));
         event.register("large_extractor", new MultiblockInfoRecipeWrapper(new LargeExtractorInfo()));
+        event.register("large_compressor", new MultiblockInfoRecipeWrapper(new LargeCompressorInfo()));
 
         // Unique
         event.register("chemical_plant", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()));
