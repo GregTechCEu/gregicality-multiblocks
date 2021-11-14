@@ -1,5 +1,6 @@
 package gregicality.machines.common.block.blocks;
 
+import gregtech.common.blocks.VariantActiveBlock;
 import gregtech.common.blocks.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -11,7 +12,7 @@ import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nonnull;
 
-public class BlockUniqueCasing extends VariantBlock<BlockUniqueCasing.UniqueCasingType> {
+public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.UniqueCasingType> {
 
     public BlockUniqueCasing() {
         super(Material.IRON);
@@ -31,8 +32,8 @@ public class BlockUniqueCasing extends VariantBlock<BlockUniqueCasing.UniqueCasi
     public enum UniqueCasingType implements IStringSerializable {
 
         CRUSHING_WHEELS("crushing_wheels"),
-        CRUSHING_WHEELS_ON("crushing_wheels_on"),
-        LARGE_ELECTRODE("large_electrode");
+        LARGE_ELECTRODE("large_electrode"),
+        SLICING_BLADES("slicing_blades");
 
         private final String name;
 

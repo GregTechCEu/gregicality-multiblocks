@@ -1,6 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.unique;
 
-import gregicality.machines.render.GCYMTextures;
+import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -80,6 +80,6 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.CHEMICAL_PLANT_OVERLAY;
+        return GCYMultiTextures.CHEMICAL_PLANT_OVERLAY;
     }
 }

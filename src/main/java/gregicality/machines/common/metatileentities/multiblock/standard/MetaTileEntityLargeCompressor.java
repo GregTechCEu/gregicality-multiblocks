@@ -1,6 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.render.GCYMTextures;
+import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -12,7 +12,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -74,6 +73,6 @@ public class MetaTileEntityLargeCompressor extends RecipeMapMultiblockController
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_COMPRESSOR_OVERLAY;
+        return GCYMultiTextures.LARGE_COMPRESSOR_OVERLAY;
     }
 }

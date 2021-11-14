@@ -1,6 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.render.GCYMTextures;
+import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -74,6 +74,6 @@ public class MetaTileEntityLargeCentrifuge extends RecipeMapMultiblockController
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_CENTRIFUGE_OVERLAY;
+        return GCYMultiTextures.LARGE_CENTRIFUGE_OVERLAY;
     }
 }

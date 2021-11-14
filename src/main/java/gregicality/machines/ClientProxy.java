@@ -1,6 +1,6 @@
 package gregicality.machines;
 
-import gregicality.machines.render.GCYMTextures;
+import gregicality.machines.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,7 +13,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preLoad() {
         super.preLoad();
-        GCYMTextures.preInit();
+        GCYMultiTextures.preInit();
     }
 
 

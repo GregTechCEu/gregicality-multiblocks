@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import static gregtech.api.render.OrientedOverlayRenderer.OverlayFace.*;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
-public class GCYMTextures {
+public class GCYMultiTextures {
 
     // Multiblock Controllers
     // Standard
@@ -23,6 +23,7 @@ public class GCYMTextures {
     public static OrientedOverlayRenderer LARGE_CHEMICAL_BATH_OVERLAY;
     public static OrientedOverlayRenderer LARGE_EXTRACTOR_OVERLAY;
     public static OrientedOverlayRenderer LARGE_COMPRESSOR_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_CUTTER_OVERLAY;
 
     // Unique
     public static OrientedOverlayRenderer CHEMICAL_PLANT_OVERLAY;
@@ -42,6 +43,7 @@ public class GCYMTextures {
         LARGE_CHEMICAL_BATH_OVERLAY = new OrientedOverlayRenderer("multiblock/large_chemical_bath", FRONT);
         LARGE_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extractor", FRONT);
         LARGE_COMPRESSOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_compressor", FRONT);
+        LARGE_CUTTER_OVERLAY  = new OrientedOverlayRenderer("multiblock/large_cutter", FRONT);
 
         // Unique
         CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant", FRONT);

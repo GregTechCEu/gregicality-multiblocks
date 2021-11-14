@@ -19,7 +19,6 @@ public class GCYMultiJeiPlugin implements IModPlugin {
         event.register("large_macerator", new MultiblockInfoRecipeWrapper(new LargeMaceratorInfo()));
         event.register("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()));
         event.register("large_assembler", new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()));
-        // event.register("large_alloy_smelter", new MultiblockInfoRecipeWrapper(new LargeAlloySmelterInfo()));
         event.register("large_autoclave", new MultiblockInfoRecipeWrapper(new LargeAutoclaveInfo()));
         event.register("large_bender", new MultiblockInfoRecipeWrapper(new LargeBenderInfo()));
         event.register("large_brewery", new MultiblockInfoRecipeWrapper(new LargeBreweryInfo()));
@@ -27,6 +26,7 @@ public class GCYMultiJeiPlugin implements IModPlugin {
         event.register("large_chemical_bath", new MultiblockInfoRecipeWrapper(new LargeChemicalBathInfo()));
         event.register("large_extractor", new MultiblockInfoRecipeWrapper(new LargeExtractorInfo()));
         event.register("large_compressor", new MultiblockInfoRecipeWrapper(new LargeCompressorInfo()));
+        event.register("large_cutter", new MultiblockInfoRecipeWrapper(new LargeCutterInfo()));
 
         // Unique
         event.register("chemical_plant", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()));

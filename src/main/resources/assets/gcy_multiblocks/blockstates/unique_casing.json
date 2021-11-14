@@ -1,24 +1,46 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "minecraft:cube_all"
-  },
   "variants": {
-    "variant": {
-      "crushing_wheels": {
-        "textures": {
-          "all": "gcy_multiblocks:blocks/casings/unique/crushing_wheels"
-        }
-      },
-      "crushing_wheels_on": {
-        "textures": {
-          "all": "gcy_multiblocks:blocks/casings/unique/crushing_wheels_on"
-        }
-      },
-      "large_electrode": {
-        "textures": {
-          "all": "gcy_multiblocks:blocks/casings/unique/large_electrode"
-        }
+    "active=false,variant=crushing_wheels": {
+      "model": "minecraft:cube_bottom_top",
+      "textures": {
+        "top": "gcy_multiblocks:blocks/casings/unique/crushing_wheels",
+        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "bottom": "#side"
+      }
+    },
+    "active=true,variant=crushing_wheels": {
+      "model": "minecraft:cube_bottom_top",
+      "textures": {
+        "top": "gcy_multiblocks:blocks/casings/unique/crushing_wheels_on",
+        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "bottom": "#side"
+      }
+    },
+    "active=false,variant=large_electrode": {
+      "textures": {
+        "all": "gcy_multiblocks:blocks/casings/unique/large_electrode"
+      }
+    },
+    "active=true,variant=large_electrode": {
+      "textures": {
+        "all": "gcy_multiblocks:blocks/casings/unique/large_electrode_on"
+      }
+    },
+    "active=false,variant=slicing_blades": {
+      "model": "minecraft:cube_bottom_top",
+      "textures": {
+        "top": "gcy_multiblocks:blocks/casings/unique/slicing_blades",
+        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "bottom": "#side"
+      }
+    },
+    "active=true,variant=slicing_blades": {
+      "model": "minecraft:cube_bottom_top",
+      "textures": {
+        "top": "gcy_multiblocks:blocks/casings/unique/slicing_blades_on",
+        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "bottom": "#side"
       }
     }
   }

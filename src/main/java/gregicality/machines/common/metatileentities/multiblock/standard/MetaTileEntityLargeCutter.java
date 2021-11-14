@@ -1,5 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -12,8 +14,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockTransparentCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -22,34 +24,36 @@ import javax.annotation.Nonnull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityLargeChemicalBath extends RecipeMapMultiblockController { //todo render liquid in the structure that looks the same as what is in the fluid hatches
+public class MetaTileEntityLargeCutter extends RecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
     };
 
-    public MetaTileEntityLargeChemicalBath(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CHEMICAL_BATH_RECIPES); //todo make this also an ore washer
+    public MetaTileEntityLargeCutter(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
-        return new MetaTileEntityLargeChemicalBath(this.metaTileEntityId);
+        return new MetaTileEntityLargeCutter(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(RIGHT, FRONT, UP)
-                .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXSXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX")
-                .aisle("XXXXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX").setRepeatable(0, 2)
-                .aisle("XXXXX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XXXXX")
-                .setAmountAtLeast('L', 55)
+        return FactoryBlockPattern.start(FRONT, UP, RIGHT)
+                .aisle("XXXX", "XXXX", "XXXX", "####")
+                .aisle("XXXX", "SAAX", "XXXX", "####")
+                .aisle("XXXX", "XXXX", "XXXX", "XXXX")
+                .aisle("XXXX", "GCCX", "GAAX", "XXXX").setRepeatable(3, 5)
+                .aisle("XXXX", "XXXX", "XXXX", "XXXX")
+                .setAmountAtLeast('L', 50)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
-                .where('C', statePredicate(getCasingState2()))
+                .where('G', statePredicate(getCasingState2()))
+                .where('C', statePredicate(getCasingState3()))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
@@ -61,7 +65,11 @@ public class MetaTileEntityLargeChemicalBath extends RecipeMapMultiblockControll
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
+    }
+
+    private IBlockState getCasingState3() {
+        return GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.SLICING_BLADES);
     }
 
     @Override
@@ -72,6 +80,6 @@ public class MetaTileEntityLargeChemicalBath extends RecipeMapMultiblockControll
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_CHEMICAL_BATH_OVERLAY;
+        return GCYMultiTextures.LARGE_CUTTER_OVERLAY;
     }
 }
