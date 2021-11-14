@@ -1,7 +1,8 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
 import com.google.common.collect.Lists;
-import gregicality.machines.GregicalityMachines;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -9,9 +10,8 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
-import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -26,7 +26,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_ARC_FURNACE;
+        return GCYMultiMetaTileEntities.LARGE_ARC_FURNACE;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
                 .aisle("#OML#", "#ISF#", "#XXX#", "#XXX#", "#####")
                 .where('S', getController(), EnumFacing.WEST)
                 .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
-                .where('C', GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.LARGE_ELECTRODE))
+                .where('C', GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.LARGE_ELECTRODE))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
@@ -54,7 +54,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_arc_furnace.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_arc_furnace.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override

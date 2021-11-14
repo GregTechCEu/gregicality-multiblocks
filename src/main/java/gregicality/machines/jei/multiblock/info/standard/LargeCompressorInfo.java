@@ -1,10 +1,9 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
-import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -26,7 +25,7 @@ public class LargeCompressorInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_COMPRESSOR;
+        return GCYMultiMetaTileEntities.LARGE_COMPRESSOR;
     }
 
     @Override
@@ -92,7 +91,7 @@ public class LargeCompressorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_compressor.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_compressor.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override

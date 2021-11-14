@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @JEIPlugin
 @Mod.EventBusSubscriber
-public class GCYMJeiPlugin implements IModPlugin {
+public class GCYMultiJeiPlugin implements IModPlugin {
 
     @SubscribeEvent
     public static void registerInfoPages(MultiInfoPageEvent event) {

@@ -1,6 +1,7 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
-import gregicality.machines.GregicalityMachines;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -9,7 +10,6 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -25,7 +25,7 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_ASSEMBLER;
+        return GCYMultiMetaTileEntities.LARGE_ASSEMBLER;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_assembler.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_assembler.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override

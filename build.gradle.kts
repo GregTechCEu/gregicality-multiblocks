@@ -46,7 +46,7 @@ configure<JavaPluginConvention> {
 }
 
 configure<BasePluginConvention> {
-    archivesBaseName = "GregicalityMachines"
+    archivesBaseName = "GregicalityMultiblocks"
 }
 
 configure<UserBaseExtension> {
@@ -54,7 +54,7 @@ configure<UserBaseExtension> {
     mappings = config["mcp.version"] as String
     runDir = "run"
     replace("@VERSION@", modVersion)
-    replaceIn("GregicalityMachines.java")
+    replaceIn("GregicalityMultiblocks.java")
 }
 
 repositories {

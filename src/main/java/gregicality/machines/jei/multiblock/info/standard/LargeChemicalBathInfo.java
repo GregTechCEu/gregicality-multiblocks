@@ -1,7 +1,7 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
-import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -25,7 +25,7 @@ public class LargeChemicalBathInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_CHEMICAL_BATH;
+        return GCYMultiMetaTileEntities.LARGE_CHEMICAL_BATH;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class LargeChemicalBathInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_chemical_bath.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_chemical_bath.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override

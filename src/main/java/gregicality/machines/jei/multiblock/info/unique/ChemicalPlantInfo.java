@@ -1,7 +1,7 @@
 package gregicality.machines.jei.multiblock.info.unique;
 
-import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.*;
@@ -23,7 +23,7 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.CHEMICAL_PLANT;
+        return GCYMultiMetaTileEntities.CHEMICAL_PLANT;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.chemical_plant.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.chemical_plant.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override

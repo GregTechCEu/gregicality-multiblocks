@@ -1,13 +1,13 @@
 package gregicality.machines.common.metatileentities;
 
-import gregicality.machines.GregicalityMachines;
+import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.common.metatileentities.multiblock.standard.*;
 import gregicality.machines.common.metatileentities.multiblock.unique.MetaTileEntityChemicalPlant;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
-public class GCYMMetaTileEntities {
+public class GCYMultiMetaTileEntities {
 
     // Standard Multiblocks
     public static MetaTileEntityLargeMacerator LARGE_MACERATOR;
@@ -43,6 +43,6 @@ public class GCYMMetaTileEntities {
     }
 
     private static ResourceLocation gcymId(String name) {
-        return new ResourceLocation(GregicalityMachines.MODID, name);
+        return new ResourceLocation(GregicalityMultiblocks.MODID, name);
     }
 }

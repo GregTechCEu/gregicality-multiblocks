@@ -7,17 +7,17 @@
     "variant": {
       "crushing_wheels": {
         "textures": {
-          "all": "gcy_machines:blocks/casings/unique/crushing_wheels"
+          "all": "gcy_multiblocks:blocks/casings/unique/crushing_wheels"
         }
       },
       "crushing_wheels_on": {
         "textures": {
-          "all": "gcy_machines:blocks/casings/unique/crushing_wheels_on"
+          "all": "gcy_multiblocks:blocks/casings/unique/crushing_wheels_on"
         }
       },
       "large_electrode": {
         "textures": {
-          "all": "gcy_machines:blocks/casings/unique/large_electrode"
+          "all": "gcy_multiblocks:blocks/casings/unique/large_electrode"
         }
       }
     }

@@ -1,7 +1,7 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
-import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -25,7 +25,7 @@ public class LargeAutoclaveInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_AUTOCLAVE;
+        return GCYMultiMetaTileEntities.LARGE_AUTOCLAVE;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class LargeAutoclaveInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_autoclave.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_autoclave.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override

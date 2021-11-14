@@ -1,13 +1,13 @@
 package gregicality.machines.render;
 
-import gregicality.machines.GregicalityMachines;
+import gregicality.machines.GregicalityMultiblocks;
 import gregtech.api.render.OrientedOverlayRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
 import static gregtech.api.render.OrientedOverlayRenderer.OverlayFace.*;
 
-@Mod.EventBusSubscriber(modid = GregicalityMachines.MODID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
 public class GCYMTextures {
 
     // Multiblock Controllers

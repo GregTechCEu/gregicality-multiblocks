@@ -1,7 +1,7 @@
 package gregicality.machines;
 
 import gregicality.machines.render.GCYMTextures;
-import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -19,6 +19,6 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        GCYMMetaBlocks.registerItemModels();
+        GCYMultiMetaBlocks.registerItemModels();
     }
 }

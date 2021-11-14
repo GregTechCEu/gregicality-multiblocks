@@ -1,7 +1,7 @@
 package gregicality.machines;
 
 import gregtech.common.blocks.VariantItemBlock;
-import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.utils.GTMALog;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -19,7 +19,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.Objects;
 import java.util.function.Function;
 
-@Mod.EventBusSubscriber(modid = GregicalityMachines.MODID)
+@Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)
 public class CommonProxy {
 
     public void preLoad() {
@@ -29,8 +29,8 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
-        if (event.getModID().equals(GregicalityMachines.MODID)) {
-            ConfigManager.sync(GregicalityMachines.MODID, Config.Type.INSTANCE);
+        if (event.getModID().equals(GregicalityMultiblocks.MODID)) {
+            ConfigManager.sync(GregicalityMultiblocks.MODID, Config.Type.INSTANCE);
         }
     }
 
@@ -39,7 +39,7 @@ public class CommonProxy {
         GTMALog.logger.info("Registering blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
 
-        registry.register(GCYMMetaBlocks.UNIQUE_CASING);
+        registry.register(GCYMultiMetaBlocks.UNIQUE_CASING);
     }
 
 
@@ -48,7 +48,7 @@ public class CommonProxy {
         GTMALog.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
-        registry.register(createItemBlock(GCYMMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GCYMultiMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

@@ -1,8 +1,8 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
 import com.google.common.collect.Lists;
-import gregicality.machines.GregicalityMachines;
-import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
+import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -25,7 +25,7 @@ public class LargeBenderInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GCYMMetaTileEntities.LARGE_BENDER;
+        return GCYMultiMetaTileEntities.LARGE_BENDER;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class LargeBenderInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format(String.format("%s.multiblock.large_bender.description", GregicalityMachines.MODID))};
+        return new String[]{I18n.format(String.format("%s.multiblock.large_bender.description", GregicalityMultiblocks.MODID))};
     }
 
     @Override
