@@ -13,6 +13,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +30,7 @@ public class MetaTileEntityLargeBender extends RecipeMapMultiblockController {
     };
 
     public MetaTileEntityLargeBender(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BENDER_RECIPES);
+        super(metaTileEntityId, RecipeMaps.BENDER_RECIPES); //todo make this a compressor, forming press, forge hammer
     }
 
     @Override
@@ -40,15 +41,18 @@ public class MetaTileEntityLargeBender extends RecipeMapMultiblockController {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(FRONT, UP, RIGHT)
-                .aisle("XXXX", "XXXX", "XXXX")
-                .aisle("XXXX", "SAAX", "XXXX")
-                .aisle("XXXX", "XAAX", "XXXX")
-                .aisle("XXXX", "XAAX", "#XX#").setRepeatable(3, 6)
-                .aisle("#XX#", "#XX#", "#XX#")
-                .setAmountAtLeast('L', 36)
+                .aisle("XXXX", "XXXX", "XXXX", "####")
+                .aisle("XXXX", "SAAX", "XXXX", "####")
+                .aisle("XXXX", "XAAX", "XXXX", "####")
+                .aisle("XXXX", "XXXX", "XXXX", "XXXX")
+                .aisle("XXXX", "#CC#", "#GG#", "XXXX").setRepeatable(2, 4)
+                .aisle("XXXX", "XXXX", "XXXX", "XXXX")
+                .setAmountAtLeast('L', 65)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
+                .where('C', statePredicate(getCasingState2()))
+                .where('G', statePredicate(getCasingState3()))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('L', statePredicate(getCasingState()))
@@ -56,12 +60,20 @@ public class MetaTileEntityLargeBender extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState() {
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
+    }
+
+    private IBlockState getCasingState2() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
+    }
+
+    private IBlockState getCasingState3() {
+        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.SOLID_STEEL_CASING;
+        return Textures.ROBUST_TUNGSTENSTEEL_CASING;
     }
 
     @Nonnull
