@@ -21,7 +21,8 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.*;
+import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.BlockWireCoil2;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -148,6 +149,11 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
 
     @Override
     public boolean hasMufflerMechanics() {
+        return true;
+    }
+
+    @Override
+    public boolean canBeDistinct() {
         return true;
     }
 }

@@ -13,7 +13,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockMetalCasing;
@@ -91,6 +90,11 @@ public class MetaTileEntityLargeMixer extends RecipeMapMultiblockController {
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_AUTOCLAVE_OVERLAY;
+        return GCYMultiTextures.LARGE_MIXER_OVERLAY;
+    }
+
+    @Override
+    public boolean canBeDistinct() {
+        return true;
     }
 }

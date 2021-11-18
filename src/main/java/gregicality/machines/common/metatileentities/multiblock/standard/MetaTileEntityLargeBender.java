@@ -13,7 +13,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -82,5 +81,10 @@ public class MetaTileEntityLargeBender extends RecipeMapMultiblockController {
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.LARGE_BENDER_OVERLAY;
+    }
+
+    @Override
+    public boolean canBeDistinct() {
+        return true;
     }
 }

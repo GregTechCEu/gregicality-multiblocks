@@ -82,4 +82,9 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.CHEMICAL_PLANT_OVERLAY;
     }
+
+    @Override
+    public boolean canBeDistinct() {
+        return true;
+    }
 }
