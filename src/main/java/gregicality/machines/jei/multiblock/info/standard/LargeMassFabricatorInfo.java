@@ -2,6 +2,7 @@ package gregicality.machines.jei.multiblock.info.standard;
 
 import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing2;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
@@ -38,7 +39,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .aisle("XXCXX", "GAAAG", "CAKAC", "GAAAG", "XXCXX")
                 .aisle("FMCEO", "IGCGO", "CCSCC", "XGCGX", "XXCXX")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.ATOMIC_CASING))
                 .where('C', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR))
                 .where('G', MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS))
                 .where('V', GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT))
@@ -48,7 +49,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.ATOMIC_CASING)), EnumFacing.WEST)
                 .build());
     }
 
@@ -68,6 +69,6 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
         super.generateBlockTooltips();
 
         ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 30).setStyle(new Style().setColor(TextFormatting.AQUA));
-        addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST), tooltip);
+        addBlockTooltip(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getItemVariant(BlockLargeMultiblockCasing2.CasingType.ATOMIC_CASING), tooltip);
     }
 }

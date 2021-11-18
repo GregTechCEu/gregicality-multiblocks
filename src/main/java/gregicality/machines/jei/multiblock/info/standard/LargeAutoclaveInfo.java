@@ -1,6 +1,8 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
 import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -37,14 +39,14 @@ public class LargeAutoclaveInfo extends MultiblockInfoPage {
                 .aisle("XXXXX", "X#C#X", "#XXX#")
                 .aisle("XOMEX", "XISFX", "#XXX#")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING))
                 .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING)), EnumFacing.WEST)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
@@ -54,14 +56,14 @@ public class LargeAutoclaveInfo extends MultiblockInfoPage {
                 .aisle("XXXXX", "X#C#X", "#XXX#")
                 .aisle("XOMEX", "XISFX", "#XXX#")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING))
                 .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING)), EnumFacing.WEST)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
@@ -72,14 +74,14 @@ public class LargeAutoclaveInfo extends MultiblockInfoPage {
                 .aisle("XXXXX", "X#C#X", "#XXX#")
                 .aisle("XOMEX", "XISFX", "#XXX#")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING))
                 .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING)), EnumFacing.WEST)
                 .build());
 
         return shapeInfos;
@@ -100,6 +102,6 @@ public class LargeAutoclaveInfo extends MultiblockInfoPage {
         super.generateBlockTooltips();
 
         ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 15).setStyle(new Style().setColor(TextFormatting.AQUA));
-        addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN), tooltip);
+        addBlockTooltip(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING), tooltip);
     }
 }

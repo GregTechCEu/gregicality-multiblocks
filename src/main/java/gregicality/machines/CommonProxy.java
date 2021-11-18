@@ -40,6 +40,8 @@ public class CommonProxy {
         IForgeRegistry<Block> registry = event.getRegistry();
 
         registry.register(GCYMultiMetaBlocks.UNIQUE_CASING);
+        registry.register(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING);
+        registry.register(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2);
     }
 
 
@@ -49,6 +51,8 @@ public class CommonProxy {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         registry.register(createItemBlock(GCYMultiMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2, VariantItemBlock::new));
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

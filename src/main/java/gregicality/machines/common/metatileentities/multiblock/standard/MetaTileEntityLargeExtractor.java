@@ -1,5 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -11,9 +13,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -57,7 +57,7 @@ public class MetaTileEntityLargeExtractor extends RecipeMapMultiblockController 
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.FLUID_SAFE_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -66,7 +66,7 @@ public class MetaTileEntityLargeExtractor extends RecipeMapMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.SOLID_STEEL_CASING;
+        return GCYMultiTextures.FLUID_SAFE_CASING;
     }
 
     @Nonnull

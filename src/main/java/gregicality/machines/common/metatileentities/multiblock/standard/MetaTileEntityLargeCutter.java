@@ -1,6 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -61,7 +62,7 @@ public class MetaTileEntityLargeCutter extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.CUTTER_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -74,7 +75,7 @@ public class MetaTileEntityLargeCutter extends RecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.STABLE_TITANIUM_CASING;
+        return GCYMultiTextures.CUTTER_CASING;
     }
 
     @Nonnull

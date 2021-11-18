@@ -1,5 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -48,7 +50,7 @@ public class MetaTileEntityLargeAssembler extends RecipeMapMultiblockController 
                 .aisle("XXX", "SAX", "#XX")
                 .aisle("XXX", "XAX", "#XX")
                 .aisle("XXX", "XXX", "XXX")
-                .setAmountAtLeast('L', 30)
+                .setAmountAtLeast('L', 45)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
                         .or(maintenancePredicate(getCasingState())))
@@ -60,7 +62,7 @@ public class MetaTileEntityLargeAssembler extends RecipeMapMultiblockController 
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ASSEMBLING_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -69,7 +71,7 @@ public class MetaTileEntityLargeAssembler extends RecipeMapMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.CLEAN_STAINLESS_STEEL_CASING;
+        return GCYMultiTextures.ASSEMBLING_CASING;
     }
 
     @Nonnull

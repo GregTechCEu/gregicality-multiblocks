@@ -1,6 +1,8 @@
 package gregicality.machines.jei.multiblock.info.standard;
 
 import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing2;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -38,13 +40,13 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
                 .aisle("XXXXX", "X#XCX", "XXXXX")
                 .aisle("OMEXX", "ISXXX", "XXX##")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING))
                 .where('C', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING)), EnumFacing.WEST)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
@@ -52,13 +54,13 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
                 .aisle("XXXXXX", "X#XCCX", "XXXXXX")
                 .aisle("OMEXXX", "ISXXXX", "XXX###")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING))
                 .where('C', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING)), EnumFacing.WEST)
                 .build());
 
         shapeInfos.add(MultiblockShapeInfo.builder()
@@ -66,13 +68,13 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
                 .aisle("XXXXXXX", "X#XCCCX", "XXXXXXX")
                 .aisle("OMEXXXX", "ISXXXXX", "XXX####")
                 .where('S', getController(), EnumFacing.WEST)
-                .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
+                .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING))
                 .where('C', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.HV], EnumFacing.WEST)
-                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)), EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING)), EnumFacing.WEST)
                 .build());
 
         return shapeInfos;
@@ -94,6 +96,6 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
         super.generateBlockTooltips();
 
         ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 30).setStyle(new Style().setColor(TextFormatting.AQUA));
-        addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE), tooltip);
+        addBlockTooltip(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getItemVariant(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING), tooltip);
     }
 }

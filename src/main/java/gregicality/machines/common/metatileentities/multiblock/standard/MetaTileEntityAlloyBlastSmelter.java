@@ -1,6 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.GTValues;
@@ -18,7 +19,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.*;
@@ -30,7 +30,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -111,7 +110,7 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     }
 
     private IBlockState getCasingState() {
-        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BLAST_CASING);
     }
 
     public static Predicate<BlockWorldState> heatingCoilPredicate() {
@@ -138,7 +137,7 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.HEAT_PROOF_CASING;
+        return GCYMultiTextures.BLAST_CASING;
     }
 
     @Nonnull

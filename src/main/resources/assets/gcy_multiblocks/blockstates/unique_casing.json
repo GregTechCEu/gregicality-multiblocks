@@ -4,67 +4,73 @@
     "active=false,variant=crushing_wheels": {
       "model": "minecraft:cube_bottom_top",
       "textures": {
-        "top": "gcy_multiblocks:blocks/casings/unique/crushing_wheels",
-        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "top": "gregtech:blocks/casings/unique/crushing_wheels",
+        "side": "gregtech:blocks/casings/large_multiblock_casing/macerator_casing",
         "bottom": "#side"
       }
     },
     "active=true,variant=crushing_wheels": {
       "model": "minecraft:cube_bottom_top",
       "textures": {
-        "top": "gcy_multiblocks:blocks/casings/unique/crushing_wheels_on",
-        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "top": "gregtech:blocks/casings/unique/crushing_wheels_on",
+        "side": "gregtech:blocks/casings/large_multiblock_casing/macerator_casing",
         "bottom": "#side"
       }
     },
     "active=false,variant=large_electrode": {
+      "model": "minecraft:cube_bottom_top",
       "textures": {
-        "all": "gcy_multiblocks:blocks/casings/unique/large_electrode"
+        "top": "gregtech:blocks/casings/unique/electrode_top",
+        "side": "gregtech:blocks/casings/unique/electrode_side",
+        "bottom": "#top"
       }
     },
     "active=true,variant=large_electrode": {
+      "model": "minecraft:cube_bottom_top",
       "textures": {
-        "all": "gcy_multiblocks:blocks/casings/unique/large_electrode_on"
+        "top": "gregtech:blocks/casings/unique/electrode_top_on",
+        "side": "gregtech:blocks/casings/unique/electrode_side_on",
+        "bottom": "#top"
       }
     },
     "active=false,variant=slicing_blades": {
       "model": "minecraft:cube_bottom_top",
       "textures": {
-        "top": "gcy_multiblocks:blocks/casings/unique/slicing_blades",
-        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "top": "gregtech:blocks/casings/unique/slicing_blades",
+        "side": "gregtech:blocks/casings/large_multiblock_casing/cutter_casing",
         "bottom": "#side"
       }
     },
     "active=true,variant=slicing_blades": {
       "model": "minecraft:cube_bottom_top",
       "textures": {
-        "top": "gcy_multiblocks:blocks/casings/unique/slicing_blades_on",
-        "side": "gregtech:blocks/casings/solid/machine_casing_solid_steel",
+        "top": "gregtech:blocks/casings/unique/slicing_blades_on",
+        "side": "gregtech:blocks/casings/large_multiblock_casing/cutter_casing",
         "bottom": "#side"
       }
     },
     "active=false,variant=electrolytic_cell": {
       "model": "minecraft:cube_all",
       "textures": {
-        "all": "gcy_multiblocks:blocks/casings/unique/electrolytic_cell"
+        "all": "gregtech:blocks/casings/unique/electrolytic_cell"
       }
     },
     "active=true,variant=electrolytic_cell": {
       "model": "minecraft:cube_all",
       "textures": {
-        "all": "gcy_multiblocks:blocks/casings/unique/electrolytic_cell_on"
+        "all": "gregtech:blocks/casings/unique/electrolytic_cell_on"
       }
     },
     "active=false,variant=heat_vent": {
       "model": "minecraft:cube_all",
       "textures": {
-        "all": "gcy_multiblocks:blocks/casings/unique/heat_vent"
+        "all": "gregtech:blocks/casings/unique/heat_vent"
       }
     },
     "active=true,variant=heat_vent": {
       "model": "minecraft:cube_all",
       "textures": {
-        "all": "gcy_multiblocks:blocks/casings/unique/heat_vent_on"
+        "all": "gregtech:blocks/casings/unique/heat_vent_on"
       }
     }
   }

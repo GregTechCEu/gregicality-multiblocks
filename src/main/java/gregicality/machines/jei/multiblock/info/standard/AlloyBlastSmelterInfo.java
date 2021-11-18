@@ -2,6 +2,7 @@ package gregicality.machines.jei.multiblock.info.standard;
 
 import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
@@ -40,7 +41,7 @@ public class AlloyBlastSmelterInfo extends MultiblockInfoPage {
                     .aisle("FXXXM", "C###C", "G###G", "C###C", "XXXXX")
                     .aisle("#ISO#", "#CCC#", "#GGG#", "#CCC#", "#XXX#")
                     .where('S', getController(), EnumFacing.WEST)
-                    .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+                    .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BLAST_CASING))
                     .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                     .where('G', GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT))
                     .where('#', Blocks.AIR.getDefaultState())
@@ -49,7 +50,7 @@ public class AlloyBlastSmelterInfo extends MultiblockInfoPage {
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                     .where('A', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
-                    .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF)), EnumFacing.WEST)
+                    .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BLAST_CASING)), EnumFacing.WEST)
                     .build());
         }
 
@@ -61,7 +62,7 @@ public class AlloyBlastSmelterInfo extends MultiblockInfoPage {
                     .aisle("FXXXM", "C###C", "G###G", "C###C", "XXXXX")
                     .aisle("#ISO#", "#CCC#", "#GGG#", "#CCC#", "#XXX#")
                     .where('S', getController(), EnumFacing.WEST)
-                    .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+                    .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BLAST_CASING))
                     .where('C', MetaBlocks.WIRE_COIL2.getState(coilType))
                     .where('G', GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT))
                     .where('#', Blocks.AIR.getDefaultState())
@@ -70,7 +71,7 @@ public class AlloyBlastSmelterInfo extends MultiblockInfoPage {
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.WEST)
                     .where('A', MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1], EnumFacing.UP)
-                    .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF)), EnumFacing.WEST)
+                    .where('M', maintenanceIfEnabled(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BLAST_CASING)), EnumFacing.WEST)
                     .build());
         }
         return shapeInfos;
@@ -92,7 +93,7 @@ public class AlloyBlastSmelterInfo extends MultiblockInfoPage {
         super.generateBlockTooltips();
 
         ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 30).setStyle(new Style().setColor(TextFormatting.AQUA));
-        addBlockTooltip(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF), tooltip);
+        addBlockTooltip(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.BLAST_CASING), tooltip);
 
         ITextComponent mufflerTooltip = new TextComponentTranslation("gregtech.multiblock.preview.only_location", I18n.format("gregtech.multiblock.preview.location.t_c")).setStyle(new Style().setColor(TextFormatting.DARK_RED));
         addBlockTooltip(MetaTileEntities.MUFFLER_HATCH[GTValues.HV - 1].getStackForm(), mufflerTooltip);

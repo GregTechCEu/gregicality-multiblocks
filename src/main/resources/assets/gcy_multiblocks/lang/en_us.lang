@@ -13,9 +13,9 @@ gcy_multiblocks.machine.large_chemical_bath.name=Large Chemical Bath
 gcy_multiblocks.machine.chemical_plant.name=Chemical Plant
 gcy_multiblocks.machine.large_extractor.name=Large Extracting Machine
 gcy_multiblocks.machine.large_cutter.name=Large Cutting Machine
-gcy_multiblocks.machine.large_distillery.name=Large Fractionating Distiller
+gcy_multiblocks.machine.large_distillery.name=Large Fractionating Distillery
 gcy_multiblocks.machine.large_electrolyzer.name=Large Electrolysis Plant
-gcy_multiblocks.machine.large_polarizer.name=Large Electromagnetic Polarizer
+gcy_multiblocks.machine.large_polarizer.name=Large Electromagnet
 gcy_multiblocks.machine.large_extruder.name=Large Extrusion Machine
 gcy_multiblocks.machine.large_solidifier.name=Large Solidification Array
 gcy_multiblocks.machine.large_mixer.name=Large Mixing Vessel
@@ -63,8 +63,33 @@ gcy_multiblocks.multiblock.mega_vacuum_freezer.description=A massive Vacuum Free
 
 
 # casings
+
+# unique casing
 tile.unique_casing.crushing_wheels.name=Crushing Wheels
 tile.unique_casing.large_electrode.name=Large Electrode
 tile.unique_casing.slicing_blades.name=Slicing Blades
 tile.unique_casing.electrolytic_cell.name=Electrolytic Cell
 tile.unique_casing.heat_vent.name=Heat Vent
+
+# large multiblock casing
+tile.large_multiblock_casing.macerator_casing.name=Secure Maceration Casing
+tile.large_multiblock_casing.blast_casing.name=High Temperature Smelting Casing
+tile.large_multiblock_casing.assembler_casing.name=Large-Scale Assembler Casing
+tile.large_multiblock_casing.autoclave_casing.name=Pressure Resistant Autoclave Casing
+tile.large_multiblock_casing.bender_casing.name=Stress Proof Bending Casing
+tile.large_multiblock_casing.brewing_casing.name=Corrosion Proof Brewing Casing
+tile.large_multiblock_casing.centrifuge_casing.name=Vibration-Safe Centrifugal Casing
+tile.large_multiblock_casing.bath_casing.name=Watertight Bathing Casing
+tile.large_multiblock_casing.fluid_safe_casing.name=Fluid-Safe Casing
+tile.large_multiblock_casing.cutter_casing.name=Shock Proof Cutter Casing
+tile.large_multiblock_casing.distillery_casing.name=Airtight Distillation Casing
+tile.large_multiblock_casing.electrolyzer_casing.name=Grounded Electrolysis Casing
+tile.large_multiblock_casing.electromagnet_casing.name=Antimagnetic Polarization Casing
+tile.large_multiblock_casing.extruder_casing.name=Tolerant Extrusion Casing
+tile.large_multiblock_casing.mixer_casing.name=Reaction-Safe Mixing Casing
+tile.large_multiblock_casing.engraver_casing.name=Laser-Safe Engraving Casing
+
+# large multiblock casing 2
+tile.large_multiblock_casing_2.sifter_casing.name=Resilient Sifting Casing
+tile.large_multiblock_casing_2.wiremill_casing.name=Tensile Wiremill Casing
+tile.large_multiblock_casing_2.atomic_casing.name=Atomic Casing
