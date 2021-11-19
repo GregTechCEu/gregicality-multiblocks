@@ -6,7 +6,7 @@ import gregtech.api.render.SimpleCubeRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
-import static gregtech.api.render.OrientedOverlayRenderer.OverlayFace.*;
+import static gregtech.api.render.OrientedOverlayRenderer.OverlayFace.FRONT;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
 public class GCYMultiTextures {
@@ -99,7 +99,7 @@ public class GCYMultiTextures {
         ASSEMBLING_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/assembler_casing");
         AUTOCLAVE_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/autoclave_casing");
         BENDER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/bender_casing");
-        BREWERY_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/brewing_casing");
+        BREWERY_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/brewery_casing");
         CENTRIFUGE_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/centrifuge_casing");
         BATH_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/bath_casing");
         FLUID_SAFE_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/fluid_safe_casing");

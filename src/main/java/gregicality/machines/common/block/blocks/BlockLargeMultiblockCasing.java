@@ -35,7 +35,7 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
         ASSEMBLING_CASING("assembler_casing"),
         AUTOCLAVE_CASING("autoclave_casing"),
         BENDER_CASING("bender_casing"),
-        BREWERY_CASING("brewing_casing"),
+        BREWERY_CASING("brewery_casing"),
         CENTRIFUGE_CASING("centrifuge_casing"),
         BATH_CASING("bath_casing"),
         FLUID_SAFE_CASING("fluid_safe_casing"),
