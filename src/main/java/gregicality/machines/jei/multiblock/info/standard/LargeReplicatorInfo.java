@@ -7,8 +7,7 @@ import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockFusionCoil;
-import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockTransparentCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -42,8 +41,8 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
                 .aisle("IMSEO", "FVVVA", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
                 .where('S', getController(), EnumFacing.WEST)
                 .where('X', GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.ATOMIC_CASING))
-                .where('C', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.FUSION_COIL))
-                .where('G', MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS))
+                .where('C', MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL))
+                .where('G', MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.FUSION_GLASS))
                 .where('V', GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)

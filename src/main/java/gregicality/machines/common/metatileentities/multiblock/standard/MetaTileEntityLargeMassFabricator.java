@@ -14,9 +14,9 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.*;
+import gregtech.common.blocks.BlockFusionCasing;
+import gregtech.common.blocks.BlockTransparentCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -65,11 +65,11 @@ public class MetaTileEntityLargeMassFabricator extends RecipeMapMultiblockContro
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR);
+        return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.SUPERCONDUCTOR_COIL);
     }
 
     private IBlockState getCasingState3() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.FUSION_GLASS);
     }
 
     private IBlockState getCasingState4() {
@@ -77,7 +77,7 @@ public class MetaTileEntityLargeMassFabricator extends RecipeMapMultiblockContro
     }
 
     private IBlockState getCasingState5() {
-        return MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.FUSION_COIL);
+        return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL);
     }
 
     @Override

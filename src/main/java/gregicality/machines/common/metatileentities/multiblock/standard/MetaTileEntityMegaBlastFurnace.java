@@ -19,7 +19,6 @@ import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
-import gregtech.api.util.RelativeDirection;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
@@ -151,7 +150,7 @@ public class MetaTileEntityMegaBlastFurnace extends RecipeMapMultiblockControlle
     }
 
     private IBlockState getCasingState4() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.TEMPERED_GLASS);
     }
 
     private IBlockState getCasingState5() {

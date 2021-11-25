@@ -64,7 +64,7 @@ public class MetaTileEntityLargeAssembler extends RecipeMapMultiblockController 
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.REINFORCED_GLASS);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.TEMPERED_GLASS);
     }
 
     @Override
