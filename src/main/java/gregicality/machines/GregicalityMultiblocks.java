@@ -5,12 +5,12 @@ import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
 import gregicality.machines.utils.GTMALog;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(   modid        = GregicalityMultiblocks.MODID,
         name         = GregicalityMultiblocks.NAME,
         version      = GregicalityMultiblocks.VERSION,
-        dependencies = "required-after:gregtech@[2.0,);")
+        dependencies = "required-after:gregtech;")
 public class GregicalityMultiblocks {
 
     public static final String MODID = "gcy_multiblocks";

@@ -5,6 +5,8 @@ import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.GTValues;
+import gregtech.api.capability.IHeatingCoil;
+import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -24,17 +26,21 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.BlockWireCoil2;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockController {
+public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockController implements IHeatingCoil {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
@@ -45,6 +51,7 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
 
     public MetaTileEntityAlloyBlastSmelter(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.ALLOY_SMELTER_RECIPES);
+        this.recipeMapWorkable = new HeatingCoilRecipeLogic(this);
     }
 
     @Override
@@ -84,9 +91,8 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     }
 
     @Override
-    public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        int recipeRequiredTemp = recipe.getProperty(BlastTemperatureProperty.getInstance(), 0);
-        return this.blastFurnaceTemperature >= recipeRequiredTemp;
+    public boolean checkRecipe(@Nonnull Recipe recipe, boolean consumeIfSuccess) {
+        return this.blastFurnaceTemperature >= recipe.getProperty(BlastTemperatureProperty.getInstance(), 0);
     }
 
     @Override
@@ -137,6 +143,14 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     }
 
     @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gregtech.machine.electric_blast_furnace.tooltip.1"));
+        tooltip.add(I18n.format("gregtech.machine.electric_blast_furnace.tooltip.2"));
+        tooltip.add(I18n.format("gregtech.machine.electric_blast_furnace.tooltip.3"));
+    }
+
+    @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GCYMultiTextures.BLAST_CASING;
     }
@@ -155,5 +169,10 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    public int getCurrentTemperature() {
+        return this.blastFurnaceTemperature;
     }
 }
