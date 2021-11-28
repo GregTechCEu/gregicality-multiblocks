@@ -1,8 +1,8 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
-import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
@@ -27,7 +27,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
-
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;

@@ -1,9 +1,9 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
-import gregicality.machines.render.GCYMultiTextures;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
