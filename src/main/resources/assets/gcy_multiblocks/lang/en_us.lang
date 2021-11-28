@@ -93,3 +93,8 @@ tile.large_multiblock_casing.engraver_casing.name=Laser-Safe Engraving Casing
 tile.large_multiblock_casing_2.sifter_casing.name=Resilient Sifting Casing
 tile.large_multiblock_casing_2.wiremill_casing.name=Tensile Wiremill Casing
 tile.large_multiblock_casing_2.atomic_casing.name=Atomic Casing
+
+
+# RecipeMaps
+recipemap.chemical_plant.name=Chemical Plant
+recipemap.alloy_blast_smelter.name=Alloy Blast Smelting

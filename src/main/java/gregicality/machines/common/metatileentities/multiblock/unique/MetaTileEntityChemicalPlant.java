@@ -1,5 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.unique;
 
+import gregicality.machines.api.recipes.GCYMRecipeMaps;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -8,6 +9,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -27,7 +29,8 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     };
 
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES); //todo also chemical plant recipemap
+        super(metaTileEntityId, GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES);
+        this.recipeMaps = new RecipeMap<?>[]{GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES, RecipeMaps.LARGE_CHEMICAL_RECIPES};
     }
 
     @Override
@@ -85,6 +88,11 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
     @Override
     public boolean canBeDistinct() {
+        return true;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

@@ -1,5 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.api.recipes.GCYMRecipeMaps;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
@@ -17,7 +18,6 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -50,7 +50,7 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     private int blastFurnaceTemperature;
 
     public MetaTileEntityAlloyBlastSmelter(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.ALLOY_SMELTER_RECIPES);
+        super(metaTileEntityId, GCYMRecipeMaps.ALLOY_BLAST_RECIPES);
         this.recipeMapWorkable = new HeatingCoilRecipeLogic(this);
     }
 
