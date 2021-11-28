@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -31,7 +32,8 @@ public class MetaTileEntityLargeCentrifuge extends RecipeMapMultiblockController
     };
 
     public MetaTileEntityLargeCentrifuge(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CENTRIFUGE_RECIPES); //todo make this also a thermal centrifuge
+        super(metaTileEntityId, RecipeMaps.CENTRIFUGE_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.CENTRIFUGE_RECIPES, RecipeMaps.THERMAL_CENTRIFUGE_RECIPES};
     }
 
     @Override
@@ -75,5 +77,10 @@ public class MetaTileEntityLargeCentrifuge extends RecipeMapMultiblockController
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.LARGE_CENTRIFUGE_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
+        return true;
     }
 }

@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -31,7 +32,9 @@ public class MetaTileEntityLargeBender extends RecipeMapMultiblockController {
     };
 
     public MetaTileEntityLargeBender(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BENDER_RECIPES); //todo make this a compressor, forming press, forge hammer
+        super(metaTileEntityId, RecipeMaps.BENDER_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
+                RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES};
     }
 
     @Override
@@ -85,6 +88,11 @@ public class MetaTileEntityLargeBender extends RecipeMapMultiblockController {
 
     @Override
     public boolean canBeDistinct() {
+        return true;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

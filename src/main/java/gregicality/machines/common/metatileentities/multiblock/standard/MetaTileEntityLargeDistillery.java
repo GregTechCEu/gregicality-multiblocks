@@ -13,6 +13,7 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -42,7 +43,8 @@ public class MetaTileEntityLargeDistillery extends RecipeMapMultiblockController
     };
 
     public MetaTileEntityLargeDistillery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.DISTILLERY_RECIPES); //todo make this also a distillation tower
+        super(metaTileEntityId, RecipeMaps.DISTILLATION_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES};
     }
 
     @Override
@@ -123,6 +125,11 @@ public class MetaTileEntityLargeDistillery extends RecipeMapMultiblockController
 
     @Override
     public boolean hasMufflerMechanics() {
+        return true;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

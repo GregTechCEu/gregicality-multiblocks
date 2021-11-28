@@ -30,7 +30,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES);
-        this.recipeMaps = new RecipeMap<?>[]{GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES, RecipeMaps.LARGE_CHEMICAL_RECIPES};
+        this.recipeMaps = new RecipeMap[]{GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES, RecipeMaps.LARGE_CHEMICAL_RECIPES};
     }
 
     @Override

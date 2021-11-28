@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -31,7 +32,8 @@ public class MetaTileEntityLargeExtractor extends RecipeMapMultiblockController 
     };
 
     public MetaTileEntityLargeExtractor(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.EXTRACTOR_RECIPES); //todo make this also a canner
+        super(metaTileEntityId, RecipeMaps.EXTRACTOR_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.EXTRACTOR_RECIPES, RecipeMaps.CANNER_RECIPES};
     }
 
     @Override
@@ -73,5 +75,10 @@ public class MetaTileEntityLargeExtractor extends RecipeMapMultiblockController 
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.LARGE_EXTRACTOR_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
+        return true;
     }
 }

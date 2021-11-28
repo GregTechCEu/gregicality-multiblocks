@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -30,7 +31,8 @@ public class MetaTileEntityLargeAssembler extends RecipeMapMultiblockController 
     };
 
     public MetaTileEntityLargeAssembler(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES); //todo make this a circuit assembler too
+        super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.ASSEMBLER_RECIPES, RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES};
     }
 
     @Override
@@ -80,6 +82,11 @@ public class MetaTileEntityLargeAssembler extends RecipeMapMultiblockController 
 
     @Override
     public boolean canBeDistinct() {
+        return true;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

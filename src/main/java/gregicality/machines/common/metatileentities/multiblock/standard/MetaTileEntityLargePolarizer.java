@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -28,7 +29,8 @@ public class MetaTileEntityLargePolarizer extends RecipeMapMultiblockController 
     };
 
     public MetaTileEntityLargePolarizer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.POLARIZER_RECIPES); //todo make this allow the electromagnetic separator
+        super(metaTileEntityId, RecipeMaps.POLARIZER_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.POLARIZER_RECIPES, RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES};
     }
 
     @Override
@@ -70,5 +72,10 @@ public class MetaTileEntityLargePolarizer extends RecipeMapMultiblockController 
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.LARGE_POLARIZER_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
+        return true;
     }
 }

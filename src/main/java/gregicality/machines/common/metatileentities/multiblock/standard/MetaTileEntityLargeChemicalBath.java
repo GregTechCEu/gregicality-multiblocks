@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -30,7 +31,8 @@ public class MetaTileEntityLargeChemicalBath extends RecipeMapMultiblockControll
     };
 
     public MetaTileEntityLargeChemicalBath(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CHEMICAL_BATH_RECIPES); //todo make this also an ore washer
+        super(metaTileEntityId, RecipeMaps.CHEMICAL_BATH_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.CHEMICAL_BATH_RECIPES, RecipeMaps.ORE_WASHER_RECIPES};
     }
 
     @Override
@@ -73,5 +75,10 @@ public class MetaTileEntityLargeChemicalBath extends RecipeMapMultiblockControll
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.LARGE_CHEMICAL_BATH_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
+        return true;
     }
 }

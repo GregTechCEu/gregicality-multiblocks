@@ -10,6 +10,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -30,7 +31,8 @@ public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
     };
 
     public MetaTileEntityLargeBrewery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BREWING_RECIPES); //todo make this also a fermenter, fluid heater
+        super(metaTileEntityId, RecipeMaps.BREWING_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.BREWING_RECIPES, RecipeMaps.FERMENTING_RECIPES, RecipeMaps.FLUID_HEATER_RECIPES};
     }
 
     @Override
@@ -79,6 +81,11 @@ public class MetaTileEntityLargeBrewery extends RecipeMapMultiblockController {
 
     @Override
     public boolean hasMufflerMechanics() {
+        return true;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

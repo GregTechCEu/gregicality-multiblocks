@@ -11,6 +11,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -31,7 +32,8 @@ public class MetaTileEntityLargeCutter extends RecipeMapMultiblockController {
     };
 
     public MetaTileEntityLargeCutter(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES); // todo make this a lathe too
+        super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES);
+        this.recipeMaps = new RecipeMap[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES};
     }
 
     @Override
@@ -80,5 +82,10 @@ public class MetaTileEntityLargeCutter extends RecipeMapMultiblockController {
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMultiTextures.LARGE_CUTTER_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
+        return true;
     }
 }
