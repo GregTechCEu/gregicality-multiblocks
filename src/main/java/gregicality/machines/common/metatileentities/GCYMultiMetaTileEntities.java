@@ -3,6 +3,8 @@ package gregicality.machines.common.metatileentities;
 import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.common.metatileentities.multiblock.standard.*;
 import gregicality.machines.common.metatileentities.multiblock.unique.MetaTileEntityChemicalPlant;
+import gregicality.machines.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;
+import gregtech.api.GTValues;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
@@ -36,9 +38,11 @@ public class GCYMultiMetaTileEntities {
     public static MetaTileEntityLargeReplicator LARGE_REPLICATOR;
     public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
+    public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
 
 
     public static void init() {
+        // Multiblocks
         LARGE_MACERATOR = registerMetaTileEntity(2000, new MetaTileEntityLargeMacerator(gcyMultiId("large_macerator")));
         ALLOY_BLAST_SMELTER = registerMetaTileEntity(2001, new MetaTileEntityAlloyBlastSmelter(gcyMultiId("alloy_blast_smelter")));
         LARGE_ARC_FURNACE = registerMetaTileEntity(2002, new MetaTileEntityLargeArcFurnace(gcyMultiId("large_arc_furnace")));
@@ -66,6 +70,14 @@ public class GCYMultiMetaTileEntities {
         LARGE_REPLICATOR = registerMetaTileEntity(2024, new MetaTileEntityLargeReplicator(gcyMultiId("large_replicator")));
         MEGA_BLAST_FURNACE = registerMetaTileEntity(2025, new MetaTileEntityMegaBlastFurnace(gcyMultiId("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = registerMetaTileEntity(2026, new MetaTileEntityMegaVacuumFreezer(gcyMultiId("mega_vacuum_freezer")));
+
+
+
+        // Hatches
+        for (int i = 0; i < PARALLEL_HATCH.length; i++) {
+            int tier = GTValues.IV + i;
+            PARALLEL_HATCH[i] = registerMetaTileEntity(2050 + i, new MetaTileEntityParallelHatch(gcyMultiId(String.format("parallel_hatch.%s", GTValues.VN[tier])), tier));
+        }
     }
 
     private static ResourceLocation gcyMultiId(String name) {

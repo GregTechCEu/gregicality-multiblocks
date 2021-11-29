@@ -30,6 +30,8 @@ gcy_multiblocks.machine.mega_blast_furnace.name=Rotary Hearth Furnace
 gcy_multiblocks.machine.mega_vacuum_freezer.name=Industrial Blast Chiller
 
 
+gcy_multiblocks.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
+
 
 
 # multiblock descriptions
@@ -60,6 +62,16 @@ gcy_multiblocks.multiblock.large_mass_fabricator.description=A multiblock Mass F
 gcy_multiblocks.multiblock.large_replicator.description=A multiblock Replicator for turning elementary particles into materials.
 gcy_multiblocks.multiblock.mega_blast_furnace.description=A massive Electric Blast Furnace for extreme volume smelting.
 gcy_multiblocks.multiblock.mega_vacuum_freezer.description=A massive Vacuum Freezer for extreme volume cooling.
+
+
+# hatches
+
+gcy_multiblocks.machine.parallel_hatch.iv.name=Parallel Control Hatch Mark 1
+gcy_multiblocks.machine.parallel_hatch.luv.name=Parallel Control Hatch Mark 2
+gcy_multiblocks.machine.parallel_hatch.zpm.name=Parallel Control Hatch Mark 3
+gcy_multiblocks.machine.parallel_hatch.uv.name=Parallel Control Hatch Mark 4
+gcy_multiblocks.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes
+
 
 
 # casings

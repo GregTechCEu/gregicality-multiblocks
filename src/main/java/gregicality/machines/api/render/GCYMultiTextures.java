@@ -41,6 +41,13 @@ public class GCYMultiTextures {
     public static OrientedOverlayRenderer MEGA_VACUUM_FREEZER_OVERLAY;
 
 
+    // Hatches
+    public static OrientedOverlayRenderer PARALLEL_HATCH_MK1_OVERLAY;
+    public static OrientedOverlayRenderer PARALLEL_HATCH_MK2_OVERLAY;
+    public static OrientedOverlayRenderer PARALLEL_HATCH_MK3_OVERLAY;
+    public static OrientedOverlayRenderer PARALLEL_HATCH_MK4_OVERLAY;
+
+
     // Casings
     public static SimpleCubeRenderer MACERATOR_CASING;
     public static SimpleCubeRenderer BLAST_CASING;
@@ -92,6 +99,12 @@ public class GCYMultiTextures {
         LARGE_REPLICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_replicator", FRONT);
         MEGA_BLAST_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_blast_furnace", FRONT);
         MEGA_VACUUM_FREEZER_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_vacuum_freezer", FRONT);
+
+        // Hatches
+        PARALLEL_HATCH_MK1_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk1", FRONT);
+        PARALLEL_HATCH_MK2_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk2", FRONT);
+        PARALLEL_HATCH_MK3_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk3", FRONT);
+        PARALLEL_HATCH_MK4_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk4", FRONT);
 
         // Casings
         MACERATOR_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/macerator_casing");

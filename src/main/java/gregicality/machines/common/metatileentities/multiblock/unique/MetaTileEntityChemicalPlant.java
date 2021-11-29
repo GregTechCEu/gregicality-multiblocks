@@ -1,5 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.unique;
 
+import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.recipes.GCYMRecipeMaps;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -25,7 +26,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
     };
 
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
