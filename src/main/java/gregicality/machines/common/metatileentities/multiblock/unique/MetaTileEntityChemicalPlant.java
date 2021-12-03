@@ -1,15 +1,13 @@
 package gregicality.machines.common.metatileentities.multiblock.unique;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.recipes.GCYMRecipeMaps;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -22,12 +20,6 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 
 public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES);
@@ -47,16 +39,13 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
                 .aisle("XPPPX", "XAAAX", "XCCCX", "XAAAX", "XPPPX")
                 .aisle("X###X", "XXXXX", "XAAAX", "XXXXX", "X###X")
                 .aisle("X###X", "XXSXX", "XGGGX", "XXXXX", "X###X")
-                .setAmountAtLeast('L', 50)
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('G', statePredicate(getCasingState2()))
-                .where('P', statePredicate(getCasingState3()))
-                .where('C', statePredicate(getCasingState4()))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities()))
+                .where('G', states(getCasingState2()))
+                .where('P', states(getCasingState3()))
+                .where('C', states(getCasingState4()))
+                .where('A', air())
+                .where('#', any())
                 .build();
     }
 

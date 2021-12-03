@@ -1,6 +1,5 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregtech.api.GTValues;
@@ -10,13 +9,12 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
-import gregtech.api.multiblock.FactoryBlockPattern;
-import gregtech.api.multiblock.PatternMatchContext;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
+import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -37,15 +35,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockController implements IHeatingCoil {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     private int blastFurnaceTemperature;
 
@@ -92,7 +83,7 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
 
     @Override
     public boolean checkRecipe(@Nonnull Recipe recipe, boolean consumeIfSuccess) {
-        return this.blastFurnaceTemperature >= recipe.getProperty(BlastTemperatureProperty.getInstance(), 0);
+        return this.blastFurnaceTemperature >= recipe.getProperty(TemperatureProperty.getInstance(), 0);
     }
 
     @Override
@@ -113,22 +104,19 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
                 .aisle("##XXBBXBXBBXX##", "##GXR#X#X#RXG##", "##XXp#X#X#pXX##", "##pXpXXXXXpXp##", "##ppp#####ppp##", "#FFFFFXXXFFFFF#", "###############", "#######p#######", "###############", "###############", "###############", "###############", "###############", "###############", "###############")
                 .aisle("#F#XXXBBBXXX#F#", "#F#XXX#R#XXX#F#", "#F#XXX#p#XXX#F#", "#F#XpXXpXXpX#F#", "#F##ppppppp##F#", "#FFFFFXpXFFFFF#", "#######p#######", "#######p#######", "###############", "###############", "###############", "###############", "###############", "###############", "###############")
                 .aisle("#####XXSXX#####", "#####XXGXX#####", "#####XXXXX#####", "#####XXpXX#####", "#######p#######", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############")
-                .setAmountAtLeast('L', 420)
                 .where('S', selfPredicate())
-                .where('f', statePredicate(getFrameState()))
-                .where('F', statePredicate(getFrameState2()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)
-                                .or(maintenancePredicate(getCasingState()))))
-                .where('T', statePredicate(getCasingState2()))
-                .where('C', heatingCoilPredicate())
-                .where('P', statePredicate(getFrameWorkState()))
-                .where('p', statePredicate(getCasingState3()))
-                .where('G', statePredicate(getCasingState4()))
-                .where('m', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
-                .where('R', statePredicate(getCasingState5()))
-                .where('B', statePredicate(getCasingState6()))
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('f', states(getFrameState()))
+                .where('F', states(getFrameState2()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(420).or(autoAbilities()))
+                .where('T', states(getCasingState2()))
+                .where('C', heatingCoils())
+                .where('P', states(getFrameWorkState()))
+                .where('p', states(getCasingState3()))
+                .where('G', states(getCasingState4()))
+                .where('m', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('R', states(getCasingState5()))
+                .where('B', states(getCasingState6()))
+                .where('#', any())
                 .build();
     }
 
@@ -166,24 +154,6 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
 
     private IBlockState getCasingState6() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS);
-    }
-
-    public static Predicate<BlockWorldState> heatingCoilPredicate() {
-        return blockWorldState -> {
-            IBlockState blockState = blockWorldState.getBlockState();
-            if ((blockState.getBlock() instanceof BlockWireCoil)) {
-                BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
-                BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
-                Object currentCoilType = blockWorldState.getMatchContext().getOrPut("CoilType", coilType);
-                return currentCoilType.toString().equals(coilType.getName());
-            } else if ((blockState.getBlock() instanceof BlockWireCoil2)) {
-                BlockWireCoil2 blockWireCoil = (BlockWireCoil2) blockState.getBlock();
-                BlockWireCoil2.CoilType2 coilType = blockWireCoil.getState(blockState);
-                Object currentCoilType = blockWorldState.getMatchContext().getOrPut("CoilType", coilType);
-                return currentCoilType.toString().equals(coilType.getName());
-            }
-            return false;
-        };
     }
 
     @Override

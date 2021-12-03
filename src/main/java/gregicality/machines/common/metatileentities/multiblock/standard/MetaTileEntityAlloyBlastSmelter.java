@@ -13,12 +13,11 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
-import gregtech.api.multiblock.FactoryBlockPattern;
-import gregtech.api.multiblock.PatternMatchContext;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
+import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.util.GTUtility;
@@ -38,7 +37,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockController implements IHeatingCoil {
 
@@ -92,7 +90,7 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
 
     @Override
     public boolean checkRecipe(@Nonnull Recipe recipe, boolean consumeIfSuccess) {
-        return this.blastFurnaceTemperature >= recipe.getProperty(BlastTemperatureProperty.getInstance(), 0);
+        return this.blastFurnaceTemperature >= recipe.getProperty(TemperatureProperty.getInstance(), 0);
     }
 
     @Override
@@ -103,39 +101,18 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
                 .aisle("XXXXX", "CAAAC", "GAAAG", "CAAAC", "XXMXX")
                 .aisle("XXXXX", "CAAAC", "GAAAG", "CAAAC", "XXXXX")
                 .aisle("#XSX#", "#CCC#", "#GGG#", "#CCC#", "#XXX#")
-                .setAmountAtLeast('L', 30)
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('C', heatingCoilPredicate())
-                .where('G', statePredicate(getCasingState2()))
-                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('C', heatingCoils())
+                .where('G', states(getCasingState2()))
+                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('A', air())
+                .where('#', any())
                 .build();
     }
 
     private IBlockState getCasingState() {
         return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BLAST_CASING);
-    }
-
-    public static Predicate<BlockWorldState> heatingCoilPredicate() {
-        return blockWorldState -> {
-            IBlockState blockState = blockWorldState.getBlockState();
-            if ((blockState.getBlock() instanceof BlockWireCoil)) {
-                BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
-                BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
-                Object currentCoilType = blockWorldState.getMatchContext().getOrPut("CoilType", coilType);
-                return currentCoilType.toString().equals(coilType.getName());
-            } else if ((blockState.getBlock() instanceof BlockWireCoil2)) {
-                BlockWireCoil2 blockWireCoil = (BlockWireCoil2) blockState.getBlock();
-                BlockWireCoil2.CoilType2 coilType = blockWireCoil.getState(blockState);
-                Object currentCoilType = blockWorldState.getMatchContext().getOrPut("CoilType", coilType);
-                return currentCoilType.toString().equals(coilType.getName());
-            }
-            return false;
-        };
     }
 
     private IBlockState getCasingState2() {

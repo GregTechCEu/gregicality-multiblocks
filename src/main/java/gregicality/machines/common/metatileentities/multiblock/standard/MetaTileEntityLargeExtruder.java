@@ -1,6 +1,5 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
@@ -8,9 +7,8 @@ import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -22,14 +20,7 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregtech.api.util.RelativeDirection.*;
-
 public class MetaTileEntityLargeExtruder extends GCYMRecipeMapMultiblockController {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     public MetaTileEntityLargeExtruder(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.EXTRUDER_RECIPES);
@@ -42,21 +33,18 @@ public class MetaTileEntityLargeExtruder extends GCYMRecipeMapMultiblockControll
 
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(FRONT, UP, RIGHT)
-                .aisle("XXX##", "XXX##", "XXX##")
-                .aisle("XXX##", "SAX##", "XXX##")
-                .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XPPPX", "XGGGX").setRepeatable(1, 4)
-                .aisle("XXXXX", "XXXXX", "XXXXX")
-                .setAmountAtLeast('L', 40)
+        return FactoryBlockPattern.start()
+                .aisle("##XXX", "##XXX", "##XXX")
+                .aisle("##XXX", "##XPX", "##XGX").setRepeatable(2)
+                .aisle("XXXXX", "XXXPX", "XXXGX")
+                .aisle("XXXXX", "XAXPX", "XXXGX")
+                .aisle("XXXXX", "XSXXX", "XXXXX")
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('P', statePredicate(getCasingState2()))
-                .where('G', statePredicate(getCasingState3()))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
+                .where('P', states(getCasingState2()))
+                .where('G', states(getCasingState3()))
+                .where('A', air())
+                .where('#', any())
                 .build();
     }
 

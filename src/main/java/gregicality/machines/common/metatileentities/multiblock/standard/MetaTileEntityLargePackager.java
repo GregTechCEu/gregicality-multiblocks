@@ -1,14 +1,12 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -22,11 +20,6 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 
 public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockController {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     public MetaTileEntityLargePackager(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.PACKER_RECIPES);
@@ -42,14 +35,11 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "XAX", "XXX").setRepeatable(3, 6)
+                .aisle("XXX", "XAX", "XXX").setRepeatable(3)
                 .aisle("XXX", "XSX", "XXX")
-                .setAmountAtLeast('L', 30)
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('A', isAirPredicate())
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
+                .where('A', air())
                 .build();
     }
 

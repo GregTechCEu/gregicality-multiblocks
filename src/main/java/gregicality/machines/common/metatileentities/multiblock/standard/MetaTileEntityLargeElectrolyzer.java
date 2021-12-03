@@ -1,6 +1,5 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
@@ -9,9 +8,8 @@ import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -21,12 +19,6 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 
 public class MetaTileEntityLargeElectrolyzer extends GCYMRecipeMapMultiblockController {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     public MetaTileEntityLargeElectrolyzer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.ELECTROLYZER_RECIPES);
@@ -40,17 +32,12 @@ public class MetaTileEntityLargeElectrolyzer extends GCYMRecipeMapMultiblockCont
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "XXXXX", "XXXXX", "X###X")
-                .aisle("XXXXX", "XAAAX", "CCCCC", "C###C").setRepeatable(2, 4)
-                .aisle("XXXXX", "XXSXX", "XXXXX", "X###X")
-                .setAmountAtLeast('L', 30)
+                .aisle("XXXXX", "XXXXX", "XXXXX")
+                .aisle("XXXXX", "XCCCX", "XCCCX").setRepeatable(2)
+                .aisle("XXXXX", "XXSXX", "XXXXX")
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('C', statePredicate(getCasingState2()))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
+                .where('C', states(getCasingState2()))
                 .build();
     }
 

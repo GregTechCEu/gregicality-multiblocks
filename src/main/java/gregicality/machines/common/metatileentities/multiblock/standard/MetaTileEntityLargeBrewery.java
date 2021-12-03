@@ -1,6 +1,5 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
@@ -9,8 +8,8 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -25,12 +24,6 @@ import javax.annotation.Nonnull;
 import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockController {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
-            MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     public MetaTileEntityLargeBrewery(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.BREWING_RECIPES);
@@ -50,15 +43,12 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
                 .aisle("#XXX#", "XAAAX", "XACAX", "XAAAX", "#XXX#").setRepeatable(1, 3)
                 .aisle("#XXX#", "XXAXX", "XACAX", "XXAXX", "#XXX#")
                 .aisle("#####", "##X##", "#XMX#", "##X##", "#####")
-                .setAmountAtLeast('L', 30)
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('C', statePredicate(getCasingState2()))
-                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('C', states(getCasingState2()))
+                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('A', air())
+                .where('#', any())
                 .build();
     }
 

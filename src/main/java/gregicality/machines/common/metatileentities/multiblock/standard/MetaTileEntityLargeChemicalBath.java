@@ -1,6 +1,5 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
@@ -8,9 +7,8 @@ import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -25,12 +23,6 @@ import javax.annotation.Nonnull;
 import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockController { //todo render liquid in the structure that looks the same as what is in the fluid hatches
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GCYMMultiblockAbility.PARALLEL_HATCH
-    };
 
     public MetaTileEntityLargeChemicalBath(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.CHEMICAL_BATH_RECIPES);
@@ -49,14 +41,11 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
                 .aisle("XXSXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX")
                 .aisle("XXXXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX").setRepeatable(0, 2)
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XXXXX")
-                .setAmountAtLeast('L', 55)
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('C', statePredicate(getCasingState2()))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
+                .where('C', states(getCasingState2()))
+                .where('A', air())
+                .where('#', any())
                 .build();
     }
 

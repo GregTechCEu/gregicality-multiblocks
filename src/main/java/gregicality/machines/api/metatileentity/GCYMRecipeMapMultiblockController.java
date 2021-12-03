@@ -2,9 +2,8 @@ package gregicality.machines.api.metatileentity;
 
 import gregicality.machines.api.capability.IParallelMultiblock;
 import gregicality.machines.api.capability.impl.GCYMMultiblockRecipeLogic;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -12,9 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultiblockController implements IParallelMultiblock {
 
@@ -43,10 +40,18 @@ public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultibl
     }
 
     @Override
-    protected boolean checkStructureComponents(List<IMultiblockPart> parts, Map<MultiblockAbility<Object>, List<Object>> abilities) {
-        if (isParallel() && abilities.getOrDefault(GCYMMultiblockAbility.PARALLEL_HATCH, Collections.emptyList()).size() > 1)
-            return false;
+    public TraceabilityPredicate autoAbilities() {
+        TraceabilityPredicate predicate = super.autoAbilities();
+        if (isParallel())
+            predicate.or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1));
+        return predicate;
+    }
 
-        return super.checkStructureComponents(parts, abilities);
+    @Override
+    public TraceabilityPredicate autoAbilities(boolean checkEnergyIn, boolean checkMaintenance, boolean checkItemIn, boolean checkItemOut, boolean checkFluidIn, boolean checkFluidOut, boolean checkMuffler) {
+        TraceabilityPredicate predicate = super.autoAbilities(checkEnergyIn, checkMaintenance, checkItemIn, checkItemOut, checkFluidIn, checkFluidOut, checkMuffler);
+        if (isParallel())
+            predicate.or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1));
+        return predicate;
     }
 }

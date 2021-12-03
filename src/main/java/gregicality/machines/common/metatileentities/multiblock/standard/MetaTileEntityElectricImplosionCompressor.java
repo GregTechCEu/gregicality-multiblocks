@@ -6,8 +6,8 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.FactoryBlockPattern;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -46,17 +46,14 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                 .aisle("XXXXX", "#GAG#", "#GAG#", "#GAG#", "#GAG#", "XXMXX")
                 .aisle("XXXXX", "#PGP#", "#PGP#", "#PGP#", "#PGP#", "XXXXX")
                 .aisle("XXSXX", "F###F", "F###F", "F###F", "F###F", "XXXXX")
-                .setAmountAtLeast('L', 40)
                 .where('S', selfPredicate())
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('P', statePredicate(getCasingState2()))
-                .where('G', statePredicate(getCasingState3()))
-                .where('F', statePredicate(getFrameState()))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
-                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('P', states(getCasingState2()))
+                .where('G', states(getCasingState3()))
+                .where('F', states(getFrameState()))
+                .where('A', air())
+                .where('#', any())
+                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .build();
     }
 

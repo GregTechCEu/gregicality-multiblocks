@@ -1,19 +1,16 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
-import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.multiblock.BlockPattern;
-import gregtech.api.multiblock.BlockWorldState;
-import gregtech.api.multiblock.FactoryBlockPattern;
-import gregtech.api.multiblock.PatternMatchContext;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
@@ -31,17 +28,10 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockController {
-
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GCYMMultiblockAbility.PARALLEL_HATCH
-    };
+public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockController { //todo structure needs fixing
 
     public MetaTileEntityLargeDistillery(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.DISTILLATION_RECIPES);
@@ -60,37 +50,26 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
     @Override
     protected BlockPattern createStructurePattern() {
-        Predicate<PatternMatchContext> exactlyOneHatch = context -> context.getInt("HatchesAmount") == 1;
+        TraceabilityPredicate casingPredicate = states(getCasingState()).setMinGlobalLimited(40); // Different characters use common constraints
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#YYY#", "YYYYY", "YYYYY", "YYYYY", "#YYY#")
                 .aisle("#XSX#", "XAAAX", "XAPAX", "XAAAX", "#XXX#")
-                .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##")
-                .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(0, 11)
+                .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(1, 12)
                 .aisle("#####", "#ZZZ#", "#ZCZ#", "#ZZZ#", "#####")
-                .setAmountAtLeast('L', 40)
                 .where('S', selfPredicate())
-                .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES))
-                        .or(maintenancePredicate(getCasingState())))
-                .where('X', dtAbilityPartPredicate().or(maintenancePredicate(getCasingState())))
-                .where('Z', statePredicate(getCasingState()))
-                .where('P', statePredicate(getCasingState2()))
-                .where('C', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
-                .where('A', isAirPredicate())
-                .where('#', (tile) -> true)
-                .where('L', statePredicate(getCasingState()))
-                .validateLayer(2, exactlyOneHatch)
-                .validateLayer(3, exactlyOneHatch)
+                .where('Y', states(getCasingState()).or(casingPredicate).or(autoAbilities(true, true, true, true, true, false, false))) // here is a small issue, I will commit a fix later, can be simplified to `casingPredicate.or(autoAbilities())`.
+                .where('X', states(getCasingState()).or(casingPredicate) // same, can be simplified to `casingPredicate.or(XXX).or(XXX)`.
+                        .or(metaTileEntities(MultiblockAbility.REGISTER.get(MultiblockAbility.EXPORT_FLUIDS).stream()
+                                .filter(mte->!(mte instanceof MetaTileEntityMultiFluidHatch))
+                                .toArray(MetaTileEntity[]::new))
+                                .setMinLayerLimited(1).setMaxLayerLimited(1))
+                        .or(autoAbilities(false, true, false, false, false, false, false)))
+                .where('Z', casingPredicate)
+                .where('P', states(getCasingState2()))
+                .where('C', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('A', air())
+                .where('#', any())
                 .build();
-    }
-
-    private Predicate<BlockWorldState> dtAbilityPartPredicate() {
-        return countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS)).and(tilePredicate((state, tile) -> {
-            if (tile instanceof IMultiblockAbilityPart<?>) {
-                MultiblockAbility<?> ability = ((IMultiblockAbilityPart<?>) tile).getAbility();
-                return ability == MultiblockAbility.EXPORT_FLUIDS && !(tile instanceof MetaTileEntityMultiFluidHatch);
-            }
-            return false;
-        }));
     }
 
     private IBlockState getCasingState() {
