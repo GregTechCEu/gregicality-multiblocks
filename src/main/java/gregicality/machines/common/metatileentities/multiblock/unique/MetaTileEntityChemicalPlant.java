@@ -54,7 +54,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.TEMPERED_GLASS);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
     private IBlockState getCasingState3() {

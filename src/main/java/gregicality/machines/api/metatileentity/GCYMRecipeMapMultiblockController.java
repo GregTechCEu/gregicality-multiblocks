@@ -41,17 +41,14 @@ public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultibl
 
     @Override
     public TraceabilityPredicate autoAbilities() {
-        TraceabilityPredicate predicate = super.autoAbilities();
-        if (isParallel())
-            predicate.or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1));
-        return predicate;
+        return autoAbilities(true, true, true, true, true, true, true);
     }
 
     @Override
     public TraceabilityPredicate autoAbilities(boolean checkEnergyIn, boolean checkMaintenance, boolean checkItemIn, boolean checkItemOut, boolean checkFluidIn, boolean checkFluidOut, boolean checkMuffler) {
         TraceabilityPredicate predicate = super.autoAbilities(checkEnergyIn, checkMaintenance, checkItemIn, checkItemOut, checkFluidIn, checkFluidOut, checkMuffler);
         if (isParallel())
-            predicate.or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1));
+            predicate = predicate.or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1).setPreviewCount(1));
         return predicate;
     }
 }

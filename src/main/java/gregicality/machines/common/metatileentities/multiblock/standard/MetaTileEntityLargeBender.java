@@ -13,7 +13,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockTransparentCasing;
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -41,7 +41,7 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
                 .aisle("XXXXXX", "XAXGGX", "XXXXXX")
                 .aisle("XXXXXX", "XSXCCX", "XXXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(65).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(35).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
                 .where('A', air())
@@ -57,7 +57,7 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
     }
 
     private IBlockState getCasingState3() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockTransparentCasing.CasingType.TEMPERED_GLASS);
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
     @Override

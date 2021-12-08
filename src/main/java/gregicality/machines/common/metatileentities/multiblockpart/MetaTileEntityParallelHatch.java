@@ -7,6 +7,7 @@ import gregicality.machines.api.capability.IParallelHatch;
 import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregtech.api.GTValues;
+import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.*;
@@ -143,7 +144,13 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
             else
                 overlayRenderer = GCYMultiTextures.PARALLEL_HATCH_MK4_OVERLAY;
 
-            overlayRenderer.render(renderState, translation, pipeline, getFrontFacing(), getController() != null && ((RecipeMapMultiblockController) getController()).isActive());
+            if (getController() != null && getController() instanceof RecipeMapMultiblockController) {
+                overlayRenderer.render(renderState, translation, pipeline, getFrontFacing(),
+                        ((RecipeMapMultiblockController) getController()).isActive(),
+                        getController().getCapability(GregtechTileCapabilities.CAPABILITY_CONTROLLABLE, null).isWorkingEnabled());
+            } else {
+                overlayRenderer.render(renderState, translation, pipeline, getFrontFacing(), false, false);
+            }
         }
     }
 

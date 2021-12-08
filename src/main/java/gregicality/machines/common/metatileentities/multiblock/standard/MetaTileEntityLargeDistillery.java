@@ -57,8 +57,8 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                 .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(1, 12)
                 .aisle("#####", "#ZZZ#", "#ZCZ#", "#ZZZ#", "#####")
                 .where('S', selfPredicate())
-                .where('Y', states(getCasingState()).or(casingPredicate).or(autoAbilities(true, true, true, true, true, false, false))) // here is a small issue, I will commit a fix later, can be simplified to `casingPredicate.or(autoAbilities())`.
-                .where('X', states(getCasingState()).or(casingPredicate) // same, can be simplified to `casingPredicate.or(XXX).or(XXX)`.
+                .where('Y', states(getCasingState()).or(casingPredicate).or(autoAbilities(true, true, true, true, true, false, false)))
+                .where('X', states(getCasingState()).or(casingPredicate)
                         .or(metaTileEntities(MultiblockAbility.REGISTER.get(MultiblockAbility.EXPORT_FLUIDS).stream()
                                 .filter(mte->!(mte instanceof MetaTileEntityMultiFluidHatch))
                                 .toArray(MetaTileEntity[]::new))
