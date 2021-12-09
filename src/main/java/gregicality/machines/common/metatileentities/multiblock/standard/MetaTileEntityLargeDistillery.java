@@ -51,19 +51,25 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         TraceabilityPredicate casingPredicate = states(getCasingState()).setMinGlobalLimited(40); // Different characters use common constraints
-        return FactoryBlockPattern.start(RIGHT, FRONT, UP)
-                .aisle("#YYY#", "YYYYY", "YYYYY", "YYYYY", "#YYY#")
-                .aisle("#XSX#", "XAAAX", "XAPAX", "XAAAX", "#XXX#")
-                .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(1, 12)
+        TraceabilityPredicate maintenancePredicate = hasMaintenanceMechanics() ? abilities(MultiblockAbility.MAINTENANCE_HATCH).setMinGlobalLimited(1).setMaxGlobalLimited(1) :
+                casingPredicate;
+        return FactoryBlockPattern.start(RIGHT, FRONT, DOWN)
                 .aisle("#####", "#ZZZ#", "#ZCZ#", "#ZZZ#", "#####")
+                .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(1, 12)
+                .aisle("#YSY#", "YAAAY", "YAPAY", "YAAAY", "#YYY#")
+                .aisle("#YYY#", "YYYYY", "YYYYY", "YYYYY", "#YYY#")
                 .where('S', selfPredicate())
-                .where('Y', states(getCasingState()).or(casingPredicate).or(autoAbilities(true, true, true, true, true, false, false)))
+                .where('Y', states(getCasingState()).or(casingPredicate)
+                        .or(abilities(MultiblockAbility.IMPORT_ITEMS))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.IMPORT_FLUIDS).setMinGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.EXPORT_ITEMS))
+                        .or(maintenancePredicate))
                 .where('X', states(getCasingState()).or(casingPredicate)
                         .or(metaTileEntities(MultiblockAbility.REGISTER.get(MultiblockAbility.EXPORT_FLUIDS).stream()
                                 .filter(mte->!(mte instanceof MetaTileEntityMultiFluidHatch))
                                 .toArray(MetaTileEntity[]::new))
-                                .setMinLayerLimited(1).setMaxLayerLimited(1))
-                        .or(autoAbilities(false, true, false, false, false, false, false)))
+                                .setMinLayerLimited(1).setMaxLayerLimited(1)))
                 .where('Z', casingPredicate)
                 .where('P', states(getCasingState2()))
                 .where('C', abilities(MultiblockAbility.MUFFLER_HATCH))
