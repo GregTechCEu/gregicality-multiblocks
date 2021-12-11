@@ -73,5 +73,19 @@ public class GregicalityMultiblocks {
             }
         }
         GTMALog.logger.fatal("Deposit Size After Removals: " + WorldGenRegistry.getBedrockVeinDeposits().size());
+
+
+
+        GTMALog.logger.fatal("Vein Size Before Addition: " + WorldGenRegistry.getOreDeposits().size());
+
+        WorldGenRegistry.INSTANCE.addVeinDefinitions(new OreDepositDefinition("end/custom_vein.json"));
+
+        try {
+            WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        GTMALog.logger.fatal("Vein Size After Addition: " + WorldGenRegistry.getOreDeposits().size());
     }
 }
