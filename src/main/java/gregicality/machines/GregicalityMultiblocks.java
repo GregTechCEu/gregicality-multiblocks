@@ -86,6 +86,18 @@ public class GregicalityMultiblocks {
             e.printStackTrace();
         }
 
-        GTMALog.logger.fatal("Vein Size After Addition: " + WorldGenRegistry.getOreDeposits().size());
+        GTMALog.logger.fatal("Vein Size After Addition: " + WorldGenRegistry.getBedrockVeinDeposits().size());
+
+        GTMALog.logger.fatal("Fluid Vein Size Before Addition: " + WorldGenRegistry.getBedrockVeinDeposits().size());
+
+        WorldGenRegistry.INSTANCE.addVeinDefinitions(new BedrockFluidDepositDefinition("nether/custom_deposit.json"));
+
+        try {
+            WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        GTMALog.logger.fatal("Fluid Vein Size After Addition: " + WorldGenRegistry.getBedrockVeinDeposits().size());
     }
 }
