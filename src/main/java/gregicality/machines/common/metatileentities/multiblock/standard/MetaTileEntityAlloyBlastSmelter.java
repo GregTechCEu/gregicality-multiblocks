@@ -21,7 +21,6 @@ import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.util.GTUtility;
-import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.BlockWireCoil2;
 import net.minecraft.block.state.IBlockState;
@@ -70,16 +69,14 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         Object type = context.get("CoilType");
-        if (type instanceof BlockWireCoil.CoilType) {
+        if (type instanceof BlockWireCoil.CoilType)
             this.blastFurnaceTemperature = ((BlockWireCoil.CoilType) type).getCoilTemperature();
-        } else if(type instanceof BlockWireCoil2.CoilType2) {
+        else if (type instanceof BlockWireCoil2.CoilType2)
             this.blastFurnaceTemperature = ((BlockWireCoil2.CoilType2) type).getCoilTemperature();
-        } else {
+        else
             this.blastFurnaceTemperature = BlockWireCoil.CoilType.CUPRONICKEL.getCoilTemperature();
-        }
 
-        if (ConfigHolder.U.GT5u.ebfTemperatureBonuses)
-            this.blastFurnaceTemperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
+        this.blastFurnaceTemperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
     }
 
     @Override
