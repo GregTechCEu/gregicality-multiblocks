@@ -20,7 +20,6 @@ import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
-import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -63,16 +62,14 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         Object type = context.get("CoilType");
-        if (type instanceof BlockWireCoil.CoilType) {
+        if (type instanceof BlockWireCoil.CoilType)
             this.blastFurnaceTemperature = ((BlockWireCoil.CoilType) type).getCoilTemperature();
-        } else if(type instanceof BlockWireCoil2.CoilType2) {
+        else if(type instanceof BlockWireCoil2.CoilType2)
             this.blastFurnaceTemperature = ((BlockWireCoil2.CoilType2) type).getCoilTemperature();
-        } else {
+        else
             this.blastFurnaceTemperature = BlockWireCoil.CoilType.CUPRONICKEL.getCoilTemperature();
-        }
 
-        if (ConfigHolder.U.GT5u.ebfTemperatureBonuses)
-            this.blastFurnaceTemperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
+        this.blastFurnaceTemperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
     }
 
     @Override
