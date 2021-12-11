@@ -4,6 +4,7 @@ import gregicality.machines.api.utils.GTMALog;
 import gregicality.machines.common.CommonProxy;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
 import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
+import gregtech.api.worldgen.config.BedrockFluidDepositDefinition;
 import gregtech.api.worldgen.config.OreDepositDefinition;
 import gregtech.api.worldgen.config.WorldGenRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -54,5 +55,23 @@ public class GregicalityMultiblocks {
             }
         }
         GTMALog.logger.fatal("Vein Size After Removals: " + WorldGenRegistry.getOreDeposits().size());
+
+        GTMALog.logger.fatal("Deposit Size Before Removals: " + WorldGenRegistry.getBedrockVeinDeposits().size());
+        for (int i = 0; i < WorldGenRegistry.getBedrockVeinDeposits().size(); i++) {
+            BedrockFluidDepositDefinition definition = WorldGenRegistry.getBedrockVeinDeposits().get(i);
+
+            if (definition.getDepositName().equals("nether/lava_deposit.json")) {
+                GTMALog.logger.fatal("nether/lava_deposit.json DEPOSIT DETECTED!");
+
+                WorldGenRegistry.INSTANCE.removeVeinDefinitions(definition);
+
+                try {
+                    WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        GTMALog.logger.fatal("Deposit Size After Removals: " + WorldGenRegistry.getBedrockVeinDeposits().size());
     }
 }
