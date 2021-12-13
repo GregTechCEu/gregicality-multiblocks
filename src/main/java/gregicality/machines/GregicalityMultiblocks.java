@@ -46,13 +46,12 @@ public class GregicalityMultiblocks {
                 GTMALog.logger.fatal("end/naquadah_vein.json VEIN DETECTED!");
 
                 WorldGenRegistry.INSTANCE.removeVeinDefinitions(definition);
-
-                try {
-                    WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
+        }
+        try {
+            WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         GTMALog.logger.fatal("Vein Size After Removals: " + WorldGenRegistry.getOreDeposits().size());
 
@@ -64,13 +63,12 @@ public class GregicalityMultiblocks {
                 GTMALog.logger.fatal("nether/lava_deposit.json DEPOSIT DETECTED!");
 
                 WorldGenRegistry.INSTANCE.removeVeinDefinitions(definition);
-
-                try {
-                    WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
+        }
+        try {
+            WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         GTMALog.logger.fatal("Deposit Size After Removals: " + WorldGenRegistry.getBedrockVeinDeposits().size());
 
