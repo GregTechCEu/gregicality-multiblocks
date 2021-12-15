@@ -1,0 +1,36 @@
+{
+  "weight": 8,
+  "density": 0.5,
+  "max_height": 65,
+  "min_height": 30,
+  "dimension_filter": [
+    "name:the_end"
+  ],
+  "vein_populator": {
+    "type": "surface_rock",
+    "material": "naquadah"
+  },
+  "generator": {
+    "type": "ellipsoid",
+    "radius": [
+      14,
+      18
+    ]
+  },
+  "filler": {
+    "type": "simple",
+    "value": {
+      "type": "weight_random",
+      "values": [
+        {
+          "weight": 66,
+          "value": "ore:naquadah"
+        },
+        {
+          "weight": 34,
+          "value": "ore:naquadah_enriched"
+        }
+      ]
+    }
+  }
+}
