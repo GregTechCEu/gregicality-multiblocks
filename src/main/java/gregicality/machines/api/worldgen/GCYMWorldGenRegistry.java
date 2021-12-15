@@ -206,7 +206,8 @@ public class GCYMWorldGenRegistry {
     @Nonnull
     private static String getActualVeinName(@Nonnull Path path) {
         int count = path.getNameCount();
-        String[] split = path.toString().split("\\/");
-        return "gcym/" + split[count - 2] + "/" + split[count - 1] + "/" + split[count];
+        String separator = FileSystems.getDefault().getSeparator();
+        String[] split = path.toString().split("\\\\" + separator);
+        return "gcym" + separator + split[count - 2] + separator + split[count - 1] + separator + split[count];
     }
 }
