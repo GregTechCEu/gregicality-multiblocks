@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
         dependencies = "required-after:gregtech;")
 public class GregicalityMultiblocks {
 
-    public static final String MODID = "gcy_multiblocks";
+    public static final String MODID = "gcym";
     public static final String NAME = "Gregicality: Multiblocks";
     public static final String VERSION = "@VERSION@";
 

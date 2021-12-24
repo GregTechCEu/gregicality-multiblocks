@@ -3,6 +3,7 @@ package gregicality.machines.common;
 import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.api.utils.GTMALog;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.loaders.recipe.GCYMMetaTileEntityLoader;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -63,7 +64,7 @@ public class CommonProxy {
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
-//        RecipeHandler.initRecipes();
+        GCYMMetaTileEntityLoader.init();
     }
 
     @SubscribeEvent

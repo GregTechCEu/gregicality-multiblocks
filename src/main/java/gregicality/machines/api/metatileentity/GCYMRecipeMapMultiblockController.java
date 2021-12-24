@@ -25,7 +25,7 @@ public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultibl
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         if (isParallel())
-            tooltip.add(I18n.format("gcy_multiblocks.tooltip.parallel_enabled"));
+            tooltip.add(I18n.format("gcym.tooltip.parallel_enabled"));
     }
 
     @Override

@@ -116,7 +116,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gcy_multiblocks.machine.parallel_hatch.tooltip", this.maxParallel));
+        tooltip.add(I18n.format("gcym.machine.parallel_hatch.tooltip", this.maxParallel));
     }
 
     @Override
