@@ -1,12 +1,12 @@
 package gregicality.machines.api.render;
 
 import gregicality.machines.GregicalityMultiblocks;
-import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.SimpleCubeRenderer;
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
-import static gregtech.api.render.OrientedOverlayRenderer.OverlayFace.FRONT;
+import static gregtech.client.renderer.texture.cube.OrientedOverlayRenderer.OverlayFace.FRONT;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
 public class GCYMultiTextures {
@@ -49,25 +49,25 @@ public class GCYMultiTextures {
 
 
     // Casings
-    public static SimpleCubeRenderer MACERATOR_CASING;
-    public static SimpleCubeRenderer BLAST_CASING;
-    public static SimpleCubeRenderer ASSEMBLING_CASING;
-    public static SimpleCubeRenderer AUTOCLAVE_CASING;
-    public static SimpleCubeRenderer BENDER_CASING;
-    public static SimpleCubeRenderer BREWERY_CASING;
-    public static SimpleCubeRenderer CENTRIFUGE_CASING;
-    public static SimpleCubeRenderer BATH_CASING;
-    public static SimpleCubeRenderer FLUID_SAFE_CASING;
-    public static SimpleCubeRenderer CUTTER_CASING;
-    public static SimpleCubeRenderer DISTILLlERY_CASING;
-    public static SimpleCubeRenderer ELECTROLYZER_CASING;
-    public static SimpleCubeRenderer ELECTROMAGNET_CASING;
-    public static SimpleCubeRenderer EXTRUDER_CASING;
-    public static SimpleCubeRenderer MIXER_CASING;
-    public static SimpleCubeRenderer ENGRAVER_CASING;
-    public static SimpleCubeRenderer SIFTER_CASING;
-    public static SimpleCubeRenderer WIREMILL_CASING;
-    public static SimpleCubeRenderer ATOMIC_CASING;
+    public static SimpleOverlayRenderer MACERATOR_CASING;
+    public static SimpleOverlayRenderer BLAST_CASING;
+    public static SimpleOverlayRenderer ASSEMBLING_CASING;
+    public static SimpleOverlayRenderer AUTOCLAVE_CASING;
+    public static SimpleOverlayRenderer BENDER_CASING;
+    public static SimpleOverlayRenderer BREWERY_CASING;
+    public static SimpleOverlayRenderer CENTRIFUGE_CASING;
+    public static SimpleOverlayRenderer BATH_CASING;
+    public static SimpleOverlayRenderer FLUID_SAFE_CASING;
+    public static SimpleOverlayRenderer CUTTER_CASING;
+    public static SimpleOverlayRenderer DISTILLlERY_CASING;
+    public static SimpleOverlayRenderer ELECTROLYZER_CASING;
+    public static SimpleOverlayRenderer ELECTROMAGNET_CASING;
+    public static SimpleOverlayRenderer EXTRUDER_CASING;
+    public static SimpleOverlayRenderer MIXER_CASING;
+    public static SimpleOverlayRenderer ENGRAVER_CASING;
+    public static SimpleOverlayRenderer SIFTER_CASING;
+    public static SimpleOverlayRenderer WIREMILL_CASING;
+    public static SimpleOverlayRenderer ATOMIC_CASING;
 
 
     public static void preInit() {
@@ -107,24 +107,24 @@ public class GCYMultiTextures {
         PARALLEL_HATCH_MK4_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk4", FRONT);
 
         // Casings
-        MACERATOR_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/macerator_casing");
-        BLAST_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/blast_casing");
-        ASSEMBLING_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/assembler_casing");
-        AUTOCLAVE_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/autoclave_casing");
-        BENDER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/bender_casing");
-        BREWERY_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/brewery_casing");
-        CENTRIFUGE_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/centrifuge_casing");
-        BATH_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/bath_casing");
-        FLUID_SAFE_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/fluid_safe_casing");
-        CUTTER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/cutter_casing");
-        DISTILLlERY_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/distillery_casing");
-        ELECTROLYZER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/electrolyzer_casing");
-        ELECTROMAGNET_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/electromagnet_casing");
-        EXTRUDER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/extruder_casing");
-        MIXER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/mixer_casing");
-        ENGRAVER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing/engraver_casing");
-        SIFTER_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing_2/sifter_casing");
-        WIREMILL_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing_2/wiremill_casing");
-        ATOMIC_CASING = new SimpleCubeRenderer("casings/large_multiblock_casing_2/atomic_casing");
+        MACERATOR_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/macerator_casing");
+        BLAST_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/blast_casing");
+        ASSEMBLING_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/assembler_casing");
+        AUTOCLAVE_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/autoclave_casing");
+        BENDER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/bender_casing");
+        BREWERY_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/brewery_casing");
+        CENTRIFUGE_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/centrifuge_casing");
+        BATH_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/bath_casing");
+        FLUID_SAFE_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/fluid_safe_casing");
+        CUTTER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/cutter_casing");
+        DISTILLlERY_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/distillery_casing");
+        ELECTROLYZER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/electrolyzer_casing");
+        ELECTROMAGNET_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/electromagnet_casing");
+        EXTRUDER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/extruder_casing");
+        MIXER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/mixer_casing");
+        ENGRAVER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/engraver_casing");
+        SIFTER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing_2/sifter_casing");
+        WIREMILL_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing_2/wiremill_casing");
+        ATOMIC_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing_2/atomic_casing");
     }
 }

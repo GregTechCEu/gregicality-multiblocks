@@ -7,11 +7,10 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.api.render.Textures;
+import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -23,7 +22,6 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
 
     public MetaTileEntityLargePackager(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.PACKER_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.PACKER_RECIPES, RecipeMaps.UNPACKER_RECIPES};
     }
 
     @Override
@@ -60,11 +58,6 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
 
     @Override
     public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

@@ -16,8 +16,8 @@ import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -145,11 +145,11 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
                 overlayRenderer = GCYMultiTextures.PARALLEL_HATCH_MK4_OVERLAY;
 
             if (getController() != null && getController() instanceof RecipeMapMultiblockController) {
-                overlayRenderer.render(renderState, translation, pipeline, getFrontFacing(),
+                overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(),
                         ((RecipeMapMultiblockController) getController()).isActive(),
                         getController().getCapability(GregtechTileCapabilities.CAPABILITY_CONTROLLABLE, null).isWorkingEnabled());
             } else {
-                overlayRenderer.render(renderState, translation, pipeline, getFrontFacing(), false, false);
+                overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(), false, false);
             }
         }
     }
