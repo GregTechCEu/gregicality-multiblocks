@@ -3,7 +3,7 @@ package gregicality.machines.common.metatileentities.multiblock.standard;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
-import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing2;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -51,7 +51,7 @@ public class MetaTileEntityLargeReplicator extends GCYMRecipeMapMultiblockContro
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.ATOMIC_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ATOMIC_CASING);
     }
 
     private IBlockState getCasingState2() {

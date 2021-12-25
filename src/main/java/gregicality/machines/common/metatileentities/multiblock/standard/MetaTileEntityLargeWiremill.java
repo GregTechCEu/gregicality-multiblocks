@@ -3,7 +3,7 @@ package gregicality.machines.common.metatileentities.multiblock.standard;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMultiTextures;
 import gregicality.machines.common.block.GCYMultiMetaBlocks;
-import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing2;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -37,8 +37,8 @@ public class MetaTileEntityLargeWiremill extends GCYMRecipeMapMultiblockControll
         return FactoryBlockPattern.start(FRONT, UP, RIGHT)
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "SAX", "XXX")
-                .aisle("XXX", "XXX", "XX#")
-                .aisle("XXX", "XCX", "#X#").setRepeatable(1, 3)
+                .aisle("XXX", "XCX", "XX#")
+                .aisle("XXX", "XCX", "#X#")
                 .aisle("XXX", "XXX", "#X#")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
@@ -49,7 +49,7 @@ public class MetaTileEntityLargeWiremill extends GCYMRecipeMapMultiblockControll
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2.getState(BlockLargeMultiblockCasing2.CasingType.WIREMILL_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.STRESS_PROOF_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -58,7 +58,7 @@ public class MetaTileEntityLargeWiremill extends GCYMRecipeMapMultiblockControll
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.WIREMILL_CASING;
+        return GCYMultiTextures.STRESS_PROOF_CASING;
     }
 
     @Nonnull

@@ -39,7 +39,6 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
                 .aisle("XXSXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX")
-                .aisle("XXXXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX").setRepeatable(0, 2)
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
@@ -50,7 +49,7 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BATH_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.WATERTIGHT_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -59,7 +58,7 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.BATH_CASING;
+        return GCYMultiTextures.WATERTIGHT_CASING;
     }
 
     @Nonnull

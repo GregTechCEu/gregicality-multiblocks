@@ -48,7 +48,7 @@ public class MetaTileEntityLargeExtractor extends GCYMRecipeMapMultiblockControl
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.FLUID_SAFE_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.WATERTIGHT_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -57,7 +57,7 @@ public class MetaTileEntityLargeExtractor extends GCYMRecipeMapMultiblockControl
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.FLUID_SAFE_CASING;
+        return GCYMultiTextures.WATERTIGHT_CASING;
     }
 
     @Nonnull

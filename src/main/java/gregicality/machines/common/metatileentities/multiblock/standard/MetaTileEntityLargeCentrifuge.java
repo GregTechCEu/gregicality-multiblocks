@@ -38,9 +38,7 @@ public class MetaTileEntityLargeCentrifuge extends GCYMRecipeMapMultiblockContro
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
-                .aisle("XXXXX", "XACAX", "XCACX", "XACAX", "XXXXX").setRepeatable(0, 1)
                 .aisle("XXSXX", "XACAX", "XCACX", "XACAX", "XXXXX")
-                .aisle("XXXXX", "XACAX", "XCACX", "XACAX", "XXXXX").setRepeatable(0, 1)
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
@@ -51,7 +49,7 @@ public class MetaTileEntityLargeCentrifuge extends GCYMRecipeMapMultiblockContro
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.CENTRIFUGE_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.VIBRATION_SAFE_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -60,7 +58,7 @@ public class MetaTileEntityLargeCentrifuge extends GCYMRecipeMapMultiblockContro
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.CENTRIFUGE_CASING;
+        return GCYMultiTextures.VIBRATION_SAFE_CASING;
     }
 
     @Nonnull

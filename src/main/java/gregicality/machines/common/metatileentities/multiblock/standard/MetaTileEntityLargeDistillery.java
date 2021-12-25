@@ -78,7 +78,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.DISTILLERY_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.WATERTIGHT_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -87,7 +87,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.DISTILLlERY_CASING;
+        return GCYMultiTextures.WATERTIGHT_CASING;
     }
 
     @Override

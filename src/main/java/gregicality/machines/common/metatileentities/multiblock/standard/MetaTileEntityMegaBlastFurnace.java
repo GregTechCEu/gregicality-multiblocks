@@ -120,11 +120,11 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
     }
 
     public static IBlockState getFrameState() {
-        return MetaBlocks.FRAMES.get(Materials.BlueSteel).getDefaultState();
+        return MetaBlocks.FRAMES.get(Materials.TungstenSteel).getBlock(Materials.TungstenSteel);
     }
 
     public static IBlockState getFrameState2() {
-        return MetaBlocks.FRAMES.get(Materials.NaquadahAlloy).getDefaultState();
+        return MetaBlocks.FRAMES.get(Materials.NaquadahAlloy).getBlock(Materials.NaquadahAlloy);
     }
 
     private IBlockState getCasingState2() {

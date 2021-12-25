@@ -38,7 +38,7 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(FRONT, UP, RIGHT)
                 .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "CAX", "CCX").setRepeatable(4, 6)
+                .aisle("XXX", "CAX", "CCX").setRepeatable(4)
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "XAX", "#XX")
                 .aisle("XXX", "SAX", "#XX")

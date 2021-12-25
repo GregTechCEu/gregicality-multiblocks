@@ -33,9 +33,9 @@ public class MetaTileEntityLargeAutoclave extends GCYMRecipeMapMultiblockControl
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "XXXXX", "#XXX#")
-                .aisle("XXXXX", "XACAX", "#XXX#").setRepeatable(2)
-                .aisle("XXXXX", "XXSXX", "#XXX#")
+                .aisle("XXX", "XXX", "XXX")
+                .aisle("XXX", "XCX", "XXX").setRepeatable(2)
+                .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(15).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
@@ -45,7 +45,7 @@ public class MetaTileEntityLargeAutoclave extends GCYMRecipeMapMultiblockControl
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.AUTOCLAVE_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.WATERTIGHT_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -54,7 +54,7 @@ public class MetaTileEntityLargeAutoclave extends GCYMRecipeMapMultiblockControl
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.AUTOCLAVE_CASING;
+        return GCYMultiTextures.WATERTIGHT_CASING;
     }
 
     @Nonnull

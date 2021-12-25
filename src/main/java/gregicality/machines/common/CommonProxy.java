@@ -43,7 +43,6 @@ public class CommonProxy {
 
         registry.register(GCYMultiMetaBlocks.UNIQUE_CASING);
         registry.register(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING);
-        registry.register(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2);
     }
 
 
@@ -54,7 +53,6 @@ public class CommonProxy {
 
         registry.register(createItemBlock(GCYMultiMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING_2, VariantItemBlock::new));
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

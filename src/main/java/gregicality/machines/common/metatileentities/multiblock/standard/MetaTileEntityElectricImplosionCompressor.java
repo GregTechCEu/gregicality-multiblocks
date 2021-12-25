@@ -70,7 +70,7 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     }
 
     private IBlockState getFrameState() {
-        return MetaBlocks.FRAMES.get(Materials.TungstenSteel).getDefaultState();
+        return MetaBlocks.FRAMES.get(Materials.TungstenSteel).getBlock(Materials.TungstenSteel);
     }
 
     @Override

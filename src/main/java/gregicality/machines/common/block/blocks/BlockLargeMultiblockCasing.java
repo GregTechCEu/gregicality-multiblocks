@@ -33,19 +33,15 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
         MACERATOR_CASING("macerator_casing"),
         BLAST_CASING("blast_casing"),
         ASSEMBLING_CASING("assembler_casing"),
-        AUTOCLAVE_CASING("autoclave_casing"),
-        BENDER_CASING("bender_casing"),
+        STRESS_PROOF_CASING("stress_proof_casing"),
         BREWERY_CASING("brewery_casing"),
-        CENTRIFUGE_CASING("centrifuge_casing"),
-        BATH_CASING("bath_casing"),
-        FLUID_SAFE_CASING("fluid_safe_casing"),
+        VIBRATION_SAFE_CASING("vibration_safe_casing"),
+        WATERTIGHT_CASING("watertight_casing"),
         CUTTER_CASING("cutter_casing"),
-        DISTILLERY_CASING("distillery_casing"),
-        ELECTROLYZER_CASING("electrolyzer_casing"),
-        ELECTROMAGNET_CASING("electromagnet_casing"),
-        EXTRUDER_CASING("extruder_casing"),
+        NONCONDUCTING_CASING("nonconducting_casing"),
         MIXER_CASING("mixer_casing"),
-        ENGRAVER_CASING("engraver_casing");
+        ENGRAVER_CASING("engraver_casing"),
+        ATOMIC_CASING("atomic_casing");
 
         private final String name;
 

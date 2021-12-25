@@ -40,7 +40,7 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
                 .aisle("#XSX#", "XAAAX", "XACAX", "XAAAX", "#XXX#")
-                .aisle("#XXX#", "XAAAX", "XACAX", "XAAAX", "#XXX#").setRepeatable(1, 3)
+                .aisle("#XXX#", "XAAAX", "XACAX", "XAAAX", "#XXX#")
                 .aisle("#XXX#", "XXAXX", "XACAX", "XXAXX", "#XXX#")
                 .aisle("#####", "##X##", "#XMX#", "##X##", "#####")
                 .where('S', selfPredicate())

@@ -46,7 +46,7 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ELECTROMAGNET_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -55,7 +55,7 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.ELECTROMAGNET_CASING;
+        return GCYMultiTextures.NONCONDUCTING_CASING;
     }
 
     @Nonnull

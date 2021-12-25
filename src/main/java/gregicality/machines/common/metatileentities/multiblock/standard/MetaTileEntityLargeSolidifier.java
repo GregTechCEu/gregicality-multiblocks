@@ -37,7 +37,7 @@ public class MetaTileEntityLargeSolidifier extends GCYMRecipeMapMultiblockContro
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
                 .aisle("#XSX#", "XCACX", "XAAAX", "XCACX", "#XXX#")
-                .aisle("#XXX#", "XCACX", "XAAAX", "XCACX", "#XXX#").setRepeatable(0, 2)
+                .aisle("#XXX#", "XCACX", "XAAAX", "XCACX", "#XXX#")
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(35).or(autoAbilities()))
@@ -48,7 +48,7 @@ public class MetaTileEntityLargeSolidifier extends GCYMRecipeMapMultiblockContro
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.FLUID_SAFE_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.WATERTIGHT_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -57,7 +57,7 @@ public class MetaTileEntityLargeSolidifier extends GCYMRecipeMapMultiblockContro
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.FLUID_SAFE_CASING;
+        return GCYMultiTextures.WATERTIGHT_CASING;
     }
 
     @Nonnull

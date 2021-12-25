@@ -42,7 +42,7 @@ public class MetaTileEntityLargeElectrolyzer extends GCYMRecipeMapMultiblockCont
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ELECTROLYZER_CASING);
+        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -51,7 +51,7 @@ public class MetaTileEntityLargeElectrolyzer extends GCYMRecipeMapMultiblockCont
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.ELECTROLYZER_CASING;
+        return GCYMultiTextures.NONCONDUCTING_CASING;
     }
 
     @Nonnull

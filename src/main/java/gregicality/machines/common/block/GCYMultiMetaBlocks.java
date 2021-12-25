@@ -1,7 +1,6 @@
 package gregicality.machines.common.block;
 
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
-import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing2;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
@@ -25,22 +24,18 @@ public class GCYMultiMetaBlocks {
 
     public static BlockUniqueCasing UNIQUE_CASING;
     public static BlockLargeMultiblockCasing LARGE_MULTIBLOCK_CASING;
-    public static BlockLargeMultiblockCasing2 LARGE_MULTIBLOCK_CASING_2;
 
     public static void init() {
         UNIQUE_CASING = new BlockUniqueCasing();
         UNIQUE_CASING.setRegistryName("unique_casing");
         LARGE_MULTIBLOCK_CASING = new BlockLargeMultiblockCasing();
         LARGE_MULTIBLOCK_CASING.setRegistryName("large_multiblock_casing");
-        LARGE_MULTIBLOCK_CASING_2 = new BlockLargeMultiblockCasing2();
-        LARGE_MULTIBLOCK_CASING_2.setRegistryName("large_multiblock_casing_2");
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
         registerItemModel(UNIQUE_CASING);
         registerItemModel(LARGE_MULTIBLOCK_CASING);
-        registerItemModel(LARGE_MULTIBLOCK_CASING_2);
     }
 
     @SideOnly(Side.CLIENT)
