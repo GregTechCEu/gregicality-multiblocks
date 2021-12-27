@@ -55,6 +55,12 @@ public class CommonProxy {
         registry.register(createItemBlock(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
     }
 
+    private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
+        ItemBlock itemBlock = producer.apply(block);
+        itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
+        return itemBlock;
+    }
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GTMALog.logger.info("Registering recipe low...");
@@ -67,17 +73,11 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
-        GTMALog.logger.info("Registering ore prefix...");
+//        GTMALog.logger.info("Registering ore prefix...");
 
         // Register OreDictionary Entries
 //        GAMetaItems.registerOreDict();
 //        GAMetaBlocks.registerOreDict();
-    }
-
-    private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
-        ItemBlock itemBlock = producer.apply(block);
-        itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
-        return itemBlock;
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
