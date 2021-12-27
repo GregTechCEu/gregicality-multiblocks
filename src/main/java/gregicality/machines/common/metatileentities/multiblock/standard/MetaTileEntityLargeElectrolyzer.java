@@ -1,8 +1,8 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.machines.api.render.GCYMultiTextures;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.api.render.GCYMTextures;
+import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -42,21 +42,21 @@ public class MetaTileEntityLargeElectrolyzer extends GCYMRecipeMapMultiblockCont
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING);
+        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING);
     }
 
     private IBlockState getCasingState2() {
-        return GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.ELECTROLYTIC_CELL);
+        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.ELECTROLYTIC_CELL);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.NONCONDUCTING_CASING;
+        return GCYMTextures.NONCONDUCTING_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_ELECTROLYZER_OVERLAY;
+        return GCYMTextures.LARGE_ELECTROLYZER_OVERLAY;
     }
 }

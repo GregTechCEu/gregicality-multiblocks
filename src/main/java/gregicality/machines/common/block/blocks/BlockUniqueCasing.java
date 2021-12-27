@@ -32,7 +32,6 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
     public enum UniqueCasingType implements IStringSerializable {
 
         CRUSHING_WHEELS("crushing_wheels"),
-        LARGE_ELECTRODE("large_electrode"),
         SLICING_BLADES("slicing_blades"),
         ELECTROLYTIC_CELL("electrolytic_cell"),
         HEAT_VENT("heat_vent");

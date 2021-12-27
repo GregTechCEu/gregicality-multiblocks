@@ -1,8 +1,8 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.machines.api.render.GCYMultiTextures;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.api.render.GCYMTextures;
+import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -34,50 +34,45 @@ public class MetaTileEntityLargeMassFabricator extends GCYMRecipeMapMultiblockCo
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXCXX", "XGCGX", "CCVCC", "XGCGX", "XXCXX")
-                .aisle("XXCXX", "GAAAG", "CAKAC", "GAAAG", "XXCXX")
-                .aisle("CCVCC", "CAKAC", "VKKKV", "CAKAC", "CCVCC")
-                .aisle("XXCXX", "GAAAG", "CAKAC", "GAAAG", "XXCXX")
-                .aisle("XXCXX", "XGCGX", "CCSCC", "XGCGX", "XXCXX")
+                .aisle("XXXXX", "XGXGX", "XXVXX", "XGXGX", "XXXXX")
+                .aisle("XXXXX", "GAAAG", "XAKAX", "GAAAG", "XXXXX")
+                .aisle("XXVXX", "XAKAX", "VKKKV", "XAKAX", "XXVXX")
+                .aisle("XXXXX", "GAAAG", "XAKAX", "GAAAG", "XXXXX")
+                .aisle("XXXXX", "XGXGX", "XXSXX", "XGXGX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
-                .where('C', states(getCasingState2()))
-                .where('G', states(getCasingState3()))
-                .where('V', states(getCasingState4()))
-                .where('K', states(getCasingState5()))
+                .where('G', states(getCasingState2()))
+                .where('V', states(getCasingState3()))
+                .where('K', states(getCasingState4()))
                 .where('A', air())
                 .where('#', any())
                 .build();
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ATOMIC_CASING);
+        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ATOMIC_CASING);
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.SUPERCONDUCTOR_COIL);
-    }
-
-    private IBlockState getCasingState3() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS);
     }
 
-    private IBlockState getCasingState4() {
-        return GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
+    private IBlockState getCasingState3() {
+        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
     }
 
-    private IBlockState getCasingState5() {
+    private IBlockState getCasingState4() {
         return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.ATOMIC_CASING;
+        return GCYMTextures.ATOMIC_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_MASS_FABRICATOR_OVERLAY;
+        return GCYMTextures.LARGE_MASS_FABRICATOR_OVERLAY;
     }
 }

@@ -1,8 +1,8 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.machines.api.render.GCYMultiTextures;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.api.render.GCYMTextures;
+import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -46,21 +46,21 @@ public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockControl
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.MACERATOR_CASING);
+        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.MACERATOR_CASING);
     }
 
     private IBlockState getCasingState2() {
-        return GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS);
+        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.MACERATOR_CASING;
+        return GCYMTextures.MACERATOR_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_MACERATOR_OVERLAY;
+        return GCYMTextures.LARGE_MACERATOR_OVERLAY;
     }
 }

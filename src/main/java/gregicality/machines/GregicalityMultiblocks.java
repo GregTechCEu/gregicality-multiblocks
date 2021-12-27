@@ -2,8 +2,8 @@ package gregicality.machines;
 
 import gregicality.machines.api.utils.GTMALog;
 import gregicality.machines.common.CommonProxy;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
-import gregicality.machines.common.metatileentities.GCYMultiMetaTileEntities;
+import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -26,7 +26,7 @@ public class GregicalityMultiblocks {
         GTMALog.init(event.getModLog());
         proxy.preLoad();
 
-        GCYMultiMetaBlocks.init();
-        GCYMultiMetaTileEntities.init();
+        GCYMMetaBlocks.init();
+        GCYMMetaTileEntities.init();
     }
 }

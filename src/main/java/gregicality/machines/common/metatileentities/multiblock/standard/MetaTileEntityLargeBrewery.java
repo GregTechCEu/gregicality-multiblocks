@@ -1,8 +1,8 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.machines.api.render.GCYMultiTextures;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.api.render.GCYMTextures;
+import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -53,7 +53,7 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
     }
 
     private IBlockState getCasingState() {
-        return GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.BREWERY_CASING);
+        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.CORROSION_PROOF_CASING);
     }
 
     private IBlockState getCasingState2() {
@@ -62,13 +62,13 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMultiTextures.BREWERY_CASING;
+        return GCYMTextures.CORROSION_PROOF_CASING;
     }
 
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.LARGE_BREWERY_OVERLAY;
+        return GCYMTextures.LARGE_BREWERY_OVERLAY;
     }
 
     @Override

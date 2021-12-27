@@ -1,7 +1,7 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.machines.api.render.GCYMultiTextures;
+import gregicality.machines.api.render.GCYMTextures;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
@@ -167,7 +167,7 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.MEGA_BLAST_FURNACE_OVERLAY;
+        return GCYMTextures.MEGA_BLAST_FURNACE_OVERLAY;
     }
 
     @Override

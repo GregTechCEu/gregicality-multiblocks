@@ -1,8 +1,8 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.machines.api.render.GCYMultiTextures;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
+import gregicality.machines.api.render.GCYMTextures;
+import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -66,7 +66,7 @@ public class MetaTileEntityMegaVacuumFreezer extends GCYMRecipeMapMultiblockCont
     }
 
     private IBlockState getCasingState4() {
-        return GCYMultiMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
+        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
     }
 
     private IBlockState getCasingState5() {
@@ -81,6 +81,6 @@ public class MetaTileEntityMegaVacuumFreezer extends GCYMRecipeMapMultiblockCont
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.MEGA_VACUUM_FREEZER_OVERLAY;
+        return GCYMTextures.MEGA_VACUUM_FREEZER_OVERLAY;
     }
 }

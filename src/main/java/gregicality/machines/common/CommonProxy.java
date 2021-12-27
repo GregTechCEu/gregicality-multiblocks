@@ -2,8 +2,8 @@ package gregicality.machines.common;
 
 import gregicality.machines.GregicalityMultiblocks;
 import gregicality.machines.api.utils.GTMALog;
-import gregicality.machines.common.block.GCYMultiMetaBlocks;
-import gregicality.machines.loaders.recipe.GCYMMetaTileEntityLoader;
+import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.loaders.recipe.GCYMRecipeLoader;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -41,8 +41,8 @@ public class CommonProxy {
         GTMALog.logger.info("Registering blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
 
-        registry.register(GCYMultiMetaBlocks.UNIQUE_CASING);
-        registry.register(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING);
+        registry.register(GCYMMetaBlocks.UNIQUE_CASING);
+        registry.register(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING);
     }
 
 
@@ -51,8 +51,8 @@ public class CommonProxy {
         GTMALog.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
-        registry.register(createItemBlock(GCYMultiMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
-        registry.register(createItemBlock(GCYMultiMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GCYMMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -62,7 +62,7 @@ public class CommonProxy {
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
-        GCYMMetaTileEntityLoader.init();
+        GCYMRecipeLoader.init();
     }
 
     @SubscribeEvent

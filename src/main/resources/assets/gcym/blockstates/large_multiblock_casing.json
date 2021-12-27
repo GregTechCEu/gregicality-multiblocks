@@ -32,10 +32,10 @@
           "all": "gregtech:blocks/casings/large_multiblock_casing/stress_proof_casing"
         }
       },
-      "brewery_casing": {
+      "corrosion_proof_casing": {
         "model": "minecraft:cube_all",
         "textures": {
-          "all": "gregtech:blocks/casings/large_multiblock_casing/brewery_casing"
+          "all": "gregtech:blocks/casings/large_multiblock_casing/corrosion_proof_casing"
         }
       },
       "vibration_safe_casing": {

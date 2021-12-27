@@ -1,6 +1,6 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
-import gregicality.machines.api.render.GCYMultiTextures;
+import gregicality.machines.api.render.GCYMTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -81,7 +81,7 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMultiTextures.ELECTRIC_IMPLOSION_OVERLAY;
+        return GCYMTextures.ELECTRIC_IMPLOSION_OVERLAY;
     }
 
     @Override

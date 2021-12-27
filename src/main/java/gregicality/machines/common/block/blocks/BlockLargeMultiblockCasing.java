@@ -31,10 +31,10 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
     public enum CasingType implements IStringSerializable {
 
         MACERATOR_CASING("macerator_casing"),
-        BLAST_CASING("blast_casing"),
+        HIGH_TEMPERATURE_CASING("blast_casing"),
         ASSEMBLING_CASING("assembler_casing"),
         STRESS_PROOF_CASING("stress_proof_casing"),
-        BREWERY_CASING("brewery_casing"),
+        CORROSION_PROOF_CASING("corrosion_proof_casing"),
         VIBRATION_SAFE_CASING("vibration_safe_casing"),
         WATERTIGHT_CASING("watertight_casing"),
         CUTTER_CASING("cutter_casing"),

@@ -17,22 +17,6 @@
         "bottom": "#side"
       }
     },
-    "active=false,variant=large_electrode": {
-      "model": "minecraft:cube_bottom_top",
-      "textures": {
-        "top": "gregtech:blocks/casings/unique/electrode_top",
-        "side": "gregtech:blocks/casings/unique/electrode_side",
-        "bottom": "#top"
-      }
-    },
-    "active=true,variant=large_electrode": {
-      "model": "minecraft:cube_bottom_top",
-      "textures": {
-        "top": "gregtech:blocks/casings/unique/electrode_top_on",
-        "side": "gregtech:blocks/casings/unique/electrode_side_on",
-        "bottom": "#top"
-      }
-    },
     "active=false,variant=slicing_blades": {
       "model": "minecraft:cube_bottom_top",
       "textures": {

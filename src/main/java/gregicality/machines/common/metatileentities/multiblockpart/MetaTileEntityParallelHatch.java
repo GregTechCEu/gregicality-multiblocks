@@ -5,7 +5,7 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicality.machines.api.capability.IParallelHatch;
 import gregicality.machines.api.metatileentity.GCYMMultiblockAbility;
-import gregicality.machines.api.render.GCYMultiTextures;
+import gregicality.machines.api.render.GCYMTextures;
 import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.gui.GuiTextures;
@@ -136,13 +136,13 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
         if (shouldRenderOverlay()) {
             OrientedOverlayRenderer overlayRenderer;
             if (getTier() == GTValues.IV)
-                overlayRenderer = GCYMultiTextures.PARALLEL_HATCH_MK1_OVERLAY;
+                overlayRenderer = GCYMTextures.PARALLEL_HATCH_MK1_OVERLAY;
             else if (getTier() == GTValues.LuV)
-                overlayRenderer = GCYMultiTextures.PARALLEL_HATCH_MK2_OVERLAY;
+                overlayRenderer = GCYMTextures.PARALLEL_HATCH_MK2_OVERLAY;
             else if (getTier() == GTValues.ZPM)
-                overlayRenderer = GCYMultiTextures.PARALLEL_HATCH_MK3_OVERLAY;
+                overlayRenderer = GCYMTextures.PARALLEL_HATCH_MK3_OVERLAY;
             else
-                overlayRenderer = GCYMultiTextures.PARALLEL_HATCH_MK4_OVERLAY;
+                overlayRenderer = GCYMTextures.PARALLEL_HATCH_MK4_OVERLAY;
 
             if (getController() != null && getController() instanceof RecipeMapMultiblockController) {
                 overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(),
