@@ -79,7 +79,7 @@ public class GCYMFirstDegreeMaterials {
         TantalumCarbide = new Material.Builder(3008, "tantalum_carbide")
                 .ingot()
                 .color(0x56566A).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_DENSE)
                 .components(Tantalum, 1, Carbon, 1)
                 .blastTemp(4120, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 1200)
                 .build();
@@ -87,7 +87,7 @@ public class GCYMFirstDegreeMaterials {
         MolybdenumDisilicide = new Material.Builder(3009, "molybdenum_disilicide")
                 .ingot()
                 .color(0x6A5BA3).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_SPRING)
                 .components(Molybdenum, 1, Silicon, 2)
                 .blastTemp(2300, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 800)
                 .build();

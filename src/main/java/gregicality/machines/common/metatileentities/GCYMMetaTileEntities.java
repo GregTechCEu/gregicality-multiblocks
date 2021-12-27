@@ -38,7 +38,7 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeReplicator LARGE_REPLICATOR;
     public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
-    public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
+    public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4]; //todo, GTValues.HT hatches
 
 
     public static void init() {
@@ -66,8 +66,8 @@ public class GCYMMetaTileEntities {
         LARGE_SIFTER = registerMetaTileEntity(2020, new MetaTileEntityLargeSifter(gcymId("large_sifter")));
         LARGE_WIREMILL = registerMetaTileEntity(2021, new MetaTileEntityLargeWiremill(gcymId("large_wiremill")));
         ELECTRIC_IMPLOSION_COMPRESSOR = registerMetaTileEntity(2022, new MetaTileEntityElectricImplosionCompressor(gcymId("electric_implosion_compressor")));
-        LARGE_MASS_FABRICATOR = registerMetaTileEntity(2023, new MetaTileEntityLargeMassFabricator(gcymId("large_mass_fabricator")));
-        LARGE_REPLICATOR = registerMetaTileEntity(2024, new MetaTileEntityLargeReplicator(gcymId("large_replicator")));
+//        LARGE_MASS_FABRICATOR = registerMetaTileEntity(2023, new MetaTileEntityLargeMassFabricator(gcymId("large_mass_fabricator"))); todo replication system
+//        LARGE_REPLICATOR = registerMetaTileEntity(2024, new MetaTileEntityLargeReplicator(gcymId("large_replicator")));
         MEGA_BLAST_FURNACE = registerMetaTileEntity(2025, new MetaTileEntityMegaBlastFurnace(gcymId("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = registerMetaTileEntity(2026, new MetaTileEntityMegaVacuumFreezer(gcymId("mega_vacuum_freezer")));
 

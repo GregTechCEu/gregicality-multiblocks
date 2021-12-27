@@ -35,18 +35,17 @@ public class MetaTileEntityLargeReplicator extends GCYMRecipeMapMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
+                .aisle("XXXXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "XXXXX")
                 .aisle("XXXXX", "VCCCV", "GAAAG", "GAAAG", "VCCCV", "XXXXX")
                 .aisle("XXXXX", "VCCCV", "GACAG", "GACAG", "VCCCV", "XXXXX")
                 .aisle("XXXXX", "VCCCV", "GAAAG", "GAAAG", "VCCCV", "XXXXX")
-                .aisle("XXSXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "#XXX#")
+                .aisle("XXSXX", "XVVVX", "XGGGX", "XGGGX", "XVVVX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
                 .where('V', states(getCasingState4()))
                 .where('A', air())
-                .where('#', any())
                 .build();
     }
 
