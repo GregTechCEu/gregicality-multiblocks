@@ -2,6 +2,8 @@ package gregicality.machines.common.metatileentities.multiblock.unique;
 
 import gregicality.machines.api.recipes.GCYMRecipeMaps;
 import gregicality.machines.api.render.GCYMTextures;
+import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -62,7 +64,7 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
     }
 
     private IBlockState getCasingState4() {
-        return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL);
+        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL);
     }
 
     @Override

@@ -34,7 +34,8 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
         CRUSHING_WHEELS("crushing_wheels"),
         SLICING_BLADES("slicing_blades"),
         ELECTROLYTIC_CELL("electrolytic_cell"),
-        HEAT_VENT("heat_vent");
+        HEAT_VENT("heat_vent"),
+        MOLYBDENUM_DISILICIDE_COIL("molybdenum_disilicide_coil");
 
         private final String name;
 

@@ -4,6 +4,7 @@ import gregicality.machines.api.unification.GCYMMaterials;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
+import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -160,5 +161,11 @@ public class GCYMCasingLoader {
                 .input(OrePrefix.stickLong, GCYMMaterials.MolybdenumDisilicide)
                 .outputs(GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.HEAT_VENT, 2))
                 .duration(50).EUt(16).buildAndRegister();
+
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(OrePrefix.ring, GCYMMaterials.MolybdenumDisilicide, 32)
+                .input(OrePrefix.foil, Materials.Graphene, 16)
+                .fluidInputs(GCYMMaterials.HSLASteel.getFluid(GTValues.L))
+                .duration(500).EUt(GTValues.VA[GTValues.EV]).buildAndRegister();
     }
 }

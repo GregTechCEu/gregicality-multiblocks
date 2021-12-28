@@ -4,6 +4,7 @@ import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController
 import gregicality.machines.api.render.GCYMTextures;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
+import gregicality.machines.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -59,7 +60,7 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
     }
 
     private IBlockState getCasingState2() {
-        return MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL);
+        return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL);
     }
 
     private IBlockState getCasingState3() {

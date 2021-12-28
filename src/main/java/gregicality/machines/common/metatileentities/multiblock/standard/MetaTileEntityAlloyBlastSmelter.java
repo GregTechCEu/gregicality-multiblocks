@@ -5,6 +5,7 @@ import gregicality.machines.api.render.GCYMTextures;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.block.blocks.BlockUniqueCasing;
+import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
@@ -15,16 +16,24 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.MultiblockShapeInfo;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
+import gregtech.api.util.BlockInfo;
 import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -34,6 +43,9 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockController implements IHeatingCoil {
@@ -103,6 +115,33 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
                 .where('A', air())
                 .where('#', any())
                 .build();
+    }
+
+    @Override
+    public List<MultiblockShapeInfo> getMatchingShapes() {
+        ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+        MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder()
+                .aisle("#XEX#", "#CCC#", "#GGG#", "#CCC#", "#XXX#")
+                .aisle("XXXXX", "C###C", "G###G", "C###C", "XXXXX")
+                .aisle("XXXXX", "C###C", "G###G", "C###C", "XXMXX")
+                .aisle("FXXXH", "C###C", "G###G", "C###C", "XXXXX")
+                .aisle("#ISO#", "#CCC#", "#GGG#", "#CCC#", "#XXX#")
+                .where('S', GCYMMetaTileEntities.ALLOY_BLAST_SMELTER, EnumFacing.SOUTH)
+                .where('X', getCasingState())
+                .where('G', getCasingState2())
+                .where('M', MetaTileEntities.MUFFLER_HATCH[GTValues.HV], EnumFacing.UP)
+                .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.SOUTH)
+                .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
+                .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
+                .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.NORTH)
+                .where('H', () -> ConfigHolder.machines.enableMaintenance ? MetaTileEntities.MAINTENANCE_HATCH : getCasingState(), EnumFacing.SOUTH)
+                .where('#', Blocks.AIR.getDefaultState());
+
+
+        Arrays.stream(BlockWireCoil.CoilType.values())
+                .sorted(Comparator.comparingInt(BlockWireCoil.CoilType::getLevel))
+                .forEach(coilType -> shapeInfo.add(builder.where('C', MetaBlocks.WIRE_COIL.getState(coilType)).build()));
+        return shapeInfo;
     }
 
     private IBlockState getCasingState() {
