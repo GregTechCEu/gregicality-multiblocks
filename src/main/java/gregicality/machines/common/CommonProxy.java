@@ -1,7 +1,7 @@
 package gregicality.machines.common;
 
 import gregicality.machines.GregicalityMultiblocks;
-import gregicality.machines.api.utils.GTMALog;
+import gregicality.machines.api.utils.GCYMLog;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.loaders.recipe.GCYMRecipeLoader;
 import gregtech.common.blocks.VariantItemBlock;
@@ -38,7 +38,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        GTMALog.logger.info("Registering blocks...");
+        GCYMLog.logger.info("Registering blocks...");
         IForgeRegistry<Block> registry = event.getRegistry();
 
         registry.register(GCYMMetaBlocks.UNIQUE_CASING);
@@ -48,7 +48,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        GTMALog.logger.info("Registering Items...");
+        GCYMLog.logger.info("Registering Items...");
         IForgeRegistry<Item> registry = event.getRegistry();
 
         registry.register(createItemBlock(GCYMMetaBlocks.UNIQUE_CASING, VariantItemBlock::new));
@@ -63,7 +63,7 @@ public class CommonProxy {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GTMALog.logger.info("Registering recipe low...");
+        GCYMLog.logger.info("Registering recipe low...");
 
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so

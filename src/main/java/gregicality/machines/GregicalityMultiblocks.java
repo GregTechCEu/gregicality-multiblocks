@@ -1,9 +1,10 @@
 package gregicality.machines;
 
-import gregicality.machines.api.utils.GTMALog;
+import gregicality.machines.api.utils.GCYMLog;
 import gregicality.machines.common.CommonProxy;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
+import gregtech.api.GTValues;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(   modid        = GregicalityMultiblocks.MODID,
         name         = GregicalityMultiblocks.NAME,
         version      = GregicalityMultiblocks.VERSION,
-        dependencies = "required-after:gregtech;")
+        dependencies = GTValues.MOD_VERSION_DEP)
 public class GregicalityMultiblocks {
 
     public static final String MODID = "gcym";
@@ -23,7 +24,7 @@ public class GregicalityMultiblocks {
 
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
-        GTMALog.init(event.getModLog());
+        GCYMLog.init(event.getModLog());
         proxy.preLoad();
 
         GCYMMetaBlocks.init();

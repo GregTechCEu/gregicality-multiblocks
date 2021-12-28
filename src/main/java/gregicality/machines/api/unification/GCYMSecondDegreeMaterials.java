@@ -13,7 +13,7 @@ public class GCYMSecondDegreeMaterials {
 
     public static void init() {
         HSLASteel = new Material.Builder(3020, "hsla_steel")
-                .ingot()
+                .ingot().fluid()
                 .color(0x808080).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_FRAME)
                 .components(Invar, 2, Vanadium, 1, Titanium, 1, Molybdenum, 1)
@@ -21,7 +21,7 @@ public class GCYMSecondDegreeMaterials {
                 .build();
 
         TitaniumTungstenCarbide = new Material.Builder(3021, "titanium_tungsten_carbide")
-                .ingot()
+                .ingot().fluid()
                 .color(0x800D0D).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
                 .components(TungstenCarbide, 1, TitaniumCarbide, 2)
@@ -29,7 +29,7 @@ public class GCYMSecondDegreeMaterials {
                 .build();
 
         IncoloyMA956 = new Material.Builder(3022, "incoloy_ma956")
-                .ingot()
+                .ingot().fluid()
                 .color(0x37BF7E).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
                 .components(VanadiumSteel, 4, Manganese, 2, Aluminium, 5, Yttrium, 2)
