@@ -56,12 +56,7 @@ public class GCYMMetaFluids {
         BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
         if (blastProperty == null) return;
 
-        AlloyBlastProperty alloyBlastProperty;
-        if (material.hasProperty(GCYMPropertyKey.ALLOY_BLAST))
-            alloyBlastProperty = material.getProperty(GCYMPropertyKey.ALLOY_BLAST);
-        else
-            alloyBlastProperty = new AlloyBlastProperty(blastProperty.getBlastTemperature());
-
+        AlloyBlastProperty alloyBlastProperty = material.getProperty(GCYMPropertyKey.ALLOY_BLAST);
         if (alloyBlastProperty == null) return;
 
         int temperature = fluidProperty.getFluidTemperature();
