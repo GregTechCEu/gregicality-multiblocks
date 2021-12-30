@@ -166,6 +166,7 @@ public class GCYMCasingLoader {
                 .input(OrePrefix.ring, GCYMMaterials.MolybdenumDisilicide, 32)
                 .input(OrePrefix.foil, Materials.Graphene, 16)
                 .fluidInputs(GCYMMaterials.HSLASteel.getFluid(GTValues.L))
+                .outputs(GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL))
                 .duration(500).EUt(GTValues.VA[GTValues.EV]).buildAndRegister();
     }
 }

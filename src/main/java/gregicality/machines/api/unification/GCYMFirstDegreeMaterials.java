@@ -87,7 +87,7 @@ public class GCYMFirstDegreeMaterials {
         MolybdenumDisilicide = new Material.Builder(3009, "molybdenum_disilicide")
                 .ingot().fluid()
                 .color(0x6A5BA3).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_SPRING)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_SPRING, GENERATE_RING)
                 .components(Molybdenum, 1, Silicon, 2)
                 .blastTemp(2300, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 800)
                 .build();

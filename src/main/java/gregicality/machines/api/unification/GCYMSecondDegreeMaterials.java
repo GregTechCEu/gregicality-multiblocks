@@ -23,7 +23,7 @@ public class GCYMSecondDegreeMaterials {
         TitaniumTungstenCarbide = new Material.Builder(3021, "titanium_tungsten_carbide")
                 .ingot().fluid()
                 .color(0x800D0D).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
+                .flags(GENERATE_PLATE)
                 .components(TungstenCarbide, 1, TitaniumCarbide, 2)
                 .blastTemp(3800, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1000)
                 .build();

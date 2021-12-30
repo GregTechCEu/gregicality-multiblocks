@@ -117,3 +117,6 @@ material.hsla_steel=HSLA Steel
 material.titanium_tungsten_carbide=Titanium Tungsten Carbide
 material.incoloy_ma956=Incoloy-MA956
 
+# fluids
+fluid.molten=Molten %s
+

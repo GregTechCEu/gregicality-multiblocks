@@ -2,11 +2,13 @@ package gregicality.machines;
 
 import gregicality.machines.api.utils.GCYMLog;
 import gregicality.machines.common.CommonProxy;
+import gregicality.machines.common.GCYMMetaFluids;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(   modid        = GregicalityMultiblocks.MODID,
@@ -25,9 +27,11 @@ public class GregicalityMultiblocks {
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
         GCYMLog.init(event.getModLog());
-        proxy.preLoad();
 
+        GCYMMetaFluids.init();
         GCYMMetaBlocks.init();
         GCYMMetaTileEntities.init();
+
+        proxy.preLoad();
     }
 }
