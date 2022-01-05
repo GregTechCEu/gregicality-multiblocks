@@ -1,14 +1,17 @@
 package gregicality.machines.common.metatileentities.multiblock.standard;
 
+import gregicality.machines.api.GCYMValues;
 import gregicality.machines.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.machines.api.render.GCYMTextures;
 import gregicality.machines.common.block.GCYMMetaBlocks;
 import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
+import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
@@ -65,5 +68,19 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_SIFTER_OVERLAY;
+    }
+
+    @Override
+    public boolean hasMultipleRecipeMaps() {
+        if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && RecipeMap.getByName("electric_sieve") != null)
+            return true;
+        return super.hasMultipleRecipeMaps();
+    }
+
+    @Override
+    public RecipeMap<?>[] getAvailableRecipeMaps() {
+        if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && RecipeMap.getByName("electric_sieve") != null)
+            return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES, RecipeMap.getByName("electric_sieve")};
+        return super.getAvailableRecipeMaps();
     }
 }

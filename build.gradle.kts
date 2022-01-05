@@ -91,7 +91,7 @@ dependencies {
     "deobfCompile"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
     "deobfCompile"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
 
-    "provided"(files("libs/gregtech-1.12.2-2.0.0-beta.jar"))
+    "provided"(files("libs/gregtech-1.12.2-${config["gregtech.version"]}.jar"))
 
     // JUnit testing used for GitHub Actions
     "testImplementation"("junit:junit:${config["junit.version"]}")
