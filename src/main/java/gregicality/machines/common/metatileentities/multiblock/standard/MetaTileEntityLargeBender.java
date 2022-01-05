@@ -37,11 +37,11 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXXX", "XXXXXX", "XXXXXX")
-                .aisle("XXXXXX", "XAXGGX", "XXXXXX")
-                .aisle("XXXXXX", "XSXCCX", "XXXXXX")
+                .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
+                .aisle("XXXXXXX", "XAXGGGX", "XXXXXXX")
+                .aisle("XXXXXXX", "XSXCCCX", "XXXXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(35).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
                 .where('A', air())

@@ -7,6 +7,7 @@ import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
@@ -37,14 +38,16 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXGXX", "XXGXX", "XXXXX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
-                .aisle("XXXXX", "GAAAG", "GAPAG", "XCXCX")
+                .aisle("XXXXX", "GAAAG", "GAPAG", "XCMCX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
                 .aisle("XXSXX", "XXGXX", "XXGXX", "XXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(45).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(50)
+                        .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
                 .where('C', states(getCasingState4()))
+                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('A', air())
                 .build();
     }

@@ -15,7 +15,7 @@ public class GCYMSecondDegreeMaterials {
         HSLASteel = new Material.Builder(3020, "hsla_steel")
                 .ingot().fluid()
                 .color(0x808080).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_FRAME)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_SPRING, GENERATE_FRAME)
                 .components(Invar, 2, Vanadium, 1, Titanium, 1, Molybdenum, 1)
                 .blastTemp(1711, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.HV], 1000)
                 .build();

@@ -44,7 +44,7 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
                 .aisle("XXXX", "GCCX", "GAAX", "XXXX").setRepeatable(3)
                 .aisle("XXXX", "XXXX", "XXXX", "XXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(65).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
                 .where('A', air())

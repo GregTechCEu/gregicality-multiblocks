@@ -18,8 +18,6 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregtech.api.util.RelativeDirection.*;
-
 public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeMacerator(ResourceLocation metaTileEntityId) {
@@ -33,15 +31,14 @@ public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockControl
 
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(RIGHT, FRONT, UP)
-                .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
-                .aisle("#XSX#", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
-                .aisle("#XXX#", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
-                .aisle("XXXXX", "X###X", "X###X", "X###X", "XXXXX")
+        return FactoryBlockPattern.start()
+                .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X").setRepeatable(3)
+                .aisle("XXXXX", "XXSXX", "XXXXX", "XXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
-                .where('#', any())
+                .where('#', air())
                 .build();
     }
 

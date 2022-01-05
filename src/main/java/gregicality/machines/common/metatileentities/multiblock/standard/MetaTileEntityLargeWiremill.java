@@ -41,7 +41,7 @@ public class MetaTileEntityLargeWiremill extends GCYMRecipeMapMultiblockControll
                 .aisle("XXX", "XCX", "#X#")
                 .aisle("XXX", "XXX", "#X#")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(25).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('A', air())
                 .where('#', any())

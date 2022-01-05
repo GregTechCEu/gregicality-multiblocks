@@ -16,14 +16,11 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
-
-import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockController {
 
@@ -46,7 +43,7 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
                 .aisle("XXXXX", "XCCCX", "XAAAX", "XXAXX", "##X##")
                 .aisle("#XXX#", "#XSX#", "#XXX#", "#XXX#", "#####")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('C', states(getCasingState2()))
                 .where('P', states(getCasingState3()))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))

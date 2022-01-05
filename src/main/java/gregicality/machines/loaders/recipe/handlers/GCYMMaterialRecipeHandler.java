@@ -1,17 +1,19 @@
 package gregicality.machines.loaders.recipe.handlers;
 
 import gregicality.machines.api.recipes.GCYMRecipeMaps;
-import gregicality.machines.api.unification.GCYMMaterials;
 import gregicality.machines.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.*;
+import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
+import gregtech.common.items.MetaItems;
 import gregtech.loaders.recipe.CraftingComponent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -82,10 +84,13 @@ public class GCYMMaterialRecipeHandler {
 
         if (molten == null) return;
 
-        RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+        RecipeBuilder<SimpleRecipeBuilder> freezerBuilder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(new FluidStack(molten, GTValues.L))
-                .fluidOutputs(material.getFluid(GTValues.L))
-                .duration((int) material.getMass() * 3)
-                .buildAndRegister();
+                .duration((int) material.getMass() * 3);
+
+        if (material.hasProperty(PropertyKey.INGOT))
+            freezerBuilder.notConsumable(MetaItems.SHAPE_MOLD_INGOT.getStackForm()).output(OrePrefix.ingot, material).buildAndRegister();
+        else
+            freezerBuilder.fluidOutputs(material.getFluid(GTValues.L)).buildAndRegister();
     }
 }

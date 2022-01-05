@@ -40,7 +40,7 @@ public class MetaTileEntityLargeSolidifier extends GCYMRecipeMapMultiblockContro
                 .aisle("#XXX#", "XCACX", "XAAAX", "XCACX", "#XXX#")
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(35).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(45).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('A', air())
                 .where('#', any())

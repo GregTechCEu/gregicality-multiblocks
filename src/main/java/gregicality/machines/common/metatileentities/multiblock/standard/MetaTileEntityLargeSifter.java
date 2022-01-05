@@ -44,7 +44,7 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
                 .aisle("#XSX#", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
                 .aisle("#XXX#", "X###X", "X###X", "X###X", "#XXX#")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('A', air())
                 .where('#', any())

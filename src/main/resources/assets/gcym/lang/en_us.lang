@@ -66,11 +66,11 @@ gcym.multiblock.mega_vacuum_freezer.description=A massive Vacuum Freezer for ext
 
 # hatches
 
-gcym.machine.parallel_hatch.iv.name=Parallel Control Hatch Mark 1
-gcym.machine.parallel_hatch.luv.name=Parallel Control Hatch Mark 2
-gcym.machine.parallel_hatch.zpm.name=Parallel Control Hatch Mark 3
-gcym.machine.parallel_hatch.uv.name=Parallel Control Hatch Mark 4
-gcym.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes
+gcym.machine.parallel_hatch.iv.name=Elite Parallel Control Hatch
+gcym.machine.parallel_hatch.luv.name=Master Parallel Control Hatch
+gcym.machine.parallel_hatch.zpm.name=Ultimate Parallel Control Hatch
+gcym.machine.parallel_hatch.uv.name=Super Parallel Control Hatch
+gcym.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes.
 
 
 

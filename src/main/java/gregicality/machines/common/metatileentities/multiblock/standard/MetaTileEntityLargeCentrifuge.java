@@ -41,7 +41,7 @@ public class MetaTileEntityLargeCentrifuge extends GCYMRecipeMapMultiblockContro
                 .aisle("XXSXX", "XACAX", "XCACX", "XACAX", "XXXXX")
                 .aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XXX#")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('A', air())
                 .where('#', any())

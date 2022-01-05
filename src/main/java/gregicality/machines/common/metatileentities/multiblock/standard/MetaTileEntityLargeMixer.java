@@ -42,7 +42,7 @@ public class MetaTileEntityLargeMixer extends GCYMRecipeMapMultiblockController 
                 .aisle("XXXXX", "XACAX", "XAAAX", "XACAX", "XAAAX", "##F##")
                 .aisle("#XXX#", "#XSX#", "#XXX#", "#XXX#", "#XXX#", "##F##")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(45).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities()))
                 .where('P', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
                 .where('G', states(getCasingState4()))
@@ -65,7 +65,7 @@ public class MetaTileEntityLargeMixer extends GCYMRecipeMapMultiblockController 
     }
 
     private IBlockState getCasingState4() {
-        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
+        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STAINLESS_STEEL_GEARBOX);
     }
 
     private IBlockState getFrameState() {
