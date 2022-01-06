@@ -61,7 +61,7 @@ public class CommonProxy {
         return itemBlock;
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @SubscribeEvent()
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GCYMLog.logger.info("Registering recipe low...");
 

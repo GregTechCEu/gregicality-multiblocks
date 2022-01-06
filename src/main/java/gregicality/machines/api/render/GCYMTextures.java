@@ -39,6 +39,7 @@ public class GCYMTextures {
     public static OrientedOverlayRenderer LARGE_REPLICATOR_OVERLAY;
     public static OrientedOverlayRenderer MEGA_BLAST_FURNACE_OVERLAY;
     public static OrientedOverlayRenderer MEGA_VACUUM_FREEZER_OVERLAY;
+    public static OrientedOverlayRenderer STEAM_ENGINE_OVERLAY;
 
 
     // Hatches
@@ -61,6 +62,7 @@ public class GCYMTextures {
     public static SimpleOverlayRenderer MIXER_CASING;
     public static SimpleOverlayRenderer ENGRAVER_CASING;
     public static SimpleOverlayRenderer ATOMIC_CASING;
+    public static SimpleOverlayRenderer STEAM_CASING;
 
 
     public static void preInit() {
@@ -92,6 +94,7 @@ public class GCYMTextures {
         LARGE_REPLICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_replicator", FRONT);
         MEGA_BLAST_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_blast_furnace", FRONT);
         MEGA_VACUUM_FREEZER_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_vacuum_freezer", FRONT);
+        STEAM_ENGINE_OVERLAY = new OrientedOverlayRenderer("multiblock/steam_engine", FRONT);
 
         // Hatches
         PARALLEL_HATCH_MK1_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk1", FRONT);
@@ -112,5 +115,6 @@ public class GCYMTextures {
         MIXER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/mixer_casing");
         ENGRAVER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/engraver_casing");
         ATOMIC_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/atomic_casing");
+        STEAM_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/steam_casing");
     }
 }

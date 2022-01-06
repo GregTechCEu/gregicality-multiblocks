@@ -30,6 +30,7 @@ public class GCYMCasingLoader {
         ModHandler.addShapedRecipe(true, "casing_large_mixer", GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.MIXER_CASING, 2), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, GCYMMaterials.HastelloyX), 'F', new UnificationEntry(OrePrefix.frameGt, GCYMMaterials.MaragingSteel300));
         ModHandler.addShapedRecipe(true, "casing_large_engraver", GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.ENGRAVER_CASING, 2), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, GCYMMaterials.TitaniumTungstenCarbide), 'F', new UnificationEntry(OrePrefix.frameGt, Materials.Titanium));
         ModHandler.addShapedRecipe(true, "casing_atomic", GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.ATOMIC_CASING, 2), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plateDouble, GCYMMaterials.Trinaquadalloy), 'F', new UnificationEntry(OrePrefix.frameGt, Materials.NaquadahAlloy));
+        ModHandler.addShapedRecipe(true, "casing_steam", GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.STEAM_CASING, 2), "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, Materials.Brass), 'F', new UnificationEntry(OrePrefix.frameGt, Materials.Brass));
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, GCYMMaterials.Zeron100, 6)
@@ -114,6 +115,13 @@ public class GCYMCasingLoader {
                 .input(OrePrefix.frameGt, Materials.NaquadahAlloy)
                 .notConsumable(new IntCircuitIngredient(6))
                 .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.ATOMIC_CASING, 2))
+                .duration(50).EUt(16).buildAndRegister();
+
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(OrePrefix.plate, Materials.Brass, 6)
+                .input(OrePrefix.frameGt, Materials.Brass)
+                .notConsumable(new IntCircuitIngredient(6))
+                .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.STEAM_CASING, 2))
                 .duration(50).EUt(16).buildAndRegister();
 
         // Unique Casings

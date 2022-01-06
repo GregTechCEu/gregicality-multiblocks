@@ -1,6 +1,7 @@
 package gregicality.machines.common.metatileentities;
 
 import gregicality.machines.GregicalityMultiblocks;
+import gregicality.machines.common.metatileentities.multiblock.generator.MetaTileEntitySteamEngine;
 import gregicality.machines.common.metatileentities.multiblock.standard.*;
 import gregicality.machines.common.metatileentities.multiblock.unique.MetaTileEntityChemicalPlant;
 import gregicality.machines.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;
@@ -38,6 +39,8 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeReplicator LARGE_REPLICATOR;
     public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
+    public static MetaTileEntitySteamEngine STEAM_ENGINE;
+
     public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4]; //todo, GTValues.HT hatches
 
 
@@ -70,6 +73,7 @@ public class GCYMMetaTileEntities {
 //        LARGE_REPLICATOR = registerMetaTileEntity(2024, new MetaTileEntityLargeReplicator(gcymId("large_replicator")));
         MEGA_BLAST_FURNACE = registerMetaTileEntity(2025, new MetaTileEntityMegaBlastFurnace(gcymId("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = registerMetaTileEntity(2026, new MetaTileEntityMegaVacuumFreezer(gcymId("mega_vacuum_freezer")));
+        STEAM_ENGINE = registerMetaTileEntity(2027, new MetaTileEntitySteamEngine(gcymId("steam_engine")));
 
 
 

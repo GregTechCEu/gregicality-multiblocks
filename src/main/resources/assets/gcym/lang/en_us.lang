@@ -27,7 +27,9 @@ gcym.machine.electric_implosion_compressor.name=Electric Implosion Compressor
 gcym.machine.large_mass_fabricator.name=Large Mass Fabrication Chamber
 gcym.machine.large_replicator.name=Large Replication Chamber
 gcym.machine.mega_blast_furnace.name=Rotary Hearth Furnace
-gcym.machine.mega_vacuum_freezer.name=Industrial Blast Chiller
+gcym.machine.mega_vacuum_freezer.name=Bulk Blast Chiller
+gcym.machine.steam_engine.name=Industrial Steam Engine
+gcym.machine.steam_engine.tooltip.1=Produces up to %s§7 power.
 
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
@@ -62,6 +64,7 @@ gcym.multiblock.large_mass_fabricator.description=A multiblock Mass Fabricator f
 gcym.multiblock.large_replicator.description=A multiblock Replicator for turning elementary particles into materials.
 gcym.multiblock.mega_blast_furnace.description=A massive Electric Blast Furnace for extreme volume smelting.
 gcym.multiblock.mega_vacuum_freezer.description=A massive Vacuum Freezer for extreme volume cooling.
+gcym.multiblock.steam_engine.description=A large Steam Engine for effective power production.
 
 
 # hatches
@@ -96,6 +99,7 @@ tile.large_multiblock_casing.nonconducting_casing.name=Nonconducting Casing
 tile.large_multiblock_casing.mixer_casing.name=Reaction-Safe Mixing Casing
 tile.large_multiblock_casing.engraver_casing.name=Laser-Safe Engraving Casing
 tile.large_multiblock_casing.atomic_casing.name=Atomic Casing
+tile.large_multiblock_casing.steam_casing.name=Industrial Steam Casing
 
 # RecipeMaps
 recipemap.chemical_plant.name=Chemical Plant

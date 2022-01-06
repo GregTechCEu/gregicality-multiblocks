@@ -10,6 +10,7 @@ public class GCYMMaterialFlagAddition {
         // Frames
         Materials.TungstenCarbide.addFlags(MaterialFlags.GENERATE_FRAME);
         Materials.Tungsten.addFlags(MaterialFlags.GENERATE_FRAME);
+        Materials.Brass.addFlags(MaterialFlags.GENERATE_FRAME);
 
         // Small Gears
         Materials.TungstenCarbide.addFlags(MaterialFlags.GENERATE_SMALL_GEAR);

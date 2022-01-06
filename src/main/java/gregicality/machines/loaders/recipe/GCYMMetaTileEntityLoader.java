@@ -1,5 +1,7 @@
 package gregicality.machines.loaders.recipe;
 
+import gregicality.machines.common.block.GCYMMetaBlocks;
+import gregicality.machines.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -255,6 +257,14 @@ public class GCYMMetaTileEntityLoader {
                 'P', new UnificationEntry(pipeNormalFluid, Neutronium),
                 'D', new UnificationEntry(plateDense, Neutronium),
                 'W', new UnificationEntry(wireGtQuadruple, RutheniumTriniumAmericiumNeutronate));
+
+        ModHandler.addShapedRecipe(true, "steam_engine", GCYMMetaTileEntities.STEAM_ENGINE.getStackForm(),
+                "FPF", "PCP", "SGS",
+                'C', GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.STEAM_CASING),
+                'S', new UnificationEntry(gearSmall, Bronze),
+                'G', new UnificationEntry(gear, Steel),
+                'F', new UnificationEntry(pipeSmallFluid, Potin),
+                'P', new UnificationEntry(plate, Brass));
 
         // Parallel Hatches
         ModHandler.addShapedRecipe(true, "parallel_hatch_iv", GCYMMetaTileEntities.PARALLEL_HATCH[IV - IV].getStackForm(),

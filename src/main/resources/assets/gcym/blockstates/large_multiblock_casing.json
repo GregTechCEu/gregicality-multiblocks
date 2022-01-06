@@ -79,6 +79,12 @@
         "textures": {
           "all": "gregtech:blocks/casings/large_multiblock_casing/atomic_casing"
         }
+      },
+      "steam_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casings/large_multiblock_casing/steam_casing"
+        }
       }
     }
   }

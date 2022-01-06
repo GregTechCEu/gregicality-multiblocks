@@ -83,4 +83,9 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
     public boolean canBeDistinct() {
         return true;
     }
+
+    @Override
+    public boolean hasMufflerMechanics() {
+        return true;
+    }
 }

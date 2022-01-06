@@ -66,4 +66,9 @@ public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockContro
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_ARC_FURNACE_OVERLAY;
     }
+
+    @Override
+    public boolean hasMufflerMechanics() {
+        return true;
+    }
 }
