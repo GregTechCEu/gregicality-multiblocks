@@ -33,11 +33,14 @@ public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockControl
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X").setRepeatable(3)
+                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCTCX", "XCCCX", "X###X")
+                .aisle("XXXXX", "XCCCX", "XCCCX", "X###X")
                 .aisle("XXXXX", "XXSXX", "XXXXX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
+                .where('T', tieredCasing().or(states(getCasingState2())))
                 .where('#', air())
                 .build();
     }

@@ -38,11 +38,12 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXSXX", "XCCCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX")
+                .aisle("XXSXX", "XCTCX", "XAAAX", "XAAAX", "XAAAX", "XCCCX", "XXXXX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XAAAX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
+                .where('T', tieredCasing().or(states(getCasingState2())))
                 .where('A', air())
                 .where('#', any())
                 .build();

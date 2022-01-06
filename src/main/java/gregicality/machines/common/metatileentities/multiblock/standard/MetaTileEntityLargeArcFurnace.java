@@ -35,7 +35,7 @@ public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockContro
         return FactoryBlockPattern.start()
                 .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#")
                 .aisle("XXXXX", "XCACX", "XCACX", "XXXXX")
-                .aisle("XXXXX", "XAAAX", "XAAAX", "XXMXX")
+                .aisle("XXXXX", "XATAX", "XAAAX", "XXMXX")
                 .aisle("XXXXX", "XACAX", "XACAX", "XXXXX")
                 .aisle("#XXX#", "#XSX#", "#XXX#", "#XXX#")
                 .where('S', selfPredicate())
@@ -43,6 +43,7 @@ public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockContro
                         .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('C', states(getCasingState2()))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
+                .where('T', tieredCasing().or(air()))
                 .where('A', air())
                 .where('#', any())
                 .build();

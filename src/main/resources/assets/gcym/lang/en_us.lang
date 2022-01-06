@@ -33,6 +33,8 @@ gcym.machine.steam_engine.tooltip.1=Produces up to %s§7 power.
 
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
+gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run.
+gcym.multiblock.tiered_hatch.tooltip=Max Tiered EU/t: §a%s (%s§r)
 
 
 
@@ -75,6 +77,23 @@ gcym.machine.parallel_hatch.zpm.name=Ultimate Parallel Control Hatch
 gcym.machine.parallel_hatch.uv.name=Super Parallel Control Hatch
 gcym.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes.
 
+gcym.machine.tiered_hatch.tooltip.1=Enables up to %s§7 Voltage.
+
+gcym.machine.tiered_hatch.ulv.name=Primitive Voltage Control Unit
+gcym.machine.tiered_hatch.lv.name=Basic Voltage Control Unit
+gcym.machine.tiered_hatch.mv.name=Good Voltage Control Unit
+gcym.machine.tiered_hatch.hv.name=Advanced Voltage Control Unit
+gcym.machine.tiered_hatch.ev.name=Extreme Voltage Control Unit
+gcym.machine.tiered_hatch.iv.name=Elite Voltage Control Unit
+gcym.machine.tiered_hatch.luv.name=Master Voltage Control Unit
+gcym.machine.tiered_hatch.zpm.name=Ultimate Voltage Control Unit
+gcym.machine.tiered_hatch.uv.name=Super Voltage Control Unit
+gcym.machine.tiered_hatch.uhv.name=Infinite Voltage Control Unit
+gcym.machine.tiered_hatch.uev.name=Ultra Voltage Control Unit
+gcym.machine.tiered_hatch.uiv.name=Insane Voltage Control Unit
+gcym.machine.tiered_hatch.umv.name=Epic Voltage Control Unit
+gcym.machine.tiered_hatch.uxv.name=Legendary Voltage Control Unit
+gcym.machine.tiered_hatch.max.name=Maximum Voltage Control Unit
 
 
 # casings

@@ -6,7 +6,7 @@ import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
-import static gregtech.client.renderer.texture.cube.OrientedOverlayRenderer.OverlayFace.FRONT;
+import static gregtech.client.renderer.texture.cube.OrientedOverlayRenderer.OverlayFace.*;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
 public class GCYMTextures {
@@ -47,6 +47,7 @@ public class GCYMTextures {
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK2_OVERLAY;
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK3_OVERLAY;
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK4_OVERLAY;
+    public static OrientedOverlayRenderer TIERED_HATCH_OVERLAY;
 
 
     // Casings
@@ -101,6 +102,7 @@ public class GCYMTextures {
         PARALLEL_HATCH_MK2_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk2", FRONT);
         PARALLEL_HATCH_MK3_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk3", FRONT);
         PARALLEL_HATCH_MK4_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk4", FRONT);
+        TIERED_HATCH_OVERLAY = new OrientedOverlayRenderer("hatches/tiered_hatch", FRONT, BACK, TOP, BOTTOM, SIDE);
 
         // Casings
         MACERATOR_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/macerator_casing");

@@ -117,4 +117,9 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
     public boolean hasMultipleRecipeMaps() {
         return true;
     }
+
+    @Override
+    public boolean isTiered() {
+        return false;
+    }
 }

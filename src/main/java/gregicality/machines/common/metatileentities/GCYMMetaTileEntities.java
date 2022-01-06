@@ -5,6 +5,7 @@ import gregicality.machines.common.metatileentities.multiblock.generator.MetaTil
 import gregicality.machines.common.metatileentities.multiblock.standard.*;
 import gregicality.machines.common.metatileentities.multiblock.unique.MetaTileEntityChemicalPlant;
 import gregicality.machines.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;
+import gregicality.machines.common.metatileentities.multiblockpart.MetaTileEntityTieredHatch;
 import gregtech.api.GTValues;
 import net.minecraft.util.ResourceLocation;
 
@@ -41,7 +42,8 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
     public static MetaTileEntitySteamEngine STEAM_ENGINE;
 
-    public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4]; //todo, GTValues.HT hatches
+    public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
+    public static MetaTileEntityTieredHatch[] TIERED_HATCH = new MetaTileEntityTieredHatch[GTValues.V.length];
 
 
     public static void init() {
@@ -81,6 +83,12 @@ public class GCYMMetaTileEntities {
         for (int i = 0; i < PARALLEL_HATCH.length; i++) {
             int tier = GTValues.IV + i;
             PARALLEL_HATCH[i] = registerMetaTileEntity(2050 + i, new MetaTileEntityParallelHatch(gcymId(String.format("parallel_hatch.%s", GTValues.VN[tier])), tier));
+        }
+        for (int i = 0; i < TIERED_HATCH.length; i++) {
+            if (!GTValues.HT && i > GTValues.UHV)
+                break;
+
+            TIERED_HATCH[i] = registerMetaTileEntity(2054 + i, new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));
         }
     }
 

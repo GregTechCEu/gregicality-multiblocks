@@ -60,4 +60,9 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
     public boolean canBeDistinct() {
         return true;
     }
+
+    @Override
+    public boolean isTiered() {
+        return false;
+    }
 }
