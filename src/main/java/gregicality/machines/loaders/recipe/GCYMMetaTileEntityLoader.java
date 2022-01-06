@@ -10,6 +10,8 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.loaders.recipe.CraftingComponent;
+import gregtech.loaders.recipe.MetaTileEntityLoader;
 
 import static gregicality.machines.api.unification.GCYMMaterials.*;
 import static gregtech.api.GTValues.*;
@@ -302,5 +304,15 @@ public class GCYMMetaTileEntityLoader {
                 'E', MetaItems.EMITTER_UV.getStackForm(),
                 'F', MetaItems.FIELD_GENERATOR_UV.getStackForm(),
                 'W', new UnificationEntry(cableGtDouble, YttriumBariumCuprate));
+
+        // Tiered Hatches
+        MetaTileEntityLoader.registerMachineRecipe(GCYMMetaTileEntities.TIERED_HATCH, "PPP", "PCP", "PPP", 'P', CraftingComponent.PLATE, 'C', CraftingComponent.BETTER_CIRCUIT);
+        if (!HT) {
+            ModHandler.addShapedRecipe(true, "gcym.machine.tiered_hatch.uhv", GCYMMetaTileEntities.TIERED_HATCH[UHV].getStackForm(),
+                    "PPP", "PCP", "PPP",
+                    'P', CraftingComponent.PLATE.getIngredient(UHV),
+                    'C', CraftingComponent.CIRCUIT.getIngredient(UHV));
+        }
+
     }
 }
