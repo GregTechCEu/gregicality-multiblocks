@@ -9,6 +9,7 @@ import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
@@ -25,10 +26,12 @@ public class GCYMMaterialRecipeHandler {
     }
 
     public static void processIngot(OrePrefix ingotPrefix, Material material, BlastProperty property) {
-        if (!material.hasProperty(PropertyKey.FLUID)) return;
+        if (material.hasFlag(MaterialFlags.DISABLE_DECOMPOSITION)) return;
 
         // ignore non-alloys
         if (material.getMaterialComponents().size() <= 1) return;
+
+        if (!material.hasProperty(PropertyKey.FLUID)) return;
 
         Fluid fluid = material.getProperty(PropertyKey.FLUID).getFluid();
         if (fluid == null) return;
