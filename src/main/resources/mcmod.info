@@ -1,6 +1,6 @@
 [{
   "modid": "gcym",
-  "name": "Gregicality: Multiblocks",
+  "name": "Gregicality Multiblocks",
   "description": "Multiblock Machines module of Gregicality.",
   "version": "${version}",
   "mcversion": "${mcversion}",

@@ -8,7 +8,6 @@ import gregicality.machines.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(   modid        = GregicalityMultiblocks.MODID,
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class GregicalityMultiblocks {
 
     public static final String MODID = "gcym";
-    public static final String NAME = "Gregicality: Multiblocks";
+    public static final String NAME = "Gregicality Multiblocks";
     public static final String VERSION = "@VERSION@";
 
     @SidedProxy(modId = MODID, clientSide = "gregicality.machines.common.ClientProxy", serverSide = "gregicality.machines.common.CommonProxy")
