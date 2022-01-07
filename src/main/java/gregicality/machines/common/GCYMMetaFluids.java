@@ -34,8 +34,6 @@ public class GCYMMetaFluids {
         addFluidSprites();
 
         for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
-            if (material.isHidden()) continue;
-
             createMoltenFluid(material);
         }
     }
