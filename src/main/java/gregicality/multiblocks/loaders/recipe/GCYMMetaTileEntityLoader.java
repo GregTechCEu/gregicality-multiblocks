@@ -33,9 +33,9 @@ public class GCYMMetaTileEntityLoader {
         ModHandler.addShapedRecipe(true, "alloy_blast_smelter", GCYMMetaTileEntities.ALLOY_BLAST_SMELTER.getStackForm(),
                 "TCT", "WSW", "TCT",
                 'T', new UnificationEntry(plate, TantalumCarbide),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
-                'S', MetaTileEntities.ALLOY_SMELTER[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Extreme),
+                'S', MetaTileEntities.ALLOY_SMELTER[EV].getStackForm(),
+                'W', new UnificationEntry(cableGtSingle, Aluminium));
 
         ModHandler.addShapedRecipe(true, "large_arc_furnace", GCYMMetaTileEntities.LARGE_ARC_FURNACE.getStackForm(),
                 "WGW", "CSC", "TTT",
