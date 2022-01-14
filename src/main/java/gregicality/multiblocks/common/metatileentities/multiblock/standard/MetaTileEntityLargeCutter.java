@@ -26,8 +26,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeCutter(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CUTTER_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES});
     }
 
     @Override
@@ -74,10 +73,5 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CUTTER_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
-        return true;
     }
 }

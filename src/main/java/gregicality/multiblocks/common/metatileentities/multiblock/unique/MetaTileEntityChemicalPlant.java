@@ -7,7 +7,7 @@ import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
@@ -24,11 +24,10 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
+public class MetaTileEntityChemicalPlant extends MultiMapMultiblockController {
 
     public MetaTileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES);
-        this.recipeMaps = new RecipeMap[]{GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES, RecipeMaps.LARGE_CHEMICAL_RECIPES};
+        super(metaTileEntityId, new RecipeMap<?>[]{GCYMRecipeMaps.CHEMICAL_PLANT_RECIPES, RecipeMaps.LARGE_CHEMICAL_RECIPES});
     }
 
     @Override
@@ -83,11 +82,6 @@ public class MetaTileEntityChemicalPlant extends RecipeMapMultiblockController {
 
     @Override
     public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

@@ -25,8 +25,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeExtractor extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeExtractor(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.EXTRACTOR_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.EXTRACTOR_RECIPES, RecipeMaps.CANNER_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.EXTRACTOR_RECIPES, RecipeMaps.CANNER_RECIPES});
     }
 
     @Override
@@ -64,10 +63,5 @@ public class MetaTileEntityLargeExtractor extends GCYMRecipeMapMultiblockControl
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_EXTRACTOR_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
-        return true;
     }
 }

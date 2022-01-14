@@ -25,8 +25,7 @@ import javax.annotation.Nonnull;
 public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeBrewery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BREWING_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.BREWING_RECIPES, RecipeMaps.FERMENTING_RECIPES, RecipeMaps.FLUID_HEATER_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.BREWING_RECIPES, RecipeMaps.FERMENTING_RECIPES, RecipeMaps.FLUID_HEATER_RECIPES});
     }
 
     @Override
@@ -78,11 +77,6 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
 
     @Override
     public boolean hasMufflerMechanics() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

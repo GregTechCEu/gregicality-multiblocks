@@ -25,8 +25,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockController { //todo render liquid in the structure that looks the same as what is in the fluid hatches
 
     public MetaTileEntityLargeChemicalBath(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CHEMICAL_BATH_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.CHEMICAL_BATH_RECIPES, RecipeMaps.ORE_WASHER_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.CHEMICAL_BATH_RECIPES, RecipeMaps.ORE_WASHER_RECIPES});
     }
 
     @Override
@@ -66,10 +65,5 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CHEMICAL_BATH_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
-        return true;
     }
 }
