@@ -48,11 +48,6 @@ import java.util.List;
 
 public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockController implements IHeatingCoil {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY
-    };
-
     private int blastFurnaceTemperature;
 
     public MetaTileEntityAlloyBlastSmelter(ResourceLocation metaTileEntityId) {

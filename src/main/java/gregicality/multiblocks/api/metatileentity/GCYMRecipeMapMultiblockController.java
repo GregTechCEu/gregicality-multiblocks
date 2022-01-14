@@ -5,7 +5,7 @@ import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.common.GCYMConfigHolder;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.client.resources.I18n;
@@ -19,11 +19,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultiblockController implements IParallelMultiblock {
-
+public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblockController implements IParallelMultiblock {
 
     public GCYMRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap);
+        this(metaTileEntityId, new RecipeMap<?>[]{recipeMap});
+    }
+
+    public GCYMRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?>[] recipeMaps) {
+        super(metaTileEntityId, recipeMaps);
         this.recipeMapWorkable = new GCYMMultiblockRecipeLogic(this);
     }
 
@@ -37,8 +40,8 @@ public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultibl
     }
 
     @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        super.addDisplayText(textList);
+    protected void addExtraDisplayInfo(List<ITextComponent> textList) {
+        super.addExtraDisplayInfo(textList);
         List<ITieredMetaTileEntity> list = getAbilities(GCYMMultiblockAbility.TIERED_HATCH);
         if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings && !list.isEmpty()) {
             long maxVoltage = Math.min(GTValues.V[list.get(0).getTier()], Math.max(energyContainer.getInputVoltage(), energyContainer.getOutputVoltage()));
@@ -60,11 +63,6 @@ public abstract class GCYMRecipeMapMultiblockController extends RecipeMapMultibl
 
     public boolean isTiered() {
         return GCYMConfigHolder.globalMultiblocks.enableTieredCasings;
-    }
-
-    @Override
-    public TraceabilityPredicate autoAbilities() {
-        return autoAbilities(true, true, true, true, true, true, true);
     }
 
     @Override

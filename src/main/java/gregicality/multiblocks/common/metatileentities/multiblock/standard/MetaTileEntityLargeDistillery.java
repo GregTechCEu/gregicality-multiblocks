@@ -35,8 +35,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockController { //todo structure needs fixing
 
     public MetaTileEntityLargeDistillery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.DISTILLATION_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES});
     }
 
     @Override
@@ -111,11 +110,6 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
     @Override
     public boolean hasMufflerMechanics() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 

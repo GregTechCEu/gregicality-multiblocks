@@ -27,7 +27,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeSifter(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.SIFTER_RECIPES);
+        super(metaTileEntityId, determineRecipeMaps());
     }
 
     @Override
@@ -71,17 +71,11 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
         return GCYMTextures.LARGE_SIFTER_OVERLAY;
     }
 
-    @Override
-    public boolean hasMultipleRecipeMaps() {
-        if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && RecipeMap.getByName("electric_sieve") != null)
-            return true;
-        return super.hasMultipleRecipeMaps();
-    }
-
-    @Override
-    public RecipeMap<?>[] getAvailableRecipeMaps() {
-        if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && RecipeMap.getByName("electric_sieve") != null)
-            return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES, RecipeMap.getByName("electric_sieve")};
-        return super.getAvailableRecipeMaps();
+    private static RecipeMap<?>[] determineRecipeMaps() {
+        RecipeMap<?> sieveMap = RecipeMap.getByName("electric_sieve");
+        if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && sieveMap != null) {
+            return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES, sieveMap};
+        }
+        return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES};
     }
 }

@@ -25,8 +25,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeCentrifuge extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeCentrifuge(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.CENTRIFUGE_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.CENTRIFUGE_RECIPES, RecipeMaps.THERMAL_CENTRIFUGE_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.CENTRIFUGE_RECIPES, RecipeMaps.THERMAL_CENTRIFUGE_RECIPES});
     }
 
     @Override
@@ -66,10 +65,5 @@ public class MetaTileEntityLargeCentrifuge extends GCYMRecipeMapMultiblockContro
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CENTRIFUGE_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
-        return true;
     }
 }

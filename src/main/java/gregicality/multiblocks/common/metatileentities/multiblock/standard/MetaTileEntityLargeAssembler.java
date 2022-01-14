@@ -25,8 +25,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeAssembler(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.ASSEMBLER_RECIPES, RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.ASSEMBLER_RECIPES, RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES});
     }
 
     @Override
@@ -74,11 +73,6 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
 
     @Override
     public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

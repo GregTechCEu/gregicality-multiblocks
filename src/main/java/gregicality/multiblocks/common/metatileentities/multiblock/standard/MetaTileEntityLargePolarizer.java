@@ -22,8 +22,7 @@ import javax.annotation.Nonnull;
 public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargePolarizer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.POLARIZER_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.POLARIZER_RECIPES, RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.POLARIZER_RECIPES, RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES});
     }
 
     @Override
@@ -63,10 +62,5 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_POLARIZER_OVERLAY;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
-        return true;
     }
 }

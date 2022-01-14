@@ -24,9 +24,8 @@ import javax.annotation.Nonnull;
 public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeBender(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.BENDER_RECIPES);
-        this.recipeMaps = new RecipeMap[]{RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
-                RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES};
+        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
+                RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES});
     }
 
     @Override
@@ -73,11 +72,6 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
 
     @Override
     public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMultipleRecipeMaps() {
         return true;
     }
 }

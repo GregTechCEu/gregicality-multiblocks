@@ -24,11 +24,6 @@ import javax.annotation.Nonnull;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = new MultiblockAbility[]{
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.INPUT_ENERGY
-    };
-
     public MetaTileEntityElectricImplosionCompressor(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.IMPLOSION_RECIPES);
     }
