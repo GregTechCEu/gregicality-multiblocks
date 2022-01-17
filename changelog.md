@@ -12,3 +12,7 @@
 
 ## v1.0.2
  * Fixes Alloy Blast Smelter recipe being IV tier instead of EV
+
+## v1.0.3
+ * Adds compat for GTCEu v2.0.5-beta
+ * Changes multiblock recipes to use Platinum cables instead of Tungsten
