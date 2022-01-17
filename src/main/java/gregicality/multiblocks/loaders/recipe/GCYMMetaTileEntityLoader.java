@@ -28,7 +28,7 @@ public class GCYMMetaTileEntityLoader {
                 'P', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
                 'S', MetaTileEntities.MACERATOR[IV].getStackForm(),
                 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "alloy_blast_smelter", GCYMMetaTileEntities.ALLOY_BLAST_SMELTER.getStackForm(),
                 "TCT", "WSW", "TCT",
@@ -43,7 +43,7 @@ public class GCYMMetaTileEntityLoader {
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
                 'G', new UnificationEntry(dust, Graphite),
                 'S', MetaTileEntities.ARC_FURNACE[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_assembler", GCYMMetaTileEntities.LARGE_ASSEMBLER.getStackForm(),
                 "RER", "SCA", "PWP",
@@ -53,7 +53,7 @@ public class GCYMMetaTileEntityLoader {
                 'P', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
                 'S', MetaTileEntities.ASSEMBLER[IV].getStackForm(),
                 'A', MetaTileEntities.CIRCUIT_ASSEMBLER[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_autoclave", GCYMMetaTileEntities.LARGE_AUTOCLAVE.getStackForm(),
                 "ACA", "ASA", "PWP",
@@ -61,7 +61,7 @@ public class GCYMMetaTileEntityLoader {
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
                 'S', MetaTileEntities.AUTOCLAVE[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
 
         ModHandler.addShapedRecipe(true, "large_bender", GCYMMetaTileEntities.LARGE_BENDER.getStackForm(),
@@ -72,7 +72,7 @@ public class GCYMMetaTileEntityLoader {
                 'S', MetaTileEntities.COMPRESSOR[IV].getStackForm(),
                 'F', MetaTileEntities.FORMING_PRESS[IV].getStackForm(),
                 'H', MetaTileEntities.FORGE_HAMMER[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_brewer", GCYMMetaTileEntities.LARGE_BREWERY.getStackForm(),
                 "SCS", "BFH", "PWP",
@@ -82,7 +82,7 @@ public class GCYMMetaTileEntityLoader {
                 'B', MetaTileEntities.BREWERY[IV].getStackForm(),
                 'F', MetaTileEntities.FERMENTER[IV].getStackForm(),
                 'H', MetaTileEntities.FLUID_HEATER[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_centrifuge", GCYMMetaTileEntities.LARGE_CENTRIFUGE.getStackForm(),
                 "HPH", "RCT", "MWM",
@@ -92,7 +92,7 @@ public class GCYMMetaTileEntityLoader {
                 'R', MetaTileEntities.CENTRIFUGE[IV].getStackForm(),
                 'T', MetaTileEntities.THERMAL_CENTRIFUGE[IV].getStackForm(),
                 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_chemical_bath", GCYMMetaTileEntities.LARGE_CHEMICAL_BATH.getStackForm(),
                 "PGP", "BCO", "MWM",
@@ -102,7 +102,7 @@ public class GCYMMetaTileEntityLoader {
                 'G', MetaBlocks.TRANSPARENT_CASING.getItemVariant(BlockGlassCasing.CasingType.TEMPERED_GLASS),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
                 'M', MetaItems.CONVEYOR_MODULE_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "chemical_plant", GCYMMetaTileEntities.CHEMICAL_PLANT.getStackForm(),
                 "LRL", "PMP", "CSC",
@@ -121,7 +121,7 @@ public class GCYMMetaTileEntityLoader {
                 'G', MetaBlocks.TRANSPARENT_CASING.getItemVariant(BlockGlassCasing.CasingType.TEMPERED_GLASS),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
                 'M', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_cutter", GCYMMetaTileEntities.LARGE_CUTTER.getStackForm(),
                 "SPS", "BCO", "MWM",
@@ -131,7 +131,7 @@ public class GCYMMetaTileEntityLoader {
                 'S', new UnificationEntry(toolHeadBuzzSaw, TungstenCarbide),
                 'P', MetaItems.CONVEYOR_MODULE_IV.getStackForm(),
                 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_distillery", GCYMMetaTileEntities.LARGE_DISTILLERY.getStackForm(),
                 "LCL", "PSP", "LCL",
@@ -146,7 +146,7 @@ public class GCYMMetaTileEntityLoader {
                 'P', new UnificationEntry(plate, BlackSteel),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
                 'S', MetaTileEntities.ELECTROLYZER[IV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_polarizer", GCYMMetaTileEntities.LARGE_POLARIZER.getStackForm(),
                 "PSP", "BCO", "WSW",
@@ -155,7 +155,7 @@ public class GCYMMetaTileEntityLoader {
                 'O', MetaTileEntities.ELECTROMAGNETIC_SEPARATOR[IV].getStackForm(),
                 'S', new UnificationEntry(wireGtQuadruple, Osmium),
                 'P', new UnificationEntry(plate, BlackSteel),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_extruder", GCYMMetaTileEntities.LARGE_EXTRUDER.getStackForm(),
                 "LCL", "PSP", "OWO",
@@ -164,7 +164,7 @@ public class GCYMMetaTileEntityLoader {
                 'S', MetaTileEntities.EXTRUDER[IV].getStackForm(),
                 'P', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
                 'O', new UnificationEntry(spring, MolybdenumDisilicide),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_solidifier", GCYMMetaTileEntities.LARGE_SOLIDIFIER.getStackForm(),
                 "LCL", "PSP", "LWL",
@@ -172,7 +172,7 @@ public class GCYMMetaTileEntityLoader {
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
                 'S', MetaTileEntities.FLUID_SOLIDIFIER[IV].getStackForm(),
                 'P', MetaItems.ELECTRIC_PUMP_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_mixer", GCYMMetaTileEntities.LARGE_MIXER.getStackForm(),
                 "LCL", "RSR", "MWM",
@@ -181,7 +181,7 @@ public class GCYMMetaTileEntityLoader {
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
                 'S', MetaTileEntities.MIXER[IV].getStackForm(),
                 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_packager", GCYMMetaTileEntities.LARGE_PACKAGER.getStackForm(),
                 "RCR", "PSP", "MPM",
@@ -198,7 +198,7 @@ public class GCYMMetaTileEntityLoader {
                 'E', MetaItems.EMITTER_IV.getStackForm(),
                 'P', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
                 'D', new UnificationEntry(plateDense, TantalumCarbide),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_sifter", GCYMMetaTileEntities.LARGE_SIFTER.getStackForm(),
                 "ACA", "PSP", "AWA",
@@ -206,7 +206,7 @@ public class GCYMMetaTileEntityLoader {
                 'S', MetaTileEntities.SIFTER[IV].getStackForm(),
                 'P', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
                 'A', new UnificationEntry(plate, HSLASteel),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_wiremill", GCYMMetaTileEntities.LARGE_WIREMILL.getStackForm(),
                 "ACA", "RSR", "MWM",
@@ -215,7 +215,7 @@ public class GCYMMetaTileEntityLoader {
                 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm(),
                 'R', new UnificationEntry(spring, HSLASteel),
                 'A', new UnificationEntry(plate, HSLASteel),
-                'W', new UnificationEntry(cableGtSingle, Tungsten));
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "electric_implosion_compressor", GCYMMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR.getStackForm(),
                 "PCP", "FSF", "PCP",
@@ -276,7 +276,7 @@ public class GCYMMetaTileEntityLoader {
                 'S', MetaItems.SENSOR_IV.getStackForm(),
                 'E', MetaItems.EMITTER_IV.getStackForm(),
                 'F', MetaItems.FIELD_GENERATOR_IV.getStackForm(),
-                'W', new UnificationEntry(cableGtDouble, Tungsten));
+                'W', new UnificationEntry(cableGtDouble, Platinum));
 
         ModHandler.addShapedRecipe(true, "parallel_hatch_luv", GCYMMetaTileEntities.PARALLEL_HATCH[LuV - IV].getStackForm(),
                 "SCE", "FHF", "WCW",
