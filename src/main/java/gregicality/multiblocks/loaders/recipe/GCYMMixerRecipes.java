@@ -16,21 +16,21 @@ public class GCYMMixerRecipes {
                 .input(dust, Carbon)
                 .notConsumable(new IntCircuitIngredient(1))
                 .output(dust, TitaniumCarbide, 2)
-                .duration(160).EUt(VA[IV]).buildAndRegister();
+                .duration(160).EUt(VA[EV]).buildAndRegister();
 
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Tantalum)
                 .input(dust, Carbon)
                 .notConsumable(new IntCircuitIngredient(1))
                 .output(dust, TantalumCarbide, 2)
-                .duration(150).EUt(VA[IV]).buildAndRegister();
+                .duration(150).EUt(VA[EV]).buildAndRegister();
 
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Molybdenum)
                 .input(dust, Silicon, 2)
                 .notConsumable(new IntCircuitIngredient(1))
                 .output(dust, MolybdenumDisilicide, 3)
-                .duration(180).EUt(VA[IV]).buildAndRegister();
+                .duration(180).EUt(VA[EV]).buildAndRegister();
 
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
                 .input(dust, Invar, 2)

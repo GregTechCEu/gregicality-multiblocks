@@ -3,7 +3,6 @@
 ## v1.0.0
  * Initial Commit
 
-
 ## v1.0.1
  * Renames Mod Name to no longer use a colon
  * Fixes error message in chat due to lack of ZenExpansion for CraftTweaker RecipeMaps
@@ -16,3 +15,4 @@
 ## v1.0.3
  * Adds compat for GTCEu v2.0.5-beta
  * Changes multiblock recipes to use Platinum cables instead of Tungsten
+ * Fixes voltage of some mixer recipes
