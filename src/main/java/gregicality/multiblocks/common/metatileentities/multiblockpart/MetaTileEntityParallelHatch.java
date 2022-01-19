@@ -79,7 +79,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
             }
         })
                 .setCentered(true)
-                .setAllowedChars("0123456789")
+                .setNumbersOnly(1, this.maxParallel)
                 .setMaxLength(3)
                 .setValidator(getTextFieldValidator(() -> this.maxParallel)));
 

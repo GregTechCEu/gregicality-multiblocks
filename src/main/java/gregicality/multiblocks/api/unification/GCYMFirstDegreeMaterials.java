@@ -12,7 +12,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 public class GCYMFirstDegreeMaterials {
 
     public static void init() {
-        Stellite100 = new Material.Builder(3000, "stellite100")
+        Stellite100 = new Material.Builder(3000, "stellite_100")
                 .ingot().fluid()
                 .color(0xDEDEFF).iconSet(MaterialIconSet.BRIGHT)
                 .flags(GENERATE_PLATE)
@@ -28,7 +28,7 @@ public class GCYMFirstDegreeMaterials {
                 .blastTemp(3850, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 800)
                 .build();
 
-        MaragingSteel300 = new Material.Builder(3002, "maraging_steel300")
+        MaragingSteel300 = new Material.Builder(3002, "maraging_steel_300")
                 .ingot().fluid()
                 .color(0x637087).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
@@ -36,7 +36,7 @@ public class GCYMFirstDegreeMaterials {
                 .blastTemp(4001, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1000)
                 .build();
 
-        HastelloyC276 = new Material.Builder(3003, "hastelloy_c276")
+        HastelloyC276 = new Material.Builder(3003, "hastelloy_c_276")
                 .ingot().fluid()
                 .color(0xCF3939).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
@@ -60,7 +60,7 @@ public class GCYMFirstDegreeMaterials {
                 .blastTemp(8747, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1200)
                 .build();
 
-        Zeron100 = new Material.Builder(3006, "zeron100")
+        Zeron100 = new Material.Builder(3006, "zeron_100")
                 .ingot().fluid()
                 .color(0x325A8C).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE)

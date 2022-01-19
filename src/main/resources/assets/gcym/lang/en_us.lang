@@ -125,20 +125,20 @@ recipemap.chemical_plant.name=Chemical Plant
 recipemap.alloy_blast_smelter.name=Alloy Blast Smelting
 
 # Materials
-material.stellite100=Stellite-100
+material.stellite_100=Stellite-100
 material.watertight_steel=Watertight Steel
-material.maraging_steel300=Maraging Steel 300
-material.hastelloy_c276=Hastelloy-C276
+material.maraging_steel_300=Maraging Steel 300
+material.hastelloy_c_276=Hastelloy-C276
 material.hastelloy_x=Hastelloy-X
 material.trinaquadalloy=Trinaquadalloy
-material.zeron100=Zeron-100
+material.zeron_100=Zeron-100
 material.titanium_carbide=Titanium Carbide
 material.tantalum_carbide=Tantalum Carbide
 material.molybdenum_disilicide=Molybdenum Disilicide
 
 material.hsla_steel=HSLA Steel
 material.titanium_tungsten_carbide=Titanium Tungsten Carbide
-material.incoloy_ma956=Incoloy-MA956
+material.incoloy_ma_956=Incoloy-MA956
 
 # fluids
 fluid.molten=Molten %s

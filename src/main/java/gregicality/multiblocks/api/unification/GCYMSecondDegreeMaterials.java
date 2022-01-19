@@ -28,7 +28,7 @@ public class GCYMSecondDegreeMaterials {
                 .blastTemp(3800, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1000)
                 .build();
 
-        IncoloyMA956 = new Material.Builder(3022, "incoloy_ma956")
+        IncoloyMA956 = new Material.Builder(3022, "incoloy_ma_956")
                 .ingot().fluid()
                 .color(0x37BF7E).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
