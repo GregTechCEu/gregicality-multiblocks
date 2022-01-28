@@ -18,7 +18,9 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class GCYMMetaFluids {
@@ -57,11 +59,17 @@ public class GCYMMetaFluids {
         AlloyBlastProperty alloyBlastProperty = material.getProperty(GCYMPropertyKey.ALLOY_BLAST);
         if (alloyBlastProperty == null) return;
 
-        int temperature = fluidProperty.getFluidTemperature();
+        int temperature = Math.max(fluidProperty.getFluidTemperature(), blastProperty.getBlastTemperature());
         Fluid fluid = registerMoltenFluid(material, temperature);
         alloyBlastProperty.setFluid(fluid);
-        alloyBlastProperty.setTemperature(blastProperty.getBlastTemperature() + 900);
-        FluidTooltipUtil.registerTooltip(fluid, material.getChemicalFormula());
+        alloyBlastProperty.setTemperature(blastProperty.getBlastTemperature());
+
+        // Fluid Tooltips
+        List<String> tooltip = new ArrayList<>();
+        tooltip.add(material.getChemicalFormula());
+        tooltip.add(String.valueOf(temperature));
+        tooltip.add(String.valueOf(fluid.isGaseous()));
+        FluidTooltipUtil.registerTooltip(fluid, tooltip);
     }
 
     @Nonnull

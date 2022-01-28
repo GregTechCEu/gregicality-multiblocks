@@ -16,3 +16,6 @@
  * Adds compat for GTCEu v2.0.5-beta
  * Changes multiblock recipes to use Platinum cables instead of Tungsten
  * Fixes voltage of some mixer recipes
+
+## v1.0.4
+ * Adds compat for GTCEu V2.1.0-beta
