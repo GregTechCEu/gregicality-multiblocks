@@ -19,3 +19,7 @@
 
 ## v1.0.4
  * Adds compat for GTCEu V2.1.0-beta
+
+## v1.0.5
+ * Fixes large wiremill using a sifter instead of wiremill in its recipe
+ * Reduces cost of parallel hatches
