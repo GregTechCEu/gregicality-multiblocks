@@ -71,6 +71,7 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
         return GCYMTextures.LARGE_SIFTER_OVERLAY;
     }
 
+    @Nonnull
     private static RecipeMap<?>[] determineRecipeMaps() {
         RecipeMap<?> sieveMap = RecipeMap.getByName("electric_sieve");
         if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && sieveMap != null) {

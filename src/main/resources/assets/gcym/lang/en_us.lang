@@ -11,6 +11,7 @@ gcym.machine.large_brewer.name=Large Brewing Vat
 gcym.machine.large_centrifuge.name=Large Centrifuge Unit
 gcym.machine.large_chemical_bath.name=Large Chemical Bath
 gcym.machine.chemical_plant.name=Chemical Plant
+gcym.machine.chemical_plant.tooltip.1=Only runs Large Chemical Recipes in parallel
 gcym.machine.large_extractor.name=Large Extracting Machine
 gcym.machine.large_cutter.name=Large Cutting Machine
 gcym.machine.large_distillery.name=Large Fractionating Distillery
@@ -49,7 +50,7 @@ gcym.multiblock.large_bender.description=A multiblock Bending Machine, Compresso
 gcym.multiblock.large_brewer.description=A multiblock Brewing Machine and Fermenter for producing brews.
 gcym.multiblock.large_centrifuge.description=A multiblock Centrifuge and Thermal Centrifuge for separating materials.
 gcym.multiblock.large_chemical_bath.description=A multiblock Chemical Bath and Ore Washing Plant for cleaning materials.
-gcym.multiblock.chemical_plant.description=A Chemical Plant and a parallel Large Chemical Reactor for advanced chemistry.
+gcym.multiblock.chemical_plant.description=A Chemical Plant for advanced chemistry.
 gcym.multiblock.large_extractor.description=A multiblock Extractor and Canning Machine for transferring materials.
 gcym.multiblock.large_cutter.description=A multiblock Cutting Machine and Lathe for cutting things into smaller pieces.
 gcym.multiblock.large_distillery.description=A multiblock Distillery and Distillation Tower for separating fluids into fractions.
@@ -123,7 +124,6 @@ tile.large_multiblock_casing.atomic_casing.name=Atomic Casing
 tile.large_multiblock_casing.steam_casing.name=Industrial Steam Casing
 
 # RecipeMaps
-recipemap.chemical_plant.name=Chemical Plant
 recipemap.alloy_blast_smelter.name=Alloy Blast Smelting
 
 # Materials
