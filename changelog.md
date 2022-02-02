@@ -23,3 +23,8 @@
 ## v1.0.5
  * Fixes large wiremill using a sifter instead of wiremill in its recipe
  * Reduces cost of parallel hatches
+
+## v1.1.0
+ * Adds the Large Circuit Assembler, making circuit assembling its own machine and prevents progression skips
+ * Changes the Chemical Plant to only show the Chemical Plant RecipeMap when a mod uses it, allows parallel recipes for Large Chemical Reactor mode
+ * Adds the paused overlay textures to all multiblocks
