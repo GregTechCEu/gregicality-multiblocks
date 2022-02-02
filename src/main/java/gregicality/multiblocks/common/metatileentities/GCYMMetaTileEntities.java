@@ -41,6 +41,7 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
     public static MetaTileEntitySteamEngine STEAM_ENGINE;
+    public static MetaTileEntityLargeCircuitAssembler LARGE_CIRCUIT_ASSEMBLER;
 
     public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
     public static MetaTileEntityTieredHatch[] TIERED_HATCH = new MetaTileEntityTieredHatch[GTValues.V.length];
@@ -76,6 +77,7 @@ public class GCYMMetaTileEntities {
         MEGA_BLAST_FURNACE = registerMetaTileEntity(2025, new MetaTileEntityMegaBlastFurnace(gcymId("mega_blast_furnace")));
         MEGA_VACUUM_FREEZER = registerMetaTileEntity(2026, new MetaTileEntityMegaVacuumFreezer(gcymId("mega_vacuum_freezer")));
         STEAM_ENGINE = registerMetaTileEntity(2027, new MetaTileEntitySteamEngine(gcymId("steam_engine")));
+        LARGE_CIRCUIT_ASSEMBLER = registerMetaTileEntity(2028, new MetaTileEntityLargeCircuitAssembler(gcymId("large_circuit_assembler")));
 
 
 

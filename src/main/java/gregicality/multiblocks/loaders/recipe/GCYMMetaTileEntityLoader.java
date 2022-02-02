@@ -46,13 +46,11 @@ public class GCYMMetaTileEntityLoader {
                 'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_assembler", GCYMMetaTileEntities.LARGE_ASSEMBLER.getStackForm(),
-                "RER", "SCA", "PWP",
+                "RWR", "CSC", "PWP",
                 'R', MetaItems.ROBOT_ARM_IV.getStackForm(),
-                'E', MetaItems.EMITTER_IV.getStackForm(),
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),
-                'P', MetaItems.ELECTRIC_PISTON_IV.getStackForm(),
+                'P', MetaItems.CONVEYOR_MODULE_IV.getStackForm(),
                 'S', MetaTileEntities.ASSEMBLER[IV].getStackForm(),
-                'A', MetaTileEntities.CIRCUIT_ASSEMBLER[IV].getStackForm(),
                 'W', new UnificationEntry(cableGtSingle, Platinum));
 
         ModHandler.addShapedRecipe(true, "large_autoclave", GCYMMetaTileEntities.LARGE_AUTOCLAVE.getStackForm(),
@@ -268,8 +266,17 @@ public class GCYMMetaTileEntityLoader {
                 'F', new UnificationEntry(pipeSmallFluid, Potin),
                 'P', new UnificationEntry(plate, Brass));
 
+        ModHandler.addShapedRecipe(true, "large_circuit_assembler", GCYMMetaTileEntities.LARGE_CIRCUIT_ASSEMBLER.getStackForm(),
+                "RER", "CSC", "WPW",
+                'R', MetaItems.ROBOT_ARM_LUV.getStackForm(),
+                'E', MetaItems.EMITTER_LUV.getStackForm(),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Super),
+                'P', MetaItems.CONVEYOR_MODULE_LUV.getStackForm(),
+                'S', MetaTileEntities.CIRCUIT_ASSEMBLER[LuV].getStackForm(),
+                'W', new UnificationEntry(cableGtSingle, NiobiumTitanium));
+
         // Parallel Hatches
-        ModHandler.addShapedRecipe(true, "parallel_hatch_iv", GCYMMetaTileEntities.PARALLEL_HATCH[IV - IV].getStackForm(),
+        ModHandler.addShapedRecipe(true, "parallel_hatch_iv", GCYMMetaTileEntities.PARALLEL_HATCH[0].getStackForm(),
                 "SCE", "CHC", "WCW",
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Master),
                 'H', MetaTileEntities.HULL[IV].getStackForm(),

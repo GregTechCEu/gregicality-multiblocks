@@ -30,6 +30,7 @@ gcym.machine.mega_blast_furnace.name=Rotary Hearth Furnace
 gcym.machine.mega_vacuum_freezer.name=Bulk Blast Chiller
 gcym.machine.steam_engine.name=Industrial Steam Engine
 gcym.machine.steam_engine.tooltip.1=Produces up to %s§7 power.
+gcym.machine.large_circuit_assembler.name=Large Circuit Assembler
 
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
@@ -67,6 +68,7 @@ gcym.multiblock.large_replicator.description=A multiblock Replicator for turning
 gcym.multiblock.mega_blast_furnace.description=A massive Electric Blast Furnace for extreme volume smelting.
 gcym.multiblock.mega_vacuum_freezer.description=A massive Vacuum Freezer for extreme volume cooling.
 gcym.multiblock.steam_engine.description=A large Steam Engine for effective power production.
+gcym.multiblock.large_circuit_assembler.description=A multiblock Circuit Assembler for fabricating circuits.
 
 
 # hatches

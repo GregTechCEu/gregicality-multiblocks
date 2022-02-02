@@ -16,6 +16,7 @@ public class GCYMTextures {
     public static OrientedOverlayRenderer ALLOY_BLAST_SMELTER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ARC_FURNACE_OVERLAY;
     public static OrientedOverlayRenderer LARGE_ASSEMBLER_OVERLAY;
+    public static OrientedOverlayRenderer LARGE_CIRCUIT_ASSEMBLER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_AUTOCLAVE_OVERLAY;
     public static OrientedOverlayRenderer LARGE_BENDER_OVERLAY;
     public static OrientedOverlayRenderer LARGE_BREWERY_OVERLAY;
@@ -72,6 +73,7 @@ public class GCYMTextures {
         ALLOY_BLAST_SMELTER_OVERLAY = new OrientedOverlayRenderer("multiblock/alloy_blast_smelter", FRONT);
         LARGE_ARC_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_arc_furnace", FRONT);
         LARGE_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_assembler", FRONT);
+        LARGE_CIRCUIT_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_circuit_assembler", FRONT);
         LARGE_AUTOCLAVE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_autoclave", FRONT);
         LARGE_BENDER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_bender", FRONT);
         LARGE_BREWERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_brewery", FRONT);
