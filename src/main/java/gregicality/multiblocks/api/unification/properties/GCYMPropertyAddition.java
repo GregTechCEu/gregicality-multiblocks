@@ -5,6 +5,7 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.ore.OrePrefix;
 
 public class GCYMPropertyAddition {
 
@@ -22,6 +23,9 @@ public class GCYMPropertyAddition {
 
         BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
         if (blastProperty == null) return;
+
+        if (!OrePrefix.ingotHot.doGenerateItem(material) && !material.hasProperty(PropertyKey.FLUID))
+            return;
 
         if (material.getMaterialComponents().stream().anyMatch(materialStack -> !materialStack.material.hasProperty(PropertyKey.DUST)))
             return;
