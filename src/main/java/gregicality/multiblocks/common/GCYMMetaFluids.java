@@ -6,7 +6,6 @@ import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GregTechAPI;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
-import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.util.FluidTooltipUtil;
@@ -50,16 +49,13 @@ public class GCYMMetaFluids {
         // ignore materials which are not alloys
         if (material.getMaterialComponents().size() <= 1) return;
 
-        FluidProperty fluidProperty = material.getProperty(PropertyKey.FLUID);
-        if (fluidProperty == null) return;
-
         BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
         if (blastProperty == null) return;
 
         AlloyBlastProperty alloyBlastProperty = material.getProperty(GCYMPropertyKey.ALLOY_BLAST);
         if (alloyBlastProperty == null) return;
 
-        int temperature = Math.max(fluidProperty.getFluidTemperature(), blastProperty.getBlastTemperature());
+        int temperature = blastProperty.getBlastTemperature();
         Fluid fluid = registerMoltenFluid(material, temperature);
         alloyBlastProperty.setFluid(fluid);
         alloyBlastProperty.setTemperature(blastProperty.getBlastTemperature());

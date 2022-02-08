@@ -28,3 +28,7 @@
  * Adds the Large Circuit Assembler, making circuit assembling its own machine and prevents progression skips
  * Changes the Chemical Plant to only show the Chemical Plant RecipeMap when a mod uses it, allows parallel recipes for Large Chemical Reactor mode
  * Adds the paused overlay textures to all multiblocks
+
+## v1.1.1
+ * Fix inconsistent High Temperature Casing crafting and assembler recipes
+ * Remove the requirement for fluids in order to generate Alloy Blast Recipes

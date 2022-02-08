@@ -40,8 +40,8 @@ public class GCYMCasingLoader {
                 .duration(50).EUt(16).buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(OrePrefix.plate, GCYMMaterials.TantalumCarbide, 4)
-                .input(OrePrefix.plate, GCYMMaterials.HSLASteel, 2)
+                .input(OrePrefix.plate, GCYMMaterials.HSLASteel, 4)
+                .input(OrePrefix.plate, GCYMMaterials.TitaniumCarbide, 2)
                 .input(OrePrefix.frameGt, Materials.TungstenCarbide)
                 .notConsumable(new IntCircuitIngredient(6))
                 .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.HIGH_TEMPERATURE_CASING, 2))
