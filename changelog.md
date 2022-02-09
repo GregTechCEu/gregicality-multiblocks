@@ -32,3 +32,4 @@
 ## v1.1.1
  * Fix inconsistent High Temperature Casing crafting and assembler recipes
  * Remove the requirement for fluids in order to generate Alloy Blast Recipes
+ * Fix alloy blast recipe autogeneration with CraftTweaker materials
