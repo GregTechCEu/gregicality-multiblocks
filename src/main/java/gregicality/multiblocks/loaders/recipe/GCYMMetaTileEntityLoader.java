@@ -102,15 +102,6 @@ public class GCYMMetaTileEntityLoader {
                 'M', MetaItems.CONVEYOR_MODULE_IV.getStackForm(),
                 'W', new UnificationEntry(cableGtSingle, Platinum));
 
-        ModHandler.addShapedRecipe(true, "chemical_plant", GCYMMetaTileEntities.CHEMICAL_PLANT.getStackForm(),
-                "LRL", "PMP", "CSC",
-                'L', new UnificationEntry(pipeLargeFluid, Polybenzimidazole),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Ultimate),
-                'S', MetaTileEntities.LARGE_CHEMICAL_REACTOR.getStackForm(),
-                'P', new UnificationEntry(spring, MolybdenumDisilicide),
-                'R', new UnificationEntry(rotor, Iridium),
-                'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm());
-
         ModHandler.addShapedRecipe(true, "large_extractor", GCYMMetaTileEntities.LARGE_EXTRACTOR.getStackForm(),
                 "PGP", "BCO", "MWM",
                 'C', new UnificationEntry(circuit, MarkerMaterials.Tier.Elite),

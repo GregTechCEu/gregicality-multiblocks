@@ -4,6 +4,7 @@ import gregicality.multiblocks.api.GCYMValues;
 import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.GTValues;
@@ -15,6 +16,9 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.ore.OrePrefix;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
@@ -22,9 +26,13 @@ import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.items.MetaItems;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -96,7 +104,8 @@ public class MetaTileEntityChemicalPlant extends GCYMRecipeMapMultiblockControll
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @Nonnull List<String> tooltip, boolean advanced) {
+        tooltip.add(I18n.format("gcym.deprecation.tooltip"));
         super.addInformation(stack, player, tooltip, advanced);
         if (determineRecipeMaps().length > 1)
             tooltip.add(I18n.format("gcym.machine.chemical_plant.tooltip.1"));
@@ -110,7 +119,18 @@ public class MetaTileEntityChemicalPlant extends GCYMRecipeMapMultiblockControll
         }
         return new RecipeMap<?>[]{RecipeMaps.LARGE_CHEMICAL_RECIPES};
     }
-    
+
+    @Override
+    public void getDrops(@Nonnull NonNullList<ItemStack> dropsList, @Nullable EntityPlayer harvester) {
+        dropsList.clear();
+        dropsList.add(OreDictUnifier.get(OrePrefix.pipeLargeFluid, Materials.Polybenzimidazole, 2));
+        dropsList.add(OreDictUnifier.get(OrePrefix.spring, GCYMMaterials.MolybdenumDisilicide, 2));
+        dropsList.add(MetaItems.QUANTUM_MAINFRAME_ZPM.getStackForm(2));
+        dropsList.add(OreDictUnifier.get(OrePrefix.rotor, Materials.Iridium));
+        dropsList.add(MetaItems.ELECTRIC_MOTOR_IV.getStackForm());
+        dropsList.add(MetaTileEntities.LARGE_CHEMICAL_REACTOR.getStackForm());
+    }
+
     @SuppressWarnings("InnerClassMayBeStatic")
     private class ChemicalPlantRecipeLogic extends GCYMMultiblockRecipeLogic {
 
