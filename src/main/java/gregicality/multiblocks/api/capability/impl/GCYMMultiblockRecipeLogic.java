@@ -2,6 +2,7 @@ package gregicality.multiblocks.api.capability.impl;
 
 import gregicality.multiblocks.api.capability.IParallelMultiblock;
 import gregicality.multiblocks.api.metatileentity.GCYMMultiblockAbility;
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.common.GCYMConfigHolder;
 import gregtech.api.GTValues;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
@@ -25,11 +26,6 @@ public class GCYMMultiblockRecipeLogic extends MultiblockRecipeLogic {
     }
 
     @Override
-    public void setParallelRecipesPerformed(int amount) {
-        super.setParallelRecipesPerformed(amount);
-    }
-
-    @Override
     public RecipeMapMultiblockController getMetaTileEntity() {
         return (RecipeMapMultiblockController) super.getMetaTileEntity();
     }
@@ -37,6 +33,9 @@ public class GCYMMultiblockRecipeLogic extends MultiblockRecipeLogic {
     @Override
     protected long getMaxVoltage() {
         if (!GCYMConfigHolder.globalMultiblocks.enableTieredCasings)
+            return super.getMaxVoltage();
+
+        if (getMetaTileEntity() instanceof GCYMRecipeMapMultiblockController && !((GCYMRecipeMapMultiblockController) getMetaTileEntity()).isTiered())
             return super.getMaxVoltage();
 
         List<ITieredMetaTileEntity> list = getMetaTileEntity().getAbilities(GCYMMultiblockAbility.TIERED_HATCH);

@@ -33,3 +33,5 @@
  * Fix inconsistent High Temperature Casing crafting and assembler recipes
  * Remove the requirement for fluids in order to generate Alloy Blast Recipes
  * Fix alloy blast recipe autogeneration with CraftTweaker materials
+ * New structure for the Rotary Hearth Furnace
+ * Reworked Parallel for the Rotary Hearth Furnace and Bulk Blast Chiller
