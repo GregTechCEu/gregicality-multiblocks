@@ -104,7 +104,7 @@ public class MetaTileEntityMegaBlastFurnace extends RecipeMapMultiblockControlle
                 .aisle("#XXXXXXXXXXX#", "#XXXXXXXXXXX#", "###F#####F###", "###F#####F###", "###FFFFFFF###", "#############", "#############", "#############", "#############", "#############", "####FFFFF####", "#############", "#############", "#############", "#############", "#############", "#############")
                 .aisle("##XXXXXXXXX##", "##XXXXSXXXX##", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(250).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('X', states(getCasingState()).setMinGlobalLimited(280).or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('F', states(getFrameState()))
                 .where('H', states(getCasingState()))
                 .where('P', states(getPipeState()))
