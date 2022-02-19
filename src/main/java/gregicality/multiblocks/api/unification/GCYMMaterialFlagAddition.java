@@ -26,5 +26,8 @@ public class GCYMMaterialFlagAddition {
 
         // Dense Plates
         Materials.Neutronium.addFlags(MaterialFlags.GENERATE_DENSE);
+
+        // Foils
+        Materials.Graphene.addFlags(MaterialFlags.GENERATE_FOIL);
     }
 }

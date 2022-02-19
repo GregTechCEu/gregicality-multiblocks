@@ -36,3 +36,4 @@
  * New structure for the Rotary Hearth Furnace
  * Reworked Parallel for the Rotary Hearth Furnace and Bulk Blast Chiller
  * Deprecated Chemical Plant multiblock for implementation in another mod. It will be REMOVED in the following update.
+ * Fixed Graphene Foils missing for the Molybdenum Disilicide Coil recipe
