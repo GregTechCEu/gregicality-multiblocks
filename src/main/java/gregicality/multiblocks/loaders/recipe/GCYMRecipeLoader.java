@@ -8,6 +8,7 @@ public class GCYMRecipeLoader {
         GCYMMetaTileEntityLoader.init();
         GCYMCasingLoader.init();
         GCYMMixerRecipes.init();
+        GCYMMiscRecipes.init();
         GCYMMaterialRecipeHandler.register();
     }
 }
