@@ -1,8 +1,8 @@
 package gregicality.multiblocks;
 
+import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.CommonProxy;
-import gregicality.multiblocks.common.GCYMMetaFluids;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;

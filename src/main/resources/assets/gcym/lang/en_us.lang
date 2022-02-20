@@ -145,7 +145,7 @@ material.titanium_tungsten_carbide=Titanium Tungsten Carbide
 material.incoloy_ma_956=Incoloy-MA956
 
 # fluids
-fluid.molten=Molten %s
+gcym.fluid.molten=Molten %s
 
 # deprecation
 gcym.deprecation.tooltip=§cThis Machine is DEPRECATED! It will be REMOVED in the next update! Break the controller block to recover crafting materials!

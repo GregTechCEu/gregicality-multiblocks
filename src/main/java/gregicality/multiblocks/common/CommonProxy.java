@@ -14,7 +14,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -25,8 +24,7 @@ import java.util.function.Function;
 public class CommonProxy {
 
     public void preLoad() {
-//        GAMetaItems.init();
-//        GAMetaFluids.init();
+
     }
 
     @SubscribeEvent
@@ -69,20 +67,5 @@ public class CommonProxy {
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
         GCYMRecipeLoader.init();
-    }
-
-    @SubscribeEvent
-    public static void registerOrePrefix(RegistryEvent.Register<IRecipe> event) {
-//        GTMALog.logger.info("Registering ore prefix...");
-
-        // Register OreDictionary Entries
-//        GAMetaItems.registerOreDict();
-//        GAMetaBlocks.registerOreDict();
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void registerRecipesLowest(RegistryEvent.Register<IRecipe> event) {
-//        RecipeHandler.runRecipeGeneration();
-//        RecipeHandler.generatedRecipes();
     }
 }

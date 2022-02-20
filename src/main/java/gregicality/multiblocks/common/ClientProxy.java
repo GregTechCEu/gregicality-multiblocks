@@ -1,6 +1,7 @@
 package gregicality.multiblocks.common;
 
 import codechicken.lib.texture.TextureUtils;
+import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import net.minecraftforge.client.event.ModelRegistryEvent;
