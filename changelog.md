@@ -38,3 +38,7 @@
  * Deprecated Chemical Plant multiblock for implementation in another mod. It will be REMOVED in the following update.
  * Fixed Graphene Foils missing for the Molybdenum Disilicide Coil recipe
  * Updated Molten fluid generation system to use the new GTCEu MetaFluids API
+
+## v1.1.2
+ * Fix Large Distillery Structure: adds tiered casing support and blocks multi-fluid hatches (#5)
+ * Internal: Moved to non-deprecated mod loaded check (#9)
