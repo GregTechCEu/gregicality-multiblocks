@@ -7,7 +7,6 @@ import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -35,6 +34,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Loader;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -114,7 +114,7 @@ public class MetaTileEntityChemicalPlant extends GCYMRecipeMapMultiblockControll
     @Nonnull
     private static RecipeMap<?>[] determineRecipeMaps() {
         RecipeMap<?> chemical_plant = RecipeMap.getByName("chemical_plant");
-        if (GTValues.isModLoaded(GCYMValues.GCYS_MODID) && chemical_plant != null) {
+        if (Loader.isModLoaded(GCYMValues.GCYS_MODID) && chemical_plant != null) {
             return new RecipeMap<?>[]{RecipeMaps.LARGE_CHEMICAL_RECIPES, chemical_plant};
         }
         return new RecipeMap<?>[]{RecipeMaps.LARGE_CHEMICAL_RECIPES};

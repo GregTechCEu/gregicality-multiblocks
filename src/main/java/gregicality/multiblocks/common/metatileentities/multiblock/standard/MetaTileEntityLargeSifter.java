@@ -5,7 +5,6 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
-import gregtech.api.GTValues;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -19,6 +18,7 @@ import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 
 import javax.annotation.Nonnull;
 
@@ -74,7 +74,7 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
     @Nonnull
     private static RecipeMap<?>[] determineRecipeMaps() {
         RecipeMap<?> sieveMap = RecipeMap.getByName("electric_sieve");
-        if (GTValues.isModLoaded(GCYMValues.GREGIFICATION_MODID) && sieveMap != null) {
+        if (Loader.isModLoaded(GCYMValues.GREGIFICATION_MODID) && sieveMap != null) {
             return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES, sieveMap};
         }
         return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES};
