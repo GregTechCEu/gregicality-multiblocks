@@ -7,7 +7,6 @@ import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
@@ -38,7 +37,7 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXGXX", "XXGXX", "XXXXX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
-                .aisle("XXXXX", "GATAG", "GAPAG", "XCMCX")
+                .aisle("XXXXX", "GATAG", "GAPAG", "XCXCX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
                 .aisle("XXSXX", "XXGXX", "XXGXX", "XXXXX")
                 .where('S', selfPredicate())
@@ -47,7 +46,6 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
                 .where('C', states(getCasingState4()))
-                .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('T', tieredCasing().or(air()))
                 .where('A', air())
                 .build();
@@ -82,11 +80,6 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
 
     @Override
     public boolean canBeDistinct() {
-        return true;
-    }
-
-    @Override
-    public boolean hasMufflerMechanics() {
         return true;
     }
 }
