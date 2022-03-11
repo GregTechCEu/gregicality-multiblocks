@@ -127,7 +127,7 @@ public class GCYMCasingLoader {
         // Unique Casings
         ModHandler.addShapedRecipe(true, "casing_crushing_wheels", GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS, 2), "SSS", "GCG", "GMG", 'S', new UnificationEntry(OrePrefix.gearSmall, Materials.TungstenCarbide), 'G', new UnificationEntry(OrePrefix.gear, Materials.Ultimet), 'C', GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.MACERATOR_CASING), 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm());
         ModHandler.addShapedRecipe(true, "casing_slicing_blades", GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.SLICING_BLADES, 2), "SSS", "GCG", "GMG", 'S', new UnificationEntry(OrePrefix.plate, Materials.TungstenCarbide), 'G', new UnificationEntry(OrePrefix.gear, Materials.Ultimet), 'C', GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.CUTTER_CASING), 'M', MetaItems.ELECTRIC_MOTOR_IV.getStackForm());
-        ModHandler.addShapedRecipe(true, "casing_electrolytic_cell", GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.ELECTROLYTIC_CELL, 2), "WWW", "WCW", "KAK", 'W', new UnificationEntry(OrePrefix.wireGtDouble, Materials.Platinum), 'C', GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING), 'K', new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.Elite), 'A', new UnificationEntry(OrePrefix.cableGtSingle, Materials.Tungsten));
+        ModHandler.addShapedRecipe(true, "casing_electrolytic_cell", GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.ELECTROLYTIC_CELL, 2), "WWW", "WCW", "KAK", 'W', new UnificationEntry(OrePrefix.wireGtDouble, Materials.Platinum), 'C', GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING), 'K', new UnificationEntry(OrePrefix.circuit, MarkerMaterials.Tier.IV), 'A', new UnificationEntry(OrePrefix.cableGtSingle, Materials.Tungsten));
         ModHandler.addShapedRecipe(true, "casing_heat_vent", GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.HEAT_VENT, 2), "PDP", "RLR", "PDP", 'P', new UnificationEntry(OrePrefix.plate, GCYMMaterials.TantalumCarbide), 'D', new UnificationEntry(OrePrefix.plateDouble, GCYMMaterials.MolybdenumDisilicide), 'R', new UnificationEntry(OrePrefix.rotor, Materials.Titanium), 'L', new UnificationEntry(OrePrefix.stickLong, GCYMMaterials.MolybdenumDisilicide));
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -156,7 +156,7 @@ public class GCYMCasingLoader {
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.wireGtDouble, Materials.Platinum, 5)
-                .input(OrePrefix.circuit, MarkerMaterials.Tier.Elite, 2)
+                .input(OrePrefix.circuit, MarkerMaterials.Tier.IV, 2)
                 .input(OrePrefix.cableGtSingle, Materials.Tungsten)
                 .inputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING))
                 .outputs(GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.ELECTROLYTIC_CELL, 2))

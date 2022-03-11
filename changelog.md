@@ -42,3 +42,4 @@
 ## v1.1.2
  * Fix Large Distillery Structure: adds tiered casing support and blocks multi-fluid hatches (#5)
  * Internal: Moved to non-deprecated mod loaded check (#9)
+ * Adds compat for GTCEu V2.1.5-beta
