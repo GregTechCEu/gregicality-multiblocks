@@ -2,7 +2,7 @@ package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -29,7 +29,7 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     }
 
     @Override
-    public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder metaTileEntityHolder) {
+    public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
         return new MetaTileEntityElectricImplosionCompressor(this.metaTileEntityId);
     }
 
