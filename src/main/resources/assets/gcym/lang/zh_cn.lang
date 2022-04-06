@@ -79,29 +79,29 @@ gcym.multiblock.large_circuit_assembler.description=用于制造电路的多方�
 
 # hatches
 
-gcym.machine.parallel_hatch.iv.name=精英并行控制仓
-gcym.machine.parallel_hatch.luv.name=大师并行控制仓
-gcym.machine.parallel_hatch.zpm.name=终极并行控制仓
-gcym.machine.parallel_hatch.uv.name=超级并行控制仓
+gcym.machine.parallel_hatch.iv.name=并行控制仓(IV)
+gcym.machine.parallel_hatch.luv.name=并行控制仓(LuV)
+gcym.machine.parallel_hatch.zpm.name=并行控制仓(ZPM)
+gcym.machine.parallel_hatch.uv.name=并行控制仓(UV)
 gcym.machine.parallel_hatch.tooltip=最多可同时处理§b%s§7个配方。
 
 gcym.machine.tiered_hatch.tooltip.1=最高允许%s§7的电压.
 
-gcym.machine.tiered_hatch.ulv.name=原始电压控制单元
-gcym.machine.tiered_hatch.lv.name=基础电压控制单元
-gcym.machine.tiered_hatch.mv.name=良好电压控制单元
-gcym.machine.tiered_hatch.hv.name=高级电压控制单元
-gcym.machine.tiered_hatch.ev.name=极限电压控制单元
-gcym.machine.tiered_hatch.iv.name=精英电压控制单元
-gcym.machine.tiered_hatch.luv.name=大师电压控制单元
-gcym.machine.tiered_hatch.zpm.name=终极电压控制单元
-gcym.machine.tiered_hatch.uv.name=超级电压控制单元
-gcym.machine.tiered_hatch.uhv.name=无限电压控制单元
-gcym.machine.tiered_hatch.uev.name=超级电压控制单元
-gcym.machine.tiered_hatch.uiv.name=强导电压控制单元
-gcym.machine.tiered_hatch.umv.name=史诗电压控制单元
-gcym.machine.tiered_hatch.uxv.name=传奇电压控制单元
-gcym.machine.tiered_hatch.max.name=终极电压控制单元
+gcym.machine.tiered_hatch.ulv.name=电压控制单元(ULV)
+gcym.machine.tiered_hatch.lv.name=电压控制单元(IV)
+gcym.machine.tiered_hatch.mv.name=电压控制单元(MV)
+gcym.machine.tiered_hatch.hv.name=电压控制单元(HV)
+gcym.machine.tiered_hatch.ev.name=电压控制单元(EV)
+gcym.machine.tiered_hatch.iv.name=电压控制单元(IV)
+gcym.machine.tiered_hatch.luv.name=电压控制单元(LuV)
+gcym.machine.tiered_hatch.zpm.name=电压控制单元(ZPM)
+gcym.machine.tiered_hatch.uv.name=电压控制单元(UV)
+gcym.machine.tiered_hatch.uhv.name=电压控制单元(UHV)
+gcym.machine.tiered_hatch.uev.name=电压控制单元(UEV)
+gcym.machine.tiered_hatch.uiv.name=电压控制单元(UIV)
+gcym.machine.tiered_hatch.umv.name=电压控制单元(UMV)
+gcym.machine.tiered_hatch.uxv.name=电压控制单元(UXV)
+gcym.machine.tiered_hatch.max.name=电压控制单元(MaX)
 
 
 # casings
@@ -132,13 +132,13 @@ tile.large_multiblock_casing.steam_casing.name=工业蒸汽机械方块
 recipemap.alloy_blast_smelter.name=合金冶炼炉
 
 # Materials
-material.stellite_100=司太立100合金
+material.stellite_100=司太立合金-100
 material.watertight_steel=防水钢
-material.maraging_steel_300=马氏体时效钢300
-material.hastelloy_c_276=哈斯特洛依合金-C276
-material.hastelloy_x=哈斯特洛依合金-X
-material.trinaquadalloy=碳化特林-钍瑞铌合金
-material.zeron_100=塞龙-100
+material.maraging_steel_300=马氏体时效钢-300
+material.hastelloy_c_276=哈氏合金-C276
+material.hastelloy_x=哈氏合金-X
+material.trinaquadalloy=硅岩凯金合金
+material.zeron_100=泽龙-100超不锈钢
 material.titanium_carbide=碳化钛 
 material.tantalum_carbide=碳化钽
 material.molybdenum_disilicide=二硅化钼
