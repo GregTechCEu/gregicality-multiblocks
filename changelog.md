@@ -18,7 +18,7 @@
  * Fixes voltage of some mixer recipes
 
 ## v1.0.4
- * Adds compat for GTCEu V2.1.0-beta
+ * Adds compat for GTCEu v2.1.0-beta
 
 ## v1.0.5
  * Fixes large wiremill using a sifter instead of wiremill in its recipe
@@ -42,5 +42,5 @@
 ## v1.1.2
  * Fix Large Distillery Structure: adds tiered casing support and blocks multi-fluid hatches (#5)
  * Internal: Moved to non-deprecated mod loaded check (#9)
- * Adds compat for GTCEu V2.1.5-beta
+ * Adds compat for GTCEu v2.2.0-beta
  * Removed muffler hatch from the Large Laser Engraver
