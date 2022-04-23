@@ -44,3 +44,6 @@
  * Internal: Moved to non-deprecated mod loaded check (#9)
  * Adds compat for GTCEu v2.2.0-beta
  * Removed muffler hatch from the Large Laser Engraver
+
+## v1.1.3
+ * Prevent parallel hatches from being shared between multiblocks

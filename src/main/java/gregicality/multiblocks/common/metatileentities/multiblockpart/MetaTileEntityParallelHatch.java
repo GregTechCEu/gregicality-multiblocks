@@ -62,9 +62,10 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    protected ModularUI createUI(EntityPlayer entityPlayer) {
+    protected ModularUI createUI(@Nonnull EntityPlayer entityPlayer) {
         ServerWidgetGroup parallelAmountGroup = new ServerWidgetGroup(() -> true);
-        parallelAmountGroup.addWidget(new ImageWidget(62, 36, 53, 20, GuiTextures.DISPLAY));
+        parallelAmountGroup.addWidget(new ImageWidget(62, 36, 53, 20, GuiTextures.DISPLAY)
+                .setTooltip(I18n.format("gcym.machine.parallel_hatch.display")));
 
         parallelAmountGroup.addWidget(new IncrementButtonWidget(118, 36, 30, 20, 1, 4, 16, 64, this::setCurrentParallel)
                 .setDefaultTooltip()
@@ -117,6 +118,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gcym.machine.parallel_hatch.tooltip", this.maxParallel));
+        tooltip.add(I18n.format("gregtech.universal.disabled"));
     }
 
     @Override
@@ -128,7 +130,6 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     public void registerAbilities(@Nonnull List<IParallelHatch> list) {
         list.add(this);
     }
-
 
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
@@ -146,7 +147,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
 
             if (getController() != null && getController() instanceof RecipeMapMultiblockController) {
                 overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(),
-                        ((RecipeMapMultiblockController) getController()).isActive(),
+                        getController().isActive(),
                         getController().getCapability(GregtechTileCapabilities.CAPABILITY_CONTROLLABLE, null).isWorkingEnabled());
             } else {
                 overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(), false, false);
@@ -155,7 +156,12 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+    public boolean canPartShare() {
+        return false;
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound data) {
         data.setInteger("currentParallel", this.currentParallel);
         return super.writeToNBT(data);
     }

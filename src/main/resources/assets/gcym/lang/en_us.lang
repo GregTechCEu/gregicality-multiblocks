@@ -81,6 +81,7 @@ gcym.machine.parallel_hatch.luv.name=Master Parallel Control Hatch
 gcym.machine.parallel_hatch.zpm.name=Ultimate Parallel Control Hatch
 gcym.machine.parallel_hatch.uv.name=Super Parallel Control Hatch
 gcym.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes.
+gcym.machine.parallel_hatch.display=Adjust the maximum parallel of the multiblock
 
 gcym.machine.tiered_hatch.tooltip.1=Enables up to %s§7 Voltage.
 
