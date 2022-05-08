@@ -1,6 +1,6 @@
 package gregicality.multiblocks.common.block.blocks;
 
-import gregtech.common.blocks.VariantActiveBlock;
+import gregtech.api.block.VariantActiveBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +19,7 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
         setHardness(5.0f);
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 2);
+        setHarvestLevel("wrench", 2);
         setDefaultState(getState(UniqueCasingType.CRUSHING_WHEELS));
     }
 

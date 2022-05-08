@@ -47,3 +47,5 @@
 
 ## v1.1.3
  * Prevent parallel hatches from being shared between multiblocks
+ * Removed duplicated slicing blade casing recipe (#11)
+ * Added compat for GTCEu v2.2.2-beta
