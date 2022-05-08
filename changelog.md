@@ -49,3 +49,6 @@
  * Prevent parallel hatches from being shared between multiblocks
  * Removed duplicated slicing blade casing recipe (#11)
  * Added compat for GTCEu v2.2.2-beta
+
+## v1.1.4
+ * Removed Deprecated Chemical Plant multiblock
