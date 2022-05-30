@@ -19,7 +19,7 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
         setHardness(5.0f);
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 2);
+        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.MACERATOR_CASING));
     }
 
