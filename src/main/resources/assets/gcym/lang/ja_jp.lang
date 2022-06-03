@@ -1,8 +1,7 @@
-## Gregicality Multiblocks ja_jp.lang
-## Last update 22.3.12
-## Tlanslated version
-## 	1.12.2-1.1.3
-## Created by Ko_no
+# Japanese translate by MrKo_no
+# 日本語ローカライズ担当： MrKo_no
+# Corresponding Version: 1.1.2
+# 対応バージョン : 1.1.2
 
 # multiblocks
 gcym.machine.large_macerator.name=大型粉砕塔
@@ -15,7 +14,7 @@ gcym.machine.large_brewer.name=大型醸造用桶
 gcym.machine.large_centrifuge.name=大型遠心分離ユニット
 gcym.machine.large_chemical_bath.name=大型化学槽
 gcym.machine.chemical_plant.name=化学プラント
-gcym.machine.chemical_plant.tooltip.1=Only runs Large Chemical Recipes in parallel
+gcym.machine.chemical_plant.tooltip.1=大型化学反応炉のレシピのみ並列処理できる
 gcym.machine.large_extractor.name=大型抽出機
 gcym.machine.large_cutter.name=大型裁断機
 gcym.machine.large_distillery.name=大型分別式蒸留塔
@@ -32,11 +31,11 @@ gcym.machine.electric_implosion_compressor.name=電気式内破圧縮機
 gcym.machine.large_mass_fabricator.name=大型物質製造チャンバー
 gcym.machine.large_replicator.name=大型複製チャンバー
 gcym.machine.mega_blast_furnace.name=回転式炉床炉
-gcym.machine.mega_blast_furnace.tooltip.1=§b%s§7レシピまで並列処理可能.
+gcym.machine.mega_blast_furnace.tooltip.1=§b%s§7レシピまで並列処理可能
 gcym.machine.mega_vacuum_freezer.name=一括爆風冷却機
-gcym.machine.mega_vacuum_freezer.tooltip.1=§b%s§7レシピまで並列処理可能.
+gcym.machine.mega_vacuum_freezer.tooltip.1=§b%s§7レシピまで並列処理可能
 gcym.machine.steam_engine.name=工業用蒸気エンジン
-gcym.machine.steam_engine.tooltip.1=%s§7までのエネルギーを生産.
+gcym.machine.steam_engine.tooltip.1=%s§7までのエネルギーを生産
 gcym.machine.large_circuit_assembler.name=大型回路組立機
 
 
@@ -47,35 +46,35 @@ gcym.multiblock.tiered_hatch.tooltip=最大EU/t: §a%s (%s§r)
 
 
 # multiblock descriptions
-gcym.multiblock.large_macerator.description=破砕のためのマルチブロック式粉砕機.
-gcym.multiblock.alloy_blast_smelter.description=大体積の合金作成用高炉.
-gcym.multiblock.large_arc_furnace.description=リサイクル用のマルチブロック式アーク炉.
-gcym.multiblock.large_assembler.description=モノを組み立てるためのマルチブロック式組立機.
-gcym.multiblock.large_autoclave.description=加圧するためのマルチブロック式オートクレーブ.
-gcym.multiblock.large_bender.description=素材成型のためのマルチブロック式の金属加工機, 圧縮機, 圧縮成型機及び鍛造機.
-gcym.multiblock.large_brewer.description=醸造品を生産するためのマルチブロック式醸造機及び発酵槽.
-gcym.multiblock.large_centrifuge.description=素材分離のためのマルチブロック式遠視分離機及び熱遠心分離機.
-gcym.multiblock.large_chemical_bath.description=素材洗浄のためのマルチブロック式化学槽及び鉱石洗浄機.
-gcym.multiblock.chemical_plant.description=発展化学のための化学プラント.
-gcym.multiblock.large_extractor.description=素材を移し替えるためのマルチブロック式抽出機及び缶詰機.
-gcym.multiblock.large_cutter.description=素材を小さくするためのマルチブロック式裁断機及び旋盤.
-gcym.multiblock.large_distillery.description=液体を分留するためのマルチブロック式蒸留機及び蒸留塔.
-gcym.multiblock.large_electrolyzer.description=分子をわけるためのマルチブロック式電解槽.
-gcym.multiblock.large_polarizer.description=磁性素材を分離するための磁化機及び電磁分離機.
-gcym.multiblock.large_extruder.description=素材を成型するためのマルチブロック式押出機.
-gcym.multiblock.large_solidifier.description=素材を鋳造するためのマルチブロック式液体成型機.
-gcym.multiblock.large_mixer.description=素材を混合するためのマルチブロック式ミキサー.
-gcym.multiblock.large_packager.description=アイテムを纏めるためのマルチブロック式梱包機.
-gcym.multiblock.large_engraver.description=エッチング用のマルチブロック式刻印機.
-gcym.multiblock.large_sifter.description=素材を仕分けるためのマルチブロック式選別機.
-gcym.multiblock.large_wiremill.description=ワイヤー生産用のマルチブロック式ワイヤー作成機.
-gcym.multiblock.electric_implosion_compressor.description=圧縮用の電気式内破圧縮機.
-gcym.multiblock.large_mass_fabricator.description=物質を素粒子に変換するためのマルチブロック式物質製造機.
-gcym.multiblock.large_replicator.description=素粒子を物質に変換するためのマルチブロック式複製機.
-gcym.multiblock.mega_blast_furnace.description=大量の製錬を行うための大規模高炉.
-gcym.multiblock.mega_vacuum_freezer.description=大量の冷却を行うための大規模真空冷却機.
-gcym.multiblock.steam_engine.description=効率よくエネルギーを生産するための大型蒸気エンジン.
-gcym.multiblock.large_circuit_assembler.description=回路を生産するためのマルチブロック式回路作成機.
+gcym.multiblock.large_macerator.description=破砕のためのマルチブロック式粉砕機
+gcym.multiblock.alloy_blast_smelter.description=大体積の合金作成用高炉
+gcym.multiblock.large_arc_furnace.description=リサイクル用のマルチブロック式アーク炉
+gcym.multiblock.large_assembler.description=モノを組み立てるためのマルチブロック式組立機
+gcym.multiblock.large_autoclave.description=加圧するためのマルチブロック式オートクレーブ
+gcym.multiblock.large_bender.description=素材成型のためのマルチブロック式の金属加工機, 圧縮機, 圧縮成型機及び鍛造機
+gcym.multiblock.large_brewer.description=醸造品を生産するためのマルチブロック式醸造機及び発酵槽
+gcym.multiblock.large_centrifuge.description=素材分離のためのマルチブロック式遠視分離機及び熱遠心分離機
+gcym.multiblock.large_chemical_bath.description=素材洗浄のためのマルチブロック式化学槽及び鉱石洗浄機
+gcym.multiblock.chemical_plant.description=発展化学のための化学プラント
+gcym.multiblock.large_extractor.description=素材を移し替えるためのマルチブロック式抽出機及び缶詰機
+gcym.multiblock.large_cutter.description=素材を小さくするためのマルチブロック式裁断機及び旋盤
+gcym.multiblock.large_distillery.description=液体を分留するためのマルチブロック式蒸留機及び蒸留塔
+gcym.multiblock.large_electrolyzer.description=分子をわけるためのマルチブロック式電解槽
+gcym.multiblock.large_polarizer.description=磁性素材を分離するための磁化機及び電磁分離機
+gcym.multiblock.large_extruder.description=素材を成型するためのマルチブロック式押出機
+gcym.multiblock.large_solidifier.description=素材を鋳造するためのマルチブロック式液体成型機
+gcym.multiblock.large_mixer.description=素材を混合するためのマルチブロック式ミキサー
+gcym.multiblock.large_packager.description=アイテムを纏めるためのマルチブロック式梱包機
+gcym.multiblock.large_engraver.description=エッチング用のマルチブロック式刻印機
+gcym.multiblock.large_sifter.description=素材を仕分けるためのマルチブロック式選別機
+gcym.multiblock.large_wiremill.description=ワイヤー生産用のマルチブロック式ワイヤー作成機
+gcym.multiblock.electric_implosion_compressor.description=圧縮用の電気式内破圧縮機
+gcym.multiblock.large_mass_fabricator.description=物質を素粒子に変換するためのマルチブロック式物質製造機
+gcym.multiblock.large_replicator.description=素粒子を物質に変換するためのマルチブロック式複製機
+gcym.multiblock.mega_blast_furnace.description=大量の製錬を行うための大規模高炉
+gcym.multiblock.mega_vacuum_freezer.description=大量の冷却を行うための大規模真空冷却機
+gcym.multiblock.steam_engine.description=効率よくエネルギーを生産するための大型蒸気エンジン
+gcym.multiblock.large_circuit_assembler.description=回路を生産するためのマルチブロック式回路作成機
 
 
 # hatches
@@ -134,23 +133,23 @@ tile.large_multiblock_casing.steam_casing.name=産業用蒸気外装
 recipemap.alloy_blast_smelter.name=合金高炉
 
 # Materials
-material.stellite_100=ステライト-100
+material.stellite_100=ステライト 100
 material.watertight_steel=防水性スチール
 material.maraging_steel_300=マルエージングスチール 300
-material.hastelloy_c_276=ハステロイ-C276
-material.hastelloy_x=ハステロイ-X
+material.hastelloy_c_276=ハステロイ C276
+material.hastelloy_x=ハステロイ X
 material.trinaquadalloy=トリナクアダロイ
-material.zeron_100=ゼロン-100
+material.zeron_100=ゼロン 100
 material.titanium_carbide=炭化チタン
 material.tantalum_carbide=炭化タンタル
 material.molybdenum_disilicide=二ケイ化モリブデン
 
 material.hsla_steel=HSLAスチール
-material.titanium_tungsten_carbide=チタン-タングステン 炭化物
-material.incoloy_ma_956=インコロイ-MA956
+material.titanium_tungsten_carbide=チタン タングステン 炭化物
+material.incoloy_ma_956=インコロイ MA956
 
 # fluids
 gcym.fluid.molten=熔融%s
 
 # deprecation
-gcym.deprecation.tooltip=§cこの機械は非推奨です! 次回のアップデートで削除されます! 素材を失わないためにこれを処理してください!
+gcym.deprecation.tooltip=§cこの機械は非推奨です! 次回のアップデートで削除されます! 素材を失わないためリサイクル等をしてください!
