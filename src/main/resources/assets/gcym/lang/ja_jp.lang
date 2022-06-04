@@ -1,28 +1,28 @@
 # Japanese translate by MrKo_no
 # 日本語ローカライズ担当： MrKo_no
-# Corresponding Version: 1.1.2
-# 対応バージョン : 1.1.2
+# Corresponding Version: 1.1.3
+# 対応バージョン : 1.1.3
 
 # multiblocks
-gcym.machine.large_macerator.name=大型粉砕塔
+gcym.machine.large_macerator.name=大型塔式粉砕機
 gcym.machine.alloy_blast_smelter.name=合金高炉
 gcym.machine.large_arc_furnace.name=大型アーク炉
-gcym.machine.large_assembler.name=大型組立ファクトリー
+gcym.machine.large_assembler.name=大型組立工場
 gcym.machine.large_autoclave.name=大型オートクレーブ
-gcym.machine.large_bender.name=大型加工機
-gcym.machine.large_brewer.name=大型醸造用桶
+gcym.machine.large_bender.name=大型鍛圧機
+gcym.machine.large_brewer.name=大型醸造機
 gcym.machine.large_centrifuge.name=大型遠心分離ユニット
 gcym.machine.large_chemical_bath.name=大型化学槽
 gcym.machine.chemical_plant.name=化学プラント
 gcym.machine.chemical_plant.tooltip.1=大型化学反応炉のレシピのみ並列処理できる
 gcym.machine.large_extractor.name=大型抽出機
 gcym.machine.large_cutter.name=大型裁断機
-gcym.machine.large_distillery.name=大型分別式蒸留塔
+gcym.machine.large_distillery.name=大型蒸留塔
 gcym.machine.large_electrolyzer.name=大型電解プラント
-gcym.machine.large_polarizer.name=大型電磁石
+gcym.machine.large_polarizer.name=大型磁化装置
 gcym.machine.large_extruder.name=大型押出機
-gcym.machine.large_solidifier.name=大型凝固機構
-gcym.machine.large_mixer.name=大型混合容器
+gcym.machine.large_solidifier.name=大型固形化装置
+gcym.machine.large_mixer.name=大型混合機
 gcym.machine.large_packager.name=大型梱包機
 gcym.machine.large_engraver.name=大型刻印機
 gcym.machine.large_sifter.name=大型ふるい分け漏斗
@@ -32,14 +32,14 @@ gcym.machine.large_mass_fabricator.name=大型物質製造チャンバー
 gcym.machine.large_replicator.name=大型複製チャンバー
 gcym.machine.mega_blast_furnace.name=回転式炉床炉
 gcym.machine.mega_blast_furnace.tooltip.1=§b%s§7レシピまで並列処理可能
-gcym.machine.mega_vacuum_freezer.name=一括爆風冷却機
+gcym.machine.mega_vacuum_freezer.name=一括真空冷却機
 gcym.machine.mega_vacuum_freezer.tooltip.1=§b%s§7レシピまで並列処理可能
 gcym.machine.steam_engine.name=工業用蒸気エンジン
 gcym.machine.steam_engine.tooltip.1=%s§7までのエネルギーを生産
 gcym.machine.large_circuit_assembler.name=大型回路組立機
 
 
-gcym.tooltip.parallel_enabled=§b並行制御ユニット§7によって並列処理数が決定される
+gcym.tooltip.parallel_enabled=§b並列制御ユニット§7によって並列処理数が決定される
 gcym.tooltip.tiered_hatch_enabled=動作には§b電圧制御ユニット§7が必要.
 gcym.multiblock.tiered_hatch.tooltip=最大EU/t: §a%s (%s§r)
 
@@ -60,7 +60,7 @@ gcym.multiblock.large_extractor.description=素材を移し替えるためのマ
 gcym.multiblock.large_cutter.description=素材を小さくするためのマルチブロック式裁断機及び旋盤
 gcym.multiblock.large_distillery.description=液体を分留するためのマルチブロック式蒸留機及び蒸留塔
 gcym.multiblock.large_electrolyzer.description=分子をわけるためのマルチブロック式電解槽
-gcym.multiblock.large_polarizer.description=磁性素材を分離するための磁化機及び電磁分離機
+gcym.multiblock.large_polarizer.description=素材を磁化するための磁化機及び電磁分離機
 gcym.multiblock.large_extruder.description=素材を成型するためのマルチブロック式押出機
 gcym.multiblock.large_solidifier.description=素材を鋳造するためのマルチブロック式液体成型機
 gcym.multiblock.large_mixer.description=素材を混合するためのマルチブロック式ミキサー
@@ -79,10 +79,10 @@ gcym.multiblock.large_circuit_assembler.description=回路を生産するため�
 
 # hatches
 
-gcym.machine.parallel_hatch.iv.name=精鋭並行制御ユニット
-gcym.machine.parallel_hatch.luv.name=マスター並行制御ユニット
-gcym.machine.parallel_hatch.zpm.name=究極並行制御ユニット
-gcym.machine.parallel_hatch.uv.name=スーパー並行制御ユニット
+gcym.machine.parallel_hatch.iv.name=精鋭並列制御ユニット
+gcym.machine.parallel_hatch.luv.name=マスター並列制御ユニット
+gcym.machine.parallel_hatch.zpm.name=究極並列制御ユニット
+gcym.machine.parallel_hatch.uv.name=スーパー並列制御ユニット
 gcym.machine.parallel_hatch.tooltip=§b%s§7レシピまで並列処理できる.
 gcym.machine.parallel_hatch.display=マルチブロック機械の並列処理の最大値を制御する.
 
@@ -115,41 +115,41 @@ tile.unique_casing.heat_vent.name=排熱口
 tile.unique_casing.molybdenum_disilicide_coil.name=二ケイ化モリブデン製コイルブロック
 
 # large multiblock casing
-tile.large_multiblock_casing.macerator_casing.name=安全粉砕外装
-tile.large_multiblock_casing.blast_casing.name=高温製錬用外装
-tile.large_multiblock_casing.assembler_casing.name=大規模組立用外装
-tile.large_multiblock_casing.stress_proof_casing.name=耐応力外装
-tile.large_multiblock_casing.corrosion_proof_casing.name=耐腐食性外装
-tile.large_multiblock_casing.vibration_safe_casing.name=耐振動性外装
-tile.large_multiblock_casing.watertight_casing.name=防水外装
-tile.large_multiblock_casing.cutter_casing.name=耐衝撃切断外装
-tile.large_multiblock_casing.nonconducting_casing.name=非電導性外装
-tile.large_multiblock_casing.mixer_casing.name=無反応性混合用外装
-tile.large_multiblock_casing.engraver_casing.name=安全レーザー刻印外装
-tile.large_multiblock_casing.atomic_casing.name=原子外装
-tile.large_multiblock_casing.steam_casing.name=産業用蒸気外装
+tile.large_multiblock_casing.macerator_casing.name=安全粉砕マシン外装
+tile.large_multiblock_casing.blast_casing.name=高温製錬用マシン外装
+tile.large_multiblock_casing.assembler_casing.name=大規模組立用マシン外装
+tile.large_multiblock_casing.stress_proof_casing.name=耐応力マシン外装
+tile.large_multiblock_casing.corrosion_proof_casing.name=耐腐食性マシン外装
+tile.large_multiblock_casing.vibration_safe_casing.name=耐振動性マシン外装
+tile.large_multiblock_casing.watertight_casing.name=防水マシン外装
+tile.large_multiblock_casing.cutter_casing.name=耐衝撃切断マシン外装
+tile.large_multiblock_casing.nonconducting_casing.name=非電導性マシン外装
+tile.large_multiblock_casing.mixer_casing.name=不活性混合用マシン外装
+tile.large_multiblock_casing.engraver_casing.name=耐レーザー刻印マシン外装
+tile.large_multiblock_casing.atomic_casing.name=原子マシン外装
+tile.large_multiblock_casing.steam_casing.name=工業用蒸気マシン外装
 
 # RecipeMaps
 recipemap.alloy_blast_smelter.name=合金高炉
 
 # Materials
-material.stellite_100=ステライト 100
+material.stellite_100=ステライト100
 material.watertight_steel=防水性スチール
-material.maraging_steel_300=マルエージングスチール 300
-material.hastelloy_c_276=ハステロイ C276
-material.hastelloy_x=ハステロイ X
+material.maraging_steel_300=マルエージングスチール300
+material.hastelloy_c_276=ハステロイC276
+material.hastelloy_x=ハステロイX
 material.trinaquadalloy=トリナクアダロイ
-material.zeron_100=ゼロン 100
+material.zeron_100=ゼロン100
 material.titanium_carbide=炭化チタン
 material.tantalum_carbide=炭化タンタル
 material.molybdenum_disilicide=二ケイ化モリブデン
 
 material.hsla_steel=HSLAスチール
-material.titanium_tungsten_carbide=チタン タングステン 炭化物
-material.incoloy_ma_956=インコロイ MA956
+material.titanium_tungsten_carbide=炭化タングステンチタン
+material.incoloy_ma_956=インコロイMA956
 
 # fluids
 gcym.fluid.molten=熔融%s
 
 # deprecation
-gcym.deprecation.tooltip=§cこの機械は非推奨です! 次回のアップデートで削除されます! 素材を失わないためリサイクル等をしてください!
+gcym.deprecation.tooltip=§cこの機械は廃止され, 次のアップデートで削除される予定です!コントローラを壊してクラフト素材を回収しましょう!
