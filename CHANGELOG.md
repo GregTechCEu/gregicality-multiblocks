@@ -70,3 +70,5 @@
 * Changed casings to use wrenches instead of pickaxes for harvesting
 * Changed Rotary Hearth Furnace and Bulk Blast Chiller to use parallel hatches instead of their base rate
 * Added distinct buses to the Large Chemical Bath
+* Fixed the Heat Vent block not being emissive
+* Allowed the Alloy Blast Smelter to display heating coils added by CraftTweaker in the structure preview

@@ -7,6 +7,7 @@ import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.GTValues;
+import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.IMufflerHatch;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -69,10 +70,11 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         Object type = context.get("CoilType");
-        if (type instanceof BlockWireCoil.CoilType)
-            this.blastFurnaceTemperature = ((BlockWireCoil.CoilType) type).getCoilTemperature();
-        else
-            this.blastFurnaceTemperature = 0;
+        if (type instanceof IHeatingCoilBlockStats) {
+            this.blastFurnaceTemperature = ((IHeatingCoilBlockStats) type).getCoilTemperature();
+        } else {
+            this.blastFurnaceTemperature = BlockWireCoil.CoilType.CUPRONICKEL.getCoilTemperature();
+        }
 
         this.blastFurnaceTemperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
     }

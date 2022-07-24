@@ -52,9 +52,10 @@
       }
     },
     "active=true,variant=heat_vent": {
-      "model": "minecraft:cube_all",
+      "model": "gregtech:cube_2_layer_all",
       "textures": {
-        "all": "gregtech:blocks/casings/unique/heat_vent_on"
+        "bot_all": "gregtech:blocks/casings/unique/heat_vent",
+        "top_all": "gregtech:blocks/casings/unique/heat_vent_bloom"
       }
     },
     "active=false,variant=molybdenum_disilicide_coil": {
@@ -67,7 +68,7 @@
       "model": "gregtech:cube_2_layer_all",
       "textures": {
         "bot_all": "gregtech:blocks/casings/coils/machine_coil_molybdenum_disilicide",
-        "top_all":"gregtech:blocks/casings/coils/machine_coil_molybdenum_disilicide_bloom"
+        "top_all": "gregtech:blocks/casings/coils/machine_coil_molybdenum_disilicide_bloom"
       }
     }
   }

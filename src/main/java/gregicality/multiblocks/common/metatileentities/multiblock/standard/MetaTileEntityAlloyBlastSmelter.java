@@ -7,6 +7,9 @@ import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.block.IHeatingCoilBlockStats;
+import gregtech.api.block.VariantActiveBlock;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -25,7 +28,6 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -42,7 +44,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -73,10 +74,11 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         Object type = context.get("CoilType");
-        if (type instanceof BlockWireCoil.CoilType)
-            this.blastFurnaceTemperature = ((BlockWireCoil.CoilType) type).getCoilTemperature();
-        else
-            this.blastFurnaceTemperature = 0;
+        if (type instanceof IHeatingCoilBlockStats) {
+            this.blastFurnaceTemperature = ((IHeatingCoilBlockStats) type).getCoilTemperature();
+        } else {
+            this.blastFurnaceTemperature = BlockWireCoil.CoilType.CUPRONICKEL.getCoilTemperature();
+        }
 
         this.blastFurnaceTemperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
     }
@@ -130,18 +132,23 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
                 .where('H', () -> ConfigHolder.machines.enableMaintenance ? MetaTileEntities.MAINTENANCE_HATCH : getCasingState(), EnumFacing.SOUTH)
                 .where('#', Blocks.AIR.getDefaultState());
 
-
-        Arrays.stream(BlockWireCoil.CoilType.values())
-                .sorted(Comparator.comparingInt(BlockWireCoil.CoilType::getLevel))
-                .forEach(coilType -> shapeInfo.add(builder.where('C', MetaBlocks.WIRE_COIL.getState(coilType)).build()));
+        GregTechAPI.HEATING_COILS.entrySet().stream()
+                .filter(entry -> {
+                    if (entry.getKey().getPropertyKeys().contains(VariantActiveBlock.ACTIVE)) {
+                        return !entry.getKey().getValue(VariantActiveBlock.ACTIVE);
+                    }
+                    return true;
+                })
+                .sorted(Comparator.comparingInt(entry -> entry.getValue().getTier()))
+                .forEach(entry -> shapeInfo.add(builder.where('C', entry.getKey()).build()));
         return shapeInfo;
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.HIGH_TEMPERATURE_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
     }
 
