@@ -1,5 +1,6 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
@@ -28,13 +29,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class MetaTileEntityMegaVacuumFreezer extends RecipeMapMultiblockController {
-
-    private static final int MAX_PARALLEL = 2048;
+public class MetaTileEntityMegaVacuumFreezer extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityMegaVacuumFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.VACUUM_RECIPES);
-        this.recipeMapWorkable = new MegaVacuumFreezerRecipeLogic(this);
     }
 
     @Override
@@ -91,24 +89,5 @@ public class MetaTileEntityMegaVacuumFreezer extends RecipeMapMultiblockControll
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.MEGA_VACUUM_FREEZER_OVERLAY;
-    }
-
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gcym.machine.mega_vacuum_freezer.tooltip.1", MAX_PARALLEL));
-    }
-
-    @SuppressWarnings("InnerClassMayBeStatic")
-    private class MegaVacuumFreezerRecipeLogic extends MultiblockRecipeLogic {
-
-        public MegaVacuumFreezerRecipeLogic(RecipeMapMultiblockController tileEntity) {
-            super(tileEntity);
-        }
-
-        @Override
-        public int getParallelLimit() {
-            return MAX_PARALLEL;
-        }
     }
 }

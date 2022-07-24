@@ -1,5 +1,7 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
+import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
@@ -7,7 +9,6 @@ import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.IMufflerHatch;
-import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -18,6 +19,8 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.logic.OverclockingLogic;
+import gregtech.api.recipes.recipeproperties.RecipePropertyStorage;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
@@ -39,11 +42,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class MetaTileEntityMegaBlastFurnace extends RecipeMapMultiblockController implements IHeatingCoil {
+public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockController implements IHeatingCoil {
 
     private int blastFurnaceTemperature;
-
-    private static final int MAX_PARALLEL = 2048;
 
     public MetaTileEntityMegaBlastFurnace(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.BLAST_RECIPES);
@@ -150,7 +151,6 @@ public class MetaTileEntityMegaBlastFurnace extends RecipeMapMultiblockControlle
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gcym.machine.mega_blast_furnace.tooltip.1", MAX_PARALLEL));
         tooltip.add(I18n.format("gregtech.machine.electric_blast_furnace.tooltip.1"));
         tooltip.add(I18n.format("gregtech.machine.electric_blast_furnace.tooltip.2"));
         tooltip.add(I18n.format("gregtech.machine.electric_blast_furnace.tooltip.3"));
@@ -158,10 +158,7 @@ public class MetaTileEntityMegaBlastFurnace extends RecipeMapMultiblockControlle
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        if (iMultiblockPart instanceof IMufflerHatch)
-            return Textures.ROBUST_TUNGSTENSTEEL_CASING;
-
-        return GCYMTextures.BLAST_CASING;
+        return iMultiblockPart instanceof IMufflerHatch ? Textures.ROBUST_TUNGSTENSTEEL_CASING : GCYMTextures.BLAST_CASING;
     }
 
     @Nonnull
@@ -181,15 +178,18 @@ public class MetaTileEntityMegaBlastFurnace extends RecipeMapMultiblockControlle
     }
 
     @SuppressWarnings("InnerClassMayBeStatic")
-    private class MegaBlastFurnaceRecipeLogic extends HeatingCoilRecipeLogic {
+    private class MegaBlastFurnaceRecipeLogic extends GCYMMultiblockRecipeLogic {
 
         public MegaBlastFurnaceRecipeLogic(RecipeMapMultiblockController metaTileEntity) {
             super(metaTileEntity);
         }
 
+        @Nonnull
         @Override
-        public int getParallelLimit() {
-            return MAX_PARALLEL;
+        protected int[] runOverclockingLogic(@Nonnull RecipePropertyStorage propertyStorage, int recipeEUt, long maxVoltage, int duration, int maxOverclocks) {
+            return OverclockingLogic.heatingCoilOverclockingLogic(Math.abs(recipeEUt), maxVoltage, duration, maxOverclocks,
+                    ((IHeatingCoil) this.metaTileEntity).getCurrentTemperature(),
+                    propertyStorage.getRecipePropertyValue(TemperatureProperty.getInstance(), 0));
         }
     }
 }
