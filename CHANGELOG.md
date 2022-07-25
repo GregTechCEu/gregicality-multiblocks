@@ -64,9 +64,6 @@
 ## v1.1.4
 
 * Removed Deprecated Chemical Plant multiblock
-
-## v1.1.5
-
 * Changed casings to use wrenches instead of pickaxes for harvesting
 * Changed Rotary Hearth Furnace and Bulk Blast Chiller to use parallel hatches instead of their base rate
 * Added distinct buses to the Large Chemical Bath
