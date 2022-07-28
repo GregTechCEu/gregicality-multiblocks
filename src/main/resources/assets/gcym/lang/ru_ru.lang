@@ -128,7 +128,7 @@ gcym.fluid.molten=Расплав (%s)
 
 
 # multiblocks
-gcym.machine.large_macerator.name=Большоя измельчающая машина
+gcym.machine.large_macerator.name=Большая измельчающая машина
 gcym.machine.chemical_plant.tooltip.1=Параллельно запускает только большие химические рецепты
 
 
