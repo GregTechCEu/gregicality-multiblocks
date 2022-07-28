@@ -177,6 +177,11 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
     }
 
     @Override
+    public boolean canBeDistinct() {
+        return true;
+    }
+
+    @Override
     public int getCurrentTemperature() {
         return this.blastFurnaceTemperature;
     }
