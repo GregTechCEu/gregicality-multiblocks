@@ -18,6 +18,7 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.logic.OverclockingLogic;
@@ -92,6 +93,7 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
 
     @Override
     protected BlockPattern createStructurePattern() {
+        TraceabilityPredicate casing = states(getCasingState()).setMinGlobalLimited(360);
         return FactoryBlockPattern.start()
                 .aisle("##XXXXXXXXX##", "##XXXXXXXXX##", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############")
                 .aisle("#XXXXXXXXXXX#", "#XXXXXXXXXXX#", "###F#####F###", "###F#####F###", "###FFFFFFF###", "#############", "#############", "#############", "#############", "#############", "####FFFFF####", "#############", "#############", "#############", "#############", "#############", "#############")
@@ -107,9 +109,9 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
                 .aisle("#XXXXXXXXXXX#", "#XXXXXXXXXXX#", "###F#####F###", "###F#####F###", "###FFFFFFF###", "#############", "#############", "#############", "#############", "#############", "####FFFFF####", "#############", "#############", "#############", "#############", "#############", "#############")
                 .aisle("##XXXXXXXXX##", "##XXXXSXXXX##", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(280).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('X', casing.or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('F', states(getFrameState()))
-                .where('H', states(getCasingState()))
+                .where('H', casing)
                 .where('P', states(getPipeState()))
                 .where('B', states(getFireboxState()))
                 .where('I', states(getIntakeState()))
