@@ -21,8 +21,7 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.logic.OverclockingLogic;
-import gregtech.api.recipes.recipeproperties.RecipePropertyStorage;
+import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
@@ -43,6 +42,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+
+import static gregtech.api.recipes.logic.OverclockingLogic.heatingCoilOverclockingLogic;
 
 public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockController implements IHeatingCoil {
 
@@ -190,10 +191,14 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
 
         @Nonnull
         @Override
-        protected int[] runOverclockingLogic(@Nonnull RecipePropertyStorage propertyStorage, int recipeEUt, long maxVoltage, int duration, int maxOverclocks) {
-            return OverclockingLogic.heatingCoilOverclockingLogic(Math.abs(recipeEUt), maxVoltage, duration, maxOverclocks,
-                    ((IHeatingCoil) this.metaTileEntity).getCurrentTemperature(),
-                    propertyStorage.getRecipePropertyValue(TemperatureProperty.getInstance(), 0));
+        protected int[] runOverclockingLogic(@Nonnull IRecipePropertyStorage propertyStorage, int recipeEUt, long maxVoltage, int duration, int maxOverclocks) {
+            return heatingCoilOverclockingLogic(Math.abs(recipeEUt),
+                    maxVoltage,
+                    duration,
+                    maxOverclocks,
+                    ((IHeatingCoil) metaTileEntity).getCurrentTemperature(),
+                    propertyStorage.getRecipePropertyValue(TemperatureProperty.getInstance(), 0)
+            );
         }
     }
 }
