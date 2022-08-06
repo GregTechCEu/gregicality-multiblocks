@@ -70,3 +70,4 @@
 * Fixed the Heat Vent block not being emissive
 * Allowed the Alloy Blast Smelter to display heating coils added by CraftTweaker in the structure preview
 * Fixed Rotary Hearth Furnace casing predicate and increased minimum casings to 360, effective hatch maximum is now ~30
+* Added compat for GTCEu 2.4.0
