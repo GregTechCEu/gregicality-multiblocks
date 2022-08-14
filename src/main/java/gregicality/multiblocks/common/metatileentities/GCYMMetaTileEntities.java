@@ -3,7 +3,6 @@ package gregicality.multiblocks.common.metatileentities;
 import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.common.metatileentities.multiblock.generator.MetaTileEntitySteamEngine;
 import gregicality.multiblocks.common.metatileentities.multiblock.standard.*;
-import gregicality.multiblocks.common.metatileentities.multiblock.unique.MetaTileEntityChemicalPlant;
 import gregicality.multiblocks.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;
 import gregicality.multiblocks.common.metatileentities.multiblockpart.MetaTileEntityTieredHatch;
 import gregtech.api.GTValues;
@@ -22,7 +21,6 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeBrewery LARGE_BREWERY;
     public static MetaTileEntityLargeCentrifuge LARGE_CENTRIFUGE;
     public static MetaTileEntityLargeChemicalBath LARGE_CHEMICAL_BATH;
-    public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
     public static MetaTileEntityLargeExtractor LARGE_EXTRACTOR;
     public static MetaTileEntityLargeCutter LARGE_CUTTER;
     public static MetaTileEntityLargeDistillery LARGE_DISTILLERY;
@@ -58,7 +56,7 @@ public class GCYMMetaTileEntities {
         LARGE_BREWERY = registerMetaTileEntity(2006, new MetaTileEntityLargeBrewery(gcymId("large_brewer")));
         LARGE_CENTRIFUGE = registerMetaTileEntity(2007, new MetaTileEntityLargeCentrifuge(gcymId("large_centrifuge")));
         LARGE_CHEMICAL_BATH = registerMetaTileEntity(2008, new MetaTileEntityLargeChemicalBath(gcymId("large_chemical_bath")));
-        CHEMICAL_PLANT = registerMetaTileEntity(2009, new MetaTileEntityChemicalPlant(gcymId("chemical_plant")));
+        // FREE ID: 2009
         LARGE_EXTRACTOR = registerMetaTileEntity(2010, new MetaTileEntityLargeExtractor(gcymId("large_extractor")));
         LARGE_CUTTER = registerMetaTileEntity(2011, new MetaTileEntityLargeCutter(gcymId("large_cutter")));
         LARGE_DISTILLERY = registerMetaTileEntity(2012, new MetaTileEntityLargeDistillery(gcymId("large_distillery")));

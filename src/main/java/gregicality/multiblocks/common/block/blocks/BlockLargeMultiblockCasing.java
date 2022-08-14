@@ -1,6 +1,6 @@
 package gregicality.multiblocks.common.block.blocks;
 
-import gregtech.common.blocks.VariantBlock;
+import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +19,7 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
         setHardness(5.0f);
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 2);
+        setHarvestLevel("wrench", 2);
         setDefaultState(getState(CasingType.MACERATOR_CASING));
     }
 

@@ -1,13 +1,12 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
@@ -19,22 +18,14 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
 
-public class MetaTileEntityMegaVacuumFreezer extends RecipeMapMultiblockController {
-
-    private static final int MAX_PARALLEL = 2048;
+public class MetaTileEntityMegaVacuumFreezer extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityMegaVacuumFreezer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.VACUUM_RECIPES);
-        this.recipeMapWorkable = new MegaVacuumFreezerRecipeLogic(this);
     }
 
     @Override
@@ -62,23 +53,23 @@ public class MetaTileEntityMegaVacuumFreezer extends RecipeMapMultiblockControll
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
-    private IBlockState getCasingState4() {
+    private static IBlockState getCasingState4() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
     }
 
-    private IBlockState getCasingState5() {
+    private static IBlockState getCasingState5() {
         return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE);
     }
 
@@ -91,24 +82,5 @@ public class MetaTileEntityMegaVacuumFreezer extends RecipeMapMultiblockControll
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.MEGA_VACUUM_FREEZER_OVERLAY;
-    }
-
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gcym.machine.mega_vacuum_freezer.tooltip.1", MAX_PARALLEL));
-    }
-
-    @SuppressWarnings("InnerClassMayBeStatic")
-    private class MegaVacuumFreezerRecipeLogic extends MultiblockRecipeLogic {
-
-        public MegaVacuumFreezerRecipeLogic(RecipeMapMultiblockController tileEntity) {
-            super(tileEntity);
-        }
-
-        @Override
-        public int getParallelLimit() {
-            return MAX_PARALLEL;
-        }
     }
 }

@@ -66,4 +66,9 @@ public class MetaTileEntityLargeChemicalBath extends GCYMRecipeMapMultiblockCont
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CHEMICAL_BATH_OVERLAY;
     }
+
+    @Override
+    public boolean canBeDistinct() {
+        return true;
+    }
 }

@@ -147,14 +147,6 @@ public class GCYMCasingLoader {
                 .duration(50).EUt(16).buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(OrePrefix.plate, Materials.TungstenCarbide, 3)
-                .input(OrePrefix.gear, Materials.Ultimet, 4)
-                .inputs(MetaItems.ELECTRIC_MOTOR_IV.getStackForm())
-                .inputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getItemVariant(BlockLargeMultiblockCasing.CasingType.CUTTER_CASING))
-                .outputs(GCYMMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.SLICING_BLADES, 2))
-                .duration(50).EUt(16).buildAndRegister();
-
-        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.wireGtDouble, Materials.Platinum, 5)
                 .input(OrePrefix.circuit, MarkerMaterials.Tier.IV, 2)
                 .input(OrePrefix.cableGtSingle, Materials.Tungsten)

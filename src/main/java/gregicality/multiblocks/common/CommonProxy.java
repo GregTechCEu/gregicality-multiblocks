@@ -4,7 +4,7 @@ import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.loaders.recipe.GCYMRecipeLoader;
-import gregtech.common.blocks.VariantItemBlock;
+import gregtech.api.block.VariantItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;

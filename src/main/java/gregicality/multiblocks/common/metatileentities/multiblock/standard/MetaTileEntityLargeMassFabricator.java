@@ -49,19 +49,19 @@ public class MetaTileEntityLargeMassFabricator extends GCYMRecipeMapMultiblockCo
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ATOMIC_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.HEAT_VENT);
     }
 
-    private IBlockState getCasingState4() {
+    private static IBlockState getCasingState4() {
         return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL);
     }
 
