@@ -1,5 +1,6 @@
 package gregicality.multiblocks.loaders.recipe;
 
+import gregicality.multiblocks.api.GCYMValues;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
@@ -12,6 +13,7 @@ import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.loaders.recipe.CraftingComponent;
 import gregtech.loaders.recipe.MetaTileEntityLoader;
+import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.lang3.ArrayUtils;
 
 import static gregicality.multiblocks.api.unification.GCYMMaterials.*;
@@ -232,23 +234,25 @@ public class GCYMMetaTileEntityLoader {
 //                'E', MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL),
 //                'W', new UnificationEntry(cableGtDouble, VanadiumGallium));
 
-        ModHandler.addShapedRecipe(true, "mega_blast_furnace", GCYMMetaTileEntities.MEGA_BLAST_FURNACE.getStackForm(),
-                "PCP", "FSF", "DWD",
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.UHV),
-                'S', MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),
-                'F', MetaItems.FIELD_GENERATOR_UV.getStackForm(),
-                'P', new UnificationEntry(spring, Neutronium),
-                'D', new UnificationEntry(plateDense, Neutronium),
-                'W', new UnificationEntry(wireGtQuadruple, RutheniumTriniumAmericiumNeutronate));
+        if (Loader.isModLoaded(GCYMValues.GCYS_MODID)) {
+            ModHandler.addShapedRecipe(true, "mega_blast_furnace", GCYMMetaTileEntities.MEGA_BLAST_FURNACE.getStackForm(),
+                    "PCP", "FSF", "DWD",
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.UHV),
+                    'S', MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),
+                    'F', MetaItems.FIELD_GENERATOR_UV.getStackForm(),
+                    'P', new UnificationEntry(spring, Neutronium),
+                    'D', new UnificationEntry(plateDense, Neutronium),
+                    'W', new UnificationEntry(wireGtQuadruple, RutheniumTriniumAmericiumNeutronate));
 
-        ModHandler.addShapedRecipe(true, "mega_vacuum_freezer", GCYMMetaTileEntities.MEGA_VACUUM_FREEZER.getStackForm(),
-                "PCP", "FSF", "DWD",
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.UHV),
-                'S', MetaTileEntities.VACUUM_FREEZER.getStackForm(),
-                'F', MetaItems.FIELD_GENERATOR_UV.getStackForm(),
-                'P', new UnificationEntry(pipeNormalFluid, Neutronium),
-                'D', new UnificationEntry(plateDense, Neutronium),
-                'W', new UnificationEntry(wireGtQuadruple, RutheniumTriniumAmericiumNeutronate));
+            ModHandler.addShapedRecipe(true, "mega_vacuum_freezer", GCYMMetaTileEntities.MEGA_VACUUM_FREEZER.getStackForm(),
+                    "PCP", "FSF", "DWD",
+                    'C', new UnificationEntry(circuit, MarkerMaterials.Tier.UHV),
+                    'S', MetaTileEntities.VACUUM_FREEZER.getStackForm(),
+                    'F', MetaItems.FIELD_GENERATOR_UV.getStackForm(),
+                    'P', new UnificationEntry(pipeNormalFluid, Neutronium),
+                    'D', new UnificationEntry(plateDense, Neutronium),
+                    'W', new UnificationEntry(wireGtQuadruple, RutheniumTriniumAmericiumNeutronate));
+        }
 
         ModHandler.addShapedRecipe(true, "steam_engine", GCYMMetaTileEntities.STEAM_ENGINE.getStackForm(),
                 "FPF", "PCP", "SGS",
