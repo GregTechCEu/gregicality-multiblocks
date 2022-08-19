@@ -1,4 +1,5 @@
-
+# Russian translate by Wyh, Hikaro
+# Corresponding Version: 1.1.3
 
 gcym.multiblock.large_sifter.description=Многоблочная просеивающая машина для фильтрования материалов.
 gcym.machine.tiered_hatch.tooltip.1=Производит ток до %s§7 вольтажа.
