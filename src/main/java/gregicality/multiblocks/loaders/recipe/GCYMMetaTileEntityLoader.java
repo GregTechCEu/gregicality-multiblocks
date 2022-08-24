@@ -234,7 +234,7 @@ public class GCYMMetaTileEntityLoader {
 //                'E', MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL),
 //                'W', new UnificationEntry(cableGtDouble, VanadiumGallium));
 
-        if (Loader.isModLoaded(GCYMValues.GCYS_MODID)) {
+        if (!Loader.isModLoaded(GCYMValues.GCYS_MODID)) {
             ModHandler.addShapedRecipe(true, "mega_blast_furnace", GCYMMetaTileEntities.MEGA_BLAST_FURNACE.getStackForm(),
                     "PCP", "FSF", "DWD",
                     'C', new UnificationEntry(circuit, MarkerMaterials.Tier.UHV),
