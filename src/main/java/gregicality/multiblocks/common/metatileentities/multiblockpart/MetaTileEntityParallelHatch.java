@@ -65,7 +65,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     protected ModularUI createUI(@Nonnull EntityPlayer entityPlayer) {
         ServerWidgetGroup parallelAmountGroup = new ServerWidgetGroup(() -> true);
         parallelAmountGroup.addWidget(new ImageWidget(62, 36, 53, 20, GuiTextures.DISPLAY)
-                .setTooltip(I18n.format("gcym.machine.parallel_hatch.display")));
+                .setTooltip("gcym.machine.parallel_hatch.display"));
 
         parallelAmountGroup.addWidget(new IncrementButtonWidget(118, 36, 30, 20, 1, 4, 16, 64, this::setCurrentParallel)
                 .setDefaultTooltip()
