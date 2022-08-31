@@ -1,5 +1,6 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
+import gregicality.multiblocks.api.GCYMValues;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
@@ -18,6 +19,7 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 
 import javax.annotation.Nonnull;
 
@@ -26,7 +28,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeCutter(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES});
+        super(metaTileEntityId, determineRecipeMaps());
     }
 
     @Override
@@ -73,5 +75,14 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CUTTER_OVERLAY;
+    }
+
+    @Nonnull
+    private static RecipeMap<?>[] determineRecipeMaps() {
+        RecipeMap<?> slicerMap = RecipeMap.getByName("slicer");
+        if (Loader.isModLoaded(GCYMValues.GTFO_MODID) && slicerMap != null) {
+            return new RecipeMap<?>[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES, slicerMap};
+        }
+        return new RecipeMap<?>[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES};
     }
 }
