@@ -73,3 +73,8 @@
 * Added compat for GTCEu 2.4.0
 * Fixed recipe registration issues with Tiered Hatches
 * Added interaction with GCYS for recipes
+
+## v1.1.5
+
+* Fix GCYS integration
+* Fix server crash with parallel hatches
