@@ -36,7 +36,7 @@ public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblo
             tooltip.add(I18n.format("gcym.tooltip.parallel_enabled"));
         }
         if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings && isTiered()) {
-            tooltip.add(I18n.format("gcym.tooltip.tiered_hatch_enabled"));
+            tooltip.add(I18n.format("gcym.tooltip.tiered_hatch_enabled", GTValues.VNF[GCYMConfigHolder.globalMultiblocks.baseMultiblockTier]));
         }
     }
 

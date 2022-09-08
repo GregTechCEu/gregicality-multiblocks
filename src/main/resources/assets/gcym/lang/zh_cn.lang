@@ -85,21 +85,21 @@ gcym.machine.parallel_hatch.tooltip=最多可同时处理§b%s§7个配方。
 
 gcym.machine.tiered_hatch.tooltip.1=最高允许%s§7的电压.
 
-gcym.machine.tiered_hatch.ulv.name=原始电压控制单元
-gcym.machine.tiered_hatch.lv.name=基础电压控制单元
-gcym.machine.tiered_hatch.mv.name=良好电压控制单元
-gcym.machine.tiered_hatch.hv.name=高级电压控制单元
-gcym.machine.tiered_hatch.ev.name=极限电压控制单元
-gcym.machine.tiered_hatch.iv.name=精英电压控制单元
-gcym.machine.tiered_hatch.luv.name=大师电压控制单元
-gcym.machine.tiered_hatch.zpm.name=终极电压控制单元
-gcym.machine.tiered_hatch.uv.name=超级电压控制单元
-gcym.machine.tiered_hatch.uhv.name=无限电压控制单元
-gcym.machine.tiered_hatch.uev.name=超级电压控制单元
-gcym.machine.tiered_hatch.uiv.name=强导电压控制单元
-gcym.machine.tiered_hatch.umv.name=史诗电压控制单元
-gcym.machine.tiered_hatch.uxv.name=传奇电压控制单元
-gcym.machine.tiered_hatch.max.name=终极电压控制单元
+gcym.machine.tiered_hatch.ulv.name=[DEPRECATED] 原始电压控制单元
+gcym.machine.tiered_hatch.lv.name=[DEPRECATED] 基础电压控制单元
+gcym.machine.tiered_hatch.mv.name=[DEPRECATED] 良好电压控制单元
+gcym.machine.tiered_hatch.hv.name=[DEPRECATED] 高级电压控制单元
+gcym.machine.tiered_hatch.ev.name=[DEPRECATED] 极限电压控制单元
+gcym.machine.tiered_hatch.iv.name=[DEPRECATED] 精英电压控制单元
+gcym.machine.tiered_hatch.luv.name=[DEPRECATED] 大师电压控制单元
+gcym.machine.tiered_hatch.zpm.name=[DEPRECATED] 终极电压控制单元
+gcym.machine.tiered_hatch.uv.name=[DEPRECATED] 超级电压控制单元
+gcym.machine.tiered_hatch.uhv.name=[DEPRECATED] 无限电压控制单元
+gcym.machine.tiered_hatch.uev.name=[DEPRECATED] 超级电压控制单元
+gcym.machine.tiered_hatch.uiv.name=[DEPRECATED] 强导电压控制单元
+gcym.machine.tiered_hatch.umv.name=[DEPRECATED] 史诗电压控制单元
+gcym.machine.tiered_hatch.uxv.name=[DEPRECATED] 传奇电压控制单元
+gcym.machine.tiered_hatch.max.name=[DEPRECATED] 终极电压控制单元
 
 
 # casings

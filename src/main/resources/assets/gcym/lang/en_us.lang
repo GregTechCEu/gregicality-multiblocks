@@ -35,7 +35,7 @@ gcym.machine.large_circuit_assembler.name=Large Circuit Assembler
 
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
-gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run.
+gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run above %s.
 gcym.multiblock.tiered_hatch.tooltip=Max Tiered EU/t: §a%s (%s§r)
 
 
@@ -81,23 +81,26 @@ gcym.machine.parallel_hatch.uv.name=Super Parallel Control Hatch
 gcym.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes.
 gcym.machine.parallel_hatch.display=Adjust the maximum parallel of the multiblock
 
-gcym.machine.tiered_hatch.tooltip.1=Enables up to %s§7 Voltage.
+gcym.machine.tiered_hatch.name=Modular Component Hatch
+gcym.machine.tiered_hatch.tooltip.1=Enables Voltage beyond %s§7 with the right Components.
+gcym.machine.tiered_hatch.info=Add the correct Components to change the Maximum Voltage.
+gcym.machine.tiered_hatch.info.no_tier=N/A
 
-gcym.machine.tiered_hatch.ulv.name=Primitive Voltage Control Unit
-gcym.machine.tiered_hatch.lv.name=Basic Voltage Control Unit
-gcym.machine.tiered_hatch.mv.name=Good Voltage Control Unit
-gcym.machine.tiered_hatch.hv.name=Advanced Voltage Control Unit
-gcym.machine.tiered_hatch.ev.name=Extreme Voltage Control Unit
-gcym.machine.tiered_hatch.iv.name=Elite Voltage Control Unit
-gcym.machine.tiered_hatch.luv.name=Master Voltage Control Unit
-gcym.machine.tiered_hatch.zpm.name=Ultimate Voltage Control Unit
-gcym.machine.tiered_hatch.uv.name=Super Voltage Control Unit
-gcym.machine.tiered_hatch.uhv.name=Infinite Voltage Control Unit
-gcym.machine.tiered_hatch.uev.name=Ultra Voltage Control Unit
-gcym.machine.tiered_hatch.uiv.name=Insane Voltage Control Unit
-gcym.machine.tiered_hatch.umv.name=Epic Voltage Control Unit
-gcym.machine.tiered_hatch.uxv.name=Legendary Voltage Control Unit
-gcym.machine.tiered_hatch.max.name=Maximum Voltage Control Unit
+gcym.machine.tiered_hatch.ulv.name=[DEPRECATED] Primitive Voltage Control Unit
+gcym.machine.tiered_hatch.lv.name=[DEPRECATED] Basic Voltage Control Unit
+gcym.machine.tiered_hatch.mv.name=[DEPRECATED] Good Voltage Control Unit
+gcym.machine.tiered_hatch.hv.name=[DEPRECATED] Advanced Voltage Control Unit
+gcym.machine.tiered_hatch.ev.name=[DEPRECATED] Extreme Voltage Control Unit
+gcym.machine.tiered_hatch.iv.name=[DEPRECATED] Elite Voltage Control Unit
+gcym.machine.tiered_hatch.luv.name=[DEPRECATED] Master Voltage Control Unit
+gcym.machine.tiered_hatch.zpm.name=[DEPRECATED] Ultimate Voltage Control Unit
+gcym.machine.tiered_hatch.uv.name=[DEPRECATED] Super Voltage Control Unit
+gcym.machine.tiered_hatch.uhv.name=[DEPRECATED] Infinite Voltage Control Unit
+gcym.machine.tiered_hatch.uev.name=[DEPRECATED] Ultra Voltage Control Unit
+gcym.machine.tiered_hatch.uiv.name=[DEPRECATED] Insane Voltage Control Unit
+gcym.machine.tiered_hatch.umv.name=[DEPRECATED] Epic Voltage Control Unit
+gcym.machine.tiered_hatch.uxv.name=[DEPRECATED] Legendary Voltage Control Unit
+gcym.machine.tiered_hatch.max.name=[DEPRECATED] Maximum Voltage Control Unit
 
 
 # casings

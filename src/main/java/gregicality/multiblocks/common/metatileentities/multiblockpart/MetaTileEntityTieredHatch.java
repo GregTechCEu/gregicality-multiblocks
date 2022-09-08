@@ -12,6 +12,7 @@ import gregtech.api.GTValues;
 import gregtech.api.capability.impl.NotifiableItemStackHandler;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
+import gregtech.api.gui.widgets.AdvancedTextWidget;
 import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -26,6 +27,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
@@ -71,19 +77,30 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
-        ModularUI.Builder builder = ModularUI.builder(GuiTextures.BACKGROUND, 176, 18 * 4 + 94)
+        ModularUI.Builder builder = ModularUI.builder(GuiTextures.BACKGROUND, 176, 18 * 5 + 82)
                 .label(6, 6, getMetaFullName());
 
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 2; x++) {
-                int index = y * 2 + x;
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 2; y++) {
+                int index = x * 2 + y;
                 builder.widget(new SlotWidget(importItems, index,
-                        (88 - 2 * 9 + x * 18), 18 + y * 18, true, true)
+                        (79 - 2 * 9 + x * 18), 18 + y * 18, true, true)
                         .setBackgroundTexture(GuiTextures.SLOT));
             }
         }
-        return builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 7, 18 + 18 * 3 + 12)
+        builder.image(68, 18 * 4 - 12, 18 * 2 + 4, 22, GuiTextures.DISPLAY);
+        builder.widget(new AdvancedTextWidget(82, 18 * 4 - 4, this::addDisplayText, 0xFFFFFF));
+
+        return builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 7, 18 * 5)
                 .build(getHolder(), entityPlayer);
+    }
+
+    protected void addDisplayText(@Nonnull List<ITextComponent> list) {
+        int tier = this.cachedMaxVoltage;
+        if (tier < 0) tier = GCYMConfigHolder.globalMultiblocks.baseMultiblockTier;
+        list.add(new TextComponentString(GTValues.VNF[tier]).setStyle(new Style()
+                .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                        new TextComponentTranslation("gcym.machine.tiered_hatch.info")))));
     }
 
     @Override

@@ -1,9 +1,11 @@
 package gregicality.multiblocks.loaders.recipe;
 
 import gregicality.multiblocks.api.GCYMValues;
+import gregicality.multiblocks.common.GCYMConfigHolder;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
+import gregtech.api.items.OreDictNames;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -304,7 +306,15 @@ public class GCYMMetaTileEntityLoader {
                 'E', MetaItems.EMITTER_UV.getStackForm(),
                 'W', new UnificationEntry(cableGtDouble, YttriumBariumCuprate));
 
-        // Tiered Hatches
+        // Tiered Hatch
+        ModHandler.addShapedRecipe(true, "tiered_hatch", GCYMMetaTileEntities.TIERED_HATCH.getStackForm(),
+                "PSP", "KHK", "PCP",
+                'P', CraftingComponent.PLATE.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier),
+                'S', OreDictNames.chestWood.toString(),
+                'K', CraftingComponent.CABLE.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier),
+                'H', CraftingComponent.HULL.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier),
+                'C', CraftingComponent.BETTER_CIRCUIT.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier));
+
         MetaTileEntityLoader.registerMachineRecipe(ArrayUtils.subarray(GCYMMetaTileEntities.TIERED_HATCH_LEGACY, 0, HT ? UHV : UV), "PPP", "PCP", "PPP", 'P', CraftingComponent.PLATE, 'C', CraftingComponent.BETTER_CIRCUIT);
 
         if (!HT) {

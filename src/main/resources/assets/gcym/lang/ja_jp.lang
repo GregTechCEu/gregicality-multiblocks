@@ -88,21 +88,21 @@ gcym.machine.parallel_hatch.display=マルチブロック機械の並列処理�
 
 gcym.machine.tiered_hatch.tooltip.1=%s§7電圧まで対応する.
 
-gcym.machine.tiered_hatch.ulv.name=初歩的な電圧制御ユニット
-gcym.machine.tiered_hatch.lv.name=基本圧制御ユニット
-gcym.machine.tiered_hatch.mv.name=改良型電圧制御ユニット
-gcym.machine.tiered_hatch.hv.name=発展型電圧制御ユニット
-gcym.machine.tiered_hatch.ev.name=高度発展型電圧制御ユニット
-gcym.machine.tiered_hatch.iv.name=精鋭電圧制御ユニット
-gcym.machine.tiered_hatch.luv.name=マスター電圧制御ユニット
-gcym.machine.tiered_hatch.zpm.name=究極電圧制御ユニット
-gcym.machine.tiered_hatch.uv.name=素晴らしい電圧制御ユニット
-gcym.machine.tiered_hatch.uhv.name=無限電圧制御ユニット
-gcym.machine.tiered_hatch.uev.name=ウルトラ電圧制御ユニット
-gcym.machine.tiered_hatch.uiv.name=非常識な電圧制御ユニット
-gcym.machine.tiered_hatch.umv.name=史上最高の電圧制御ユニット
-gcym.machine.tiered_hatch.uxv.name=伝説的な電圧制御ユニット
-gcym.machine.tiered_hatch.max.name=マキシマム電圧制御ユニット
+gcym.machine.tiered_hatch.ulv.name=[DEPRECATED] 初歩的な電圧制御ユニット
+gcym.machine.tiered_hatch.lv.name=[DEPRECATED] 基本圧制御ユニット
+gcym.machine.tiered_hatch.mv.name=[DEPRECATED] 改良型電圧制御ユニット
+gcym.machine.tiered_hatch.hv.name=[DEPRECATED] 発展型電圧制御ユニット
+gcym.machine.tiered_hatch.ev.name=[DEPRECATED] 高度発展型電圧制御ユニット
+gcym.machine.tiered_hatch.iv.name=[DEPRECATED] 精鋭電圧制御ユニット
+gcym.machine.tiered_hatch.luv.name=[DEPRECATED] マスター電圧制御ユニット
+gcym.machine.tiered_hatch.zpm.name=[DEPRECATED] 究極電圧制御ユニット
+gcym.machine.tiered_hatch.uv.name=[DEPRECATED] 素晴らしい電圧制御ユニット
+gcym.machine.tiered_hatch.uhv.name=[DEPRECATED] 無限電圧制御ユニット
+gcym.machine.tiered_hatch.uev.name=[DEPRECATED] ウルトラ電圧制御ユニット
+gcym.machine.tiered_hatch.uiv.name=[DEPRECATED] 非常識な電圧制御ユニット
+gcym.machine.tiered_hatch.umv.name=[DEPRECATED] 史上最高の電圧制御ユニット
+gcym.machine.tiered_hatch.uxv.name=[DEPRECATED] 伝説的な電圧制御ユニット
+gcym.machine.tiered_hatch.max.name=[DEPRECATED] マキシマム電圧制御ユニット
 
 
 # casings

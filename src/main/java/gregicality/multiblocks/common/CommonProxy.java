@@ -3,6 +3,7 @@ package gregicality.multiblocks.common;
 import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.loaders.TileEntityMechanics;
 import gregicality.multiblocks.loaders.recipe.GCYMRecipeLoader;
 import gregtech.api.block.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -67,5 +68,6 @@ public class CommonProxy {
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
         GCYMRecipeLoader.init();
+        TileEntityMechanics.register();
     }
 }
