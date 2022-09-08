@@ -38,7 +38,7 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(FRONT, UP, RIGHT)
                 .aisle("XXXX", "XXXX", "XXXX", "####")
-                .aisle("XXXX", "STAX", "XXXX", "####")
+                .aisle("XXXX", "SAAX", "XXXX", "####")
                 .aisle("XXXX", "XXXX", "XXXX", "XXXX")
                 .aisle("XXXX", "GCCX", "GAAX", "XXXX").setRepeatable(3)
                 .aisle("XXXX", "XXXX", "XXXX", "XXXX")
@@ -46,7 +46,6 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
                 .where('X', states(getCasingState()).setMinGlobalLimited(65).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
-                .where('T', tieredCasing().or(air()))
                 .where('A', air())
                 .where('#', any())
                 .build();

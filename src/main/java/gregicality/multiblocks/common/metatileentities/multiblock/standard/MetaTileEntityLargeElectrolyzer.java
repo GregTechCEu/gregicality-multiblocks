@@ -34,12 +34,11 @@ public class MetaTileEntityLargeElectrolyzer extends GCYMRecipeMapMultiblockCont
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX")
                 .aisle("XXXXX", "XCCCX", "XCCCX")
-                .aisle("XXXXX", "XCTCX", "XCCCX")
+                .aisle("XXXXX", "XCCCX", "XCCCX")
                 .aisle("XXXXX", "XXSXX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
-                .where('T', tieredCasing().or(states(getCasingState2())))
                 .build();
     }
 

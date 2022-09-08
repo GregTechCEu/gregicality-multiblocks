@@ -39,14 +39,13 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#X#X#", "XXXXX", "#XXX#", "XXXXX", "#X#X#")
-                .aisle("#X#X#", "XAXAX", "#XTX#", "XAXAX", "#X#X#")
+                .aisle("#X#X#", "XAXAX", "#XAX#", "XAXAX", "#X#X#")
                 .aisle("#XXX#", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
                 .aisle("#XSX#", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
                 .aisle("#XXX#", "X###X", "X###X", "X###X", "#XXX#")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(50).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
-                .where('T', tieredCasing().or(air()))
                 .where('A', air())
                 .where('#', any())
                 .build();

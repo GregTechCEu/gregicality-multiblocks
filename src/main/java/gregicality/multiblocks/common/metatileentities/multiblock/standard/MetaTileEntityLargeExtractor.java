@@ -37,12 +37,12 @@ public class MetaTileEntityLargeExtractor extends GCYMRecipeMapMultiblockControl
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXSXX", "XCTCX", "XXXXX")
+                .aisle("XXSXX", "XCACX", "XXXXX")
                 .aisle("XXXXX", "XXXXX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(25).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
-                .where('T', tieredCasing().or(air()))
+                .where('A', air())
                 .build();
     }
 

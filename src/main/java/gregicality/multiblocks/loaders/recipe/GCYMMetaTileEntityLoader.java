@@ -305,10 +305,10 @@ public class GCYMMetaTileEntityLoader {
                 'W', new UnificationEntry(cableGtDouble, YttriumBariumCuprate));
 
         // Tiered Hatches
-        MetaTileEntityLoader.registerMachineRecipe(ArrayUtils.subarray(GCYMMetaTileEntities.TIERED_HATCH, 0, HT ? UHV : UV), "PPP", "PCP", "PPP", 'P', CraftingComponent.PLATE, 'C', CraftingComponent.BETTER_CIRCUIT);
+        MetaTileEntityLoader.registerMachineRecipe(ArrayUtils.subarray(GCYMMetaTileEntities.TIERED_HATCH_LEGACY, 0, HT ? UHV : UV), "PPP", "PCP", "PPP", 'P', CraftingComponent.PLATE, 'C', CraftingComponent.BETTER_CIRCUIT);
 
         if (!HT) {
-            ModHandler.addShapedRecipe(true, "gcym.machine.tiered_hatch.uhv", GCYMMetaTileEntities.TIERED_HATCH[UHV].getStackForm(),
+            ModHandler.addShapedRecipe(true, "gcym.machine.tiered_hatch.uhv", GCYMMetaTileEntities.TIERED_HATCH_LEGACY[UHV].getStackForm(),
                     "PPP", "PCP", "PPP",
                     'P', CraftingComponent.PLATE.getIngredient(UHV),
                     'C', CraftingComponent.CIRCUIT.getIngredient(UHV));

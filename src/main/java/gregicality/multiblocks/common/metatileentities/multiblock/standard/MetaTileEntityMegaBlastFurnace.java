@@ -187,6 +187,11 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
         return this.blastFurnaceTemperature;
     }
 
+    @Override
+    public boolean isTiered() {
+        return false;
+    }
+
     @SuppressWarnings("InnerClassMayBeStatic")
     private class MegaBlastFurnaceRecipeLogic extends GCYMMultiblockRecipeLogic {
 

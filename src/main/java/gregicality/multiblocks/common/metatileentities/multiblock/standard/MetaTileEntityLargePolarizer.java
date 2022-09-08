@@ -35,12 +35,11 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX")
                 .aisle("XXXXX", "XCACX", "XCXCX")
-                .aisle("XXXXX", "XCTCX", "XCXCX")
+                .aisle("XXXXX", "XCACX", "XCXCX")
                 .aisle("XXXXX", "XXSXX", "XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(35).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
-                .where('T', tieredCasing().or(air()))
                 .where('A', air())
                 .build();
     }

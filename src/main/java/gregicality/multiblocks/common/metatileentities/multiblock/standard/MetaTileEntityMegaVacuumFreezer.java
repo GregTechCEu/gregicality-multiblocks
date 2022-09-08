@@ -83,4 +83,9 @@ public class MetaTileEntityMegaVacuumFreezer extends GCYMRecipeMapMultiblockCont
     protected OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.MEGA_VACUUM_FREEZER_OVERLAY;
     }
+
+    @Override
+    public boolean isTiered() {
+        return false;
+    }
 }

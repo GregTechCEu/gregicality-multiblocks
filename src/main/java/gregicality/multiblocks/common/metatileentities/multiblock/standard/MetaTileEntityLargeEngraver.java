@@ -37,7 +37,7 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXGXX", "XXGXX", "XXXXX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
-                .aisle("XXXXX", "GATAG", "GAPAG", "XCXCX")
+                .aisle("XXXXX", "GAAAG", "GAPAG", "XCXCX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
                 .aisle("XXSXX", "XXGXX", "XXGXX", "XXXXX")
                 .where('S', selfPredicate())
@@ -46,7 +46,6 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
                 .where('C', states(getCasingState4()))
-                .where('T', tieredCasing().or(air()))
                 .where('A', air())
                 .build();
     }

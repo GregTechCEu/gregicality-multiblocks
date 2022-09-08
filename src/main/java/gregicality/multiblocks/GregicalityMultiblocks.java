@@ -1,14 +1,20 @@
 package gregicality.multiblocks;
 
+import com.google.common.collect.ImmutableSet;
 import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
+import gregicality.multiblocks.api.metatileentity.ITieredHatch;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.CommonProxy;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
+import gregtech.common.items.MetaItems;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import javax.annotation.Nonnull;
 
 @Mod(   modid        = GregicalityMultiblocks.MODID,
         name         = GregicalityMultiblocks.NAME,
@@ -24,7 +30,7 @@ public class GregicalityMultiblocks {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void onPreInit(FMLPreInitializationEvent event) {
+    public void onPreInit(@Nonnull FMLPreInitializationEvent event) {
         GCYMLog.init(event.getModLog());
 
         GCYMMetaFluids.init();
@@ -32,5 +38,10 @@ public class GregicalityMultiblocks {
         GCYMMetaTileEntities.init();
 
         proxy.preLoad();
+    }
+
+    @Mod.EventHandler
+    public void onInit(@Nonnull FMLInitializationEvent event) {
+        ITieredHatch.addMultiblockTier(GCYMMetaTileEntities.LARGE_ASSEMBLER, ImmutableSet.of(MetaItems.CARBON_FIBER_PLATE.getStackForm(), MetaItems.NAQUADAH_BOULE.getStackForm()), GTValues.UV);
     }
 }

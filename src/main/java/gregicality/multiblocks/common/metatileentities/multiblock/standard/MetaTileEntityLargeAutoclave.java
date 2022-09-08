@@ -35,14 +35,13 @@ public class MetaTileEntityLargeAutoclave extends GCYMRecipeMapMultiblockControl
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "XCX", "XXX")
-                .aisle("XXX", "XTX", "XXX")
+                .aisle("XXX", "XCX", "XXX")
                 .aisle("XXX", "XCX", "XXX")
                 .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('A', air())
-                .where('T', tieredCasing().or(states(getCasingState2())))
                 .where('#', any())
                 .build();
     }

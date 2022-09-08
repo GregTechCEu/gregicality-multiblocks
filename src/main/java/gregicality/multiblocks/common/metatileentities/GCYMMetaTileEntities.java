@@ -42,7 +42,8 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityLargeCircuitAssembler LARGE_CIRCUIT_ASSEMBLER;
 
     public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
-    public static MetaTileEntityTieredHatch[] TIERED_HATCH = new MetaTileEntityTieredHatch[GTValues.V.length];
+    public static MetaTileEntityTieredHatch TIERED_HATCH;
+    public static MetaTileEntityTieredHatch[] TIERED_HATCH_LEGACY = new MetaTileEntityTieredHatch[GTValues.V.length];
 
 
     public static void init() {
@@ -84,11 +85,12 @@ public class GCYMMetaTileEntities {
             int tier = GTValues.IV + i;
             PARALLEL_HATCH[i] = registerMetaTileEntity(2050 + i, new MetaTileEntityParallelHatch(gcymId(String.format("parallel_hatch.%s", GTValues.VN[tier])), tier));
         }
-        for (int i = 0; i < TIERED_HATCH.length; i++) {
+        TIERED_HATCH = registerMetaTileEntity(2054, new MetaTileEntityTieredHatch(gcymId("tiered_hatch")));
+        for (int i = 1; i < TIERED_HATCH_LEGACY.length; i++) {
             if (!GTValues.HT && i > GTValues.UHV)
                 break;
 
-            TIERED_HATCH[i] = registerMetaTileEntity(2054 + i, new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));
+            TIERED_HATCH_LEGACY[i] = registerMetaTileEntity(2054 + i, new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i]))));
         }
     }
 

@@ -56,7 +56,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
         return FactoryBlockPattern.start(RIGHT, FRONT, DOWN)
                 .aisle("#####", "#ZZZ#", "#ZCZ#", "#ZZZ#", "#####")
                 .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(1, 12)
-                .aisle("#YSY#", "YAAAY", "YATAY", "YAAAY", "#YYY#")
+                .aisle("#YSY#", "YAAAY", "YAPAY", "YAAAY", "#YYY#")
                 .aisle("#YYY#", "YYYYY", "YYYYY", "YYYYY", "#YYY#")
                 .where('S', selfPredicate())
                 .where('Y', casingPredicate.or(abilities(MultiblockAbility.IMPORT_ITEMS))
@@ -72,7 +72,6 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                 .where('Z', casingPredicate)
                 .where('P', states(getCasingState2()))
                 .where('C', abilities(MultiblockAbility.MUFFLER_HATCH))
-                .where('T', tieredCasing().or(states(getCasingState2())))
                 .where('A', air())
                 .where('#', any())
                 .build();

@@ -1,6 +1,7 @@
 package gregicality.multiblocks.common;
 
 import gregicality.multiblocks.GregicalityMultiblocks;
+import gregtech.api.GTValues;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = GregicalityMultiblocks.MODID)
@@ -12,7 +13,11 @@ public class GCYMConfigHolder {
 
     public static class GlobalMultiblocks {
 
-        @Config.Comment({"Makes nearly every GCYM Multiblock require blocks which set their maximum voltages.", "Default: false"})
-        public boolean enableTieredCasings = false;
+        @Config.Comment({"Makes nearly every GCYM Multiblock require specialized hatches which set their maximum voltages.", "Default: true"})
+        public boolean enableTieredCasings = true;
+
+        @Config.Comment({"The base voltage tier of tiered GCYM Multiblocks.", "Default: 5"})
+        @Config.RangeInt(min = GTValues.ULV, max = GTValues.MAX)
+        public int baseMultiblockTier = GTValues.IV;
     }
 }

@@ -38,7 +38,7 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
         return FactoryBlockPattern.start()
                 .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#", "#####")
                 .aisle("XXXXX", "XCCCX", "XAAAX", "XXAXX", "##X##")
-                .aisle("XXXXX", "XCPCX", "XATAX", "XAPAX", "#XMX#")
+                .aisle("XXXXX", "XCPCX", "XAPAX", "XAPAX", "#XMX#")
                 .aisle("XXXXX", "XCCCX", "XAAAX", "XXAXX", "##X##")
                 .aisle("#XXX#", "#XSX#", "#XXX#", "#XXX#", "#####")
                 .where('S', selfPredicate())
@@ -46,7 +46,6 @@ public class MetaTileEntityLargeBrewery extends GCYMRecipeMapMultiblockControlle
                 .where('C', states(getCasingState2()))
                 .where('P', states(getCasingState3()))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
-                .where('T', tieredCasing().or(states(getCasingState3())))
                 .where('A', air())
                 .where('#', any())
                 .build();
