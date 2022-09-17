@@ -35,7 +35,7 @@ gcym.machine.large_circuit_assembler.name=Large Circuit Assembler
 
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
-gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run above %s.
+gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run above %s§7.
 gcym.multiblock.tiered_hatch.tooltip=Max Tiered EU/t: §a%s (%s§r)
 
 
@@ -146,8 +146,11 @@ material.hsla_steel=HSLA Steel
 material.titanium_tungsten_carbide=Titanium Tungsten Carbide
 material.incoloy_ma_956=Incoloy-MA956
 
-# fluids
+# Fluids
 gcym.fluid.molten=Molten %s
 
-# deprecation
+# Deprecation
 gcym.deprecation.tooltip=§cThis Machine is DEPRECATED! It will be REMOVED in the next update! Break the controller block to recover crafting materials!
+
+# JEI
+gcym.recipe_category.tiered_hatch=Tiered Hatch Components
