@@ -1,6 +1,7 @@
 package gregicality.multiblocks.integration.jei;
 
 import gregicality.multiblocks.api.metatileentity.ITieredHatch;
+import gregicality.multiblocks.common.GCYMConfigHolder;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModPlugin;
@@ -25,23 +26,26 @@ public class GCYMJeiPlugin implements IModPlugin {
         // base stuff
         ingredientRegistry = registry.getIngredientRegistry();
 
+        if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings) {
+            // tiered hatch
+            List<TieredHatchRecipeWrapper> recipes = new ArrayList<>();
+            for (Map.Entry<ResourceLocation, Map<Set<ItemStack>, Integer>> entry : ITieredHatch.TIERED_COMPONENTS.entrySet()) {
+                recipes.addAll(entry.getValue().entrySet().stream()
+                        .sorted(Comparator.comparingInt(Map.Entry::getValue))
+                        .map(e -> new TieredHatchRecipeWrapper(entry.getKey(), e.getKey(), e.getValue()))
+                        .collect(Collectors.toList()));
+            }
 
-        // tiered hatch
-        List<TieredHatchRecipeWrapper> recipes = new ArrayList<>();
-        for (Map.Entry<ResourceLocation, Map<Set<ItemStack>, Integer>> entry : ITieredHatch.TIERED_COMPONENTS.entrySet()) {
-            recipes.addAll(entry.getValue().entrySet().stream()
-                    .sorted(Comparator.comparingInt(Map.Entry::getValue))
-                    .map(e -> new TieredHatchRecipeWrapper(entry.getKey(), e.getKey(), e.getValue()))
-                    .collect(Collectors.toList()));
+            registry.addRecipes(recipes, TieredHatchRecipeCategory.UID);
+            registry.addRecipeCatalyst(GCYMMetaTileEntities.TIERED_HATCH.getStackForm(), TieredHatchRecipeCategory.UID);
         }
-
-        registry.addRecipes(recipes, TieredHatchRecipeCategory.UID);
-        registry.addRecipeCatalyst(GCYMMetaTileEntities.TIERED_HATCH.getStackForm(), TieredHatchRecipeCategory.UID);
     }
 
     @Override
     public void registerCategories(@Nonnull IRecipeCategoryRegistration registry) {
         IJeiHelpers jeiHelpers = registry.getJeiHelpers();
-        registry.addRecipeCategories(new TieredHatchRecipeCategory(jeiHelpers.getGuiHelper()));
+        if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings) {
+            registry.addRecipeCategories(new TieredHatchRecipeCategory(jeiHelpers.getGuiHelper()));
+        }
     }
 }
