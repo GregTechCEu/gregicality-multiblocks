@@ -78,3 +78,4 @@
 
 * Fix GCYS integration
 * Fix server crash with parallel hatches
+* Added compat for GTCEu 2.4.3
