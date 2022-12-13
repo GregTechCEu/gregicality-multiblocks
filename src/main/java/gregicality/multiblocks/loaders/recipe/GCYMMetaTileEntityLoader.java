@@ -266,12 +266,12 @@ public class GCYMMetaTileEntityLoader {
 
         ModHandler.addShapedRecipe(true, "large_circuit_assembler", GCYMMetaTileEntities.LARGE_CIRCUIT_ASSEMBLER.getStackForm(),
                 "RER", "CSC", "WPW",
-                'R', MetaItems.ROBOT_ARM_LuV.getStackForm(),
-                'E', MetaItems.EMITTER_LuV.getStackForm(),
-                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.UV),
-                'P', MetaItems.CONVEYOR_MODULE_LuV.getStackForm(),
-                'S', MetaTileEntities.CIRCUIT_ASSEMBLER[LuV].getStackForm(),
-                'W', new UnificationEntry(cableGtSingle, NiobiumTitanium));
+                'R', MetaItems.ROBOT_ARM_IV.getStackForm(),
+                'E', MetaItems.EMITTER_IV.getStackForm(),
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.ZPM),
+                'P', MetaItems.CONVEYOR_MODULE_IV.getStackForm(),
+                'S', MetaTileEntities.CIRCUIT_ASSEMBLER[IV].getStackForm(),
+                'W', new UnificationEntry(cableGtSingle, Platinum));
 
         // Parallel Hatches
         ModHandler.addShapedRecipe(true, "parallel_hatch_iv", GCYMMetaTileEntities.PARALLEL_HATCH[0].getStackForm(),

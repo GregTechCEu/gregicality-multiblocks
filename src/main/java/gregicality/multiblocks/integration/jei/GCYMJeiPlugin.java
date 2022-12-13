@@ -3,14 +3,15 @@ package gregicality.multiblocks.integration.jei;
 import gregicality.multiblocks.api.metatileentity.ITieredHatch;
 import gregicality.multiblocks.common.GCYMConfigHolder;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IIngredientRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
 import java.util.*;
@@ -29,9 +30,9 @@ public class GCYMJeiPlugin implements IModPlugin {
         if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings) {
             // tiered hatch
             List<TieredHatchRecipeWrapper> recipes = new ArrayList<>();
-            for (Map.Entry<ResourceLocation, Map<Set<ItemStack>, Integer>> entry : ITieredHatch.TIERED_COMPONENTS.entrySet()) {
-                recipes.addAll(entry.getValue().entrySet().stream()
-                        .sorted(Comparator.comparingInt(Map.Entry::getValue))
+            for (Map.Entry<ResourceLocation, List<Pair<Set<GTRecipeInput>, Integer>>> entry : ITieredHatch.TIERED_COMPONENTS.entrySet()) {
+                recipes.addAll(entry.getValue().stream()
+                        .sorted(Comparator.comparingInt(Pair::getValue))
                         .map(e -> new TieredHatchRecipeWrapper(entry.getKey(), e.getKey(), e.getValue()))
                         .collect(Collectors.toList()));
             }

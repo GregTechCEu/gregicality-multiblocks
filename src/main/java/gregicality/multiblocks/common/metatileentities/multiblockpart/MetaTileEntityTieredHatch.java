@@ -20,6 +20,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,12 +35,12 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<ITieredHatch>, ITieredHatch {
@@ -80,9 +81,9 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
         ModularUI.Builder builder = ModularUI.builder(GuiTextures.BACKGROUND, 176, 18 * 5 + 82)
                 .label(6, 6, getMetaFullName());
 
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 2; y++) {
-                int index = x * 2 + y;
+        for (int y = 0; y < 2; y++) {
+            for (int x = 0; x < 3; x++) {
+                int index = (y * 3) + x;
                 builder.widget(new SlotWidget(importItems, index,
                         (79 - 2 * 9 + x * 18), 18 + y * 18, true, true)
                         .setBackgroundTexture(GuiTextures.SLOT));
@@ -98,7 +99,7 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
     protected void addDisplayText(@Nonnull List<ITextComponent> list) {
         int tier = this.cachedMaxVoltage;
         if (tier < 0) tier = GCYMConfigHolder.globalMultiblocks.baseMultiblockTier;
-        list.add(new TextComponentString(GTValues.VNF[tier]).setStyle(new Style()
+        list.add(new TextComponentString(" " + GTValues.VNF[tier]).setStyle(new Style()
                 .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                         new TextComponentTranslation("gcym.machine.tiered_hatch.info")))));
     }
@@ -128,8 +129,8 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
     protected void updateMaxVoltageTier(boolean forceRecheck) {
         MultiblockControllerBase controllerBase = getController();
         if (controllerBase instanceof IGCYMMultiBlock) {
-            Map<Set<ItemStack>, Integer> tierMap = TIERED_COMPONENTS.get(controllerBase.metaTileEntityId);
-            if (tierMap == null) {
+            List<Pair<Set<GTRecipeInput>, Integer>> tierMap = TIERED_COMPONENTS.get(controllerBase.metaTileEntityId);
+            if (tierMap == null || tierMap.isEmpty()) {
                 // if this multiblock doesn't have tiered requirements, the tier is the default
                 this.cachedMaxVoltage = this.getTier();
                 if (forceRecheck) forceControllerRecheck(controllerBase);
@@ -144,9 +145,9 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
             }
 
             // try every tier entry for this multi
-            for (Map.Entry<Set<ItemStack>, Integer> entry : tierMap.entrySet()) {
+            for (Pair<Set<GTRecipeInput>, Integer> entry : tierMap) {
                 boolean matchedStacks = false;
-                for (ItemStack stack : entry.getKey()) {
+                for (GTRecipeInput input : entry.getKey()) {
                     if (inventory.isEmpty()) {
                         // if we have nothing in the hatch, and there are still items to check, fail
                         if (matchedStacks) {
@@ -159,8 +160,8 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
                     boolean matched = false;
                     for (int i = 0; i < inventory.size(); i++) {
                         ItemStack itemStack = inventory.get(i);
-                        // match item and stack
-                        if (stack.isItemEqual(itemStack) && stack.getCount() <= itemStack.getCount()) {
+                        // match item and input
+                        if (input.acceptsStack(itemStack) && input.getAmount() <= itemStack.getCount()) {
                             // if the item in the inventory is satisfactory, remove it from the possibilities to check
                             inventory.remove(i);
                             matched = true;
