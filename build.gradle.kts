@@ -5,16 +5,12 @@ buildscript {
     repositories {
         mavenCentral()
         maven {
-            name = "Jitpack"
-            setUrl("https://jitpack.io")
-        }
-        maven {
             name = "Forge"
             setUrl("https://maven.minecraftforge.net")
         }
     }
     dependencies {
-        classpath("com.github.GregTechCE:ForgeGradle:FG_2.3-SNAPSHOT")
+        classpath("net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT")
     }
 }
 
@@ -78,12 +74,20 @@ repositories {
         name = "CTM"
         setUrl("https://maven.tterrag.com/")
     }
+    maven {
+        name = "CurseMaven"
+        setUrl("https://cursemaven.com")
+    }
+    maven {
+        name = "Cleanroom"
+        setUrl("https://maven.cleanroommc.com")
+    }
 }
 
 dependencies {
 
     // These 7 will always be in game
-    //"deobfCompile"("gregtechce:gregtech:$mcVersion:${config["gregtech.version"]}")
+    "deobfCompile"("curse.maven:gregtech-ce-unofficial-${config["gregtech.projecid"]}:${config["gregtech.fileid"]}")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-$mcVersion:${config["ccl.version"]}:universal")
     "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
     "deobfCompile"("mezz.jei:jei_$mcVersion:${config["jei.version"]}")
@@ -91,7 +95,8 @@ dependencies {
     "deobfCompile"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
     "deobfCompile"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
 
-    "provided"(files("libs/gregtech-1.12.2-${config["gregtech.version"]}.jar"))
+    "deobfCompile"("zone.rong:mixinbooter:${config["mixinbooter.version"]}")
+    "provided"(files("libs/groovyscript-${config["groovyscript.version"]}.jar"))
 
     // JUnit testing used for GitHub Actions
     "testImplementation"("junit:junit:${config["junit.version"]}")

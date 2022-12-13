@@ -48,7 +48,7 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
     private int cachedMaxVoltage = -1;
 
     public MetaTileEntityTieredHatch(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GCYMConfigHolder.globalMultiblocks.baseMultiblockTier);
+        super(metaTileEntityId, Math.min(GTValues.MAX, GCYMConfigHolder.globalMultiblocks.baseMultiblockTier + 1));
     }
 
     @Override

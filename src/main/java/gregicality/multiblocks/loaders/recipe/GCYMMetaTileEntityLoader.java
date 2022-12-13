@@ -307,13 +307,14 @@ public class GCYMMetaTileEntityLoader {
                 'W', new UnificationEntry(cableGtDouble, YttriumBariumCuprate));
 
         // Tiered Hatch
+        final int tieredHatchTier = Math.min(MAX, GCYMConfigHolder.globalMultiblocks.baseMultiblockTier + 1);
         ModHandler.addShapedRecipe(true, "tiered_hatch", GCYMMetaTileEntities.TIERED_HATCH.getStackForm(),
                 "PSP", "KHK", "PCP",
-                'P', CraftingComponent.PLATE.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier),
+                'P', CraftingComponent.PLATE.getIngredient(tieredHatchTier),
                 'S', OreDictNames.chestWood.toString(),
-                'K', CraftingComponent.CABLE.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier),
-                'H', CraftingComponent.HULL.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier),
-                'C', CraftingComponent.BETTER_CIRCUIT.getIngredient(GCYMConfigHolder.globalMultiblocks.baseMultiblockTier));
+                'K', CraftingComponent.CABLE.getIngredient(tieredHatchTier),
+                'H', CraftingComponent.HULL.getIngredient(tieredHatchTier),
+                'C', CraftingComponent.BETTER_CIRCUIT.getIngredient(tieredHatchTier));
 
         MetaTileEntityLoader.registerMachineRecipe(ArrayUtils.subarray(GCYMMetaTileEntities.TIERED_HATCH_LEGACY, 0, HT ? UHV : UV), "PPP", "PCP", "PPP", 'P', CraftingComponent.PLATE, 'C', CraftingComponent.BETTER_CIRCUIT);
 
@@ -323,6 +324,5 @@ public class GCYMMetaTileEntityLoader {
                     'P', CraftingComponent.PLATE.getIngredient(UHV),
                     'C', CraftingComponent.CIRCUIT.getIngredient(UHV));
         }
-
     }
 }

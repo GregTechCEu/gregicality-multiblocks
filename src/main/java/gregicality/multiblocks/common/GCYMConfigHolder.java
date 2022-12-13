@@ -16,7 +16,7 @@ public class GCYMConfigHolder {
         @Config.Comment({"Makes nearly every GCYM Multiblock require specialized hatches which set their maximum voltages.", "Default: true"})
         public boolean enableTieredCasings = true;
 
-        @Config.Comment({"The base voltage tier of tiered GCYM Multiblocks.", "Default: 5"})
+        @Config.Comment({"The base voltage tier of tiered GCYM Multiblocks. 1 is LV, 5 is IV.", "Default: 5"})
         @Config.RangeInt(min = GTValues.ULV, max = GTValues.MAX)
         public int baseMultiblockTier = GTValues.IV;
     }
