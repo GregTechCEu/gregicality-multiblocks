@@ -90,7 +90,7 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
             }
         }
         builder.image(68, 18 * 4 - 12, 18 * 2 + 4, 22, GuiTextures.DISPLAY);
-        builder.widget(new AdvancedTextWidget(82, 18 * 4 - 4, this::addDisplayText, 0xFFFFFF));
+        builder.widget(new AdvancedTextWidget(80, 18 * 4 - 4, this::addDisplayText, 0xFFFFFF));
 
         return builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.SLOT, 7, 18 * 5)
                 .build(getHolder(), entityPlayer);
@@ -99,7 +99,13 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
     protected void addDisplayText(@Nonnull List<ITextComponent> list) {
         int tier = this.cachedMaxVoltage;
         if (tier < 0) tier = GCYMConfigHolder.globalMultiblocks.baseMultiblockTier;
-        list.add(new TextComponentString(" " + GTValues.VNF[tier]).setStyle(new Style()
+        String message = GTValues.VNF[tier];
+        // center the string on shorter voltages
+        if (GTValues.VN[tier].length() != 3) {
+            message = " " + message;
+        }
+
+        list.add(new TextComponentString(message).setStyle(new Style()
                 .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                         new TextComponentTranslation("gcym.machine.tiered_hatch.info")))));
     }
@@ -184,7 +190,7 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
                 }
             }
             // if no tier was found, revert to the minimum provided
-            this.cachedMaxVoltage = this.getTier();
+            this.cachedMaxVoltage = GCYMConfigHolder.globalMultiblocks.baseMultiblockTier;
             if (forceRecheck) forceControllerRecheck(controllerBase);
         }
     }
