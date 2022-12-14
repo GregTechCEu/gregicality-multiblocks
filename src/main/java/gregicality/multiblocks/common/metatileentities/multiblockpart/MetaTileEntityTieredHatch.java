@@ -138,7 +138,7 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
             List<Pair<Set<GTRecipeInput>, Integer>> tierMap = TIERED_COMPONENTS.get(controllerBase.metaTileEntityId);
             if (tierMap == null || tierMap.isEmpty()) {
                 // if this multiblock doesn't have tiered requirements, the tier is the default
-                this.cachedMaxVoltage = this.getTier();
+                this.cachedMaxVoltage = GCYMConfigHolder.globalMultiblocks.baseMultiblockTier;
                 if (forceRecheck) forceControllerRecheck(controllerBase);
                 return;
             }
@@ -220,7 +220,7 @@ public class MetaTileEntityTieredHatch extends MetaTileEntityMultiblockPart impl
         }
 
         // default to the minimum voltage
-        return this.getTier();
+        return GCYMConfigHolder.globalMultiblocks.baseMultiblockTier;
     }
 
     @Override

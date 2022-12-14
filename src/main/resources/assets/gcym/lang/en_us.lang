@@ -35,7 +35,7 @@ gcym.machine.large_circuit_assembler.name=Large Circuit Assembler
 
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
-gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run above %s§7.
+gcym.tooltip.tiered_hatch_enabled=Requires a §bModular Component Hatch§7 to run above %s§7.
 gcym.multiblock.tiered_hatch.tooltip=Max Tiered EU/t: §a%s (%s§r)
 
 
@@ -82,9 +82,8 @@ gcym.machine.parallel_hatch.tooltip=Allows up to §b%s§7 parallel recipes.
 gcym.machine.parallel_hatch.display=Adjust the maximum parallel of the multiblock
 
 gcym.machine.tiered_hatch.name=Modular Component Hatch
-gcym.machine.tiered_hatch.tooltip.1=Enables Voltage beyond %s§7 with the right Components.
+gcym.machine.tiered_hatch.tooltip.1=Enables base recipe Voltage beyond %s§7 with the right Components.
 gcym.machine.tiered_hatch.info=Add the correct Components to change the Maximum Voltage.
-gcym.machine.tiered_hatch.info.no_tier=N/A
 
 gcym.machine.tiered_hatch.ulv.name=[DEPRECATED] Primitive Voltage Control Unit
 gcym.machine.tiered_hatch.lv.name=[DEPRECATED] Basic Voltage Control Unit
