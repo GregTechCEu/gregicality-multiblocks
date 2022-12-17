@@ -29,11 +29,15 @@ public class GCYMJeiPlugin implements IModPlugin {
 
         if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings) {
             // tiered hatch
-            List<TieredHatchRecipeWrapper> recipes = new ArrayList<>();
+            Collection<TieredHatchRecipeWrapper> recipes = new ArrayList<>();
             for (Map.Entry<ResourceLocation, List<Pair<Set<GTRecipeInput>, Integer>>> entry : ITieredHatch.TIERED_COMPONENTS.entrySet()) {
                 recipes.addAll(entry.getValue().stream()
                         .sorted(Comparator.comparingInt(Pair::getValue))
-                        .map(e -> new TieredHatchRecipeWrapper(entry.getKey(), e.getKey(), e.getValue()))
+                        .map(e -> new TieredHatchRecipeWrapper(entry.getKey(),
+                                e.getKey().stream()
+                                        .sorted(Comparator.comparingInt(GTRecipeInput::getAmount))
+                                        .collect(Collectors.toList()),
+                                e.getValue()))
                         .collect(Collectors.toList()));
             }
 

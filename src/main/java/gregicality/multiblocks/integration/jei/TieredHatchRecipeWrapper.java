@@ -13,7 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class TieredHatchRecipeWrapper implements IRecipeWrapper {
@@ -23,7 +26,7 @@ public class TieredHatchRecipeWrapper implements IRecipeWrapper {
     public List<GTRecipeInput> inputs;
     public List<List<ItemStack>> itemStacks;
 
-    public TieredHatchRecipeWrapper(@Nonnull ResourceLocation location, @Nonnull Set<GTRecipeInput> inputs, int tier) {
+    public TieredHatchRecipeWrapper(@Nonnull ResourceLocation location, @Nonnull List<GTRecipeInput> inputs, int tier) {
         //noinspection constantConditions
         MetaTileEntity mte = GregTechAPI.MTE_REGISTRY.getObject(location);
         if (mte == null) {
