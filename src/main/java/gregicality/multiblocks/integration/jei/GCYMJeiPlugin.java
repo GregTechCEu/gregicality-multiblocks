@@ -31,11 +31,11 @@ public class GCYMJeiPlugin implements IModPlugin {
             // tiered hatch
             Collection<TieredHatchRecipeWrapper> recipes = new ArrayList<>();
             for (Map.Entry<ResourceLocation, List<Pair<Set<GTRecipeInput>, Integer>>> entry : ITieredHatch.TIERED_COMPONENTS.entrySet()) {
-                recipes.addAll(entry.getValue().stream()
+                recipes.addAll(entry.getValue().stream() // sort by voltage tier ascending
                         .sorted(Comparator.comparingInt(Pair::getValue))
                         .map(e -> new TieredHatchRecipeWrapper(entry.getKey(),
                                 e.getKey().stream()
-                                        .sorted(Comparator.comparingInt(GTRecipeInput::getAmount))
+                                        .sorted(Comparator.comparing(ri -> ri.getInputStacks()[0].getTranslationKey())) // sort by translation key
                                         .collect(Collectors.toList()),
                                 e.getValue()))
                         .collect(Collectors.toList()));
