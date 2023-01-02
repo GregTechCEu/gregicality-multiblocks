@@ -30,7 +30,7 @@ public class GCYMMetaBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
-        registerItemModel(UNIQUE_CASING);
+        UNIQUE_CASING.onModelRegister();
         registerItemModel(LARGE_MULTIBLOCK_CASING);
     }
 
