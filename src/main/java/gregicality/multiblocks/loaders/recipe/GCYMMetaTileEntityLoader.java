@@ -308,10 +308,10 @@ public class GCYMMetaTileEntityLoader {
         MetaTileEntityLoader.registerMachineRecipe(ArrayUtils.subarray(GCYMMetaTileEntities.TIERED_HATCH, 0, HT ? UHV : UV), "PPP", "PCP", "PPP", 'P', CraftingComponent.PLATE, 'C', CraftingComponent.BETTER_CIRCUIT);
 
         if (!HT) {
-            ModHandler.addShapedRecipe(true, "gcym.machine.tiered_hatch.uhv", GCYMMetaTileEntities.TIERED_HATCH[UHV].getStackForm(),
-                    "PPP", "PCP", "PPP",
-                    'P', CraftingComponent.PLATE.getIngredient(UHV),
-                    'C', CraftingComponent.CIRCUIT.getIngredient(UHV));
+            ModHandler.addShapedRecipe(true, "gcym.machine.tiered_hatch.uv", GCYMMetaTileEntities.TIERED_HATCH[UV].getStackForm(),
+                "PPP", "PCP", "PPP",
+                'P', CraftingComponent.PLATE.getIngredient(UHV),
+                'C', CraftingComponent.CIRCUIT.getIngredient(UHV));
         }
 
     }
