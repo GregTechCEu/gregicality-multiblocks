@@ -83,4 +83,4 @@
 ## v1.1.6
 
 * Reduced Maraging Steel Temperature to 4000K for coil bonuses
-* 
+* Added compat for GTCEu 2.5.0

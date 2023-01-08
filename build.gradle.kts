@@ -81,7 +81,12 @@ repositories {
         setUrl("https://maven.tterrag.com/")
     }
     maven {
+        name = "Cleanroom"
         setUrl("https://maven.cleanroommc.com")
+    }
+    maven {
+        name = "CurseMaven"
+        setUrl("https://www.cursemaven.com")
     }
 }
 
@@ -96,7 +101,7 @@ dependencies {
     "deobfCompile"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
 
     // groovyscript
-    "compile"(files("etc/groovyscript-0.0.1.jar"))
+    "compile"("curse.maven:groovyscript-687577:4286298")
     "deobfCompile"("zone.rong:mixinbooter:4.2")
 
     "provided"(files("libs/gregtech-1.12.2-${config["gregtech.version"]}.jar"))
