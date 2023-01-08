@@ -79,3 +79,8 @@
 * Fix GCYS integration
 * Fix server crash with parallel hatches
 * Added compat for GTCEu 2.4.3
+
+## v1.1.6
+
+* Reduced Maraging Steel Temperature to 4000K for coil bonuses
+* 
