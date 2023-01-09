@@ -83,4 +83,5 @@
 ## v1.1.6
 
 * Reduced Maraging Steel Temperature to 4000K for coil bonuses
+* Added liquid helium requirement parity with hot ingots for cooling molten metals at 5000K+
 * Added compat for GTCEu 2.5.0
