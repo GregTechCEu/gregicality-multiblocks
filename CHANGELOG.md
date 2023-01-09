@@ -84,4 +84,5 @@
 
 * Reduced Maraging Steel Temperature to 4000K for coil bonuses
 * Added liquid helium requirement parity with hot ingots for cooling molten metals at 5000K+
+* Added compat with GTFO. Slicer can be used with the Large cutter, and Cuisine Assembler with the Large Assembler.
 * Added compat for GTCEu 2.5.0
