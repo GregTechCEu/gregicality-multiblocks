@@ -1,7 +1,7 @@
-# Chinese translate by iijunxz.
-# 中文翻译由 iijunxz 翻译。
-# Corresponding Version: 1.1.1
-# 对应版本: 1.1.1
+# Chinese translate by iijunxz.	
+# 中文翻译由 iijunxz 翻译。	
+# Corresponding Version: 1.1.16
+# 对应版本: 1.1.6
 
 # multiblocks
 gcym.machine.large_macerator.name=大型研磨机
@@ -38,7 +38,7 @@ gcym.machine.large_circuit_assembler.name=大型电路组装机
 
 
 gcym.tooltip.parallel_enabled=可以通过§b并行控制仓§7并行处理。
-gcym.tooltip.tiered_hatch_enabled=需要§b电压控制单元§7以运行。
+gcym.tooltip.tiered_hatch_enabled=需要§b控制单元§7以运行。
 gcym.multiblock.tiered_hatch.tooltip=最大电压: §a%s (%s§r)
 
 
@@ -82,24 +82,25 @@ gcym.machine.parallel_hatch.luv.name=并行控制仓(LuV)
 gcym.machine.parallel_hatch.zpm.name=并行控制仓(ZPM)
 gcym.machine.parallel_hatch.uv.name=并行控制仓(UV)
 gcym.machine.parallel_hatch.tooltip=最多可同时处理§b%s§7个配方。
+gcym.machine.parallel_hatch.display=调整多方块的最多可同时处理数。
 
 gcym.machine.tiered_hatch.tooltip.1=最高允许%s§7的电压.
 
-gcym.machine.tiered_hatch.ulv.name=电压控制单元(ULV)
-gcym.machine.tiered_hatch.lv.name=电压控制单元(IV)
-gcym.machine.tiered_hatch.mv.name=电压控制单元(MV)
-gcym.machine.tiered_hatch.hv.name=电压控制单元(HV)
-gcym.machine.tiered_hatch.ev.name=电压控制单元(EV)
-gcym.machine.tiered_hatch.iv.name=电压控制单元(IV)
-gcym.machine.tiered_hatch.luv.name=电压控制单元(LuV)
-gcym.machine.tiered_hatch.zpm.name=电压控制单元(ZPM)
-gcym.machine.tiered_hatch.uv.name=电压控制单元(UV)
-gcym.machine.tiered_hatch.uhv.name=电压控制单元(UHV)
-gcym.machine.tiered_hatch.uev.name=电压控制单元(UEV)
-gcym.machine.tiered_hatch.uiv.name=电压控制单元(UIV)
-gcym.machine.tiered_hatch.umv.name=电压控制单元(UMV)
-gcym.machine.tiered_hatch.uxv.name=电压控制单元(UXV)
-gcym.machine.tiered_hatch.max.name=电压控制单元(MaX)
+gcym.machine.tiered_hatch.ulv.name=控制单元(ULV)
+gcym.machine.tiered_hatch.lv.name=控制单元(IV)
+gcym.machine.tiered_hatch.mv.name=控制单元(MV)
+gcym.machine.tiered_hatch.hv.name=控制单元(HV)
+gcym.machine.tiered_hatch.ev.name=控制单元(EV)
+gcym.machine.tiered_hatch.iv.name=控制单元(IV)
+gcym.machine.tiered_hatch.luv.name=控制单元(LuV)
+gcym.machine.tiered_hatch.zpm.name=控制单元(ZPM)
+gcym.machine.tiered_hatch.uv.name=控制单元(UV)
+gcym.machine.tiered_hatch.uhv.name=控制单元(UHV)
+gcym.machine.tiered_hatch.uev.name=控制单元(UEV)
+gcym.machine.tiered_hatch.uiv.name=控制单元(UIV)
+gcym.machine.tiered_hatch.umv.name=控制单元(UMV)
+gcym.machine.tiered_hatch.uxv.name=控制单元(UXV)
+gcym.machine.tiered_hatch.max.name=控制单元(MaX)
 
 
 # casings
@@ -127,16 +128,16 @@ tile.large_multiblock_casing.atomic_casing.name=原子机械方块
 tile.large_multiblock_casing.steam_casing.name=工业蒸汽机械方块
 
 # RecipeMaps
-recipemap.alloy_blast_smelter.name=合金冶炼炉
+recipemap.alloy_blast_smelter.name=合金高炉冶炼
 
 # Materials
-material.stellite_100=司太立合金-100
+material.stellite_100=司太立100合金
 material.watertight_steel=防水钢
-material.maraging_steel_300=马氏体时效钢-300
-material.hastelloy_c_276=哈氏合金-C276
-material.hastelloy_x=哈氏合金-X
-material.trinaquadalloy=硅岩凯金合金
-material.zeron_100=泽龙-100超不锈钢
+material.maraging_steel_300=马氏体时效钢300
+material.hastelloy_c_276=哈斯特洛依合金-C276
+material.hastelloy_x=哈斯特洛依合金-X
+material.trinaquadalloy=碳化三元金属硅岩合金
+material.zeron_100=塞龙-100
 material.titanium_carbide=碳化钛 
 material.tantalum_carbide=碳化钽
 material.molybdenum_disilicide=二硅化钼
