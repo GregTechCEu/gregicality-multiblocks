@@ -9,7 +9,6 @@ import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.block.IHeatingCoilBlockStats;
-import gregtech.api.block.VariantActiveBlock;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -133,12 +132,6 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
                 .where('#', Blocks.AIR.getDefaultState());
 
         GregTechAPI.HEATING_COILS.entrySet().stream()
-                .filter(entry -> {
-                    if (entry.getKey().getPropertyKeys().contains(VariantActiveBlock.ACTIVE)) {
-                        return !entry.getKey().getValue(VariantActiveBlock.ACTIVE);
-                    }
-                    return true;
-                })
                 .sorted(Comparator.comparingInt(entry -> entry.getValue().getTier()))
                 .forEach(entry -> shapeInfo.add(builder.where('C', entry.getKey()).build()));
         return shapeInfo;

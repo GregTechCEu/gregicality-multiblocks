@@ -33,7 +33,7 @@ public class GCYMFirstDegreeMaterials {
                 .color(0x637087).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
                 .components(Iron, 16, Titanium, 1, Aluminium, 1, Nickel, 4, Cobalt, 2)
-                .blastTemp(4001, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1000)
+                .blastTemp(4000, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1000)
                 .build();
 
         HastelloyC276 = new Material.Builder(3003, "hastelloy_c_276")

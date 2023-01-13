@@ -8,6 +8,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
@@ -37,13 +38,14 @@ public class GCYMMaterialRecipeHandler {
             molten = material.getProperty(PropertyKey.FLUID).getFluid();
         if (molten == null) return;
 
+        int temperature = material.getBlastTemperature();
         RecipeBuilder<BlastRecipeBuilder> builder = GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
-                .blastFurnaceTemp(material.getBlastTemperature());
+                .blastFurnaceTemp(temperature);
 
         // apply the duration override
         int duration = property.getDurationOverride();
         if (duration < 0)
-            duration = Math.max(1, (int) (material.getMass() * material.getBlastTemperature() / 100L));
+            duration = Math.max(1, (int) (material.getMass() * temperature / 100L));
 
         // apply the EUt override
         int EUt = property.getEUtOverride();
@@ -55,11 +57,11 @@ public class GCYMMaterialRecipeHandler {
         // if fluids with no dusts are found in the composition, stop with this material
         int outputAmount = 0;
         for (MaterialStack materialStack : material.getMaterialComponents()) {
-            if (materialStack.material.hasProperty(PropertyKey.DUST))
+            if (materialStack.material.hasProperty(PropertyKey.DUST)) {
                 builder.input(OrePrefix.dust, materialStack.material, (int) materialStack.amount);
-            else if (materialStack.material.hasProperty(PropertyKey.FLUID))
+            } else if (materialStack.material.hasProperty(PropertyKey.FLUID)) {
                 return;
-            else return;
+            } else return;
             outputAmount += materialStack.amount;
         }
 
@@ -88,11 +90,17 @@ public class GCYMMaterialRecipeHandler {
         if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
 
         // build the freezer recipe
-        RecipeMaps.VACUUM_RECIPES.recipeBuilder()
+        RecipeBuilder<?> freezerBuilder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(new FluidStack(molten, GTValues.L))
                 .duration((int) material.getMass() * 3)
                 .notConsumable(MetaItems.SHAPE_MOLD_INGOT.getStackForm())
-                .output(OrePrefix.ingot, material)
-                .buildAndRegister();
+                .output(OrePrefix.ingot, material);
+
+        // helium for when >= 5000K temperature
+        if (temperature >= 5000) {
+            freezerBuilder.fluidInputs(Materials.LiquidHelium.getFluid(500))
+                    .fluidOutputs(Materials.Helium.getFluid(250));
+        }
+        freezerBuilder.buildAndRegister();
     }
 }

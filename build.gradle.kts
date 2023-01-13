@@ -15,6 +15,8 @@ buildscript {
     }
     dependencies {
         classpath("com.github.GregTechCE:ForgeGradle:FG_2.3-SNAPSHOT")
+        classpath("org.eclipse.jgit:org.eclipse.jgit:5.8.0.202006091008-r")
+        classpath("org.apache.commons:commons-lang3:3.12.0")
     }
 }
 
@@ -78,11 +80,18 @@ repositories {
         name = "CTM"
         setUrl("https://maven.tterrag.com/")
     }
+    maven {
+        name = "Cleanroom"
+        setUrl("https://maven.cleanroommc.com")
+    }
+    maven {
+        name = "CurseMaven"
+        setUrl("https://www.cursemaven.com")
+    }
 }
 
 dependencies {
 
-    // These 7 will always be in game
     //"deobfCompile"("gregtechce:gregtech:$mcVersion:${config["gregtech.version"]}")
     "deobfCompile"("codechicken-lib-1-8:CodeChickenLib-$mcVersion:${config["ccl.version"]}:universal")
     "deobfCompile"("codechicken:ChickenASM:$shortVersion-${config["chickenasm.version"]}")
@@ -90,6 +99,10 @@ dependencies {
     "deobfCompile"("mcjty.theoneprobe:TheOneProbe-$shortVersion:$shortVersion-${config["top.version"]}")
     "deobfCompile"("CraftTweaker2:CraftTweaker2-MC$strippedVersion-Main:${config["crafttweaker.version"]}")
     "deobfCompile"("team.chisel.ctm:CTM:MC$mcVersion-${config["ctm.version"]}")
+
+    // groovyscript
+    "compile"("curse.maven:groovyscript-687577:4286298")
+    "deobfCompile"("zone.rong:mixinbooter:4.2")
 
     "provided"(files("libs/gregtech-1.12.2-${config["gregtech.version"]}.jar"))
 

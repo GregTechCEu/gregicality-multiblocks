@@ -1,5 +1,6 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
+import gregicality.multiblocks.api.GCYMValues;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
@@ -9,6 +10,7 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
@@ -16,6 +18,7 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 
 import javax.annotation.Nonnull;
 
@@ -24,7 +27,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockController {
 
     public MetaTileEntityLargeAssembler(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, RecipeMaps.ASSEMBLER_RECIPES);
+        super(metaTileEntityId, determineRecipeMaps());
     }
 
     @Override
@@ -73,5 +76,14 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Nonnull
+    private static RecipeMap<?>[] determineRecipeMaps() {
+        RecipeMap<?> cuisineAssemblerMap = RecipeMap.getByName("cuisine_assembler");
+        if (Loader.isModLoaded(GCYMValues.GTFO_MODID) && cuisineAssemblerMap != null) {
+            return new RecipeMap<?>[]{RecipeMaps.ASSEMBLER_RECIPES, cuisineAssemblerMap};
+        }
+        return new RecipeMap<?>[]{RecipeMaps.ASSEMBLER_RECIPES};
     }
 }

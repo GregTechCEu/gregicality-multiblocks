@@ -72,3 +72,17 @@
 * Fixed Rotary Hearth Furnace casing predicate and increased minimum casings to 360, effective hatch maximum is now ~30
 * Added compat for GTCEu 2.4.0
 * Fixed recipe registration issues with Tiered Hatches
+* Added interaction with GCYS for recipes
+
+## v1.1.5
+
+* Fix GCYS integration
+* Fix server crash with parallel hatches
+* Added compat for GTCEu 2.4.3
+
+## v1.1.6
+
+* Reduced Maraging Steel Temperature to 4000K for coil bonuses
+* Added liquid helium requirement parity with hot ingots for cooling molten metals at 5000K+
+* Added compat with GTFO. Slicer can be used with the Large cutter, and Cuisine Assembler with the Large Assembler.
+* Added compat for GTCEu 2.5.0
