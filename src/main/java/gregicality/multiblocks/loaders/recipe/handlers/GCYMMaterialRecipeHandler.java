@@ -1,6 +1,7 @@
 package gregicality.multiblocks.loaders.recipe.handlers;
 
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeBuilder;
@@ -19,16 +20,25 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
-public class GCYMMaterialRecipeHandler {
+public final class GCYMMaterialRecipeHandler {
+
+    private GCYMMaterialRecipeHandler() {/**/}
 
     public static void register() {
         OrePrefix.ingot.addProcessingHandler(PropertyKey.BLAST, GCYMMaterialRecipeHandler::processIngot);
     }
 
     public static void processIngot(OrePrefix ingotPrefix, @Nonnull Material material, BlastProperty property) {
+        // do not generate for disabled materials
+        if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_BLAST)) return;
+
+        final List<MaterialStack> components = material.getMaterialComponents();
+        final int componentAmount = components.size();
+
         // ignore non-alloys
-        if (material.getMaterialComponents().size() <= 1) return;
+        if (componentAmount <= 1) return;
 
         // get the output fluid
         Fluid molten = null;
@@ -44,25 +54,29 @@ public class GCYMMaterialRecipeHandler {
 
         // apply the duration override
         int duration = property.getDurationOverride();
-        if (duration < 0)
-            duration = Math.max(1, (int) (material.getMass() * temperature / 100L));
+        if (duration < 0) duration = Math.max(1, (int) (material.getMass() * temperature / 100L));
 
         // apply the EUt override
         int EUt = property.getEUtOverride();
-        if (EUt < 0)
-            EUt = GTValues.VA[GTValues.MV];
+        if (EUt < 0) EUt = GTValues.VA[GTValues.MV];
         builder.EUt(EUt);
 
-        // calculate the output amount
-        // if fluids with no dusts are found in the composition, stop with this material
+        // calculate the output amount and add inputs
         int outputAmount = 0;
+        int fluidAmount = 0;
         for (MaterialStack materialStack : material.getMaterialComponents()) {
-            if (materialStack.material.hasProperty(PropertyKey.DUST)) {
-                builder.input(OrePrefix.dust, materialStack.material, (int) materialStack.amount);
-            } else if (materialStack.material.hasProperty(PropertyKey.FLUID)) {
-                return;
-            } else return;
-            outputAmount += materialStack.amount;
+            final Material msMat = materialStack.material;
+            final int msAmount = (int) materialStack.amount;
+
+            if (msMat.hasProperty(PropertyKey.DUST)) {
+                builder.input(OrePrefix.dust, msMat, msAmount);
+            } else if (msMat.hasProperty(PropertyKey.FLUID)) {
+                if (fluidAmount >= 2) return; // more than 2 fluids won't fit in the machine
+                fluidAmount++;
+                // assume all fluids have 1000mB/mol, since other quantities should be as an item input
+                builder.fluidInputs(msMat.getFluid(1000 * msAmount));
+            } else return; // no fluid or item prop means no valid recipe
+            outputAmount += msAmount;
         }
 
         // add the fluid output with the correct amount
@@ -74,15 +88,15 @@ public class GCYMMaterialRecipeHandler {
         // build the gas recipe if it exists
         if (property.getGasTier() != null) {
             RecipeBuilder<BlastRecipeBuilder> builderGas = builder.copy();
-            FluidStack gas = CraftingComponent.EBF_GASES.get(property.getGasTier()).copy();
-            builderGas.notConsumable(new IntCircuitIngredient(material.getMaterialComponents().size() + 10))
+            FluidStack gas = CraftingComponent.EBF_GASES.get(property.getGasTier());
+            builderGas.notConsumable(new IntCircuitIngredient(componentAmount + 10))
                     .fluidInputs(new FluidStack(gas, gas.amount * outputAmount))
                     .duration((int) (duration * 0.67))
                     .buildAndRegister();
         }
 
         // build the non-gas recipe
-        builder.notConsumable(new IntCircuitIngredient(material.getMaterialComponents().size()))
+        builder.notConsumable(new IntCircuitIngredient(componentAmount))
                 .duration(duration)
                 .buildAndRegister();
 

@@ -3,7 +3,9 @@ package gregicality.multiblocks.api.unification;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlags;
 
-public class GCYMMaterialFlagAddition {
+public final class GCYMMaterialFlagAddition {
+
+    private GCYMMaterialFlagAddition() {/**/}
 
     public static void init() {
 
