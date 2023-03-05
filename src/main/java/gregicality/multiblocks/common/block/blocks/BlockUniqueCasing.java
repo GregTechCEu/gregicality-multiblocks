@@ -1,10 +1,12 @@
 package gregicality.multiblocks.common.block.blocks;
 
 import gregtech.api.block.VariantActiveBlock;
+import gregtech.client.utils.BloomEffectUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -26,6 +28,15 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
     @Override
     public boolean canCreatureSpawn(@Nonnull IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, @Nonnull EntityLiving.SpawnPlacementType type) {
         return false;
+    }
+
+    @Override
+    public boolean canRenderInLayer(@Nonnull IBlockState state, @Nonnull BlockRenderLayer layer) {
+        if (getState(state) == UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL) {
+            return layer == BlockRenderLayer.SOLID || layer == BloomEffectUtil.getRealBloomLayer();
+        }
+
+        return super.canRenderInLayer(state, layer) || layer == BloomEffectUtil.getRealBloomLayer();
     }
 
     public enum UniqueCasingType implements IStringSerializable {
