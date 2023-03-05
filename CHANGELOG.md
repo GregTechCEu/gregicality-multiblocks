@@ -91,6 +91,7 @@
 
 * Added additional Alloy Blast Smelter recipes for materials containing fluids and alloy smelter materials
 * Added new material flag "disable_alloy_blast" to disable alloy blast recipes
+* Fix Fractionating Distillery requiring maintenance hatch with config disabled
 * Added ru_ru translation (#20)
 * Updated zn_cn translation (#10)
 * Added compat for GTCEu 2.5.3 (#37)
