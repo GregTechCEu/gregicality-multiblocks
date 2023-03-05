@@ -2,6 +2,7 @@ package gregicality.multiblocks.common.block.blocks;
 
 import gregtech.api.block.VariantActiveBlock;
 import gregtech.client.utils.BloomEffectUtil;
+import gregtech.common.ConfigHolder;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -32,11 +33,21 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
 
     @Override
     public boolean canRenderInLayer(@Nonnull IBlockState state, @Nonnull BlockRenderLayer layer) {
-        if (getState(state) == UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL) {
-            return layer == BlockRenderLayer.SOLID || layer == BloomEffectUtil.getRealBloomLayer();
-        }
+        UniqueCasingType type = getState(state);
+        if (type == UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL) {
+            if (layer == BlockRenderLayer.SOLID) return true;
+        } else if (layer == BlockRenderLayer.CUTOUT) return true;
 
-        return super.canRenderInLayer(state, layer) || layer == BloomEffectUtil.getRealBloomLayer();
+        if (isBloomEnabled(type)) return layer == BloomEffectUtil.getRealBloomLayer();
+        return layer == BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    protected boolean isBloomEnabled(UniqueCasingType value) {
+        if (ConfigHolder.client.coilsActiveEmissiveTextures && value == UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL) {
+            return true;
+        }
+        return value == UniqueCasingType.HEAT_VENT;
     }
 
     public enum UniqueCasingType implements IStringSerializable {
