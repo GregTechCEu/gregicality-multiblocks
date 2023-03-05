@@ -86,3 +86,11 @@
 * Added liquid helium requirement parity with hot ingots for cooling molten metals at 5000K+
 * Added compat with GTFO. Slicer can be used with the Large cutter, and Cuisine Assembler with the Large Assembler.
 * Added compat for GTCEu 2.5.0
+
+## v1.2.0
+
+* Added additional Alloy Blast Smelter recipes for materials containing fluids and alloy smelter materials
+* Added new material flag "disable_alloy_blast" to disable alloy blast recipes
+* Added ru_ru translation (#20)
+* Updated zn_cn translation (#10)
+* Added compat for GTCEu 2.5.3 (#37)
