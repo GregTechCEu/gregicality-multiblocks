@@ -102,7 +102,7 @@ public class MetaTileEntityAlloyBlastSmelter extends RecipeMapMultiblockControll
                 .aisle("XXXXX", "CAAAC", "GAAAG", "CAAAC", "XXXXX")
                 .aisle("#XSX#", "#CCC#", "#GGG#", "#CCC#", "#XXX#")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('X', states(getCasingState()).setMinGlobalLimited(20).or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('C', heatingCoils())
                 .where('G', states(getCasingState2()))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
