@@ -148,20 +148,17 @@ dependencies {
     //testImplementation("org.junit.jupiter:junit-jupiter:${junit_version}")
     //testImplementation("org.hamcrest:hamcrest:${hamcrest_version}")
 
-    // Compile-Time Dependencies
-    //compileOnly "org.projectlombok:lombok:${lombok_version}"
-    //annotationProcessor "org.projectlombok:lombok:${lombok_version}"
-
     if (project.use_mixins.toBoolean()) {
         compileOnly "zone.rong:mixinbooter:${mixinbooter_version}"
         runtimeOnly "zone.rong:mixinbooter:${mixinbooter_version}"
 
         annotationProcessor "org.spongepowered:mixin:${mixin_annotations_version}:processor"
-    }
+    } else {
+        // GroovyScript dependency
+        // remove this if project.use_mixins is true
+        runtimeOnly "zone.rong:mixinbooter:${mixinbooter_version}"
 
-    // GroovyScript dependency
-    // remove this if project.use_mixins is true
-    runtimeOnly "zone.rong:mixinbooter:${mixinbooter_version}"
+    }
 }
 
 fancyGradle {
