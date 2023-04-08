@@ -6,6 +6,7 @@ import gregicality.multiblocks.common.metatileentities.multiblock.standard.*;
 import gregicality.multiblocks.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;
 import gregicality.multiblocks.common.metatileentities.multiblockpart.MetaTileEntityTieredHatch;
 import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
@@ -85,7 +86,7 @@ public class GCYMMetaTileEntities {
             PARALLEL_HATCH[i] = registerMetaTileEntity(2050 + i, new MetaTileEntityParallelHatch(gcymId(String.format("parallel_hatch.%s", GTValues.VN[tier])), tier));
         }
         for (int i = 0; i < TIERED_HATCH.length; i++) {
-            if (!GTValues.HT && i > GTValues.UHV)
+            if (!GregTechAPI.isHighTier() && i > GTValues.UHV)
                 break;
 
             TIERED_HATCH[i] = registerMetaTileEntity(2054 + i, new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));

@@ -95,3 +95,7 @@
 * Added ru_ru translation (#20)
 * Updated zn_cn translation (#10)
 * Added compat for GTCEu 2.5.3 (#37)
+
+## v1.2.1
+
+* Added compat for GTCEu 2.6.0
