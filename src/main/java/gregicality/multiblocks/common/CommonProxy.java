@@ -61,7 +61,7 @@ public class CommonProxy {
 
     @SubscribeEvent()
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        GCYMLog.logger.info("Registering recipe low...");
+        GCYMLog.logger.info("Registering recipes...");
 
         // Main recipe registration
         // This is called AFTER GregTech registers recipes, so

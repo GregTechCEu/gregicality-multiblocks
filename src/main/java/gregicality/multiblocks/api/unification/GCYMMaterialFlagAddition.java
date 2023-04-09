@@ -1,5 +1,8 @@
 package gregicality.multiblocks.api.unification;
 
+import gregicality.multiblocks.api.recipes.alloyblast.CustomAlloyBlastRecipeProducer;
+import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlags;
 
@@ -31,5 +34,15 @@ public final class GCYMMaterialFlagAddition {
 
         // Foils
         Materials.Graphene.addFlags(MaterialFlags.GENERATE_FOIL);
+
+    }
+
+    public static void initLate() {
+        // Alloy Blast Overriding
+        AlloyBlastProperty property = Materials.NiobiumNitride.getProperty(GCYMPropertyKey.ALLOY_BLAST);
+        property.setRecipeProducer(new CustomAlloyBlastRecipeProducer(1, 11, -1));
+
+        property = Materials.IndiumTinBariumTitaniumCuprate.getProperty(GCYMPropertyKey.ALLOY_BLAST);
+        property.setRecipeProducer(new CustomAlloyBlastRecipeProducer(-1, -1, 16));
     }
 }

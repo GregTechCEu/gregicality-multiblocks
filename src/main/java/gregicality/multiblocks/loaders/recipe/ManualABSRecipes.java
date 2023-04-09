@@ -14,6 +14,11 @@ public final class ManualABSRecipes {
     private ManualABSRecipes() {/**/}
 
     public static void register() {
+        registerFormulaic();
+        registerManual();
+    }
+
+    private static void registerFormulaic() {
         registerBinaryAlloy(Materials.Copper, 3, Materials.Tin, 1,
                 Materials.Bronze, 4, 400);
         registerBinaryAlloy(Materials.Copper, 3, Materials.Zinc, 1,
@@ -44,7 +49,10 @@ public final class ManualABSRecipes {
                 Materials.Antimony, 1, Materials.SolderingAlloy, 10, 200);
         registerTrinaryAlloy(Materials.Copper, 6, Materials.Tin, 2,
                 Materials.Lead, 1, Materials.Potin, 9, 400);
+    }
 
+    private static void registerManual() {
+        // NZF
         GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
                 .input(OrePrefix.dust, Materials.Nickel)
                 .input(OrePrefix.dust, Materials.Zinc)

@@ -1,6 +1,7 @@
 package gregicality.multiblocks.api.unification.properties;
 
 import com.google.common.base.Preconditions;
+import gregicality.multiblocks.api.recipes.alloyblast.AlloyBlastRecipeProducer;
 import gregtech.api.unification.material.properties.IMaterialProperty;
 import gregtech.api.unification.material.properties.MaterialProperties;
 import gregtech.api.unification.material.properties.PropertyKey;
@@ -14,8 +15,9 @@ public class AlloyBlastProperty implements IMaterialProperty<AlloyBlastProperty>
      * Internal material fluid field
      */
     private Fluid fluid;
-
     private int temperature;
+
+    private AlloyBlastRecipeProducer recipeProducer = AlloyBlastRecipeProducer.DEFAULT_PRODUCER;
 
     public AlloyBlastProperty(int temperature) {
         this.temperature = temperature;
@@ -47,5 +49,14 @@ public class AlloyBlastProperty implements IMaterialProperty<AlloyBlastProperty>
 
     public int getTemperature() {
         return temperature;
+    }
+
+    public void setRecipeProducer(@Nonnull AlloyBlastRecipeProducer recipeProducer) {
+        this.recipeProducer = recipeProducer;
+    }
+
+    @Nonnull
+    public AlloyBlastRecipeProducer getRecipeProducer() {
+        return this.recipeProducer;
     }
 }

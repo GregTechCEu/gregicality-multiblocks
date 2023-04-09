@@ -37,7 +37,7 @@ public final class GCYMMetaFluids {
     }
 
     public static void createMoltenFluid(@Nonnull Material material) {
-        if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_BLAST)) return;
+        if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_PROPERTY)) return;
         if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
 
         // ignore materials which are not alloys
