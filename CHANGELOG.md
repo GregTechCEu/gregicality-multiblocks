@@ -99,3 +99,10 @@
 ## v1.2.1
 
 * Added compat for GTCEu 2.6.0
+
+## v1.2.2
+
+* Updated Alloy Blast Smelter recipe generation
+* Fixed Niobium Nitride easily conflicting with Niobium Titanium in ABS
+* Fixed HV Superconductor giving wrong output amount in ABS
+* Added distinct buses to the Large Wiremill (#44)
