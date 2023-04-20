@@ -46,30 +46,26 @@ public class MetaTileEntityLargeMixer extends GCYMRecipeMapMultiblockController 
                 .where('P', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
                 .where('T', tieredCasing().or(states(getCasingState4())))
-                .where('F', states(getFrameState()))
+                .where('F', frames(GCYMMaterials.HastelloyX))
                 .where('A', air())
                 .where('#', any())
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.MIXER_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING);
     }
 
-    private IBlockState getCasingState4() {
+    private static IBlockState getCasingState4() {
         return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STAINLESS_STEEL_GEARBOX);
-    }
-
-    private IBlockState getFrameState() {
-        return MetaBlocks.FRAMES.get(GCYMMaterials.HastelloyX).getBlock(GCYMMaterials.HastelloyX);
     }
 
     @Override

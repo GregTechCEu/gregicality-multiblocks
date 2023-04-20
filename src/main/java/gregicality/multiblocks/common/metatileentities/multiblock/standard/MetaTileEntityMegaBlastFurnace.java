@@ -111,7 +111,7 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
                 .aisle("##XXXXXXXXX##", "##XXXXSXXXX##", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############", "#############")
                 .where('S', selfPredicate())
                 .where('X', casing.or(autoAbilities(true, true, true, true, true, true, false)))
-                .where('F', states(getFrameState()))
+                .where('F', frames(Materials.NaquadahAlloy))
                 .where('H', casing)
                 .where('P', states(getPipeState()))
                 .where('B', states(getFireboxState()))
@@ -131,10 +131,6 @@ public class MetaTileEntityMegaBlastFurnace extends GCYMRecipeMapMultiblockContr
 
     private static IBlockState getCasingState2() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
-    }
-
-    private static IBlockState getFrameState() {
-        return MetaBlocks.FRAMES.get(Materials.NaquadahAlloy).getBlock(Materials.NaquadahAlloy);
     }
 
     private static IBlockState getFireboxState() {

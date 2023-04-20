@@ -45,27 +45,23 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                 .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
-                .where('F', states(getFrameState()))
+                .where('F', frames(Materials.TungstenSteel))
                 .where('A', air())
                 .where('#', any())
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
-    }
-
-    private IBlockState getFrameState() {
-        return MetaBlocks.FRAMES.get(Materials.TungstenSteel).getBlock(Materials.TungstenSteel);
     }
 
     @Override
