@@ -1,8 +1,8 @@
 package gregicality.multiblocks.loaders.recipe.handlers;
 
+import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 
@@ -14,7 +14,7 @@ public final class GCYMMaterialRecipeHandler {
     private GCYMMaterialRecipeHandler() {/**/}
 
     public static void register() {
-        OrePrefix.ingot.addProcessingHandler(PropertyKey.BLAST, GCYMMaterialRecipeHandler::generateAlloyBlastRecipes);
+        OrePrefix.ingot.addProcessingHandler(GCYMPropertyKey.ALLOY_BLAST, GCYMMaterialRecipeHandler::generateAlloyBlastRecipes);
     }
 
     /**
@@ -24,9 +24,9 @@ public final class GCYMMaterialRecipeHandler {
      * @param property the blast property of the material
      */
     public static void generateAlloyBlastRecipes(@Nullable OrePrefix unused, @Nonnull Material material,
-                                                 @Nonnull BlastProperty property) {
-        if (material.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) {
-            material.getProperty(GCYMPropertyKey.ALLOY_BLAST).getRecipeProducer().produce(material, property);
+                                                 @Nonnull AlloyBlastProperty property) {
+        if (material.hasProperty(PropertyKey.BLAST)) {
+            property.getRecipeProducer().produce(material, material.getProperty(PropertyKey.BLAST));
         }
     }
 }

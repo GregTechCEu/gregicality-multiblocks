@@ -3,10 +3,8 @@ package gregicality.multiblocks.api.unification.properties;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregtech.api.GregTechAPI;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 
 import javax.annotation.Nonnull;
@@ -25,22 +23,22 @@ public class GCYMLatePropertyAddition {
     public static void addAlloyBlastProperty(@Nonnull Material material) {
         final List<MaterialStack> components = material.getMaterialComponents();
         // ignore materials which are not alloys
-        if (components.size() <= 1) return;
-
-        if (material.hasFlag(MaterialFlags.DISABLE_DECOMPOSITION)) return;
+        if (components.size() < 2) return;
 
         BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
         if (blastProperty == null) return;
 
-        if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
         if (!material.hasProperty(PropertyKey.FLUID)) return;
 
         // if there are more than 2 fluid-only components in the material, do not generate a hot fluid
-        if (components.stream().filter(ms -> !ms.material.hasProperty(PropertyKey.DUST) &&
-                ms.material.hasProperty(PropertyKey.FLUID)).count() > 2) {
+        if (components.stream().filter(GCYMLatePropertyAddition::isMaterialStackFluidOnly).limit(3).count() > 2) {
             return;
         }
 
         material.setProperty(GCYMPropertyKey.ALLOY_BLAST, new AlloyBlastProperty(material.getBlastTemperature()));
+    }
+
+    private static boolean isMaterialStackFluidOnly(@Nonnull MaterialStack ms) {
+        return !ms.material.hasProperty(PropertyKey.DUST) && ms.material.hasProperty(PropertyKey.FLUID);
     }
 }

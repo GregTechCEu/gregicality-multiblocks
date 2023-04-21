@@ -30,6 +30,7 @@ public class AlloyBlastProperty implements IMaterialProperty<AlloyBlastProperty>
         this.temperature = materialProperties.getProperty(PropertyKey.BLAST).getBlastTemperature();
     }
 
+    @Nonnull
     public Fluid getFluid() {
         return fluid;
     }

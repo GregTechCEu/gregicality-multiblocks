@@ -106,3 +106,7 @@
 * Fixed Niobium Nitride easily conflicting with Niobium Titanium in ABS
 * Fixed HV Superconductor giving wrong output amount in ABS
 * Added distinct buses to the Large Wiremill (#44)
+
+## v1.2.3
+
+* Fixed Alloy Blast recipes not generating for materials missing hot ingots

@@ -145,8 +145,8 @@ dependencies {
     implementation fg.deobf("curse.maven:ae2-extended-life-${ae2_pid}:${ae2_fid}")
 
     // Tests
-    //testImplementation("org.junit.jupiter:junit-jupiter:${junit_version}")
-    //testImplementation("org.hamcrest:hamcrest:${hamcrest_version}")
+    testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
+    testImplementation "org.hamcrest:hamcrest:${hamcrest_version}"
 
     if (project.use_mixins.toBoolean()) {
         compileOnly "zone.rong:mixinbooter:${mixinbooter_version}"
@@ -157,7 +157,6 @@ dependencies {
         // GroovyScript dependency
         // remove this if project.use_mixins is true
         runtimeOnly "zone.rong:mixinbooter:${mixinbooter_version}"
-
     }
 }
 

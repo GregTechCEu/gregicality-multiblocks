@@ -37,25 +37,31 @@ public final class GCYMMetaFluids {
     }
 
     public static void createMoltenFluid(@Nonnull Material material) {
+        // ignore materials set not to be alloy blast handled
         if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_PROPERTY)) return;
-        if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
 
         // ignore materials which are not alloys
         if (material.getMaterialComponents().size() <= 1) return;
 
-        BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
+        final BlastProperty blastProperty = material.getProperty(PropertyKey.BLAST);
         if (blastProperty == null) return;
 
-        AlloyBlastProperty alloyBlastProperty = material.getProperty(GCYMPropertyKey.ALLOY_BLAST);
+        final AlloyBlastProperty alloyBlastProperty = material.getProperty(GCYMPropertyKey.ALLOY_BLAST);
         if (alloyBlastProperty == null) return;
 
-        // use molten texture instead of iconset textures
-        MetaFluids.setMaterialFluidTexture(material, GCYMFluidTypes.MOLTEN, AUTO_GENERATED_MOLTEN_TEXTURE);
+        if (OrePrefix.ingotHot.doGenerateItem(material)) {
+            // use molten texture instead of iconset textures
+            MetaFluids.setMaterialFluidTexture(material, GCYMFluidTypes.MOLTEN, AUTO_GENERATED_MOLTEN_TEXTURE);
 
-        int temperature = blastProperty.getBlastTemperature();
-        Fluid fluid = MetaFluids.registerFluid(material, GCYMFluidTypes.MOLTEN, temperature, false);
+            int temperature = blastProperty.getBlastTemperature();
+            Fluid fluid = MetaFluids.registerFluid(material, GCYMFluidTypes.MOLTEN, temperature, false);
 
-        alloyBlastProperty.setFluid(fluid);
+            alloyBlastProperty.setFluid(fluid);
+        } else if (material.hasProperty(PropertyKey.FLUID)) {
+            // not hot enough to produce molten fluid, so produce regular fluid
+            alloyBlastProperty.setFluid(material.getFluid());
+        } else return;
+
         alloyBlastProperty.setTemperature(blastProperty.getBlastTemperature());
     }
 
