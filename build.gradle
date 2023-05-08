@@ -106,7 +106,8 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${project.crt_version}"
     implementation rfg.deobf("curse.maven:top-${top_pid}:${top_fid}")
     implementation rfg.deobf("curse.maven:ctm-${ctm_pid}:${ctm_fid}")
-    implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
+    //implementation rfg.deobf("curse.maven:groovyscript-${grs_pid}:${grs_fid}")
+    implementation files("libs/groovyscript-0.4.0.jar")
 
     // Tests
     testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
