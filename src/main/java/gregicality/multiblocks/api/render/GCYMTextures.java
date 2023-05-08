@@ -6,8 +6,6 @@ import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
-import static gregtech.client.renderer.texture.cube.OrientedOverlayRenderer.OverlayFace.*;
-
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
 public class GCYMTextures {
 
@@ -69,42 +67,42 @@ public class GCYMTextures {
 
     public static void preInit() {
         // Multiblock Controllers
-        LARGE_MACERATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_macerator", FRONT);
-        ALLOY_BLAST_SMELTER_OVERLAY = new OrientedOverlayRenderer("multiblock/alloy_blast_smelter", FRONT);
-        LARGE_ARC_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_arc_furnace", FRONT);
-        LARGE_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_assembler", FRONT);
-        LARGE_CIRCUIT_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_circuit_assembler", FRONT);
-        LARGE_AUTOCLAVE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_autoclave", FRONT);
-        LARGE_BENDER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_bender", FRONT);
-        LARGE_BREWERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_brewery", FRONT);
-        LARGE_CENTRIFUGE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_centrifuge", FRONT);
-        LARGE_CHEMICAL_BATH_OVERLAY = new OrientedOverlayRenderer("multiblock/large_chemical_bath", FRONT);
-        CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant", FRONT);
-        LARGE_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extractor", FRONT);
-        LARGE_CUTTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_cutter", FRONT);
-        LARGE_DISTILLERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_distillery", FRONT);
-        LARGE_ELECTROLYZER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_electrolyzer", FRONT);
-        LARGE_POLARIZER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_polarizer", FRONT);
-        LARGE_EXTRUDER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extruder", FRONT);
-        LARGE_SOLIDIFIER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_solidifier", FRONT);
-        LARGE_MIXER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mixer", FRONT);
-        LARGE_PACKAGER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_packager", FRONT);
-        LARGE_ENGRAVER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_engraver", FRONT);
-        LARGE_SIFTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_sifter", FRONT);
-        LARGE_WIREMILL_OVERLAY = new OrientedOverlayRenderer("multiblock/large_wiremill", FRONT);
-        ELECTRIC_IMPLOSION_OVERLAY = new OrientedOverlayRenderer("multiblock/electric_implosion", FRONT);
-        LARGE_MASS_FABRICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mass_fabricator", FRONT);
-        LARGE_REPLICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_replicator", FRONT);
-        MEGA_BLAST_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_blast_furnace", FRONT);
-        MEGA_VACUUM_FREEZER_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_vacuum_freezer", FRONT);
-        STEAM_ENGINE_OVERLAY = new OrientedOverlayRenderer("multiblock/steam_engine", FRONT);
+        LARGE_MACERATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_macerator");
+        ALLOY_BLAST_SMELTER_OVERLAY = new OrientedOverlayRenderer("multiblock/alloy_blast_smelter");
+        LARGE_ARC_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_arc_furnace");
+        LARGE_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_assembler");
+        LARGE_CIRCUIT_ASSEMBLER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_circuit_assembler");
+        LARGE_AUTOCLAVE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_autoclave");
+        LARGE_BENDER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_bender");
+        LARGE_BREWERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_brewery");
+        LARGE_CENTRIFUGE_OVERLAY = new OrientedOverlayRenderer("multiblock/large_centrifuge");
+        LARGE_CHEMICAL_BATH_OVERLAY = new OrientedOverlayRenderer("multiblock/large_chemical_bath");
+        CHEMICAL_PLANT_OVERLAY = new OrientedOverlayRenderer("multiblock/chemical_plant");
+        LARGE_EXTRACTOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extractor");
+        LARGE_CUTTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_cutter");
+        LARGE_DISTILLERY_OVERLAY = new OrientedOverlayRenderer("multiblock/large_distillery");
+        LARGE_ELECTROLYZER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_electrolyzer");
+        LARGE_POLARIZER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_polarizer");
+        LARGE_EXTRUDER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_extruder");
+        LARGE_SOLIDIFIER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_solidifier");
+        LARGE_MIXER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mixer");
+        LARGE_PACKAGER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_packager");
+        LARGE_ENGRAVER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_engraver");
+        LARGE_SIFTER_OVERLAY = new OrientedOverlayRenderer("multiblock/large_sifter");
+        LARGE_WIREMILL_OVERLAY = new OrientedOverlayRenderer("multiblock/large_wiremill");
+        ELECTRIC_IMPLOSION_OVERLAY = new OrientedOverlayRenderer("multiblock/electric_implosion");
+        LARGE_MASS_FABRICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_mass_fabricator");
+        LARGE_REPLICATOR_OVERLAY = new OrientedOverlayRenderer("multiblock/large_replicator");
+        MEGA_BLAST_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_blast_furnace");
+        MEGA_VACUUM_FREEZER_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_vacuum_freezer");
+        STEAM_ENGINE_OVERLAY = new OrientedOverlayRenderer("multiblock/steam_engine");
 
         // Hatches
-        PARALLEL_HATCH_MK1_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk1", FRONT);
-        PARALLEL_HATCH_MK2_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk2", FRONT);
-        PARALLEL_HATCH_MK3_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk3", FRONT);
-        PARALLEL_HATCH_MK4_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk4", FRONT);
-        TIERED_HATCH_OVERLAY = new OrientedOverlayRenderer("hatches/tiered_hatch", FRONT, BACK, TOP, BOTTOM, SIDE);
+        PARALLEL_HATCH_MK1_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk1");
+        PARALLEL_HATCH_MK2_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk2");
+        PARALLEL_HATCH_MK3_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk3");
+        PARALLEL_HATCH_MK4_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk4");
+        TIERED_HATCH_OVERLAY = new OrientedOverlayRenderer("hatches/tiered_hatch");
 
         // Casings
         MACERATOR_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/macerator_casing");

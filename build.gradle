@@ -99,7 +99,7 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    implementation (files("libs/gregtech-${project.gregtech_version}-dev.jar"))
+    implementation "curse.maven:gregtech-ce-unofficial-${gt_pid}:${gt_dev_fid}-sources-${gt_sources_fid}"
 
     // Soft Dependencies
     implementation "mezz.jei:jei_1.12.2:${project.jei_version}"
@@ -127,7 +127,6 @@ dependencies {
     annotationProcessor "org.ow2.asm:asm-debug-all:${asm_debug_version}"
     annotationProcessor "com.google.guava:guava:${guava_version}-jre"
     annotationProcessor "com.google.code.gson:gson:${gson_version}"
-
 }
 
 //noinspection ConfigurationAvoidance
@@ -277,6 +276,7 @@ if (cf_api_key.isPresent() || deployment_debug) {
         mainFile.changelog = providers.environmentVariable('CHANGELOG_LOCATION').get()
         mainFile.changelogType = 'markdown'
         mainFile.addRequirement 'codechicken-lib-1-8'
+        mainFile.addRequirement 'gregtech-ce-unofficial'
         mainFile.addIncompatibility 'gregtechce'
         mainFile.addModLoader 'Forge'
         mainFile.addJavaVersion "Java ${java_version}"
@@ -306,6 +306,7 @@ if (modrinth_api_key.isPresent() || deployment_debug) {
 
         versionNumber = "$version".split('-')[0] // strip out the EXTRA field, if present
         gameVersions = ["$mc_version"]
+        loaders = ["forge"]
 
         def main_artifact = "${archivesBaseName}-${version}.jar"
         uploadFile = file("build/libs/${main_artifact}")
