@@ -110,3 +110,4 @@
 ## v1.2.3
 
 * Fixed Alloy Blast recipes not generating for materials missing hot ingots
+* No longer using deprecated features as of GTCEu v2.6.2
