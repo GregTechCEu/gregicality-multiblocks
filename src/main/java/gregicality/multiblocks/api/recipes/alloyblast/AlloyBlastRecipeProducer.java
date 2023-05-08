@@ -66,8 +66,8 @@ public class AlloyBlastRecipeProducer {
      */
     @SuppressWarnings("MethodMayBeStatic")
     @Nonnull
-    protected RecipeBuilder<BlastRecipeBuilder> createBuilder(@Nonnull BlastProperty property, @Nonnull Material material) {
-        RecipeBuilder<BlastRecipeBuilder> builder = GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder();
+    protected BlastRecipeBuilder createBuilder(@Nonnull BlastProperty property, @Nonnull Material material) {
+        BlastRecipeBuilder builder = GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder();
         // apply the duration override
         int duration = property.getDurationOverride();
         if (duration < 0) duration = Math.max(1, (int) (material.getMass() * property.getBlastTemperature() / 100L));
@@ -78,7 +78,7 @@ public class AlloyBlastRecipeProducer {
         if (EUt < 0) EUt = GTValues.VA[GTValues.MV];
         builder.EUt(EUt);
 
-        return builder;
+        return builder.blastFurnaceTemp(property.getBlastTemperature());
     }
 
     /**
