@@ -47,7 +47,7 @@ minecraft {
     mcVersion = project.mc_version
     def args = [
             "-ea:${project.group}",
-            "-Dfml.coreMods.load=${coremod_plugin_class_name}"
+//            "-Dfml.coreMods.load=${coremod_plugin_class_name}"
     ]
     extraRunJvmArguments.addAll(args)
 
@@ -99,7 +99,8 @@ dependencies {
     // the CCL deobf jar uses very old MCP mappings, making it error at runtime in runClient/runServer
     // therefore we manually deobf the regular jar
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-${ccl_pid}:${ccl_fid}")
-    implementation "curse.maven:gregtech-ce-unofficial-${gt_pid}:${gt_dev_fid}-sources-${gt_sources_fid}"
+    // manually deobf the jar to prevent extra configuration for handling obf/deobf separation
+    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-${gt_pid}:${gt_fid}-sources-${gt_sources_fid}")
 
     // Soft Dependencies
     implementation "mezz.jei:jei_1.12.2:${project.jei_version}"
@@ -156,10 +157,10 @@ processResources {
 jar {
     manifest {
         def attribute_map = [:]
-        attribute_map['FMLCorePlugin'] = coremod_plugin_class_name
-        attribute_map['FMLCorePluginContainsFMLMod'] = true
-        attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == 'build'
-        attribute_map['FMLAT'] = archives_base_name + '_at.cfg'
+//        attribute_map['FMLCorePlugin'] = coremod_plugin_class_name
+//        attribute_map['FMLCorePluginContainsFMLMod'] = true
+//        attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == 'build'
+//        attribute_map['FMLAT'] = archives_base_name + '_at.cfg'
         attributes(attribute_map)
     }
 
