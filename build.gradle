@@ -1,4 +1,4 @@
-//version: 1685492349
+//version: 1685501596
 /*
  * DO NOT CHANGE THIS FILE!
  * Also, you may replace this file at any time if there is an update available.
@@ -57,6 +57,7 @@ propertyDefaultIfUnset("gradleTokenModId", "")
 propertyDefaultIfUnset("gradleTokenModName", "")
 propertyDefaultIfUnset("gradleTokenVersion", "")
 propertyDefaultIfUnset("includeWellKnownRepositories", true)
+propertyDefaultIfUnset("includeCommonDevEnvMods", true)
 propertyDefaultIfUnset("noPublishedSources", false)
 propertyDefaultIfUnset("forceEnableMixins", false)
 propertyDefaultIfUnset("modrinthProjectId", "")
@@ -277,7 +278,7 @@ if (getFile('repositories.gradle').exists()) {
 }
 
 repositories {
-    if (includeWellKnownRepositories.toBoolean()) {
+    if (includeWellKnownRepositories.toBoolean() || includeCommonDevEnvMods.toBoolean()) {
         exclusiveContent {
             forRepository {
                 //noinspection ForeignDelegate
@@ -378,6 +379,12 @@ dependencies {
 
     compileOnlyApi 'org.jetbrains:annotations:23.0.0'
     annotationProcessor 'org.jetbrains:annotations:23.0.0'
+
+    if (includeCommonDevEnvMods.toBoolean()) {
+        implementation 'mezz.jei:jei_1.12.2:4.16.1.302'
+        //noinspection DependencyNotationArgument
+        implementation rfg.deobf('curse.maven:top-245211:2667280') // TOP 1.4.28
+    }
 }
 
 if (getFile('dependencies.gradle').exists()) {
@@ -773,12 +780,14 @@ tasks.register('faq') {
     group = 'GT Buildscript'
     description = 'Prints frequently asked questions about building a project'
     doLast {
-        print("To update this buildscript to the latest version, run 'gradlew updateBuildScript' or run the generated run configuration if you are using IDEA.\n" +
-            "To add new dependencies to your project, place them in 'dependencies.gradle', NOT in 'build.gradle' as they would be replaced when the script updates.\n" +
-            "To add new repositories to your project, place them in 'repositories.gradle'.\n" +
-            "If you need additional gradle code to run, you can place it in a file named 'addon.gradle' (or either of the above, up to you for organization).\n" +
-            "If your build fails to recognize the syntax of newer Java versions, enable Jabel in your 'gradle.properties' under the option name 'enableModernJavaSyntax'.\n" +
-            "Report any issues or feature requests you have for this build script to https://github.com/GregTechCEu/Buildscripts")
+        print("\nTo update this buildscript to the latest version, run 'gradlew updateBuildScript' or run the generated run configuration if you are using IDEA.\n" +
+                "To set up the project, run the 'setupDecompWorkspace' task, which you can run as './gradlew setupDecompWorkspace' in a terminal, or find in the 'modded minecraft' gradle category.\n\n" +
+                "To add new dependencies to your project, place them in 'dependencies.gradle', NOT in 'build.gradle' as they would be replaced when the script updates.\n" +
+                "To add new repositories to your project, place them in 'repositories.gradle'.\n" +
+                "If you need additional gradle code to run, you can place it in a file named 'addon.gradle' (or either of the above, up to you for organization).\n\n" +
+                "If your build fails to recognize the syntax of newer Java versions, enable Jabel in your 'gradle.properties' under the option name 'enableModernJavaSyntax'.\n" +
+                "To see information on how to configure your IDE properly for Java 17, see https://github.com/GregTechCEu/Buildscripts/blob/master/jabel.md\n\n" +
+                "Report any issues or feature requests you have for this build script to https://github.com/GregTechCEu/Buildscripts/issues\n")
     }
 }
 
