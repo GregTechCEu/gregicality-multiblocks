@@ -31,7 +31,7 @@ public final class GCYMMetaFluids {
     public static void init() {
         fluidSprites.add(AUTO_GENERATED_MOLTEN_TEXTURE);
 
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             createMoltenFluid(material);
         }
     }
