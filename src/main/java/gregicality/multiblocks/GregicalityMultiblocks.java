@@ -1,5 +1,6 @@
 package gregicality.multiblocks;
 
+import gregicality.GCYMInternalTags;
 import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.CommonProxy;
@@ -18,7 +19,7 @@ public class GregicalityMultiblocks {
 
     public static final String MODID = "gcym";
     public static final String NAME = "Gregicality Multiblocks";
-    public static final String VERSION = "1.2.2";
+    public static final String VERSION = GCYMInternalTags.VERSION;
 
     @SidedProxy(modId = MODID, clientSide = "gregicality.multiblocks.common.ClientProxy", serverSide = "gregicality.multiblocks.common.CommonProxy")
     public static CommonProxy proxy;
