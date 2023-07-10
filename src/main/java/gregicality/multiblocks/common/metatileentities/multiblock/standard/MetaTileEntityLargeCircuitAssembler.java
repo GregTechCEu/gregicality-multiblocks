@@ -69,6 +69,11 @@ public class MetaTileEntityLargeCircuitAssembler extends GCYMRecipeMapMultiblock
     }
 
     @Override
+    public boolean canBeDistinct() {
+        return true;
+    }
+
+    @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GCYMTextures.ASSEMBLING_CASING;
     }
