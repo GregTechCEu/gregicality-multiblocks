@@ -111,3 +111,8 @@
 
 * Fixed Alloy Blast recipes not generating for materials missing hot ingots
 * No longer using deprecated features as of GTCEu v2.6.2
+
+## v1.2.4
+
+* Added Distinct Buses to the Large Circuit Assembler (#53)
+* Added Compat for GTCEu 2.7.0 (#52)
