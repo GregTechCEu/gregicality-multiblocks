@@ -9,7 +9,7 @@ import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 
-public class AlloyBlastProperty implements IMaterialProperty<AlloyBlastProperty> {
+public class AlloyBlastProperty implements IMaterialProperty {
 
     /**
      * Internal material fluid field

@@ -111,18 +111,18 @@ tile.large_multiblock_casing.steam_casing.name=Промышленный паро
 recipemap.alloy_blast_smelter.name=Доменная плавильня сплавов
 
 # Materials
-material.stellite_100=Стеллит
-material.watertight_steel=Водонепроницаемая сталь
-material.maraging_steel_300=Мартенситностареющая сталь 300
-material.hastelloy_c_276=Хастеллой C276
-material.hastelloy_x=Хастеллой X
-material.trinaquadalloy=Тринаквадосплав
-material.titanium_carbide=Карбид титана
-material.tantalum_carbide=Карбид тантала
-material.molybdenum_disilicide=Дисилицид молибдена
-material.hsla_steel=Высокопрочная низколегированная сталь
-material.titanium_tungsten_carbide=Титан-вольфрамовый карбид
-material.incoloy_ma_956=Инколой MA956
+gregtech.material.stellite_100=Стеллит
+gregtech.material.watertight_steel=Водонепроницаемая сталь
+gregtech.material.maraging_steel_300=Мартенситностареющая сталь 300
+gregtech.material.hastelloy_c_276=Хастеллой C276
+gregtech.material.hastelloy_x=Хастеллой X
+gregtech.material.trinaquadalloy=Тринаквадосплав
+gregtech.material.titanium_carbide=Карбид титана
+gregtech.material.tantalum_carbide=Карбид тантала
+gregtech.material.molybdenum_disilicide=Дисилицид молибдена
+gregtech.material.hsla_steel=Высокопрочная низколегированная сталь
+gregtech.material.titanium_tungsten_carbide=Титан-вольфрамовый карбид
+gregtech.material.incoloy_ma_956=Инколой MA956
 
 # fluids
 gcym.fluid.molten=Расплав (%s)

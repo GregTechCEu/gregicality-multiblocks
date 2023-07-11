@@ -13,7 +13,7 @@ import java.util.List;
 public class GCYMLatePropertyAddition {
 
     public static void init() {
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             if (!material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_PROPERTY)) {
                 addAlloyBlastProperty(material);
             }

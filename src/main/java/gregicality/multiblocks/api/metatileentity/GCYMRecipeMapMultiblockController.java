@@ -40,8 +40,8 @@ public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblo
     }
 
     @Override
-    protected void addExtraDisplayInfo(List<ITextComponent> textList) {
-        super.addExtraDisplayInfo(textList);
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
         List<ITieredMetaTileEntity> list = getAbilities(GCYMMultiblockAbility.TIERED_HATCH);
         if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings && !list.isEmpty()) {
             long maxVoltage = Math.min(GTValues.V[list.get(0).getTier()], Math.max(energyContainer.getInputVoltage(), energyContainer.getOutputVoltage()));

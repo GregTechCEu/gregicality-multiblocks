@@ -128,20 +128,20 @@ tile.large_multiblock_casing.steam_casing.name=Industrial Steam Casing
 recipemap.alloy_blast_smelter.name=Alloy Blast Smelting
 
 # Materials
-material.stellite_100=Stellite-100
-material.watertight_steel=Watertight Steel
-material.maraging_steel_300=Maraging Steel 300
-material.hastelloy_c_276=Hastelloy-C276
-material.hastelloy_x=Hastelloy-X
-material.trinaquadalloy=Trinaquadalloy
-material.zeron_100=Zeron-100
-material.titanium_carbide=Titanium Carbide
-material.tantalum_carbide=Tantalum Carbide
-material.molybdenum_disilicide=Molybdenum Disilicide
+gregtech.material.stellite_100=Stellite-100
+gregtech.material.watertight_steel=Watertight Steel
+gregtech.material.maraging_steel_300=Maraging Steel 300
+gregtech.material.hastelloy_c_276=Hastelloy-C276
+gregtech.material.hastelloy_x=Hastelloy-X
+gregtech.material.trinaquadalloy=Trinaquadalloy
+gregtech.material.zeron_100=Zeron-100
+gregtech.material.titanium_carbide=Titanium Carbide
+gregtech.material.tantalum_carbide=Tantalum Carbide
+gregtech.material.molybdenum_disilicide=Molybdenum Disilicide
 
-material.hsla_steel=HSLA Steel
-material.titanium_tungsten_carbide=Titanium Tungsten Carbide
-material.incoloy_ma_956=Incoloy-MA956
+gregtech.material.hsla_steel=HSLA Steel
+gregtech.material.titanium_tungsten_carbide=Titanium Tungsten Carbide
+gregtech.material.incoloy_ma_956=Incoloy-MA956
 
 # fluids
 gcym.fluid.molten=Molten %s

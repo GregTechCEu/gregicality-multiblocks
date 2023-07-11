@@ -28,7 +28,7 @@ public class AlloyBlastTest {
         Set<Material> alloyMats = new ObjectOpenHashSet<>();
         Set<Material> nonBinaryMats = new ObjectOpenHashSet<>();
 
-        for (Material material : GregTechAPI.MATERIAL_REGISTRY) {
+        for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
             if (material.hasProperty(PropertyKey.BLAST)) {
                 blastMats.add(material);
             }
