@@ -30,7 +30,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
     // manually deobf the jar to prevent extra configuration for handling obf/deobf separation
     //implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4527757-sources-4527758")
-    implementation files("libs/gregtech-1.12.2-2.6.2-beta-dev.jar") // todo build of near 2.7 release
+    implementation files("libs/gregtech-1.12.2-2.7.0-beta-dev.jar") // todo build of near 2.7 release
 
     // Soft Dependencies
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.684"
