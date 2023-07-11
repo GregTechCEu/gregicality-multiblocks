@@ -131,20 +131,20 @@ tile.large_multiblock_casing.steam_casing.name=工业蒸汽机械方块
 recipemap.alloy_blast_smelter.name=合金高炉冶炼
 
 # Materials
-material.stellite_100=司太立100合金
-material.watertight_steel=防水钢
-material.maraging_steel_300=马氏体时效钢300
-material.hastelloy_c_276=哈斯特洛依合金-C276
-material.hastelloy_x=哈斯特洛依合金-X
-material.trinaquadalloy=碳化三元金属硅岩合金
-material.zeron_100=塞龙-100
-material.titanium_carbide=碳化钛 
-material.tantalum_carbide=碳化钽
-material.molybdenum_disilicide=二硅化钼
+gregtech.material.stellite_100=司太立100合金
+gregtech.material.watertight_steel=防水钢
+gregtech.material.maraging_steel_300=马氏体时效钢300
+gregtech.material.hastelloy_c_276=哈斯特洛依合金-C276
+gregtech.material.hastelloy_x=哈斯特洛依合金-X
+gregtech.material.trinaquadalloy=碳化三元金属硅岩合金
+gregtech.material.zeron_100=塞龙-100
+gregtech.material.titanium_carbide=碳化钛
+gregtech.material.tantalum_carbide=碳化钽
+gregtech.material.molybdenum_disilicide=二硅化钼
 
-material.hsla_steel=HSLA钢
-material.titanium_tungsten_carbide=碳化钛钨
-material.incoloy_ma_956=耐热铬铁合金-MA956
+gregtech.material.hsla_steel=HSLA钢
+gregtech.material.titanium_tungsten_carbide=碳化钛钨
+gregtech.material.incoloy_ma_956=耐热铬铁合金-MA956
 
 # fluids
 gcym.fluid.molten=熔融%s
