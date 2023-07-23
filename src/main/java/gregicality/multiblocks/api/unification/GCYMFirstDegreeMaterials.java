@@ -56,7 +56,7 @@ public class GCYMFirstDegreeMaterials {
         Trinaquadalloy = new Material.Builder(3005, gregtechId("trinaquadalloy"))
                 .ingot().fluid()
                 .color(0x281832).iconSet(MaterialIconSet.BRIGHT)
-                .flags(GENERATE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE)
                 .components(Trinium, 6, Naquadah, 2, Carbon, 1)
                 .blastTemp(8747, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1200)
                 .build();
@@ -88,7 +88,7 @@ public class GCYMFirstDegreeMaterials {
         MolybdenumDisilicide = new Material.Builder(3009, gregtechId("molybdenum_disilicide"))
                 .ingot().fluid()
                 .color(0x6A5BA3).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_SPRING, GENERATE_RING)
+                .flags(EXT_METAL, GENERATE_DOUBLE_PLATE, GENERATE_LONG_ROD, GENERATE_SPRING, GENERATE_RING)
                 .components(Molybdenum, 1, Silicon, 2)
                 .blastTemp(2300, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 800)
                 .build();
