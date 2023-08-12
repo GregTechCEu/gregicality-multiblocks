@@ -116,3 +116,7 @@
 
 * Added Distinct Buses to the Large Circuit Assembler (#53)
 * Added Compat for GTCEu 2.7.0 (#52)
+
+## v1.2.5
+
+* Fixed missing recipes due to materials missing double plates (#56)
