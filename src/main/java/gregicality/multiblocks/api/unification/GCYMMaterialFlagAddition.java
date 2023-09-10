@@ -1,17 +1,17 @@
 package gregicality.multiblocks.api.unification;
 
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.info.MaterialFlags;
+
 import gregicality.multiblocks.api.recipes.alloyblast.CustomAlloyBlastRecipeProducer;
 import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.info.MaterialFlags;
 
 public final class GCYMMaterialFlagAddition {
 
     private GCYMMaterialFlagAddition() {}
 
     public static void init() {
-
         // Frames
         Materials.TungstenCarbide.addFlags(MaterialFlags.GENERATE_FRAME);
         Materials.Tungsten.addFlags(MaterialFlags.GENERATE_FRAME);
@@ -34,7 +34,6 @@ public final class GCYMMaterialFlagAddition {
 
         // Foils
         Materials.Graphene.addFlags(MaterialFlags.GENERATE_FOIL);
-
     }
 
     public static void initLate() {

@@ -1,17 +1,12 @@
 package gregicality.multiblocks;
 
-import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlagAddition;
-import gregicality.multiblocks.api.unification.GCYMMaterials;
-import gregicality.multiblocks.api.unification.properties.GCYMLatePropertyAddition;
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.MetaFluids;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.materials.MaterialFlagAddition;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
-import gregtech.core.unification.material.internal.MaterialRegistryManager;
+import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.Locale;
 import net.minecraft.network.INetHandler;
@@ -24,12 +19,19 @@ import net.minecraftforge.fml.common.eventhandler.EventBus;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.io.File;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.MetaFluids;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.materials.MaterialFlagAddition;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.items.MetaItems;
+import gregtech.core.unification.material.internal.MaterialRegistryManager;
+
+import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlagAddition;
+import gregicality.multiblocks.api.unification.GCYMMaterials;
+import gregicality.multiblocks.api.unification.properties.GCYMLatePropertyAddition;
 
 public final class Bootstrap {
 
@@ -165,7 +167,8 @@ public final class Bootstrap {
         }
 
         @Override
-        public void fireNetRegistrationEvent(EventBus bus, NetworkManager manager, Set<String> channelSet, String channel, Side side) {
+        public void fireNetRegistrationEvent(EventBus bus, NetworkManager manager, Set<String> channelSet,
+                                             String channel, Side side) {
             throw new UnsupportedOperationException();
         }
 

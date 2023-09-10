@@ -31,7 +31,6 @@ public final class GCYMMaterials {
      * High Degree Materials 3040-3059
      */
 
-
     /*
      * Gregicality: 3000-19999
      */

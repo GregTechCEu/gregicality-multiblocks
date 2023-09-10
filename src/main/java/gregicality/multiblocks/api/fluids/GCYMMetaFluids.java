@@ -1,23 +1,27 @@
 package gregicality.multiblocks.api.fluids;
 
-import gregicality.multiblocks.GregicalityMultiblocks;
-import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
-import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import java.util.Collection;
+
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.MetaFluids;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
+import gregicality.multiblocks.GregicalityMultiblocks;
+import gregicality.multiblocks.api.fluids.fluidType.GCYMFluidTypes;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 
 public final class GCYMMetaFluids {
 

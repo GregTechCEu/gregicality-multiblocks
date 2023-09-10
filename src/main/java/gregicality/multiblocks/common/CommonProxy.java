@@ -1,10 +1,8 @@
 package gregicality.multiblocks.common;
 
-import gregicality.multiblocks.GregicalityMultiblocks;
-import gregicality.multiblocks.api.utils.GCYMLog;
-import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-import gregicality.multiblocks.loaders.recipe.GCYMRecipeLoader;
-import gregtech.api.block.VariantItemBlock;
+import java.util.Objects;
+import java.util.function.Function;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -17,15 +15,17 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.Objects;
-import java.util.function.Function;
+import gregtech.api.block.VariantItemBlock;
+
+import gregicality.multiblocks.GregicalityMultiblocks;
+import gregicality.multiblocks.api.utils.GCYMLog;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.loaders.recipe.GCYMRecipeLoader;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)
 public class CommonProxy {
 
-    public void preLoad() {
-
-    }
+    public void preLoad() {}
 
     @SubscribeEvent
     public static void syncConfigValues(ConfigChangedEvent.OnConfigChangedEvent event) {
@@ -42,7 +42,6 @@ public class CommonProxy {
         registry.register(GCYMMetaBlocks.UNIQUE_CASING);
         registry.register(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING);
     }
-
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {

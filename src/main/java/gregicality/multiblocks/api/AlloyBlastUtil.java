@@ -1,12 +1,15 @@
 package gregicality.multiblocks.api;
 
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import net.minecraftforge.fluids.Fluid;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
-import net.minecraftforge.fluids.Fluid;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 public final class AlloyBlastUtil {
 

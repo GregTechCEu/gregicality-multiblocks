@@ -1,8 +1,10 @@
 package gregicality.multiblocks.api.recipes.alloyblast;
 
-import gregicality.multiblocks.api.AlloyBlastUtil;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
@@ -16,9 +18,10 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
 import gregtech.loaders.recipe.CraftingComponent;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import org.jetbrains.annotations.NotNull;
+
+import gregicality.multiblocks.api.AlloyBlastUtil;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 
 public class AlloyBlastRecipeProducer {
 
@@ -114,7 +117,8 @@ public class AlloyBlastRecipeProducer {
      * @param componentAmount the amount of different components in the material
      * @param builder         the builder to continue
      */
-    protected void buildRecipes(@NotNull BlastProperty property, @NotNull Fluid molten, int outputAmount, int componentAmount,
+    protected void buildRecipes(@NotNull BlastProperty property, @NotNull Fluid molten, int outputAmount,
+                                int componentAmount,
                                 @NotNull RecipeBuilder<BlastRecipeBuilder> builder) {
         // add the fluid output with the correct amount
         builder.fluidOutputs(new FluidStack(molten, GTValues.L * outputAmount));
@@ -163,7 +167,6 @@ public class AlloyBlastRecipeProducer {
      */
     @SuppressWarnings("MethodMayBeStatic")
     protected void addFreezerRecipes(@NotNull Material material, @NotNull Fluid molten, int temperature) {
-
         // build the freezer recipe
         RecipeBuilder<?> freezerBuilder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(new FluidStack(molten, GTValues.L))

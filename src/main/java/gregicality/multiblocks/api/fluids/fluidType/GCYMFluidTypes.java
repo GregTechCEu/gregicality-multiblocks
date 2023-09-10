@@ -1,7 +1,8 @@
 package gregicality.multiblocks.api.fluids.fluidType;
 
-import crafttweaker.annotations.ZenRegister;
 import gregtech.api.fluids.fluidType.FluidType;
+
+import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 

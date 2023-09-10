@@ -1,18 +1,22 @@
 package gregicality.multiblocks.api.material;
 
-import com.google.common.collect.Sets;
-import gregicality.multiblocks.Bootstrap;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
-import gregtech.api.GregTechAPI;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.PropertyKey;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import com.google.common.collect.Sets;
+
+import gregtech.api.GregTechAPI;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
+
+import gregicality.multiblocks.Bootstrap;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 
 public class AlloyBlastTest {
 

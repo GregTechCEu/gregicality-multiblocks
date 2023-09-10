@@ -1,6 +1,10 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
-import gregicality.multiblocks.api.render.GCYMTextures;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -17,9 +21,8 @@ import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
+
+import gregicality.multiblocks.api.render.GCYMTextures;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 
@@ -41,7 +44,9 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                 .aisle("XXXXX", "#PGP#", "#PGP#", "#PGP#", "#PGP#", "XXXXX")
                 .aisle("XXSXX", "F###F", "F###F", "F###F", "F###F", "XXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities(true, true, true, true, true, true, false)))
+                .where('X',
+                        states(getCasingState()).setMinGlobalLimited(40)
+                                .or(autoAbilities(true, true, true, true, true, true, false)))
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
                 .where('F', frames(Materials.TungstenSteel))

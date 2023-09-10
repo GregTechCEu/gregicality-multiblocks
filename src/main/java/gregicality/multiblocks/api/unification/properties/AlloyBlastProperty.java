@@ -1,13 +1,17 @@
 package gregicality.multiblocks.api.unification.properties;
 
+import net.minecraftforge.fluids.Fluid;
+
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
+
 import com.google.common.base.Preconditions;
-import gregicality.multiblocks.api.recipes.alloyblast.AlloyBlastRecipeProducer;
+
 import gregtech.api.unification.material.properties.IMaterialProperty;
 import gregtech.api.unification.material.properties.MaterialProperties;
 import gregtech.api.unification.material.properties.PropertyKey;
-import net.minecraftforge.fluids.Fluid;
-import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.NotNull;
+
+import gregicality.multiblocks.api.recipes.alloyblast.AlloyBlastRecipeProducer;
 
 public class AlloyBlastProperty implements IMaterialProperty {
 

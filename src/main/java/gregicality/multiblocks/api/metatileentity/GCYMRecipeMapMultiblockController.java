@@ -1,28 +1,32 @@
 package gregicality.multiblocks.api.metatileentity;
 
-import gregicality.multiblocks.api.capability.IParallelMultiblock;
-import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
-import gregicality.multiblocks.common.GCYMConfigHolder;
-import gregtech.api.GTValues;
-import gregtech.api.metatileentity.ITieredMetaTileEntity;
-import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
-import gregtech.api.pattern.TraceabilityPredicate;
-import gregtech.api.recipes.RecipeMap;
+import java.util.List;
+
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import gregtech.api.GTValues;
+import gregtech.api.metatileentity.ITieredMetaTileEntity;
+import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
+import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.recipes.RecipeMap;
 
-public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblockController implements IParallelMultiblock {
+import gregicality.multiblocks.api.capability.IParallelMultiblock;
+import gregicality.multiblocks.api.capability.impl.GCYMMultiblockRecipeLogic;
+import gregicality.multiblocks.common.GCYMConfigHolder;
+
+public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblockController
+                                                        implements IParallelMultiblock {
 
     public GCYMRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        this(metaTileEntityId, new RecipeMap<?>[]{recipeMap});
+        this(metaTileEntityId, new RecipeMap<?>[] { recipeMap });
     }
 
     public GCYMRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?>[] recipeMaps) {
@@ -44,7 +48,8 @@ public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblo
         super.addDisplayText(textList);
         List<ITieredMetaTileEntity> list = getAbilities(GCYMMultiblockAbility.TIERED_HATCH);
         if (GCYMConfigHolder.globalMultiblocks.enableTieredCasings && !list.isEmpty()) {
-            long maxVoltage = Math.min(GTValues.V[list.get(0).getTier()], Math.max(energyContainer.getInputVoltage(), energyContainer.getOutputVoltage()));
+            long maxVoltage = Math.min(GTValues.V[list.get(0).getTier()],
+                    Math.max(energyContainer.getInputVoltage(), energyContainer.getOutputVoltage()));
             String voltageName = GTValues.VNF[list.get(0).getTier()];
             textList.add(new TextComponentTranslation("gcym.multiblock.tiered_hatch.tooltip", maxVoltage, voltageName));
         }
@@ -66,14 +71,20 @@ public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblo
     }
 
     @Override
-    public TraceabilityPredicate autoAbilities(boolean checkEnergyIn, boolean checkMaintenance, boolean checkItemIn, boolean checkItemOut, boolean checkFluidIn, boolean checkFluidOut, boolean checkMuffler) {
-        TraceabilityPredicate predicate = super.autoAbilities(checkEnergyIn, checkMaintenance, checkItemIn, checkItemOut, checkFluidIn, checkFluidOut, checkMuffler);
+    public TraceabilityPredicate autoAbilities(boolean checkEnergyIn, boolean checkMaintenance, boolean checkItemIn,
+                                               boolean checkItemOut, boolean checkFluidIn, boolean checkFluidOut,
+                                               boolean checkMuffler) {
+        TraceabilityPredicate predicate = super.autoAbilities(checkEnergyIn, checkMaintenance, checkItemIn,
+                checkItemOut, checkFluidIn, checkFluidOut, checkMuffler);
         if (isParallel())
-            predicate = predicate.or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1).setPreviewCount(1));
+            predicate = predicate
+                    .or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1).setPreviewCount(1));
         return predicate;
     }
 
     public static @NotNull TraceabilityPredicate tieredCasing() {
-        return new TraceabilityPredicate(abilities(GCYMMultiblockAbility.TIERED_HATCH).setMinGlobalLimited(GCYMConfigHolder.globalMultiblocks.enableTieredCasings ? 1 : 0).setMaxGlobalLimited(1));
+        return new TraceabilityPredicate(abilities(GCYMMultiblockAbility.TIERED_HATCH)
+                .setMinGlobalLimited(GCYMConfigHolder.globalMultiblocks.enableTieredCasings ? 1 : 0)
+                .setMaxGlobalLimited(1));
     }
 }

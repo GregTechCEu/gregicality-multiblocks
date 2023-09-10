@@ -1,11 +1,11 @@
 package gregicality.multiblocks.loaders.recipe;
 
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.common.items.MetaItems;
-
 import static gregtech.api.unification.material.Materials.Graphene;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.foil;
+
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.common.items.MetaItems;
 
 public final class GCYMMiscRecipes {
 

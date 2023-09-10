@@ -1,7 +1,8 @@
 package gregicality.multiblocks.common;
 
-import gregicality.multiblocks.GregicalityMultiblocks;
 import net.minecraftforge.common.config.Config;
+
+import gregicality.multiblocks.GregicalityMultiblocks;
 
 @Config(modid = GregicalityMultiblocks.MODID)
 public class GCYMConfigHolder {
@@ -12,7 +13,8 @@ public class GCYMConfigHolder {
 
     public static class GlobalMultiblocks {
 
-        @Config.Comment({"Makes nearly every GCYM Multiblock require blocks which set their maximum voltages.", "Default: false"})
+        @Config.Comment({ "Makes nearly every GCYM Multiblock require blocks which set their maximum voltages.",
+                "Default: false" })
         public boolean enableTieredCasings = false;
     }
 }

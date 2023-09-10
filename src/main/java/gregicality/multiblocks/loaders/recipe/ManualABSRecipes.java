@@ -1,12 +1,14 @@
 package gregicality.multiblocks.loaders.recipe;
 
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
-import org.jetbrains.annotations.NotNull;
+
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 
 public final class ManualABSRecipes {
 

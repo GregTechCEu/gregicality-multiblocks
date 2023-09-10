@@ -1,11 +1,21 @@
 package gregicality.multiblocks.common.metatileentities.multiblockpart;
 
-import codechicken.lib.render.CCRenderState;
-import codechicken.lib.render.pipeline.IVertexOperation;
-import codechicken.lib.vec.Matrix4;
-import gregicality.multiblocks.api.capability.IParallelHatch;
-import gregicality.multiblocks.api.metatileentity.GCYMMultiblockAbility;
-import gregicality.multiblocks.api.render.GCYMTextures;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.IntSupplier;
+
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.gui.GuiTextures;
@@ -18,22 +28,17 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.IntSupplier;
+import gregicality.multiblocks.api.capability.IParallelHatch;
+import gregicality.multiblocks.api.metatileentity.GCYMMultiblockAbility;
+import gregicality.multiblocks.api.render.GCYMTextures;
 
-public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IParallelHatch>, IParallelHatch {
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Matrix4;
+
+public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart
+                                         implements IMultiblockAbilityPart<IParallelHatch>, IParallelHatch {
 
     private static final int MIN_PARALLEL = 1;
 
@@ -70,9 +75,10 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
         parallelAmountGroup.addWidget(new IncrementButtonWidget(118, 36, 30, 20, 1, 4, 16, 64, this::setCurrentParallel)
                 .setDefaultTooltip()
                 .setShouldClientCallback(false));
-        parallelAmountGroup.addWidget(new IncrementButtonWidget(29, 36, 30, 20, -1, -4, -16, -64, this::setCurrentParallel)
-                .setDefaultTooltip()
-                .setShouldClientCallback(false));
+        parallelAmountGroup
+                .addWidget(new IncrementButtonWidget(29, 36, 30, 20, -1, -4, -16, -64, this::setCurrentParallel)
+                        .setDefaultTooltip()
+                        .setShouldClientCallback(false));
 
         parallelAmountGroup.addWidget(new TextFieldWidget2(63, 42, 51, 20, this::getParallelAmountToString, val -> {
             if (val != null && !val.isEmpty()) {
@@ -115,7 +121,8 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
+                               boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gcym.machine.parallel_hatch.tooltip", this.maxParallel));
         tooltip.add(I18n.format("gregtech.universal.disabled"));
@@ -148,7 +155,8 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
             if (getController() != null && getController() instanceof RecipeMapMultiblockController) {
                 overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(),
                         getController().isActive(),
-                        getController().getCapability(GregtechTileCapabilities.CAPABILITY_CONTROLLABLE, null).isWorkingEnabled());
+                        getController().getCapability(GregtechTileCapabilities.CAPABILITY_CONTROLLABLE, null)
+                                .isWorkingEnabled());
             } else {
                 overlayRenderer.renderOrientedState(renderState, translation, pipeline, getFrontFacing(), false, false);
             }

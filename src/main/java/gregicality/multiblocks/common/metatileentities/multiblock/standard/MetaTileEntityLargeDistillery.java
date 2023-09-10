@@ -1,10 +1,19 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
-import gregicality.multiblocks.api.metatileentity.GCYMMultiblockAbility;
-import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.multiblocks.api.render.GCYMTextures;
-import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import static gregtech.api.util.RelativeDirection.*;
+
+import java.util.List;
+import java.util.function.Function;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fluids.FluidStack;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -20,23 +29,17 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fluids.FluidStack;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.function.Function;
+import gregicality.multiblocks.api.metatileentity.GCYMMultiblockAbility;
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 
-import static gregtech.api.util.RelativeDirection.*;
-
-public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockController { //todo structure needs fixing
+public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockController { // todo structure needs fixing
 
     public MetaTileEntityLargeDistillery(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[]{RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES});
+        super(metaTileEntityId, new RecipeMap[] { RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES });
     }
 
     @Override
@@ -51,9 +54,13 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
     @Override
     protected @NotNull BlockPattern createStructurePattern() {
-        TraceabilityPredicate casingPredicate = states(getCasingState()).setMinGlobalLimited(40); // Different characters use common constraints
-        TraceabilityPredicate maintenancePredicate = this.hasMaintenanceMechanics() && ConfigHolder.machines.enableMaintenance ?
-                abilities(MultiblockAbility.MAINTENANCE_HATCH).setMinGlobalLimited(1).setMaxGlobalLimited(1) : casingPredicate;
+        TraceabilityPredicate casingPredicate = states(getCasingState()).setMinGlobalLimited(40); // Different
+                                                                                                  // characters use
+                                                                                                  // common constraints
+        TraceabilityPredicate maintenancePredicate = this.hasMaintenanceMechanics() &&
+                ConfigHolder.machines.enableMaintenance ?
+                        abilities(MultiblockAbility.MAINTENANCE_HATCH).setMinGlobalLimited(1).setMaxGlobalLimited(1) :
+                        casingPredicate;
         return FactoryBlockPattern.start(RIGHT, FRONT, DOWN)
                 .aisle("#####", "#ZZZ#", "#ZCZ#", "#ZZZ#", "#####")
                 .aisle("##X##", "#XAX#", "XAPAX", "#XAX#", "##X##").setRepeatable(1, 12)
@@ -66,10 +73,11 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                         .or(abilities(MultiblockAbility.EXPORT_ITEMS))
                         .or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                         .or(maintenancePredicate))
-                .where('X', casingPredicate.or(metaTileEntities(MultiblockAbility.REGISTRY.get(MultiblockAbility.EXPORT_FLUIDS).stream()
-                        .filter(mte->!(mte instanceof MetaTileEntityMultiFluidHatch))
-                        .toArray(MetaTileEntity[]::new))
-                        .setMinLayerLimited(1).setMaxLayerLimited(1)))
+                .where('X', casingPredicate
+                        .or(metaTileEntities(MultiblockAbility.REGISTRY.get(MultiblockAbility.EXPORT_FLUIDS).stream()
+                                .filter(mte -> !(mte instanceof MetaTileEntityMultiFluidHatch))
+                                .toArray(MetaTileEntity[]::new))
+                                        .setMinLayerLimited(1).setMaxLayerLimited(1)))
                 .where('Z', casingPredicate)
                 .where('P', states(getCasingState2()))
                 .where('C', abilities(MultiblockAbility.MUFFLER_HATCH))
@@ -98,8 +106,10 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
         if (isStructureFormed()) {
             FluidStack stackInTank = importFluids.drain(Integer.MAX_VALUE, false);
             if (stackInTank != null && stackInTank.amount > 0) {
-                TextComponentTranslation fluidName = new TextComponentTranslation(stackInTank.getFluid().getUnlocalizedName(stackInTank));
-                textList.add(new TextComponentTranslation("gregtech.multiblock.distillation_tower.distilling_fluid", fluidName));
+                TextComponentTranslation fluidName = new TextComponentTranslation(
+                        stackInTank.getFluid().getUnlocalizedName(stackInTank));
+                textList.add(new TextComponentTranslation("gregtech.multiblock.distillation_tower.distilling_fluid",
+                        fluidName));
             }
         }
     }

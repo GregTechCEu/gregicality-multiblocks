@@ -12,5 +12,4 @@ public final class GCYMLog {
     public static void init(@NotNull Logger modLogger) {
         logger = modLogger;
     }
-
 }

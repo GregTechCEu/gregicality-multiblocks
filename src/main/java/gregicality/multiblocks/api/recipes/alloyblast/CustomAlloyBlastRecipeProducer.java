@@ -1,10 +1,12 @@
 package gregicality.multiblocks.api.recipes.alloyblast;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.google.common.base.Preconditions;
+
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.unification.material.Material;
-import org.jetbrains.annotations.NotNull;
 
 public class CustomAlloyBlastRecipeProducer extends AlloyBlastRecipeProducer {
 
@@ -15,7 +17,8 @@ public class CustomAlloyBlastRecipeProducer extends AlloyBlastRecipeProducer {
     /**
      * @param circuitNum    the custom circuit number to use
      * @param gasCircuitNum the custom gas circuit number to use
-     * @param outputAmount  the custom output amount in quantities of {@link gregtech.api.unification.ore.OrePrefix#ingot}
+     * @param outputAmount  the custom output amount in quantities of
+     *                      {@link gregtech.api.unification.ore.OrePrefix#ingot}
      *                      / {@link gregtech.api.GTValues#M}) to use
      */
     public CustomAlloyBlastRecipeProducer(int circuitNum, int gasCircuitNum, int outputAmount) {

@@ -1,14 +1,16 @@
 package gregicality.multiblocks.api.unification.properties;
 
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.GregTechAPI;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.MaterialStack;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 
 public final class GCYMLatePropertyAddition {
 

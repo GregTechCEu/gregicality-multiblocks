@@ -1,10 +1,13 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
-import gregicality.multiblocks.api.GCYMValues;
-import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.multiblocks.api.render.GCYMTextures;
-import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import static gregtech.api.util.RelativeDirection.*;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -16,12 +19,12 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
-import org.jetbrains.annotations.NotNull;
 
-import static gregtech.api.util.RelativeDirection.*;
+import gregicality.multiblocks.api.GCYMValues;
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 
 public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController {
 
@@ -52,7 +55,8 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
     }
 
     private static IBlockState getCasingState() {
-        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.VIBRATION_SAFE_CASING);
+        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+                .getState(BlockLargeMultiblockCasing.CasingType.VIBRATION_SAFE_CASING);
     }
 
     private static IBlockState getCasingState2() {
@@ -69,11 +73,11 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
         return GCYMTextures.LARGE_SIFTER_OVERLAY;
     }
 
-    private static @NotNull RecipeMap<?> @NotNull[] determineRecipeMaps() {
+    private static @NotNull RecipeMap<?> @NotNull [] determineRecipeMaps() {
         RecipeMap<?> sieveMap = RecipeMap.getByName("electric_sieve");
         if (Loader.isModLoaded(GCYMValues.GREGIFICATION_MODID) && sieveMap != null) {
-            return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES, sieveMap};
+            return new RecipeMap<?>[] { RecipeMaps.SIFTER_RECIPES, sieveMap };
         }
-        return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES};
+        return new RecipeMap<?>[] { RecipeMaps.SIFTER_RECIPES };
     }
 }

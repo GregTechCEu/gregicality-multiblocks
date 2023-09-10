@@ -1,10 +1,12 @@
 package gregicality.multiblocks.api.render;
 
-import gregicality.multiblocks.GregicalityMultiblocks;
-import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
-import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
+
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
+
+import gregicality.multiblocks.GregicalityMultiblocks;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
 public final class GCYMTextures {
@@ -40,14 +42,12 @@ public final class GCYMTextures {
     public static OrientedOverlayRenderer MEGA_VACUUM_FREEZER_OVERLAY;
     public static OrientedOverlayRenderer STEAM_ENGINE_OVERLAY;
 
-
     // Hatches
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK1_OVERLAY;
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK2_OVERLAY;
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK3_OVERLAY;
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK4_OVERLAY;
     public static OrientedOverlayRenderer TIERED_HATCH_OVERLAY;
-
 
     // Casings
     public static SimpleOverlayRenderer MACERATOR_CASING;
@@ -65,7 +65,6 @@ public final class GCYMTextures {
     public static SimpleOverlayRenderer STEAM_CASING;
 
     private GCYMTextures() {}
-
 
     public static void preInit() {
         // Multiblock Controllers
