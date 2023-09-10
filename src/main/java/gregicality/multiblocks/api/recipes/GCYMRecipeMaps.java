@@ -16,5 +16,5 @@ public final class GCYMRecipeMaps {
             .setSlotOverlay(true, true, true, GuiTextures.FURNACE_OVERLAY_2)
             .setSound(GTSoundEvents.FURNACE);
 
-    private GCYMRecipeMaps() {/**/}
+    private GCYMRecipeMaps() {}
 }

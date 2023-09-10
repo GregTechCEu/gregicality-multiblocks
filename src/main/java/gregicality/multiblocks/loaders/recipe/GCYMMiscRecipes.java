@@ -7,7 +7,9 @@ import static gregtech.api.unification.material.Materials.Graphene;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.foil;
 
-public class GCYMMiscRecipes {
+public final class GCYMMiscRecipes {
+
+    private GCYMMiscRecipes() {}
 
     public static void init() {
         grapheneRecipes();

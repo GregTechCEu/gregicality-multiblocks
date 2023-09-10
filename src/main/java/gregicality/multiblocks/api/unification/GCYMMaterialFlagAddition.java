@@ -8,7 +8,7 @@ import gregtech.api.unification.material.info.MaterialFlags;
 
 public final class GCYMMaterialFlagAddition {
 
-    private GCYMMaterialFlagAddition() {/**/}
+    private GCYMMaterialFlagAddition() {}
 
     public static void init() {
 

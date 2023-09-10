@@ -15,8 +15,7 @@ import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockController {
 
@@ -30,7 +29,7 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "XAX", "XXX").setRepeatable(3)
@@ -41,7 +40,7 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
@@ -50,9 +49,8 @@ public class MetaTileEntityLargePackager extends GCYMRecipeMapMultiblockControll
         return Textures.SOLID_STEEL_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_PACKAGER_OVERLAY;
     }
 

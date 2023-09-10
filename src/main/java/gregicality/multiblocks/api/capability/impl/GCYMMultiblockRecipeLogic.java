@@ -8,6 +8,7 @@ import gregtech.api.GTValues;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class GCYMMultiblockRecipeLogic extends MultiblockRecipeLogic {
     }
 
     @Override
-    public RecipeMapMultiblockController getMetaTileEntity() {
+    public @NotNull RecipeMapMultiblockController getMetaTileEntity() {
         return (RecipeMapMultiblockController) super.getMetaTileEntity();
     }
 

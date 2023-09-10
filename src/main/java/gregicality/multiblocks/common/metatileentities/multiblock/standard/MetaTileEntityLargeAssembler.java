@@ -19,8 +19,7 @@ import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
@@ -36,7 +35,7 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(FRONT, UP, RIGHT)
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "CAX", "CCX").setRepeatable(3)
@@ -54,11 +53,11 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ASSEMBLING_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
@@ -67,9 +66,8 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
         return GCYMTextures.ASSEMBLING_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_ASSEMBLER_OVERLAY;
     }
 
@@ -78,8 +76,7 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
         return true;
     }
 
-    @Nonnull
-    private static RecipeMap<?>[] determineRecipeMaps() {
+    private static @NotNull RecipeMap<?> @NotNull[] determineRecipeMaps() {
         RecipeMap<?> cuisineAssemblerMap = RecipeMap.getByName("cuisine_assembler");
         if (Loader.isModLoaded(GCYMValues.GTFO_MODID) && cuisineAssemblerMap != null) {
             return new RecipeMap<?>[]{RecipeMaps.ASSEMBLER_RECIPES, cuisineAssemblerMap};

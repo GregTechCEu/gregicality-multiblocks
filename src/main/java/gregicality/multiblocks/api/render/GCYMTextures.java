@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID, value = Side.CLIENT)
-public class GCYMTextures {
+public final class GCYMTextures {
 
     // Multiblock Controllers
     public static OrientedOverlayRenderer LARGE_MACERATOR_OVERLAY;
@@ -63,6 +63,8 @@ public class GCYMTextures {
     public static SimpleOverlayRenderer ENGRAVER_CASING;
     public static SimpleOverlayRenderer ATOMIC_CASING;
     public static SimpleOverlayRenderer STEAM_CASING;
+
+    private GCYMTextures() {}
 
 
     public static void preInit() {

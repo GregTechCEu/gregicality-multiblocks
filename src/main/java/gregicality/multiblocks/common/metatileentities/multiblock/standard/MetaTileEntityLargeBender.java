@@ -18,8 +18,7 @@ import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController {
 
@@ -34,7 +33,7 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
                 .aisle("XXXXXXX", "XTXGGGX", "XXXXXXX")
@@ -47,15 +46,15 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.STRESS_PROOF_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
@@ -64,9 +63,8 @@ public class MetaTileEntityLargeBender extends GCYMRecipeMapMultiblockController
         return GCYMTextures.STRESS_PROOF_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_BENDER_OVERLAY;
     }
 

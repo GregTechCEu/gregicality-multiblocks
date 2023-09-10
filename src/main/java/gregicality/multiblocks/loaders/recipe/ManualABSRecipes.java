@@ -6,12 +6,11 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public final class ManualABSRecipes {
 
-    private ManualABSRecipes() {/**/}
+    private ManualABSRecipes() {}
 
     public static void register() {
         registerFormulaic();
@@ -66,9 +65,9 @@ public final class ManualABSRecipes {
                 .buildAndRegister();
     }
 
-    private static void registerBinaryAlloy(@Nonnull Material input1, int input1Amount,
-                                            @Nonnull Material input2, int input2Amount,
-                                            @Nonnull Material output, int outputAmount,
+    private static void registerBinaryAlloy(@NotNull Material input1, int input1Amount,
+                                            @NotNull Material input2, int input2Amount,
+                                            @NotNull Material output, int outputAmount,
                                             int duration) {
         GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
                 .input(OrePrefix.dust, input1, input1Amount)
@@ -82,10 +81,10 @@ public final class ManualABSRecipes {
     }
 
     @SuppressWarnings("SameParameterValue")
-    private static void registerTrinaryAlloy(@Nonnull Material input1, int input1Amount,
-                                             @Nonnull Material input2, int input2Amount,
-                                             @Nonnull Material input3, int input3Amount,
-                                             @Nonnull Material output, int outputAmount,
+    private static void registerTrinaryAlloy(@NotNull Material input1, int input1Amount,
+                                             @NotNull Material input2, int input2Amount,
+                                             @NotNull Material input3, int input3Amount,
+                                             @NotNull Material output, int outputAmount,
                                              int duration) {
         GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder()
                 .input(OrePrefix.dust, input1, input1Amount)

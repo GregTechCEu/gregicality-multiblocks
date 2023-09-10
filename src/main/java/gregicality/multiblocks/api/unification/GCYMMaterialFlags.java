@@ -20,5 +20,5 @@ public final class GCYMMaterialFlags {
             .requireFlags(DISABLE_ALLOY_BLAST)
             .build();
 
-    private GCYMMaterialFlags() {/**/}
+    private GCYMMaterialFlags() {}
 }

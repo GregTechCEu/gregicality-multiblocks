@@ -18,8 +18,7 @@ import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockController {
 
@@ -33,7 +32,7 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXGXX", "XXGXX", "XXXXX")
                 .aisle("XXXXX", "XAAAX", "XAAAX", "XCCCX")
@@ -51,19 +50,19 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.ENGRAVER_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
-    private IBlockState getCasingState4() {
+    private static IBlockState getCasingState4() {
         return MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING);
     }
 
@@ -72,9 +71,8 @@ public class MetaTileEntityLargeEngraver extends GCYMRecipeMapMultiblockControll
         return GCYMTextures.ENGRAVER_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_ENGRAVER_OVERLAY;
     }
 

@@ -14,7 +14,9 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
 
-public class GCYMCasingLoader {
+public final class GCYMCasingLoader {
+
+    private GCYMCasingLoader() {}
 
     public static void init() {
         // Multiblock Casings

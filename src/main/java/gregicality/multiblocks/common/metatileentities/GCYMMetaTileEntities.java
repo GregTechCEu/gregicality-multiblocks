@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
-public class GCYMMetaTileEntities {
+public final class GCYMMetaTileEntities {
 
     public static MetaTileEntityLargeMacerator LARGE_MACERATOR;
     public static MetaTileEntityAlloyBlastSmelter ALLOY_BLAST_SMELTER;
@@ -45,6 +45,7 @@ public class GCYMMetaTileEntities {
     public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
     public static MetaTileEntityTieredHatch[] TIERED_HATCH = new MetaTileEntityTieredHatch[GTValues.V.length];
 
+    private GCYMMetaTileEntities() {}
 
     public static void init() {
         // Multiblocks

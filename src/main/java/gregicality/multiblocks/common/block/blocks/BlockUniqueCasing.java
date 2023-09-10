@@ -11,8 +11,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.UniqueCasingType> {
 
@@ -27,12 +26,12 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
     }
 
     @Override
-    public boolean canCreatureSpawn(@Nonnull IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, @Nonnull EntityLiving.SpawnPlacementType type) {
+    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EntityLiving.SpawnPlacementType type) {
         return false;
     }
 
     @Override
-    public boolean canRenderInLayer(@Nonnull IBlockState state, @Nonnull BlockRenderLayer layer) {
+    public boolean canRenderInLayer(@NotNull IBlockState state, @NotNull BlockRenderLayer layer) {
         UniqueCasingType type = getState(state);
         if (type == UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL) {
             if (layer == BlockRenderLayer.SOLID) return true;
@@ -64,11 +63,9 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
             this.name = name;
         }
 
-        @Nonnull
         @Override
-        public String getName() {
+        public @NotNull String getName() {
             return this.name;
         }
-
     }
 }

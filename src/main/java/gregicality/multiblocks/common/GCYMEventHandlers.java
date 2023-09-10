@@ -11,7 +11,9 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)
-public class GCYMEventHandlers {
+public final class GCYMEventHandlers {
+
+    private GCYMEventHandlers() {}
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void registerMaterials(MaterialEvent event) {

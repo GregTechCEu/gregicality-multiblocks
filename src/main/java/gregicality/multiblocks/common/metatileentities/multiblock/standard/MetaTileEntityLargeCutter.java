@@ -20,8 +20,7 @@ import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
@@ -37,7 +36,7 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(FRONT, UP, RIGHT)
                 .aisle("XXXX", "XXXX", "XXXX", "####")
                 .aisle("XXXX", "STAX", "XXXX", "####")
@@ -54,15 +53,15 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.CUTTER_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
-    private IBlockState getCasingState3() {
+    private static IBlockState getCasingState3() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.SLICING_BLADES);
     }
 
@@ -71,14 +70,12 @@ public class MetaTileEntityLargeCutter extends GCYMRecipeMapMultiblockController
         return GCYMTextures.CUTTER_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CUTTER_OVERLAY;
     }
 
-    @Nonnull
-    private static RecipeMap<?>[] determineRecipeMaps() {
+    private static @NotNull RecipeMap<?> @NotNull [] determineRecipeMaps() {
         RecipeMap<?> slicerMap = RecipeMap.getByName("slicer");
         if (Loader.isModLoaded(GCYMValues.GTFO_MODID) && slicerMap != null) {
             return new RecipeMap<?>[]{RecipeMaps.CUTTER_RECIPES, RecipeMaps.LATHE_RECIPES, slicerMap};

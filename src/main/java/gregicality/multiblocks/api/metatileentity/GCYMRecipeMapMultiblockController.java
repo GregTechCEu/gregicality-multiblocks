@@ -14,9 +14,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblockController implements IParallelMultiblock {
@@ -73,8 +73,7 @@ public abstract class GCYMRecipeMapMultiblockController extends MultiMapMultiblo
         return predicate;
     }
 
-    @Nonnull
-    public static TraceabilityPredicate tieredCasing() {
+    public static @NotNull TraceabilityPredicate tieredCasing() {
         return new TraceabilityPredicate(abilities(GCYMMultiblockAbility.TIERED_HATCH).setMinGlobalLimited(GCYMConfigHolder.globalMultiblocks.enableTieredCasings ? 1 : 0).setMaxGlobalLimited(1));
     }
 }

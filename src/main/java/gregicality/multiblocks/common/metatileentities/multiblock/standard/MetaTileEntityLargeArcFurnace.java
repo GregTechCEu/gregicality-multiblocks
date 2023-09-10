@@ -16,8 +16,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockController {
 
@@ -31,7 +30,7 @@ public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockContro
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#")
                 .aisle("XXXXX", "XCACX", "XCACX", "XXXXX")
@@ -49,11 +48,11 @@ public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockContro
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.HIGH_TEMPERATURE_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL);
     }
 
@@ -62,9 +61,8 @@ public class MetaTileEntityLargeArcFurnace extends GCYMRecipeMapMultiblockContro
         return GCYMTextures.BLAST_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_ARC_FURNACE_OVERLAY;
     }
 

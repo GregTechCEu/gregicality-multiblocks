@@ -4,7 +4,7 @@ import gregicality.multiblocks.loaders.recipe.handlers.GCYMMaterialRecipeHandler
 
 public final class GCYMRecipeLoader {
 
-    private GCYMRecipeLoader() {/**/}
+    private GCYMRecipeLoader() {}
 
     public static void init() {
         GCYMMetaTileEntityLoader.init();

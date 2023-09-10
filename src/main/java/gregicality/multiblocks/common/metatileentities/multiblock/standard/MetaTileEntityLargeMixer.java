@@ -19,8 +19,7 @@ import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargeMixer extends GCYMRecipeMapMultiblockController {
 
@@ -34,7 +33,7 @@ public class MetaTileEntityLargeMixer extends GCYMRecipeMapMultiblockController 
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("#XXX#", "#XXX#", "#XXX#", "#XXX#", "#XXX#", "##F##")
                 .aisle("XXXXX", "XACAX", "XAAAX", "XACAX", "XAAAX", "##F##")
@@ -73,9 +72,8 @@ public class MetaTileEntityLargeMixer extends GCYMRecipeMapMultiblockController 
         return GCYMTextures.MIXER_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_MIXER_OVERLAY;
     }
 

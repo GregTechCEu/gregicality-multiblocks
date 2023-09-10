@@ -26,9 +26,9 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntSupplier;
@@ -62,7 +62,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    protected ModularUI createUI(@Nonnull EntityPlayer entityPlayer) {
+    protected ModularUI createUI(@NotNull EntityPlayer entityPlayer) {
         ServerWidgetGroup parallelAmountGroup = new ServerWidgetGroup(() -> true);
         parallelAmountGroup.addWidget(new ImageWidget(62, 36, 53, 20, GuiTextures.DISPLAY)
                 .setTooltip("gcym.machine.parallel_hatch.display"));
@@ -95,7 +95,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
         return Integer.toString(this.currentParallel);
     }
 
-    public Function<String, String> getTextFieldValidator(IntSupplier maxSupplier) {
+    public static @NotNull Function<String, String> getTextFieldValidator(IntSupplier maxSupplier) {
         return val -> {
             if (val.isEmpty())
                 return String.valueOf(MIN_PARALLEL);
@@ -115,7 +115,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gcym.machine.parallel_hatch.tooltip", this.maxParallel));
         tooltip.add(I18n.format("gregtech.universal.disabled"));
@@ -127,7 +127,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    public void registerAbilities(@Nonnull List<IParallelHatch> list) {
+    public void registerAbilities(@NotNull List<IParallelHatch> list) {
         list.add(this);
     }
 
@@ -161,7 +161,7 @@ public class MetaTileEntityParallelHatch extends MetaTileEntityMultiblockPart im
     }
 
     @Override
-    public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound data) {
+    public NBTTagCompound writeToNBT(@NotNull NBTTagCompound data) {
         data.setInteger("currentParallel", this.currentParallel);
         return super.writeToNBT(data);
     }

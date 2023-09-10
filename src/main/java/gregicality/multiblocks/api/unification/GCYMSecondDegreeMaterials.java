@@ -10,7 +10,9 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 
-public class GCYMSecondDegreeMaterials {
+public final class GCYMSecondDegreeMaterials {
+
+    private GCYMSecondDegreeMaterials() {}
 
     public static void init() {
         HSLASteel = new Material.Builder(3020, gregtechId("hsla_steel"))

@@ -10,7 +10,9 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 
-public class GCYMFirstDegreeMaterials {
+public final class GCYMFirstDegreeMaterials {
+
+    private GCYMFirstDegreeMaterials() {}
 
     public static void init() {
         Stellite100 = new Material.Builder(3000, gregtechId("stellite_100"))

@@ -15,8 +15,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockController {
 
@@ -30,7 +29,7 @@ public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockControl
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX", "XXXXX")
                 .aisle("XXXXX", "XCCCX", "XCCCX", "X###X")
@@ -45,11 +44,11 @@ public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockControl
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.MACERATOR_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.CRUSHING_WHEELS);
     }
 
@@ -58,9 +57,8 @@ public class MetaTileEntityLargeMacerator extends GCYMRecipeMapMultiblockControl
         return GCYMTextures.MACERATOR_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_MACERATOR_OVERLAY;
     }
 }

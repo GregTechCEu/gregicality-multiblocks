@@ -11,12 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
-public class GCYMMetaBlocks {
+public final class GCYMMetaBlocks {
 
-    private GCYMMetaBlocks() {
-
-    }
+    private GCYMMetaBlocks() {}
 
     public static BlockUniqueCasing UNIQUE_CASING;
     public static BlockLargeMultiblockCasing LARGE_MULTIBLOCK_CASING;
@@ -35,7 +34,7 @@ public class GCYMMetaBlocks {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void registerItemModel(Block block) {
+    private static void registerItemModel(@NotNull Block block) {
         for (IBlockState state : block.getBlockState().getValidStates()) {
             //noinspection ConstantConditions
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
@@ -46,7 +45,7 @@ public class GCYMMetaBlocks {
     }
 
     @SuppressWarnings("unchecked")
-    private static <T extends Comparable<T>> String getPropertyName(IProperty<T> property, Comparable<?> value) {
+    private static <T extends Comparable<T>> @NotNull String getPropertyName(@NotNull IProperty<T> property, Comparable<?> value) {
         return property.getName((T) value);
     }
 }

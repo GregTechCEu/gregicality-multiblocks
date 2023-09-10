@@ -19,8 +19,7 @@ import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static gregtech.api.util.RelativeDirection.*;
 
@@ -36,7 +35,7 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
                 .aisle("#X#X#", "XXXXX", "#XXX#", "XXXXX", "#X#X#")
                 .aisle("#X#X#", "XAXAX", "#XTX#", "XAXAX", "#X#X#")
@@ -52,11 +51,11 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.VIBRATION_SAFE_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING);
     }
 
@@ -65,14 +64,12 @@ public class MetaTileEntityLargeSifter extends GCYMRecipeMapMultiblockController
         return GCYMTextures.VIBRATION_SAFE_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_SIFTER_OVERLAY;
     }
 
-    @Nonnull
-    private static RecipeMap<?>[] determineRecipeMaps() {
+    private static @NotNull RecipeMap<?> @NotNull[] determineRecipeMaps() {
         RecipeMap<?> sieveMap = RecipeMap.getByName("electric_sieve");
         if (Loader.isModLoaded(GCYMValues.GREGIFICATION_MODID) && sieveMap != null) {
             return new RecipeMap<?>[]{RecipeMaps.SIFTER_RECIPES, sieveMap};

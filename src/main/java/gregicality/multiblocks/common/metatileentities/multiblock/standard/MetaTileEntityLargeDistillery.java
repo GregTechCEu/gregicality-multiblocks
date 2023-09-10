@@ -26,8 +26,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fluids.FluidStack;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Function;
 
@@ -49,9 +49,8 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
         return BlockPos::getY; // todo this needs to be "relative up" with Freedom Wrench
     }
 
-    @Nonnull
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         TraceabilityPredicate casingPredicate = states(getCasingState()).setMinGlobalLimited(40); // Different characters use common constraints
         TraceabilityPredicate maintenancePredicate = this.hasMaintenanceMechanics() && ConfigHolder.machines.enableMaintenance ?
                 abilities(MultiblockAbility.MAINTENANCE_HATCH).setMinGlobalLimited(1).setMaxGlobalLimited(1) : casingPredicate;
@@ -80,11 +79,11 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.WATERTIGHT_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE);
     }
 
@@ -105,9 +104,8 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
         }
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_DISTILLERY_OVERLAY;
     }
 

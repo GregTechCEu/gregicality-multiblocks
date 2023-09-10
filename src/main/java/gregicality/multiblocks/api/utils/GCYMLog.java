@@ -1,14 +1,15 @@
 package gregicality.multiblocks.api.utils;
 
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-public class GCYMLog {
+public final class GCYMLog {
+
     public static Logger logger;
 
-    public GCYMLog() {
-    }
+    private GCYMLog() {}
 
-    public static void init(Logger modLogger) {
+    public static void init(@NotNull Logger modLogger) {
         logger = modLogger;
     }
 

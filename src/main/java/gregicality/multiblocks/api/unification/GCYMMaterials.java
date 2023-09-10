@@ -2,7 +2,7 @@ package gregicality.multiblocks.api.unification;
 
 import gregtech.api.unification.material.Material;
 
-public class GCYMMaterials {
+public final class GCYMMaterials {
 
     /*
      * First Degree Materials 3000-3019
@@ -24,6 +24,8 @@ public class GCYMMaterials {
     public static Material HSLASteel;
     public static Material TitaniumTungstenCarbide;
     public static Material IncoloyMA956;
+
+    private GCYMMaterials() {}
 
     /*
      * High Degree Materials 3040-3059

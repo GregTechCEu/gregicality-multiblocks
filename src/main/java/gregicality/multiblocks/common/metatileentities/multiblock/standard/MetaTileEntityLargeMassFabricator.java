@@ -18,8 +18,7 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargeMassFabricator extends GCYMRecipeMapMultiblockController {
     public MetaTileEntityLargeMassFabricator(ResourceLocation metaTileEntityId) {
@@ -32,7 +31,7 @@ public class MetaTileEntityLargeMassFabricator extends GCYMRecipeMapMultiblockCo
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XGGGX", "XGVGX", "XGGGX", "XXXXX")
                 .aisle("XXXXX", "GAAAG", "GAKAG", "GAAAG", "XXXXX")
@@ -70,9 +69,8 @@ public class MetaTileEntityLargeMassFabricator extends GCYMRecipeMapMultiblockCo
         return GCYMTextures.ATOMIC_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_MASS_FABRICATOR_OVERLAY;
     }
 }

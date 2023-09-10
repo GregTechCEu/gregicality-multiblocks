@@ -35,7 +35,7 @@ public final class Bootstrap {
 
     private static boolean bootstrapped = false;
 
-    private Bootstrap() {/**/}
+    private Bootstrap() {}
 
     public static void perform() {
         if (bootstrapped) {

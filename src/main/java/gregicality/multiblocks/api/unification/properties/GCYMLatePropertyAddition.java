@@ -6,11 +6,13 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.stack.MaterialStack;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
-public class GCYMLatePropertyAddition {
+public final class GCYMLatePropertyAddition {
+
+    private GCYMLatePropertyAddition() {}
 
     public static void init() {
         for (Material material : GregTechAPI.materialManager.getRegisteredMaterials()) {
@@ -20,7 +22,7 @@ public class GCYMLatePropertyAddition {
         }
     }
 
-    public static void addAlloyBlastProperty(@Nonnull Material material) {
+    public static void addAlloyBlastProperty(@NotNull Material material) {
         final List<MaterialStack> components = material.getMaterialComponents();
         // ignore materials which are not alloys
         if (components.size() < 2) return;
@@ -38,7 +40,7 @@ public class GCYMLatePropertyAddition {
         material.setProperty(GCYMPropertyKey.ALLOY_BLAST, new AlloyBlastProperty(material.getBlastTemperature()));
     }
 
-    private static boolean isMaterialStackFluidOnly(@Nonnull MaterialStack ms) {
+    private static boolean isMaterialStackFluidOnly(@NotNull MaterialStack ms) {
         return !ms.material.hasProperty(PropertyKey.DUST) && ms.material.hasProperty(PropertyKey.FLUID);
     }
 }

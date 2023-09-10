@@ -4,8 +4,7 @@ import com.google.common.base.Preconditions;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.unification.material.Material;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class CustomAlloyBlastRecipeProducer extends AlloyBlastRecipeProducer {
 
@@ -27,7 +26,7 @@ public class CustomAlloyBlastRecipeProducer extends AlloyBlastRecipeProducer {
     }
 
     @Override
-    protected int addInputs(@Nonnull Material material, @Nonnull RecipeBuilder<BlastRecipeBuilder> builder) {
+    protected int addInputs(@NotNull Material material, @NotNull RecipeBuilder<BlastRecipeBuilder> builder) {
         int amount = super.addInputs(material, builder); // always must be called
         return this.outputAmount < 0 ? amount : this.outputAmount;
     }

@@ -18,8 +18,7 @@ import gregtech.common.items.MetaItems;
 import gregtech.loaders.recipe.CraftingComponent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class AlloyBlastRecipeProducer {
 
@@ -31,7 +30,7 @@ public class AlloyBlastRecipeProducer {
      * @param material the material to generate for
      * @param property the blast property of the material
      */
-    public void produce(@Nonnull Material material, @Nonnull BlastProperty property) {
+    public void produce(@NotNull Material material, @NotNull BlastProperty property) {
         // do not generate for disabled materials
         if (material.hasFlag(GCYMMaterialFlags.DISABLE_ALLOY_BLAST)) return;
 
@@ -65,8 +64,7 @@ public class AlloyBlastRecipeProducer {
      * @return the builder
      */
     @SuppressWarnings("MethodMayBeStatic")
-    @Nonnull
-    protected BlastRecipeBuilder createBuilder(@Nonnull BlastProperty property, @Nonnull Material material) {
+    protected @NotNull BlastRecipeBuilder createBuilder(@NotNull BlastProperty property, @NotNull Material material) {
         BlastRecipeBuilder builder = GCYMRecipeMaps.ALLOY_BLAST_RECIPES.recipeBuilder();
         // apply the duration override
         int duration = property.getDurationOverride();
@@ -86,7 +84,7 @@ public class AlloyBlastRecipeProducer {
      * @param builder  the recipe builder to append to
      * @return the outputAmount if the recipe is valid, otherwise -1
      */
-    protected int addInputs(@Nonnull Material material, @Nonnull RecipeBuilder<BlastRecipeBuilder> builder) {
+    protected int addInputs(@NotNull Material material, @NotNull RecipeBuilder<BlastRecipeBuilder> builder) {
         // calculate the output amount and add inputs
         int outputAmount = 0;
         int fluidAmount = 0;
@@ -116,8 +114,8 @@ public class AlloyBlastRecipeProducer {
      * @param componentAmount the amount of different components in the material
      * @param builder         the builder to continue
      */
-    protected void buildRecipes(@Nonnull BlastProperty property, @Nonnull Fluid molten, int outputAmount, int componentAmount,
-                                @Nonnull RecipeBuilder<BlastRecipeBuilder> builder) {
+    protected void buildRecipes(@NotNull BlastProperty property, @NotNull Fluid molten, int outputAmount, int componentAmount,
+                                @NotNull RecipeBuilder<BlastRecipeBuilder> builder) {
         // add the fluid output with the correct amount
         builder.fluidOutputs(new FluidStack(molten, GTValues.L * outputAmount));
 
@@ -164,7 +162,7 @@ public class AlloyBlastRecipeProducer {
      * @param temperature the temperature of the material
      */
     @SuppressWarnings("MethodMayBeStatic")
-    protected void addFreezerRecipes(@Nonnull Material material, @Nonnull Fluid molten, int temperature) {
+    protected void addFreezerRecipes(@NotNull Material material, @NotNull Fluid molten, int temperature) {
 
         // build the freezer recipe
         RecipeBuilder<?> freezerBuilder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()

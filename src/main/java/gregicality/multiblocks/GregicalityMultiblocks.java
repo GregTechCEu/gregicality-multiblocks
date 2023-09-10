@@ -10,6 +10,7 @@ import gregtech.GTInternalTags;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.jetbrains.annotations.NotNull;
 
 @Mod(   modid        = GregicalityMultiblocks.MODID,
         name         = GregicalityMultiblocks.NAME,
@@ -25,7 +26,7 @@ public class GregicalityMultiblocks {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void onPreInit(FMLPreInitializationEvent event) {
+    public void onPreInit(@NotNull FMLPreInitializationEvent event) {
         GCYMLog.init(event.getModLog());
 
         GCYMMetaFluids.init();

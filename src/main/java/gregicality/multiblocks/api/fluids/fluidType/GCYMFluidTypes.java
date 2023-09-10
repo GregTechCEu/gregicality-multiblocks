@@ -7,8 +7,10 @@ import stanhebben.zenscript.annotations.ZenProperty;
 
 @ZenClass("mods.gcym.material.FluidTypes")
 @ZenRegister
-public class GCYMFluidTypes {
+public final class GCYMFluidTypes {
 
     @ZenProperty
     public static final FluidType MOLTEN = new FluidTypeMolten("molten", "molten", null, "gcym.fluid.molten");
+
+    private GCYMFluidTypes() {}
 }

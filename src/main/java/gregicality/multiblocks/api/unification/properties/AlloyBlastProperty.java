@@ -6,8 +6,8 @@ import gregtech.api.unification.material.properties.IMaterialProperty;
 import gregtech.api.unification.material.properties.MaterialProperties;
 import gregtech.api.unification.material.properties.PropertyKey;
 import net.minecraftforge.fluids.Fluid;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 
 public class AlloyBlastProperty implements IMaterialProperty {
 
@@ -24,21 +24,21 @@ public class AlloyBlastProperty implements IMaterialProperty {
     }
 
     @Override
-    public void verifyProperty(MaterialProperties materialProperties) {
+    public void verifyProperty(@NotNull MaterialProperties materialProperties) {
         materialProperties.ensureSet(PropertyKey.BLAST);
         materialProperties.ensureSet(PropertyKey.FLUID);
         this.temperature = materialProperties.getProperty(PropertyKey.BLAST).getBlastTemperature();
     }
 
-    @Nonnull
-    public Fluid getFluid() {
+    public @NotNull Fluid getFluid() {
         return fluid;
     }
 
     /**
      * internal usage only
      */
-    public void setFluid(@Nonnull Fluid materialFluid) {
+    @ApiStatus.Internal
+    public void setFluid(@NotNull Fluid materialFluid) {
         Preconditions.checkNotNull(materialFluid);
         this.fluid = materialFluid;
     }
@@ -52,12 +52,11 @@ public class AlloyBlastProperty implements IMaterialProperty {
         return temperature;
     }
 
-    public void setRecipeProducer(@Nonnull AlloyBlastRecipeProducer recipeProducer) {
+    public void setRecipeProducer(@NotNull AlloyBlastRecipeProducer recipeProducer) {
         this.recipeProducer = recipeProducer;
     }
 
-    @Nonnull
-    public AlloyBlastRecipeProducer getRecipeProducer() {
+    public @NotNull AlloyBlastRecipeProducer getRecipeProducer() {
         return this.recipeProducer;
     }
 }

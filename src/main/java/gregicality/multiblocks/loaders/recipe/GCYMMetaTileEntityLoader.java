@@ -22,7 +22,9 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class GCYMMetaTileEntityLoader {
+public final class GCYMMetaTileEntityLoader {
+
+    private GCYMMetaTileEntityLoader() {}
 
     public static void init() {
         ModHandler.addShapedRecipe(true, "large_macerator", GCYMMetaTileEntities.LARGE_MACERATOR.getStackForm(),

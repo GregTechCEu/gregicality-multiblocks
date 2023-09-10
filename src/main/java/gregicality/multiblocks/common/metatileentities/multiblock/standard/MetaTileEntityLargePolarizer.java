@@ -16,8 +16,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockController {
 
@@ -31,7 +30,7 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
     }
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX")
                 .aisle("XXXXX", "XCACX", "XCXCX")
@@ -45,11 +44,11 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
                 .build();
     }
 
-    private IBlockState getCasingState() {
+    private static IBlockState getCasingState() {
         return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING.getState(BlockLargeMultiblockCasing.CasingType.NONCONDUCTING_CASING);
     }
 
-    private IBlockState getCasingState2() {
+    private static IBlockState getCasingState2() {
         return GCYMMetaBlocks.UNIQUE_CASING.getState(BlockUniqueCasing.UniqueCasingType.MOLYBDENUM_DISILICIDE_COIL);
     }
 
@@ -58,9 +57,8 @@ public class MetaTileEntityLargePolarizer extends GCYMRecipeMapMultiblockControl
         return GCYMTextures.NONCONDUCTING_CASING;
     }
 
-    @Nonnull
     @Override
-    protected OrientedOverlayRenderer getFrontOverlay() {
+    protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_POLARIZER_OVERLAY;
     }
 }

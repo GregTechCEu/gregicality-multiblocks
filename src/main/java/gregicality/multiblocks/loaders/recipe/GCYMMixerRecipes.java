@@ -8,7 +8,9 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
-public class GCYMMixerRecipes {
+public final class GCYMMixerRecipes {
+
+    private GCYMMixerRecipes() {}
 
     public static void init() {
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
