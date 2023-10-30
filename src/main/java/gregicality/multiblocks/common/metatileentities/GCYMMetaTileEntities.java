@@ -1,13 +1,11 @@
 package gregicality.multiblocks.common.metatileentities;
 
+import static gregicality.multiblocks.api.utils.GCYMUtil.gcymId;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
-
-import net.minecraft.util.ResourceLocation;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 
-import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.common.metatileentities.multiblock.generator.MetaTileEntitySteamEngine;
 import gregicality.multiblocks.common.metatileentities.multiblock.standard.*;
 import gregicality.multiblocks.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;
@@ -104,9 +102,5 @@ public final class GCYMMetaTileEntities {
             TIERED_HATCH[i] = registerMetaTileEntity(2054 + i,
                     new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));
         }
-    }
-
-    private static ResourceLocation gcymId(String name) {
-        return new ResourceLocation(GregicalityMultiblocks.MODID, name);
     }
 }

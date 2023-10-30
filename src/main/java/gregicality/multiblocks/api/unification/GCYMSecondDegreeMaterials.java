@@ -1,9 +1,9 @@
 package gregicality.multiblocks.api.unification;
 
 import static gregicality.multiblocks.api.unification.GCYMMaterials.*;
+import static gregicality.multiblocks.api.utils.GCYMUtil.gcymId;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.util.GTUtility.gregtechId;
 
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
@@ -15,7 +15,7 @@ public final class GCYMSecondDegreeMaterials {
     private GCYMSecondDegreeMaterials() {}
 
     public static void init() {
-        HSLASteel = new Material.Builder(3020, gregtechId("hsla_steel"))
+        HSLASteel = new Material.Builder(3020, gcymId("hsla_steel"))
                 .ingot().fluid()
                 .color(0x808080).iconSet(MaterialIconSet.METALLIC)
                 .flags(EXT_METAL, GENERATE_DOUBLE_PLATE, GENERATE_LONG_ROD, GENERATE_SPRING, GENERATE_FRAME)
@@ -23,7 +23,7 @@ public final class GCYMSecondDegreeMaterials {
                 .blastTemp(1711, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.HV], 1000)
                 .build();
 
-        TitaniumTungstenCarbide = new Material.Builder(3021, gregtechId("titanium_tungsten_carbide"))
+        TitaniumTungstenCarbide = new Material.Builder(3021, gcymId("titanium_tungsten_carbide"))
                 .ingot().fluid()
                 .color(0x800D0D).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE)
@@ -31,7 +31,7 @@ public final class GCYMSecondDegreeMaterials {
                 .blastTemp(3800, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1000)
                 .build();
 
-        IncoloyMA956 = new Material.Builder(3022, gregtechId("incoloy_ma_956"))
+        IncoloyMA956 = new Material.Builder(3022, gcymId("incoloy_ma_956"))
                 .ingot().fluid()
                 .color(0x37BF7E).iconSet(MaterialIconSet.METALLIC)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
