@@ -1,8 +1,8 @@
 package gregicality.multiblocks.api.unification.properties;
 
-import net.minecraftforge.fluids.Fluid;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
 
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import com.google.common.base.Preconditions;
@@ -15,11 +15,9 @@ import gregicality.multiblocks.api.recipes.alloyblast.AlloyBlastRecipeProducer;
 
 public class AlloyBlastProperty implements IMaterialProperty {
 
-    /**
-     * Internal material fluid field
-     */
-    private Fluid fluid;
     private int temperature;
+    private boolean canGenerateMolten = true;
+    private boolean forceGenerateMolten = false;
 
     private AlloyBlastRecipeProducer recipeProducer = AlloyBlastRecipeProducer.DEFAULT_PRODUCER;
 
@@ -32,19 +30,6 @@ public class AlloyBlastProperty implements IMaterialProperty {
         materialProperties.ensureSet(PropertyKey.BLAST);
         materialProperties.ensureSet(PropertyKey.FLUID);
         this.temperature = materialProperties.getProperty(PropertyKey.BLAST).getBlastTemperature();
-    }
-
-    public @NotNull Fluid getFluid() {
-        return fluid;
-    }
-
-    /**
-     * internal usage only
-     */
-    @ApiStatus.Internal
-    public void setFluid(@NotNull Fluid materialFluid) {
-        Preconditions.checkNotNull(materialFluid);
-        this.fluid = materialFluid;
     }
 
     public void setTemperature(int fluidTemperature) {
@@ -62,5 +47,24 @@ public class AlloyBlastProperty implements IMaterialProperty {
 
     public @NotNull AlloyBlastRecipeProducer getRecipeProducer() {
         return this.recipeProducer;
+    }
+
+    /**
+     * @param canGenerateMolten if a molten fluid is allowed to generate
+     */
+    public void setCanGenerateMolten(boolean canGenerateMolten) {
+        this.canGenerateMolten = canGenerateMolten;
+    }
+
+    /**
+     * @param forceGenerateMolten if a molten fluid should always generate
+     */
+    public void setForceGenerateMolten(boolean forceGenerateMolten) {
+        this.forceGenerateMolten = forceGenerateMolten;
+    }
+
+    public boolean shouldGenerateMolten(@NotNull Material material) {
+        if (forceGenerateMolten) return true;
+        return canGenerateMolten && OrePrefix.ingotHot.doGenerateItem(material);
     }
 }

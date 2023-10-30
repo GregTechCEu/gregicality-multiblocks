@@ -1,5 +1,6 @@
 package gregicality.multiblocks.common;
 
+import gregicality.multiblocks.api.fluids.GeneratedFluidHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -10,8 +11,10 @@ import gregtech.api.unification.material.event.PostMaterialEvent;
 import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlagAddition;
 import gregicality.multiblocks.api.unification.GCYMMaterials;
-import gregicality.multiblocks.api.unification.properties.GCYMLatePropertyAddition;
+import gregicality.multiblocks.api.unification.properties.AlloyBlastPropertyAddition;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Internal
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)
 public final class GCYMEventHandlers {
 
@@ -24,7 +27,8 @@ public final class GCYMEventHandlers {
 
     @SubscribeEvent
     public static void registerMaterialsPost(PostMaterialEvent event) {
-        GCYMLatePropertyAddition.init();
+        AlloyBlastPropertyAddition.init();
         GCYMMaterialFlagAddition.initLate();
+        GeneratedFluidHandler.init();
     }
 }

@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import gregtech.GTInternalTags;
 
 import gregicality.GCYMInternalTags;
-import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.CommonProxy;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
@@ -34,7 +33,6 @@ public class GregicalityMultiblocks {
     public void onPreInit(@NotNull FMLPreInitializationEvent event) {
         GCYMLog.init(event.getModLog());
 
-        GCYMMetaFluids.init();
         GCYMMetaBlocks.init();
         GCYMMetaTileEntities.init();
 

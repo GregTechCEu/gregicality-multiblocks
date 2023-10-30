@@ -5,11 +5,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-
-import codechicken.lib.texture.TextureUtils;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -18,7 +15,6 @@ public class ClientProxy extends CommonProxy {
     public void preLoad() {
         super.preLoad();
         GCYMTextures.preInit();
-        TextureUtils.addIconRegister(GCYMMetaFluids::registerSprites);
     }
 
     @SubscribeEvent
