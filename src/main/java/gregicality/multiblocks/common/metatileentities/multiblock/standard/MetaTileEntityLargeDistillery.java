@@ -29,6 +29,7 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
+import gregtech.common.metatileentities.multi.multiblockpart.appeng.MetaTileEntityMEOutputHatch;
 
 import gregicality.multiblocks.api.metatileentity.GCYMMultiblockAbility;
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
@@ -75,7 +76,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                         .or(maintenancePredicate))
                 .where('X', casingPredicate
                         .or(metaTileEntities(MultiblockAbility.REGISTRY.get(MultiblockAbility.EXPORT_FLUIDS).stream()
-                                .filter(mte -> !(mte instanceof MetaTileEntityMultiFluidHatch))
+                                .filter(mte -> !(mte instanceof MetaTileEntityMultiFluidHatch) && !(mte instanceof MetaTileEntityMEOutputHatch))
                                 .toArray(MetaTileEntity[]::new))
                                         .setMinLayerLimited(1).setMaxLayerLimited(1)))
                 .where('Z', casingPredicate)
