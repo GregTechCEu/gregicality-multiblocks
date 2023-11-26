@@ -1,18 +1,19 @@
 package gregicality.multiblocks.common;
 
-import gregicality.multiblocks.api.fluids.GeneratedFluidHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import org.jetbrains.annotations.ApiStatus;
 
 import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.PostMaterialEvent;
 
 import gregicality.multiblocks.GregicalityMultiblocks;
+import gregicality.multiblocks.api.fluids.GeneratedFluidHandler;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlagAddition;
 import gregicality.multiblocks.api.unification.GCYMMaterials;
 import gregicality.multiblocks.api.unification.properties.AlloyBlastPropertyAddition;
-import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Internal
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)

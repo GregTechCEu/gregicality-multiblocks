@@ -1,13 +1,12 @@
 package gregicality.multiblocks.api.recipes.alloyblast;
 
-import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
-import gregtech.api.fluids.store.FluidStorageKeys;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
@@ -21,6 +20,7 @@ import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
 import gregtech.loaders.recipe.CraftingComponent;
 
+import gregicality.multiblocks.api.fluids.GCYMFluidStorageKeys;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 
@@ -31,8 +31,8 @@ public class AlloyBlastRecipeProducer {
     /**
      * Generates alloy blast recipes for a material
      *
-     * @param material           the material to generate for
-     * @param blastProperty      the blast property of the material
+     * @param material      the material to generate for
+     * @param blastProperty the blast property of the material
      */
     public void produce(@NotNull Material material, @NotNull BlastProperty blastProperty) {
         // do not generate for disabled materials

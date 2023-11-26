@@ -1,10 +1,11 @@
 package gregicality.multiblocks.api.fluids;
 
-import gregicality.multiblocks.api.unification.material.GCYMMaterialIconTypes;
-import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
+import static gregicality.multiblocks.api.utils.GCYMUtil.gcymId;
+
 import gregtech.api.fluids.store.FluidStorageKey;
 
-import static gregicality.multiblocks.api.utils.GCYMUtil.gcymId;
+import gregicality.multiblocks.api.unification.material.GCYMMaterialIconTypes;
+import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
 public final class GCYMFluidStorageKeys {
 

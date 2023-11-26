@@ -7,9 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import gregtech.api.fluids.GTFluidRegistration;
-import gregtech.api.unification.material.registry.MarkerMaterialRegistry;
-import gregtech.modules.ModuleManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.Locale;
 import net.minecraft.network.INetHandler;
@@ -24,11 +21,14 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.GTFluidRegistration;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.materials.MaterialFlagAddition;
+import gregtech.api.unification.material.registry.MarkerMaterialRegistry;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 import gregtech.core.unification.material.internal.MaterialRegistryManager;
+import gregtech.modules.ModuleManager;
 
 import gregicality.multiblocks.api.fluids.GeneratedFluidHandler;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlagAddition;
