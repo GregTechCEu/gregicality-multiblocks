@@ -1,5 +1,8 @@
 package gregicality.multiblocks.api.recipes.alloyblast;
 
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.VA;
+
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -57,7 +60,7 @@ public class AlloyBlastRecipeProducer {
         // if the material does not need a vacuum freezer, exit
         if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
 
-        addFreezerRecipes(material, molten, blastProperty.getBlastTemperature());
+        addFreezerRecipes(material, molten, blastProperty);
     }
 
     /**
@@ -162,21 +165,27 @@ public class AlloyBlastRecipeProducer {
     /**
      * Add the freezer recipes for the material
      *
-     * @param material    the material to generate for
-     * @param molten      the molten fluid
-     * @param temperature the temperature of the material
+     * @param material the material to generate for
+     * @param molten   the molten fluid
+     * @param property the blast property of the material
      */
     @SuppressWarnings("MethodMayBeStatic")
-    protected void addFreezerRecipes(@NotNull Material material, @NotNull Fluid molten, int temperature) {
+    protected void addFreezerRecipes(@NotNull Material material, @NotNull Fluid molten,
+                                     @NotNull BlastProperty property) {
+        int vacuumDuration = property.getVacuumDurationOverride() == -1 ? (int) material.getMass() * 3 :
+                property.getVacuumDurationOverride();
+        int vacuumEUt = property.getVacuumEUtOverride() == -1 ? VA[MV] : property.getVacuumEUtOverride();
+
         // build the freezer recipe
         RecipeBuilder<?> freezerBuilder = RecipeMaps.VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(new FluidStack(molten, GTValues.L))
-                .duration((int) material.getMass() * 3)
                 .notConsumable(MetaItems.SHAPE_MOLD_INGOT.getStackForm())
-                .output(OrePrefix.ingot, material);
+                .output(OrePrefix.ingot, material)
+                .duration(vacuumDuration)
+                .EUt(vacuumEUt);
 
         // helium for when >= 5000K temperature
-        if (temperature >= 5000) {
+        if (property.getBlastTemperature() >= 5000) {
             freezerBuilder.fluidInputs(Materials.Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                     .fluidOutputs(Materials.Helium.getFluid(250));
         }

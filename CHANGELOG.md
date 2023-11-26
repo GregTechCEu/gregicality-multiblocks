@@ -125,3 +125,4 @@
 
 * Added compat for GTCEu 2.8
 * Limited multiblock Assembler and Circuit Assembler to 1 energy hatch
+* Updated molten fluid cooling recipes to respect freezer energy and duration overrides
