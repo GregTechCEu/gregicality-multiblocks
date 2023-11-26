@@ -2,9 +2,13 @@ package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
 import static gregtech.api.util.RelativeDirection.*;
 
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -24,6 +28,9 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class MetaTileEntityLargeCircuitAssembler extends GCYMRecipeMapMultiblockController {
 
@@ -44,7 +51,9 @@ public class MetaTileEntityLargeCircuitAssembler extends GCYMRecipeMapMultiblock
                 .aisle("XXXXX", "STPPX", "XXGGX")
                 .aisle("XXXXX", "XXXXX", "XXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(55).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(55)
+                        .or(autoAbilities(false, true, true, true, true, true, true))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1)))
                 .where('C', states(getCasingState2()))
                 .where('P', states(getCasingState3()))
                 .where('G', states(getCasingState4()))
@@ -83,5 +92,11 @@ public class MetaTileEntityLargeCircuitAssembler extends GCYMRecipeMapMultiblock
     @Override
     protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_CIRCUIT_ASSEMBLER_OVERLAY;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gcym.tooltip.max_energy_hatches", 1));
     }
 }

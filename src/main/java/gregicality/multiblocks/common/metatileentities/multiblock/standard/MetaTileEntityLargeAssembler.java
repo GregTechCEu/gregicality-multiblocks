@@ -2,8 +2,12 @@ package gregicality.multiblocks.common.metatileentities.multiblock.standard;
 
 import static gregtech.api.util.RelativeDirection.*;
 
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +29,9 @@ import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockControl
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockController {
 
@@ -48,7 +55,9 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
                 .aisle("XXX", "XAX", "#XX")
                 .aisle("XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40)
+                        .or(autoAbilities(false, true, true, true, true, true, true))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1)))
                 .where('C', states(getCasingState2()))
                 .where('T', tieredCasing().or(air()))
                 .where('A', air())
@@ -77,6 +86,12 @@ public class MetaTileEntityLargeAssembler extends GCYMRecipeMapMultiblockControl
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gcym.tooltip.max_energy_hatches", 1));
     }
 
     private static @NotNull RecipeMap<?> @NotNull [] determineRecipeMaps() {

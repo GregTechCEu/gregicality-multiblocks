@@ -120,3 +120,8 @@
 ## v1.2.5
 
 * Fixed missing recipes due to materials missing double plates (#56)
+
+## v1.2.6
+
+* Added compat for GTCEu 2.8
+* Limited multiblock Assembler and Circuit Assembler to 1 energy hatch
