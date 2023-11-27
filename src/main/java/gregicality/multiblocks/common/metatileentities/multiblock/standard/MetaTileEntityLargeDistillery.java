@@ -50,7 +50,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
     @Override
     protected Function<BlockPos, Integer> multiblockPartSorter() {
-        return BlockPos::getY; // todo this needs to be "relative up" with Freedom Wrench
+        return UP.getSorter(getFrontFacing(), getUpwardsFacing(), isFlipped());
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                 .aisle("#YYY#", "YYYYY", "YYYYY", "YYYYY", "#YYY#")
                 .where('S', selfPredicate())
                 .where('Y', casingPredicate.or(abilities(MultiblockAbility.IMPORT_ITEMS))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(1).setMaxGlobalLimited(2))
                         .or(abilities(MultiblockAbility.IMPORT_FLUIDS).setMinGlobalLimited(1))
                         .or(abilities(MultiblockAbility.EXPORT_ITEMS))
                         .or(abilities(GCYMMultiblockAbility.PARALLEL_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
@@ -128,6 +128,11 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
     @Override
     public boolean isTiered() {
+        return false;
+    }
+
+    @Override
+    public boolean allowsExtendedFacing() {
         return false;
     }
 }
