@@ -1,5 +1,7 @@
 package gregicality.multiblocks.api.unification;
 
+import org.jetbrains.annotations.ApiStatus;
+
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlags;
 
@@ -7,6 +9,7 @@ import gregicality.multiblocks.api.recipes.alloyblast.CustomAlloyBlastRecipeProd
 import gregicality.multiblocks.api.unification.properties.AlloyBlastProperty;
 import gregicality.multiblocks.api.unification.properties.GCYMPropertyKey;
 
+@ApiStatus.Internal
 public final class GCYMMaterialFlagAddition {
 
     private GCYMMaterialFlagAddition() {}

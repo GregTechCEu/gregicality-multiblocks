@@ -34,12 +34,11 @@ public class GCYMMultiblockRecipeLogic extends MultiblockRecipeLogic {
     }
 
     @Override
-    protected long getMaxVoltage() {
+    public long getMaxVoltage() {
         if (!GCYMConfigHolder.globalMultiblocks.enableTieredCasings)
             return super.getMaxVoltage();
 
-        if (getMetaTileEntity() instanceof GCYMRecipeMapMultiblockController &&
-                !((GCYMRecipeMapMultiblockController) getMetaTileEntity()).isTiered())
+        if (getMetaTileEntity() instanceof GCYMRecipeMapMultiblockController controller && !controller.isTiered())
             return super.getMaxVoltage();
 
         List<ITieredMetaTileEntity> list = getMetaTileEntity().getAbilities(GCYMMultiblockAbility.TIERED_HATCH);

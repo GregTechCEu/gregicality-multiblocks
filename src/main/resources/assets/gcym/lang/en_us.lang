@@ -99,6 +99,8 @@ gcym.machine.tiered_hatch.umv.name=Epic Voltage Control Unit
 gcym.machine.tiered_hatch.uxv.name=Legendary Voltage Control Unit
 gcym.machine.tiered_hatch.max.name=Maximum Voltage Control Unit
 
+gcym.tooltip.max_energy_hatches=Energy Hatch Limit: §c%d
+
 
 # casings
 

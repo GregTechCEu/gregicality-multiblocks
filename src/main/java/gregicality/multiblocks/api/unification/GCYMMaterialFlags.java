@@ -8,7 +8,7 @@ public final class GCYMMaterialFlags {
     /**
      * Use to disable alloy blast recipes from generating
      */
-    public static final MaterialFlag DISABLE_ALLOY_BLAST = new MaterialFlag.Builder("disable_alloy_blast")
+    public static final MaterialFlag NO_ALLOY_BLAST_RECIPES = new MaterialFlag.Builder("no_alloy_blast_recipes")
             .requireProps(PropertyKey.BLAST, PropertyKey.FLUID)
             .build();
 
@@ -17,7 +17,7 @@ public final class GCYMMaterialFlags {
      */
     public static final MaterialFlag DISABLE_ALLOY_PROPERTY = new MaterialFlag.Builder("disable_alloy_property")
             .requireProps(PropertyKey.BLAST, PropertyKey.FLUID)
-            .requireFlags(DISABLE_ALLOY_BLAST)
+            .requireFlags(NO_ALLOY_BLAST_RECIPES)
             .build();
 
     private GCYMMaterialFlags() {}

@@ -21,17 +21,19 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.MetaFluids;
+import gregtech.api.fluids.GTFluidRegistration;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.materials.MaterialFlagAddition;
+import gregtech.api.unification.material.registry.MarkerMaterialRegistry;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 import gregtech.core.unification.material.internal.MaterialRegistryManager;
+import gregtech.modules.ModuleManager;
 
-import gregicality.multiblocks.api.fluids.GCYMMetaFluids;
+import gregicality.multiblocks.api.fluids.GeneratedFluidHandler;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlagAddition;
 import gregicality.multiblocks.api.unification.GCYMMaterials;
-import gregicality.multiblocks.api.unification.properties.GCYMLatePropertyAddition;
+import gregicality.multiblocks.api.unification.properties.AlloyBlastPropertyAddition;
 
 public final class Bootstrap {
 
@@ -63,9 +65,11 @@ public final class Bootstrap {
         ModMetadata meta = new ModMetadata();
         meta.modId = GTValues.MODID;
         Loader.instance().setupTestHarness(new DummyModContainer(meta));
+        GregTechAPI.moduleManager = ModuleManager.getInstance();
 
         MaterialRegistryManager managerInternal = MaterialRegistryManager.getInstance();
         GregTechAPI.materialManager = managerInternal;
+        GregTechAPI.markerMaterialRegistry = MarkerMaterialRegistry.getInstance();
         managerInternal.unfreezeRegistries();
 
         Materials.register();
@@ -80,15 +84,18 @@ public final class Bootstrap {
 
         managerInternal.closeRegistries();
 
-        GCYMLatePropertyAddition.init();
+        AlloyBlastPropertyAddition.init();
         GCYMMaterialFlagAddition.initLate();
 
         managerInternal.freezeRegistries();
 
         OrePrefix.runMaterialHandlers();
-        MetaFluids.init();
-        GCYMMetaFluids.init();
+
+        GeneratedFluidHandler.init();
+        GTFluidRegistration.INSTANCE.register();
+
         MetaItems.init();
+
         bootstrapped = true;
     }
 
