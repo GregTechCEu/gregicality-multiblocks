@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import gregtech.api.GTValues;
+import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.FuelMultiblockController;
@@ -20,6 +22,7 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -51,10 +54,19 @@ public class MetaTileEntitySteamEngine extends FuelMultiblockController {
                 .where('X', states(getCasingState()).setMinGlobalLimited(18)
                         .or(autoAbilities(false, true, true, true, true, true, false)))
                 .where('G', states(getCasingState2()))
-                .where('E', abilities(MultiblockAbility.OUTPUT_ENERGY))
+                .where('E', energyOutputPredicate())
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', any())
                 .build();
+    }
+
+    private static TraceabilityPredicate energyOutputPredicate() {
+        return metaTileEntities(MultiblockAbility.REGISTRY.get(MultiblockAbility.OUTPUT_ENERGY).stream().filter(mte -> {
+            IEnergyContainer container = mte.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, null);
+            return container != null && container.getOutputVoltage() <= GTValues.V[GTValues.MV];
+        }).toArray(MetaTileEntity[]::new))
+                .addTooltip("gregtech.multiblock.pattern.error.limited.1", GTValues.VN[GTValues.MV])
+                .addTooltip("gregtech.multiblock.pattern.error.limited.0", GTValues.VN[GTValues.LV]);
     }
 
     private static IBlockState getCasingState() {
