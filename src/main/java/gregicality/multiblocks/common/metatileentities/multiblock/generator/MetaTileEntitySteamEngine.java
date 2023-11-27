@@ -65,8 +65,8 @@ public class MetaTileEntitySteamEngine extends FuelMultiblockController {
             IEnergyContainer container = mte.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, null);
             return container != null && container.getOutputVoltage() <= GTValues.V[GTValues.MV];
         }).toArray(MetaTileEntity[]::new))
-                .addTooltip("gregtech.multiblock.pattern.error.limited.1", GTValues.VN[GTValues.MV])
-                .addTooltip("gregtech.multiblock.pattern.error.limited.0", GTValues.VN[GTValues.LV]);
+                .addTooltip("gregtech.multiblock.pattern.error.limited.1", GTValues.VN[GTValues.LV])
+                .addTooltip("gregtech.multiblock.pattern.error.limited.0", GTValues.VN[GTValues.MV]);
     }
 
     private static IBlockState getCasingState() {
