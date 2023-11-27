@@ -123,6 +123,7 @@
 
 ## v1.2.6
 
-* Added compat for GTCEu 2.8
+* Added compat for GTCEu 2.8 (#60)
 * Limited multiblock Assembler and Circuit Assembler to 1 energy hatch
 * Updated molten fluid cooling recipes to respect freezer energy and duration overrides
+* Blocked ME Output Hatches from the Large Distillation Tower

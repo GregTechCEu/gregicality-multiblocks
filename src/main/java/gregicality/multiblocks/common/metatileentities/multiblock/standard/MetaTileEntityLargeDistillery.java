@@ -76,7 +76,8 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                         .or(maintenancePredicate))
                 .where('X', casingPredicate
                         .or(metaTileEntities(MultiblockAbility.REGISTRY.get(MultiblockAbility.EXPORT_FLUIDS).stream()
-                                .filter(mte -> !(mte instanceof MetaTileEntityMultiFluidHatch) && !(mte instanceof MetaTileEntityMEOutputHatch))
+                                .filter(mte -> !(mte instanceof MetaTileEntityMultiFluidHatch) &&
+                                        !(mte instanceof MetaTileEntityMEOutputHatch))
                                 .toArray(MetaTileEntity[]::new))
                                         .setMinLayerLimited(1).setMaxLayerLimited(1)))
                 .where('Z', casingPredicate)
