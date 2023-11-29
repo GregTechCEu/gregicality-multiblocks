@@ -127,3 +127,9 @@
 * Limited multiblock Assembler and Circuit Assembler to 1 energy hatch
 * Updated molten fluid cooling recipes to respect freezer energy and duration overrides
 * Blocked ME Output Hatches from the Large Distillation Tower
+
+## v1.2.7
+
+* Fixed Large Distillation Tower being rotatable
+* Fixed Large Distillation Tower allowing > 2 energy hatches
+* Fixed Steam Engine allowing > MV energy hatches
