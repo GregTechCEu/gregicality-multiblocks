@@ -40,7 +40,7 @@ public class BlockUniqueCasing extends VariantActiveBlock<BlockUniqueCasing.Uniq
             if (layer == BlockRenderLayer.SOLID) return true;
         } else if (layer == BlockRenderLayer.CUTOUT) return true;
 
-        if (isBloomEnabled(type)) return layer == BloomEffectUtil.getRealBloomLayer();
+        if (isBloomEnabled(type)) return layer == BloomEffectUtil.getEffectiveBloomLayer(layer);
         return layer == BlockRenderLayer.CUTOUT;
     }
 
