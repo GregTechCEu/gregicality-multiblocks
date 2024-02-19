@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.FluidProperty;
@@ -48,9 +47,8 @@ public final class GeneratedFluidHandler {
         if (alloyBlastProperty.shouldGenerateMolten(material)) {
             fluidProperty.getStorage().enqueueRegistration(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder()
                     .temperature(alloyBlastProperty.getTemperature()));
-        } else {
-            // not hot enough to produce molten fluid, so produce regular fluid
-            fluidProperty.getStorage().store(GCYMFluidStorageKeys.MOLTEN, material.getFluid(FluidStorageKeys.LIQUID));
         }
+        // if it is not hot enough to produce molten fluid, ABS Producer grabs normal liquid,
+        // thus we don't need to do anything.
     }
 }
