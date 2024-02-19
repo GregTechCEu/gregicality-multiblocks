@@ -1,5 +1,7 @@
 package gregicality.multiblocks.api.fluids;
 
+import net.minecraftforge.fluids.Fluid;
+
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
@@ -50,7 +52,11 @@ public final class GeneratedFluidHandler {
                     .temperature(alloyBlastProperty.getTemperature()));
         } else {
             // not hot enough to produce molten fluid, so produce regular fluid
-            fluidProperty.getStorage().store(GCYMFluidStorageKeys.MOLTEN, material.getFluid(FluidStorageKeys.LIQUID));
+            FluidBuilder liquidBuilder = fluidProperty.getStorage().getQueuedBuilder(FluidStorageKeys.LIQUID);
+            if (liquidBuilder == null) return;
+
+            Fluid fluid = liquidBuilder.build(material.getModid(), material, FluidStorageKeys.LIQUID);
+            fluidProperty.getStorage().store(GCYMFluidStorageKeys.MOLTEN, fluid);
         }
     }
 }
