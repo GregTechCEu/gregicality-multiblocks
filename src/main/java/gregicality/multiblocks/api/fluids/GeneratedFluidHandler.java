@@ -1,13 +1,10 @@
 package gregicality.multiblocks.api.fluids;
 
-import net.minecraftforge.fluids.Fluid;
-
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.FluidProperty;
@@ -50,13 +47,8 @@ public final class GeneratedFluidHandler {
         if (alloyBlastProperty.shouldGenerateMolten(material)) {
             fluidProperty.getStorage().enqueueRegistration(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder()
                     .temperature(alloyBlastProperty.getTemperature()));
-        } else {
-            // not hot enough to produce molten fluid, so produce regular fluid
-            FluidBuilder liquidBuilder = fluidProperty.getStorage().getQueuedBuilder(FluidStorageKeys.LIQUID);
-            if (liquidBuilder == null) return;
-
-            Fluid fluid = liquidBuilder.build(material.getModid(), material, FluidStorageKeys.LIQUID);
-            fluidProperty.getStorage().store(GCYMFluidStorageKeys.MOLTEN, fluid);
         }
+        // if it is not hot enough to produce molten fluid, ABS Producer grabs normal liquid,
+        // thus we don't need to do anything.
     }
 }

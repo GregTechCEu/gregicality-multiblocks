@@ -47,20 +47,23 @@ public class AlloyBlastRecipeProducer {
         if (componentAmount < 2) return;
 
         // get the output fluid
-        Fluid molten = material.getFluid(GCYMFluidStorageKeys.MOLTEN);
-        if (molten == null) return;
+        Fluid output = material.getFluid(GCYMFluidStorageKeys.MOLTEN);
+        if (output == null) {
+            output = material.getFluid(FluidStorageKeys.LIQUID);
+            if (output == null) return;
+        }
 
         RecipeBuilder<BlastRecipeBuilder> builder = createBuilder(blastProperty, material);
 
         int outputAmount = addInputs(material, builder);
         if (outputAmount <= 0) return;
 
-        buildRecipes(blastProperty, molten, outputAmount, componentAmount, builder);
+        buildRecipes(blastProperty, output, outputAmount, componentAmount, builder);
 
         // if the material does not need a vacuum freezer, exit
         if (!OrePrefix.ingotHot.doGenerateItem(material)) return;
 
-        addFreezerRecipes(material, molten, blastProperty);
+        addFreezerRecipes(material, output, blastProperty);
     }
 
     /**
