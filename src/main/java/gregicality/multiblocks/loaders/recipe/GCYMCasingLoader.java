@@ -32,6 +32,11 @@ public final class GCYMCasingLoader {
                 "DhD", "PFP", "DwD", 'P', new UnificationEntry(OrePrefix.plate, GCYMMaterials.TitaniumCarbide), 'D',
                 new UnificationEntry(OrePrefix.plate, GCYMMaterials.HSLASteel), 'F',
                 new UnificationEntry(OrePrefix.frameGt, Materials.TungstenCarbide));
+        ModHandler.addShapedRecipe(true, "casing_forging",
+                GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+                        .getItemVariant(BlockLargeMultiblockCasing.CasingType.FORGING_CASING, 2),
+                "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, GCYMMaterials.CobaltAlloy), 'F',
+                new UnificationEntry(OrePrefix.frameGt, Materials.Aluminium));
         ModHandler.addShapedRecipe(true, "casing_large_assembler",
                 GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
                         .getItemVariant(BlockLargeMultiblockCasing.CasingType.ASSEMBLING_CASING, 2),
@@ -103,6 +108,14 @@ public final class GCYMCasingLoader {
                 .notConsumable(new IntCircuitIngredient(6))
                 .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
                         .getItemVariant(BlockLargeMultiblockCasing.CasingType.HIGH_TEMPERATURE_CASING, 2))
+                .duration(50).EUt(16).buildAndRegister();
+
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(OrePrefix.plate, GCYMMaterials.CobaltAlloy, 6)
+                .input(OrePrefix.frameGt, Materials.Aluminium)
+                .notConsumable(new IntCircuitIngredient(6))
+                .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+                        .getItemVariant(BlockLargeMultiblockCasing.CasingType.FORGING_CASING, 2))
                 .duration(50).EUt(16).buildAndRegister();
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()

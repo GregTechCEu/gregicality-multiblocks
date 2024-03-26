@@ -63,6 +63,7 @@ public final class GCYMTextures {
     public static SimpleOverlayRenderer ENGRAVER_CASING;
     public static SimpleOverlayRenderer ATOMIC_CASING;
     public static SimpleOverlayRenderer STEAM_CASING;
+    public static SimpleOverlayRenderer FORGING_CASING;
 
     private GCYMTextures() {}
 
@@ -119,5 +120,6 @@ public final class GCYMTextures {
         ENGRAVER_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/engraver_casing");
         ATOMIC_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/atomic_casing");
         STEAM_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/steam_casing");
+        FORGING_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/forging_casing");
     }
 }

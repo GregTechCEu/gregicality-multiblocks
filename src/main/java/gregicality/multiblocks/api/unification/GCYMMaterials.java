@@ -17,6 +17,7 @@ public final class GCYMMaterials {
     public static Material TitaniumCarbide;
     public static Material TantalumCarbide;
     public static Material MolybdenumDisilicide;
+    public static Material CobaltAlloy;
 
     /*
      * Second Degree Materials 3020-3039

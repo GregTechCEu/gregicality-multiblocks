@@ -114,6 +114,7 @@ tile.unique_casing.molybdenum_disilicide_coil.name=Molybdenum Disilicide Coil Bl
 # large multiblock casing
 tile.large_multiblock_casing.macerator_casing.name=Secure Maceration Casing
 tile.large_multiblock_casing.blast_casing.name=High Temperature Smelting Casing
+tile.large_multiblock_casing.forging_casing.name=Thermal Forging Casing
 tile.large_multiblock_casing.assembler_casing.name=Large-Scale Assembler Casing
 tile.large_multiblock_casing.stress_proof_casing.name=Stress Proof Casing
 tile.large_multiblock_casing.corrosion_proof_casing.name=Corrosion Proof Casing
@@ -140,6 +141,7 @@ gcym.material.zeron_100=Zeron-100
 gcym.material.titanium_carbide=Titanium Carbide
 gcym.material.tantalum_carbide=Tantalum Carbide
 gcym.material.molybdenum_disilicide=Molybdenum Disilicide
+gcym.material.cobalt_alloy=Cobalt Thermal Alloy
 
 gcym.material.hsla_steel=HSLA Steel
 gcym.material.titanium_tungsten_carbide=Titanium Tungsten Carbide
