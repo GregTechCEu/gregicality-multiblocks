@@ -109,6 +109,14 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                     (VAs - 36) / 12;
             case 1 -> // Alloy
                     (VAs - 70) / 14;
+//            case 2 -> // Dual
+//            case 3 -> // Freezer
+//            case 4 -> // Blast Cooling
+//            case 5 -> // Alloy Cooling
+//            case 6 -> // Dual Cooling
+//            case 7 -> // Blast Forging
+//            case 8 -> // Alloy Forging
+//            case 9 -> // Dual Forging
         };
     }
 
@@ -288,7 +296,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
     @Override
     protected @NotNull OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.ALLOY_BLAST_SMELTER_OVERLAY;
+        return GCYMTextures.LINEAR_FORGING_FURNACE_OVERLAY;
     }
 
     @Override

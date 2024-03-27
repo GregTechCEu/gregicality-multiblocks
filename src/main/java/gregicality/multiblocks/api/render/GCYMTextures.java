@@ -41,6 +41,7 @@ public final class GCYMTextures {
     public static OrientedOverlayRenderer MEGA_BLAST_FURNACE_OVERLAY;
     public static OrientedOverlayRenderer MEGA_VACUUM_FREEZER_OVERLAY;
     public static OrientedOverlayRenderer STEAM_ENGINE_OVERLAY;
+    public static OrientedOverlayRenderer LINEAR_FORGING_FURNACE_OVERLAY;
 
     // Hatches
     public static OrientedOverlayRenderer PARALLEL_HATCH_MK1_OVERLAY;
@@ -98,6 +99,7 @@ public final class GCYMTextures {
         MEGA_BLAST_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_blast_furnace");
         MEGA_VACUUM_FREEZER_OVERLAY = new OrientedOverlayRenderer("multiblock/mega_vacuum_freezer");
         STEAM_ENGINE_OVERLAY = new OrientedOverlayRenderer("multiblock/steam_engine");
+        LINEAR_FORGING_FURNACE_OVERLAY = new OrientedOverlayRenderer("multiblock/linear_forging_furnace");
 
         // Hatches
         PARALLEL_HATCH_MK1_OVERLAY = new OrientedOverlayRenderer("hatches/parallel_hatch_mk1");
