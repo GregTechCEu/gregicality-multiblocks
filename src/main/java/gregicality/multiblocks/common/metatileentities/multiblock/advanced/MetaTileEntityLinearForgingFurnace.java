@@ -3,14 +3,16 @@ package gregicality.multiblocks.common.metatileentities.multiblock.advanced;
 import gregicality.multiblocks.api.capability.impl.GCYMHeatingCoilRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMMultiShapeMultiblockController;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.recipes.LinearForgingFurnaceRecipeType;
 import gregicality.multiblocks.api.render.GCYMTextures;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
 import gregtech.api.block.IHeatingCoilBlockStats;
+import gregtech.api.block.VariantActiveBlock;
+import gregtech.api.capability.GregtechDataCodes;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -19,11 +21,13 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.pattern.*;
 import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.RelativeDirection;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.api.util.TextFormattingUtil;
+import gregtech.api.util.function.TriConsumer;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.ConfigHolder;
@@ -33,18 +37,18 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblockController implements IHeatingCoil {
@@ -137,7 +141,80 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                             .aisle("    ACCCVCCCA    ", "XXX A#######A ZZZ", "XPPPP#######PPPPZ", "XXX A#######A ZZZ", "    ACCCVCCCA    ").setRepeatable(1, 16)
                             .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XMX A#######A ZZZ", "XXX A#######A ZZZ", "    AFCFVFCFA    ")
                             .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ");
-//            case 2 -> // Dual
+            case 2 -> {// Dual
+                casing = states(getCasingState()).setMinLayerLimited(20);
+                yield FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle(
+                                "                 ",
+                                "                 ",
+                                "                 ",
+                                "                 ",
+                                "                 ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
+                                "                 ")
+                        .aisle(
+                                "XXX EFCFFCFE  ZZZ",
+                                "XXX EICVVCIE  ZZZ",
+                                "XXX EFCFFCFE  ZZZ",
+                                "                 ",
+                                "    AFCFVFCFA    ",
+                                "XXX A#######A ZZZ",
+                                "XSX A#######A ZZZ",
+                                "XXX A#######A ZZZ",
+                                "    AFCFVFCFA    ")
+                        .aisle(
+                                "XXX ECCCCCCE  ZZZ",
+                                "XPPPP######PPPPPZ",
+                                "XPX ECCCCCCE  ZPZ",
+                                " P             P ",
+                                " P  ACCCVCCCA  P ",
+                                "XPX A#######A ZPZ",
+                                "XPPPP#######PPPPZ",
+                                "XXX A#######A ZZZ",
+                                "    ACCCVCCCA    ").setRepeatable(1)
+                        .aisle(
+                                "XXX ECCCCCCE  ZZZ",
+                                "XPPPP######PPPPPZ",
+                                "XXX ECCCCCCE  ZZZ",
+                                "                 ",
+                                "    ACCCVCCCA    ",
+                                "XXX A#######A ZZZ",
+                                "XPPPP#######PPPPZ",
+                                "XXX A#######A ZZZ",
+                                "    ACCCVCCCA    ").setRepeatable(0, 14)
+                        .aisle(
+                                "XXX ECCCCCCE  ZZZ",
+                                "XPPPP######PPPPPZ",
+                                "XPX ECCCCCCE  ZPZ",
+                                " P             P ",
+                                " P  ACCCVCCCA  P ",
+                                "XPX A#######A ZPZ",
+                                "XPPPP#######PPPPZ",
+                                "XXX A#######A ZZZ",
+                                "    ACCCVCCCA    ").setRepeatable(0, 1)
+                        .aisle(
+                                "XXX EFCFFCFE  ZZZ",
+                                "XXX EICVVCIE  ZZZ",
+                                "XXX EFCFFCFE  ZZZ",
+                                "                 ",
+                                "    AFCFVFCFA    ",
+                                "XXX A#######A ZZZ",
+                                "XMX A#######A ZZZ",
+                                "XXX A#######A ZZZ",
+                                "    AFCFVFCFA    ")
+                        .aisle(
+                                "                 ",
+                                "                 ",
+                                "                 ",
+                                "                 ",
+                                "                 ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
+                                "                 ");
+            }
 //            case 3 -> // Freezer
 //            case 4 -> // Blast Cooling
 //            case 5 -> // Alloy Cooling
@@ -198,7 +275,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
         doRowCopies(shapeInfo, builder,
                 a -> a.where('S', fakeController, EnumFacing.SOUTH)
                         .aisle("XXX EFCFFCFE XXX", "XMX EICVVCIE XXX", "XXX EFCFFCFE XXX"),
-                a -> a.aisle("XXX ECCCCCCE XXX", "XPPPP      PPPPX", "XXX ECCCCCCE XXX"),
+                (a, i, j) -> a.aisle("XXX ECCCCCCE XXX", "XPPPP      PPPPX", "XXX ECCCCCCE XXX"),
                 a -> a.aisle("XXX EFCFFCFE XXX", "YSX EICVVCIE HLX", "ZXN EFCFFCFE OXT"));
         //Alloy
         fakeController.inDisplayWorld(1);
@@ -206,15 +283,32 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 a -> a.where('S', fakeController, EnumFacing.SOUTH)
                         .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ")
                         .aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX", "    AFCFVFCFA    "),
-                a -> a.aisle("    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    "),
+                (a, i, j) -> a.aisle("    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    "),
                 a -> a.aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT", "    AFCFVFCFA    ")
                         .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 "));
+        //Dual
+        fakeController.inDisplayWorld(2);
+        doRowCopies(shapeInfo, builder,
+                a -> a.where('S', fakeController, EnumFacing.SOUTH)
+                        .aisle("                 ", "                 ", "                 ", "                 ", "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ")
+                        .aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ", "    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX", "    AFCFVFCFA    "),
+                (a, i, j) -> {
+                    if (j == 0) {
+                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ", " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    ");
+                    } else if (j == i - 1) {
+                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ", " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    ");
+                    } else {
+                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XXX ECCCCCCE  XXX", "                 ", "    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    ");
+                    }
+                },
+                a -> a.aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ", "    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT", "    AFCFVFCFA    ")
+                        .aisle("                 ", "                 ", "                 ", "                 ", "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 "));
         return shapeInfo;
     }
 
     public static void doRowCopies(ArrayList<MultiblockShapeInfo> shapeInfo, MultiblockShapeInfo.Builder builder,
                                Consumer<MultiblockShapeInfo.Builder> preActions,
-                               Consumer<MultiblockShapeInfo.Builder> copyActions,
+                               TriConsumer<MultiblockShapeInfo.Builder, Integer, Integer> copyActions,
                                Consumer<MultiblockShapeInfo.Builder> postActions) {
         int z = -1;
         for (int i = 1; i <= 16; i*=2) { //1, 2, 4, 8, 16
@@ -226,7 +320,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
             preActions.accept(copy);
             for (int j = 0; j < i; j++) {
-                copyActions.accept(copy);
+                copyActions.accept(copy, i, j);
             }
             postActions.accept(copy);
             shapeInfo.add(copy.build());
@@ -273,6 +367,109 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
         super.invalidateStructure();
         this.blastFurnaceTemperature = 0;
         this.rowCount = 0;
+    }
+
+    @Override
+    protected void replaceVariantBlocksActive(boolean isActive) {
+        if (this.variantActiveBlocks != null && !this.variantActiveBlocks.isEmpty()) {
+            int id = this.getWorld().provider.getDimension();
+            this.writeCustomData(GregtechDataCodes.VARIANT_RENDER_UPDATE, (buf) -> {
+                buf.writeInt(id);
+                buf.writeBoolean(isActive);
+                buf.writeInt(this.getRecipeMapIndex());
+                buf.writeInt(this.getRecipeType().ordinal());
+
+                buf.writeInt(this.variantActiveBlocks.size());
+                Iterator<BlockPos> var4 = this.variantActiveBlocks.iterator();
+
+                while (var4.hasNext()) {
+                    BlockPos blockPos = var4.next();
+                    if (!isActive || shouldVABlockUpdate(blockPos, this.getRecipeMapIndex(), this.getRecipeType())) {
+                        VariantActiveBlock.setBlockActive(id, blockPos, isActive);
+                        buf.writeBlockPos(blockPos);
+                    }
+                }
+
+            });
+        }
+    }
+
+    @Override
+    public void receiveCustomData(int dataId, PacketBuffer buf) {
+        if (dataId == GregtechDataCodes.VARIANT_RENDER_UPDATE) {
+            int minZ = Integer.MAX_VALUE;
+            int minY = Integer.MAX_VALUE;
+            int minX = Integer.MAX_VALUE;
+            int maxZ = Integer.MIN_VALUE;
+            int maxY = Integer.MIN_VALUE;
+            int maxX = Integer.MIN_VALUE;
+            int id = buf.readInt();
+            boolean isActive = buf.readBoolean();
+            int recipeMapIndex = buf.readInt();
+            LinearForgingFurnaceRecipeType recipeType = LinearForgingFurnaceRecipeType.values()[buf.readInt()];
+
+            int size = buf.readInt();
+
+            for(int i = 0; i < size; ++i) {
+                BlockPos blockPos = buf.readBlockPos();
+                if (!isActive || shouldVABlockUpdate(blockPos, recipeMapIndex, recipeType)) {
+                    VariantActiveBlock.setBlockActive(id, blockPos, isActive);
+                    minX = Math.min(minX, blockPos.getX());
+                    minY = Math.min(minY, blockPos.getY());
+                    minZ = Math.min(minZ, blockPos.getZ());
+                    maxX = Math.max(maxX, blockPos.getX());
+                    maxY = Math.max(maxY, blockPos.getY());
+                    maxZ = Math.max(maxZ, blockPos.getZ());
+                }
+            }
+
+            if (this.getWorld().provider.getDimension() == id) {
+                this.getWorld().markBlockRangeForRenderUpdate(new BlockPos(minX, minY, minZ), new BlockPos(maxX, maxY, maxZ));
+            }
+            return;
+        }
+
+        super.receiveCustomData(dataId, buf);
+    }
+
+    protected boolean shouldVABlockUpdate(BlockPos pos, int recipeMapIndex, LinearForgingFurnaceRecipeType recipeType) {
+        if (recipeMapIndex != 2 && recipeMapIndex != 6 && recipeMapIndex != 9) return true;
+        return switch (recipeType) {
+            default -> true;
+            case BLAST -> {// bottom half
+                EnumFacing relativeDown = RelativeDirection.DOWN
+                        .getRelativeFacing(this.getFrontFacing(), this.getUpwardsFacing(), this.isFlipped());
+                BlockPos comparingPos = this.getPos().offset(relativeDown, 3);
+
+                int x = comparingPos.getX() - this.getPos().getX();
+                int y = comparingPos.getY() - this.getPos().getY();
+                int z = comparingPos.getZ() - this.getPos().getZ();
+                yield ((pos.getX() - comparingPos.getX()) * x > 0)
+                        || ((pos.getY() - comparingPos.getY()) * y > 0)
+                        || ((pos.getZ() - comparingPos.getZ()) * z > 0);
+            }
+            case ALLOY -> {// top half
+                EnumFacing relativeDown = RelativeDirection.DOWN
+                        .getRelativeFacing(this.getFrontFacing(), this.getUpwardsFacing(), this.isFlipped());
+                BlockPos comparingPos = this.getPos().offset(relativeDown, 3);
+
+                int x = comparingPos.getX() - this.getPos().getX();
+                int y = comparingPos.getY() - this.getPos().getY();
+                int z = comparingPos.getZ() - this.getPos().getZ();
+                yield ((pos.getX() - comparingPos.getX()) * x < 0)
+                        || ((pos.getY() - comparingPos.getY()) * y < 0)
+                        || ((pos.getZ() - comparingPos.getZ()) * z < 0);
+            }
+//            case BLAST_COOLED ->
+//            case ALLOY_COOLED ->
+//            case BLAST_FORGING_COOLED ->
+//            case ALLOY_FORGING_COOLED ->
+        };
+    }
+
+    protected LinearForgingFurnaceRecipeType getRecipeType() {
+        Recipe recipe = this.getRecipeMapWorkable().getPreviousRecipe();
+        return LinearForgingFurnaceRecipeType.getRecipeType(recipe);
     }
 
     @Override

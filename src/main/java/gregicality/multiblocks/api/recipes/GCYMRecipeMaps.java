@@ -26,7 +26,6 @@ public final class GCYMRecipeMaps {
             ALLOY_BLAST_RECIPES,
             new RecipeMap<>("lff_dual", 9, 3, 3, 1, new BlastRecipeBuilder(), false)
                     .setSlotOverlay(false, false, false, GuiTextures.FURNACE_OVERLAY_1)
-                    .setSlotOverlay(false, false, true, GuiTextures.FURNACE_OVERLAY_1)
                     .setSlotOverlay(false, true, false, GuiTextures.FURNACE_OVERLAY_2)
                     .setSlotOverlay(true, true, false, GuiTextures.FURNACE_OVERLAY_2)
                     .setSound(GTSoundEvents.FURNACE),
