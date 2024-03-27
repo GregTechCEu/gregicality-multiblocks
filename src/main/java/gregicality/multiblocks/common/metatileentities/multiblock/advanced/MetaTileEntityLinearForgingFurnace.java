@@ -18,10 +18,10 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.pattern.*;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.RelativeDirection;
@@ -37,6 +37,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -48,7 +49,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblockController implements IHeatingCoil {
@@ -56,6 +56,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
     private int blastFurnaceTemperature;
     private int rowCount;
     private int inDisplayWorld = -1;
+
+    private LinearForgingFurnaceRecipeType lastRecipeType = LinearForgingFurnaceRecipeType.NONE;
 
     public MetaTileEntityLinearForgingFurnace(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GCYMRecipeMaps.LINEAR_FORGING_RECIPES);
@@ -113,7 +115,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                     (VAs - 36) / 12;
             case 1 -> // Alloy
                     (VAs - 70) / 14;
-//            case 2 -> // Dual
+            case 2 -> // Dual
+                    (VAs - 106) / 26;
 //            case 3 -> // Freezer
 //            case 4 -> // Blast Cooling
 //            case 5 -> // Alloy Cooling
@@ -363,10 +366,20 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
     }
 
     @Override
+    public void update() {
+        super.update();
+        if (!this.getWorld().isRemote) {
+            if (this.lastRecipeType != this.getRecipeType() && this.isActive())
+                this.replaceVariantBlocksActive(true);
+        }
+    }
+
+    @Override
     public void invalidateStructure() {
         super.invalidateStructure();
         this.blastFurnaceTemperature = 0;
         this.rowCount = 0;
+        this.lastRecipeType = LinearForgingFurnaceRecipeType.NONE;
     }
 
     @Override
@@ -384,10 +397,9 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
                 while (var4.hasNext()) {
                     BlockPos blockPos = var4.next();
-                    if (!isActive || shouldVABlockUpdate(blockPos, this.getRecipeMapIndex(), this.getRecipeType())) {
-                        VariantActiveBlock.setBlockActive(id, blockPos, isActive);
-                        buf.writeBlockPos(blockPos);
-                    }
+                    VariantActiveBlock.setBlockActive(id, blockPos, isActive
+                            && shouldVABlockBeActive(blockPos, this.getRecipeMapIndex(), this.getRecipeType()));
+                    buf.writeBlockPos(blockPos);
                 }
 
             });
@@ -412,15 +424,14 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
             for(int i = 0; i < size; ++i) {
                 BlockPos blockPos = buf.readBlockPos();
-                if (!isActive || shouldVABlockUpdate(blockPos, recipeMapIndex, recipeType)) {
-                    VariantActiveBlock.setBlockActive(id, blockPos, isActive);
-                    minX = Math.min(minX, blockPos.getX());
-                    minY = Math.min(minY, blockPos.getY());
-                    minZ = Math.min(minZ, blockPos.getZ());
-                    maxX = Math.max(maxX, blockPos.getX());
-                    maxY = Math.max(maxY, blockPos.getY());
-                    maxZ = Math.max(maxZ, blockPos.getZ());
-                }
+                VariantActiveBlock.setBlockActive(id, blockPos, isActive
+                        && shouldVABlockBeActive(blockPos, recipeMapIndex, recipeType));
+                minX = Math.min(minX, blockPos.getX());
+                minY = Math.min(minY, blockPos.getY());
+                minZ = Math.min(minZ, blockPos.getZ());
+                maxX = Math.max(maxX, blockPos.getX());
+                maxY = Math.max(maxY, blockPos.getY());
+                maxZ = Math.max(maxZ, blockPos.getZ());
             }
 
             if (this.getWorld().provider.getDimension() == id) {
@@ -432,7 +443,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
         super.receiveCustomData(dataId, buf);
     }
 
-    protected boolean shouldVABlockUpdate(BlockPos pos, int recipeMapIndex, LinearForgingFurnaceRecipeType recipeType) {
+    protected boolean shouldVABlockBeActive(BlockPos pos, int recipeMapIndex, LinearForgingFurnaceRecipeType recipeType) {
         if (recipeMapIndex != 2 && recipeMapIndex != 6 && recipeMapIndex != 9) return true;
         return switch (recipeType) {
             default -> true;
@@ -469,7 +480,11 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
     protected LinearForgingFurnaceRecipeType getRecipeType() {
         Recipe recipe = this.getRecipeMapWorkable().getPreviousRecipe();
-        return LinearForgingFurnaceRecipeType.getRecipeType(recipe);
+        LinearForgingFurnaceRecipeType type = LinearForgingFurnaceRecipeType.getRecipeType(recipe);
+        if (type == LinearForgingFurnaceRecipeType.NONE) {
+            type = this.lastRecipeType;
+        } else this.lastRecipeType = type;
+        return type;
     }
 
     @Override
@@ -509,6 +524,19 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
     @Override
     public int getCurrentTemperature() {
         return this.blastFurnaceTemperature;
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        super.writeToNBT(data);
+        data.setInteger("LastRecipeType", this.getRecipeType().ordinal());
+        return data;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        this.lastRecipeType = LinearForgingFurnaceRecipeType.values()[data.getInteger("LastRecipeType")];
     }
 
     @Override
