@@ -3,6 +3,7 @@ package gregicality.multiblocks.common.metatileentities;
 import static gregicality.multiblocks.api.utils.GCYMUtil.gcymId;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
+import gregicality.multiblocks.common.metatileentities.multiblock.advanced.MetaTileEntityLinearForgingFurnace;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 
@@ -41,6 +42,7 @@ public final class GCYMMetaTileEntities {
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
     public static MetaTileEntitySteamEngine STEAM_ENGINE;
     public static MetaTileEntityLargeCircuitAssembler LARGE_CIRCUIT_ASSEMBLER;
+    public static MetaTileEntityLinearForgingFurnace LINEAR_FORGING_FURNACE;
 
     public static MetaTileEntityParallelHatch[] PARALLEL_HATCH = new MetaTileEntityParallelHatch[4];
     public static MetaTileEntityTieredHatch[] TIERED_HATCH = new MetaTileEntityTieredHatch[GTValues.V.length];
@@ -88,6 +90,8 @@ public final class GCYMMetaTileEntities {
         STEAM_ENGINE = registerMetaTileEntity(2027, new MetaTileEntitySteamEngine(gcymId("steam_engine")));
         LARGE_CIRCUIT_ASSEMBLER = registerMetaTileEntity(2028,
                 new MetaTileEntityLargeCircuitAssembler(gcymId("large_circuit_assembler")));
+        LINEAR_FORGING_FURNACE = registerMetaTileEntity(2029,
+                new MetaTileEntityLinearForgingFurnace(gcymId("linear_forging_furnace")));
 
         // Hatches
         for (int i = 0; i < PARALLEL_HATCH.length; i++) {
