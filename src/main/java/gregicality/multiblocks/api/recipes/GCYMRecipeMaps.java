@@ -1,5 +1,6 @@
 package gregicality.multiblocks.api.recipes;
 
+import com.google.common.collect.Lists;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
@@ -55,6 +56,8 @@ public final class GCYMRecipeMaps {
                     .setSlotOverlay(true, true, false, GuiTextures.FURNACE_OVERLAY_2)
                     .setSound(GTSoundEvents.FURNACE)
     };
+
+    static final List<RecipeMap<?>> LFF_RECIPES_AS_LIST = Lists.newArrayList(GCYMRecipeMaps.LINEAR_FORGING_RECIPES);
 
     private GCYMRecipeMaps() {}
 }

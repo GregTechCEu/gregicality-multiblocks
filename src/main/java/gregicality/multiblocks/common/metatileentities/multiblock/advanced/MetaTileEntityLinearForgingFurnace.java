@@ -480,7 +480,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
     protected LinearForgingFurnaceRecipeType getRecipeType() {
         Recipe recipe = this.getRecipeMapWorkable().getPreviousRecipe();
-        LinearForgingFurnaceRecipeType type = LinearForgingFurnaceRecipeType.getRecipeType(recipe);
+        LinearForgingFurnaceRecipeType type =
+                LinearForgingFurnaceRecipeType.getRecipeType(recipe, this.getCurrentRecipeMap());
         if (type == LinearForgingFurnaceRecipeType.NONE) {
             type = this.lastRecipeType;
         } else this.lastRecipeType = type;
