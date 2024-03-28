@@ -1,34 +1,40 @@
 package gregicality.multiblocks.loaders.recipe;
 
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.api.utils.GCYMLog;
+import gregtech.api.GTValues;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.category.GTRecipeCategory;
+import gregtech.api.recipes.chance.output.ChancedOutput;
+import gregtech.api.recipes.chance.output.ChancedOutputList;
+import gregtech.api.recipes.chance.output.impl.ChancedFluidOutput;
+import gregtech.api.recipes.chance.output.impl.ChancedItemOutput;
 import gregtech.api.recipes.ingredients.GTRecipeFluidInput;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
-import gregtech.api.recipes.ingredients.GTRecipeOreInput;
+import gregtech.api.recipes.recipeproperties.TemperatureProperty;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.info.MaterialFlags;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.logging.log4j.Level;
 import org.jetbrains.annotations.NotNull;
-import scala.Int;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -40,7 +46,9 @@ public class LinearForgingFurnaceLoader {
 
     private static final Map<MaterialFlag, OrePrefix> FORGEABLE_MATERIAL_FLAGS = new Object2ObjectOpenHashMap<>(15, 1);
 
-    private static final List<OrePrefix> FORGEABLE_PIPES = new ObjectArrayList<>(9);
+    private static final Map<OrePrefix, PropertyKey<?>> FORGEABLE_PIPES = new Object2ObjectOpenHashMap<>(9, 1);
+
+    private static final List<RecipeBuilder<?>> EMPTY_BUILDER_LIST = new ObjectArrayList<>();
 
     private static void populateReferences() {
         FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_DENSE, OrePrefix.plateDense);
@@ -59,16 +67,17 @@ public class LinearForgingFurnaceLoader {
         FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_SPRING, OrePrefix.spring);
         FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_SPRING_SMALL, OrePrefix.springSmall);
 
-        FORGEABLE_PIPES.add(OrePrefix.pipeHugeItem);
-        FORGEABLE_PIPES.add(OrePrefix.pipeLargeItem);
-        FORGEABLE_PIPES.add(OrePrefix.pipeNormalItem);
-        FORGEABLE_PIPES.add(OrePrefix.pipeSmallItem);
-        FORGEABLE_PIPES.add(OrePrefix.pipeHugeFluid);
-        FORGEABLE_PIPES.add(OrePrefix.pipeLargeFluid);
-        FORGEABLE_PIPES.add(OrePrefix.pipeNormalFluid);
+        FORGEABLE_PIPES.put(OrePrefix.pipeHugeItem, PropertyKey.ITEM_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeLargeItem, PropertyKey.ITEM_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeNormalItem, PropertyKey.ITEM_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeSmallItem, PropertyKey.ITEM_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeHugeFluid, PropertyKey.FLUID_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeLargeFluid, PropertyKey.FLUID_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeNormalFluid, PropertyKey.FLUID_PIPE);
         // skip quadruple and nonuple; they can be straightforwardly crafted.
-        FORGEABLE_PIPES.add(OrePrefix.pipeSmallFluid);
-        FORGEABLE_PIPES.add(OrePrefix.pipeTinyFluid);
+        FORGEABLE_PIPES.put(OrePrefix.pipeSmallFluid, PropertyKey.FLUID_PIPE);
+        FORGEABLE_PIPES.put(OrePrefix.pipeTinyFluid, PropertyKey.FLUID_PIPE);
+
     }
 
     private LinearForgingFurnaceLoader() {}
@@ -81,24 +90,27 @@ public class LinearForgingFurnaceLoader {
     }
 
     private static void registerCooled() {
-        RecipeMap<?> map = GCYMRecipeMaps.LINEAR_FORGING_RECIPES[4];
+        RecipeMap<BlastRecipeBuilder> map = (RecipeMap<BlastRecipeBuilder>) GCYMRecipeMaps.LINEAR_FORGING_RECIPES[4];
         GTRecipeCategory category = GTRecipeCategory.getByName(map.getUnlocalizedName());
         if (category == null)
             throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
         for (Recipe blastRecipe : RecipeMaps.BLAST_RECIPES.getRecipeList()) {
-            produceCooledRecipe(blastRecipe, map, category);
+            var recipe = produceCooledRecipe(blastRecipe, map, category);
+            if (recipe != null) recipe.buildAndRegister();
         }
 
-        map = GCYMRecipeMaps.LINEAR_FORGING_RECIPES[5];
+        map = (RecipeMap<BlastRecipeBuilder>) GCYMRecipeMaps.LINEAR_FORGING_RECIPES[5];
         category = GTRecipeCategory.getByName(map.getUnlocalizedName());
         if (category == null)
             throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
         for (Recipe blastRecipe : GCYMRecipeMaps.ALLOY_BLAST_RECIPES.getRecipeList()) {
-            produceCooledRecipe(blastRecipe, map, category);
+            var recipe = produceCooledRecipe(blastRecipe, map, category);
+            if (recipe != null) recipe.buildAndRegister();
         }
     }
 
-    private static void produceCooledRecipe(Recipe blastRecipe, RecipeMap<?> targetMap,
+    private static @Nullable BlastRecipeBuilder produceCooledRecipe(Recipe blastRecipe,
+                                                                    RecipeMap<BlastRecipeBuilder> targetMap,
                                             @NotNull GTRecipeCategory mapCategory) {
 
         List<ItemStack> compositeOutputs = deepCopyIS(blastRecipe.getOutputs());
@@ -130,10 +142,11 @@ public class LinearForgingFurnaceLoader {
         }
         compositeOutputs.remove(moldStack);
         compositeFluidOutputs.remove(heliumStack);
-        // if no freezer recipe is found, just add it to the map unchanged.
         if (freezerRecipe == null) {
-            buildToMap(blastRecipe, targetMap);
-            return;
+            GTRecipeCategory category = GTRecipeCategory.getByName(targetMap.getUnlocalizedName());
+            if (category != null)
+                return new BlastRecipeBuilder(blastRecipe, targetMap).category(category);
+            return null;
         }
 
         List<GTRecipeInput> compositeInputs = deepCopyRI(freezerRecipe.getInputs());
@@ -296,31 +309,157 @@ public class LinearForgingFurnaceLoader {
             b.amount = b.amount * finalFreezerRepetitions;
             return b;
         }).collect(Collectors.toList()));
+        List<ChancedItemOutput> chancedOutputs = new ObjectArrayList<>();
+        blastRecipe.getChancedOutputs().getChancedEntries().forEach(a -> {
+            var stack = a.getIngredient().copy();
+            stack.setCount(stack.getCount() * finalBlastRepetitions);
+            chancedOutputs.add(new ChancedItemOutput(stack, a.getChance(), a.getChanceBoost()));
+        });
+        freezerRecipe.getChancedOutputs().getChancedEntries().forEach(a -> {
+            var stack = a.getIngredient().copy();
+            stack.setCount(stack.getCount() * finalFreezerRepetitions);
+            chancedOutputs.add(new ChancedItemOutput(stack, a.getChance(), a.getChanceBoost()));
+        });
+        List<ChancedFluidOutput> chancedFluidOutputs = new ObjectArrayList<>();
+        blastRecipe.getChancedFluidOutputs().getChancedEntries().forEach(a -> {
+            var stack = a.getIngredient().copy();
+            stack.amount *= finalBlastRepetitions;
+            chancedFluidOutputs.add(new ChancedFluidOutput(stack, a.getChance(), a.getChanceBoost()));
+        });
+        freezerRecipe.getChancedFluidOutputs().getChancedEntries().forEach(a -> {
+            var stack = a.getIngredient().copy();
+            stack.amount *= finalFreezerRepetitions;
+            chancedFluidOutputs.add(new ChancedFluidOutput(stack, a.getChance(), a.getChanceBoost()));
+        });
 
         // freezer/blast OCs to reach new voltage are perfect, that's one of the benefits.
         double newEU = (double) blastRecipe.getEUt() * blastRecipe.getDuration() * blastRepetitions +
                 (double) freezerRecipe.getEUt() * freezerRecipe.getDuration() * freezerRepetitions;
         int newEUt = Math.max(blastRecipe.getEUt(), freezerRecipe.getEUt());
 
-        // build from the blast recipe to copy all properties we don't later override.
-        try {
-            new RecipeBuilder<>(blastRecipe, targetMap)
-                    .clearInputs().inputs(finalizedRI(compositeInputs).toArray(new GTRecipeInput[]{}))
-                    .clearFluidInputs().fluidInputs(finalizedRI(compositeFluidInputs))
-                    .clearOutputs().outputs(finalizedIS(compositeOutputs))
-                    .clearFluidOutputs().fluidOutputs(finalizedFS(compositeFluidOutputs))
-                    .category(mapCategory)
-                    .EUt(newEUt)
-                    .duration((int) Math.ceil(newEU / newEUt))
-                    .buildAndRegister();
-        } catch (IllegalArgumentException e) {
-            registerForgingCooled();
-        }
-
+        // builder from the blast recipe to copy all properties we don't later override.
+        return new BlastRecipeBuilder(blastRecipe, targetMap)
+                .clearInputs().inputs(finalizedRI(compositeInputs).toArray(new GTRecipeInput[]{}))
+                .clearFluidInputs().fluidInputs(finalizedRI(compositeFluidInputs))
+                .clearOutputs().outputs(finalizedIS(compositeOutputs))
+                .clearFluidOutputs().fluidOutputs(finalizedFS(compositeFluidOutputs))
+                .clearChancedOutput().chancedOutputs(chancedOutputs)
+                .clearChancedFluidOutputs().chancedFluidOutputs(chancedFluidOutputs)
+                .category(mapCategory)
+                .EUt(newEUt)
+                .duration((int) Math.ceil(newEU / newEUt));
     }
 
     private static void registerForgingCooled() {
+        RecipeMap<BlastRecipeBuilder> map = (RecipeMap<BlastRecipeBuilder>) GCYMRecipeMaps.LINEAR_FORGING_RECIPES[7];
+        GTRecipeCategory category = GTRecipeCategory.getByName(map.getUnlocalizedName());
+        if (category == null)
+            throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
+        for (Recipe blastRecipe : RecipeMaps.BLAST_RECIPES.getRecipeList()) {
+            produceForgingCooledRecipes(blastRecipe, map, category).forEach(RecipeBuilder::buildAndRegister);
+        }
 
+        map = (RecipeMap<BlastRecipeBuilder>) GCYMRecipeMaps.LINEAR_FORGING_RECIPES[8];
+        category = GTRecipeCategory.getByName(map.getUnlocalizedName());
+        if (category == null)
+            throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
+        for (Recipe blastRecipe : GCYMRecipeMaps.ALLOY_BLAST_RECIPES.getRecipeList()) {
+            produceForgingCooledRecipes(blastRecipe, map, category).forEach(RecipeBuilder::buildAndRegister);
+        }
+    }
+
+    private static List<RecipeBuilder<?>> produceForgingCooledRecipes(Recipe blastRecipe,
+                                                                      RecipeMap<BlastRecipeBuilder> targetMap,
+                                                                      @NotNull GTRecipeCategory mapCategory) {
+        RecipeBuilder<BlastRecipeBuilder> baseBuilder = produceCooledRecipe(blastRecipe, targetMap, mapCategory);
+        if (baseBuilder == null) return EMPTY_BUILDER_LIST;
+        baseBuilder.duration((int) (baseBuilder.getDuration() * 1.05)); // 5% duration penalty
+        int temp = baseBuilder.copy().build().getResult().getProperty(TemperatureProperty.getInstance(), 0);
+        baseBuilder.applyProperty(TemperatureProperty.getInstance(), null); // remove the property
+        baseBuilder.applyProperty(TemperatureProperty.getInstance(), temp + 200); // 200K penalty
+        List<RecipeBuilder<?>> builders = new ObjectArrayList<>();
+        int circuitMeta = 0;
+        for (OrePrefix prefix : FORGEABLE_MATERIAL_FLAGS.values()) {
+            circuitMeta++;
+            var builder = attemptForgingCooledRecipe(prefix, baseBuilder.copy());
+            if (builder != null) {
+                builders.add(builder.circuitMeta(circuitMeta));
+            }
+        }
+
+        for (OrePrefix prefix : FORGEABLE_PIPES.keySet()) {
+            circuitMeta++;
+            var builder = attemptForgingCooledRecipe(prefix, baseBuilder.copy());
+            if (builder != null) {
+                builders.add(builder.circuitMeta(circuitMeta));
+            }
+        }
+
+        return builders;
+    }
+
+    private static @Nullable RecipeBuilder<?> attemptForgingCooledRecipe(OrePrefix prefix,
+                                                                         RecipeBuilder<?> baseBuilder) {
+        Set<Integer> multipliers = new ObjectOpenHashSet<>();
+        for (var stack : baseBuilder.getOutputs()) {
+            var mat = OreDictUnifier.getMaterial(stack);
+            var stackPrefix = OreDictUnifier.getPrefix(stack);
+            if (mat != null && stackPrefix != null) {
+                long cost = prefix.getMaterialAmount(mat.material);
+                long provided = stackPrefix.getMaterialAmount(mat.material) * stack.getCount();
+                multipliers.add(findMultiplier(cost, provided));
+            }
+        }
+        Optional<Integer> ia = multipliers.stream().reduce(LinearForgingFurnaceLoader::lcm);
+        //noinspection SimplifyOptionalCallChains
+        if (!ia.isPresent()) return null;
+        int inputMultiplier = Math.max(ia.get(), 1);
+
+        RecipeBuilder<?> internalBaseBuilder = baseBuilder.copy();
+
+        internalBaseBuilder.duration(baseBuilder.getDuration() * inputMultiplier);
+
+        internalBaseBuilder.clearInputs().inputs(finalizedRI(baseBuilder.getInputs().stream()
+                .map(a -> a.copyWithAmount(a.getAmount() * inputMultiplier))
+                .collect(Collectors.toList())).toArray(new GTRecipeInput[]{}));
+        internalBaseBuilder.clearFluidInputs().fluidInputs(finalizedRI(baseBuilder.getFluidInputs().stream()
+                .map(a -> a.copyWithAmount(a.getAmount() * inputMultiplier))
+                .collect(Collectors.toList())));
+        internalBaseBuilder.clearFluidOutputs().fluidOutputs(baseBuilder.getFluidOutputs().stream()
+                .map(a -> {
+                    FluidStack b = a.copy();
+                    b.amount *= inputMultiplier;
+                    return b;
+                }).collect(Collectors.toList()));
+        internalBaseBuilder.clearChancedOutput().chancedOutputs(baseBuilder.getChancedOutputs().stream()
+                .map(a -> {
+                    var stack = a.getIngredient().copy();
+                    stack.setCount(stack.getCount() * inputMultiplier);
+                    return new ChancedItemOutput(stack, a.getChance(), a.getChanceBoost());
+                }).collect(Collectors.toList()));
+        internalBaseBuilder.clearChancedFluidOutputs().chancedFluidOutputs(baseBuilder.getChancedFluidOutputs().stream()
+                .map(a -> {
+                    var stack = a.getIngredient().copy();
+                    stack.amount *= inputMultiplier;
+                    return new ChancedFluidOutput(stack, a.getChance(), a.getChanceBoost());
+                }).collect(Collectors.toList()));
+
+        internalBaseBuilder.clearOutputs();
+        boolean changed = false;
+        for (ItemStack stack : baseBuilder.getOutputs()) {
+            var mat = OreDictUnifier.getMaterial(stack);
+            var stackPrefix = OreDictUnifier.getPrefix(stack);
+            if (mat != null && stackPrefix != null) {
+                var newStack = OreDictUnifier.get(prefix, mat.material);
+                if (newStack == ItemStack.EMPTY) internalBaseBuilder.output(stack.getItem(), stack.getCount());
+                else {
+                    internalBaseBuilder.output(prefix, mat.material, (int) (inputMultiplier * stack.getCount()
+                            * stackPrefix.getMaterialAmount(mat.material) / prefix.getMaterialAmount(mat.material)));
+                    changed = true;
+                }
+            }
+        }
+        return changed ? internalBaseBuilder : null;
     }
 
     public static void assembleCompositeMaps() {
@@ -357,16 +496,19 @@ public class LinearForgingFurnaceLoader {
     }
 
     private static List<GTRecipeInput> finalizedRI(List<GTRecipeInput> list) {
-        return list.stream().filter(a -> a.getAmount() != 0).peek(a -> {
+        return list.stream().peek(a -> {
             if (a instanceof GTRecipeItemInput itemInput) {
                 for (var stack : itemInput.getInputStacks()) {
                     if (stack.getItem() != MetaItems.SHAPE_MOLD_INGOT.getMetaItem())
                         stack.setCount(a.getAmount());
+                    else {
+                        a.withAmount(0);
+                    }
                 }
             } else if (a instanceof GTRecipeFluidInput fluidInput) {
                 fluidInput.getInputFluidStack().amount = a.getAmount();
             }
-        }).collect(Collectors.toList());
+        }).filter(a -> a.getAmount() != 0).collect(Collectors.toList());
     }
 
     private static List<ItemStack> deepCopyIS(List<ItemStack> list) {
@@ -395,10 +537,35 @@ public class LinearForgingFurnaceLoader {
         return new ImmutablePair<>(a, b);
     }
 
+    /**
+     * Finds the smallest whole multiplier that allows the provided quantity to satisfy the cost with a whole output.
+     */
+    private static int findMultiplier(long cost, long provided) {
+        long ratio = provided * GTValues.M / cost;
+        long frac = ratio % GTValues.M;
+        // case whole number
+        if (frac == 0) return 1;
+        long denominator = GTValues.M * GTValues.M / frac;
+        long numerator = ratio * denominator / GTValues.M;
+        long gcd = gcd(numerator, denominator);
+        return (int) (denominator / gcd);
+    }
+
     private static int gcd(int a, int b) {
         if (b == 0)
             return a;
         else
             return gcd(b, a % b);
+    }
+
+    private static long gcd(long a, long b) {
+        if (b == 0)
+            return a;
+        else
+            return gcd(b, a % b);
+    }
+
+    private static int lcm(int a, int b) {
+        return a * b / gcd(a, b);
     }
 }
