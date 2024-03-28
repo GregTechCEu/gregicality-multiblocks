@@ -31,8 +31,8 @@ public final class GCYMRecipeMaps {
                     .setSlotOverlay(true, true, false, GuiTextures.FURNACE_OVERLAY_2)
                     .setSound(GTSoundEvents.FURNACE),
             RecipeMaps.VACUUM_RECIPES,
-            new RecipeMap<>("lff_blast_cooled", 3, 3, 3, 2, new BlastRecipeBuilder(), false),
-            new RecipeMap<>("lff_alloy_cooled", 9, 0, 3, 2, new BlastRecipeBuilder(), false)
+            new RecipeMap<>("lff_blast_cooled", 6, 3, 3, 2, new BlastRecipeBuilder(), false),
+            new RecipeMap<>("lff_alloy_cooled", 12, 1, 4, 2, new BlastRecipeBuilder(), false)
                     .setSlotOverlay(false, false, false, GuiTextures.FURNACE_OVERLAY_1)
                     .setSlotOverlay(false, false, true, GuiTextures.FURNACE_OVERLAY_1)
                     .setSlotOverlay(false, true, false, GuiTextures.FURNACE_OVERLAY_2)
@@ -43,8 +43,8 @@ public final class GCYMRecipeMaps {
                     .setSlotOverlay(false, true, false, GuiTextures.FURNACE_OVERLAY_2)
                     .setSlotOverlay(true, true, false, GuiTextures.FURNACE_OVERLAY_2)
                     .setSound(GTSoundEvents.FURNACE),
-            new RecipeMap<>("lff_blast_forging_cooled", 3, 3, 3, 2, new BlastRecipeBuilder(), false),
-            new RecipeMap<>("lff_alloy_forging_cooled", 9, 0, 3, 2, new BlastRecipeBuilder(), false)
+            new RecipeMap<>("lff_blast_forging_cooled", 6, 3, 3, 2, new BlastRecipeBuilder(), false),
+            new RecipeMap<>("lff_alloy_forging_cooled", 12, 1, 4, 2, new BlastRecipeBuilder(), false)
                     .setSlotOverlay(false, false, false, GuiTextures.FURNACE_OVERLAY_1)
                     .setSlotOverlay(false, false, true, GuiTextures.FURNACE_OVERLAY_1)
                     .setSlotOverlay(false, true, false, GuiTextures.FURNACE_OVERLAY_2)
