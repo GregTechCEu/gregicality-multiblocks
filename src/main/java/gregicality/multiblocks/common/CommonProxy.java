@@ -72,7 +72,6 @@ public class CommonProxy {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void recipesLate(RegistryEvent.Register<IRecipe> event) {
-        GCYMLog.logger.info("Registering Linear Forging Furnace recipes...");
         LinearForgingFurnaceLoader.registerLate();
     }
 }

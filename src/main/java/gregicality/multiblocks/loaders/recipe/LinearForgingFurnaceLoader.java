@@ -37,6 +37,7 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.GCYMConfigHolder;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -52,6 +53,8 @@ public class LinearForgingFurnaceLoader {
     private static final Map<OrePrefix, PropertyKey<?>> FORGEABLE_PIPES = new Object2ObjectOpenHashMap<>(9, 1);
 
     private static final List<RecipeBuilder<?>> EMPTY_BUILDER_LIST = new ObjectArrayList<>();
+
+    private static int count = 0;
 
     private static void populateReferences() {
         FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_DENSE, OrePrefix.plateDense);
@@ -85,10 +88,21 @@ public class LinearForgingFurnaceLoader {
     private LinearForgingFurnaceLoader() {}
 
     public static void registerLate() {
+        GCYMLog.logger.info("Registering Linear Forging Furnace recipes...");
         populateReferences();
+        long time = System.currentTimeMillis();
         registerCooled();
+        GCYMLog.logger.debug(String.format("Registered %s cooled recipes in %s milliseconds.", count,
+                System.currentTimeMillis() - time));
+        count = 0;
+        time = System.currentTimeMillis();
         registerForgingCooled();
+        GCYMLog.logger.debug(String.format("Registered %s cooled forging recipes in %s milliseconds.", count,
+                System.currentTimeMillis() - time));
+        time = System.currentTimeMillis();
         assembleCompositeMaps();
+        GCYMLog.logger.debug(String.format("Assembled composite maps in %s milliseconds.",
+                System.currentTimeMillis() - time));
     }
 
     private static void registerCooled() {
@@ -98,7 +112,10 @@ public class LinearForgingFurnaceLoader {
             throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
         for (Recipe blastRecipe : RecipeMaps.BLAST_RECIPES.getRecipeList()) {
             var recipe = produceCooledRecipe(blastRecipe, map, category);
-            if (recipe != null) recipe.buildAndRegister();
+            if (recipe != null) {
+                count++;
+                recipe.buildAndRegister();
+            }
         }
 
         map = (RecipeMap<BlastRecipeBuilder>) GCYMRecipeMaps.LINEAR_FORGING_RECIPES[5];
@@ -107,7 +124,10 @@ public class LinearForgingFurnaceLoader {
             throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
         for (Recipe blastRecipe : GCYMRecipeMaps.ALLOY_BLAST_RECIPES.getRecipeList()) {
             var recipe = produceCooledRecipe(blastRecipe, map, category);
-            if (recipe != null) recipe.buildAndRegister();
+            if (recipe != null) {
+                count++;
+                recipe.buildAndRegister();
+            }
         }
     }
 
@@ -364,7 +384,10 @@ public class LinearForgingFurnaceLoader {
         if (category == null)
             throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
         for (Recipe blastRecipe : RecipeMaps.BLAST_RECIPES.getRecipeList()) {
-            produceForgingCooledRecipes(blastRecipe, map, category).forEach(RecipeBuilder::buildAndRegister);
+            for (RecipeBuilder<?> recipeBuilder : produceForgingCooledRecipes(blastRecipe, map, category)) {
+                count++;
+                recipeBuilder.buildAndRegister();
+            }
         }
 
         map = (RecipeMap<BlastRecipeBuilder>) GCYMRecipeMaps.LINEAR_FORGING_RECIPES[8];
@@ -372,7 +395,10 @@ public class LinearForgingFurnaceLoader {
         if (category == null)
             throw new IllegalStateException("Component recipemap " + map.getUnlocalizedName() + " had no a category!");
         for (Recipe blastRecipe : GCYMRecipeMaps.ALLOY_BLAST_RECIPES.getRecipeList()) {
-            produceForgingCooledRecipes(blastRecipe, map, category).forEach(RecipeBuilder::buildAndRegister);
+            for (RecipeBuilder<?> recipeBuilder : produceForgingCooledRecipes(blastRecipe, map, category)) {
+                count++;
+                recipeBuilder.buildAndRegister();
+            }
         }
     }
 
