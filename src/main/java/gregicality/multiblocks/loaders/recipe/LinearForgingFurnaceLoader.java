@@ -1,6 +1,7 @@
 package gregicality.multiblocks.loaders.recipe;
 
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.common.GCYMConfigHolder;
 import gregtech.api.GTValues;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.Recipe;
@@ -9,8 +10,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.category.GTRecipeCategory;
-import gregtech.api.recipes.chance.output.ChancedOutput;
-import gregtech.api.recipes.chance.output.ChancedOutputList;
 import gregtech.api.recipes.chance.output.impl.ChancedFluidOutput;
 import gregtech.api.recipes.chance.output.impl.ChancedItemOutput;
 import gregtech.api.recipes.ingredients.GTRecipeFluidInput;
@@ -338,7 +337,7 @@ public class LinearForgingFurnaceLoader {
         int newEUt = Math.max(blastRecipe.getEUt(), freezerRecipe.getEUt());
 
         // builder from the blast recipe to copy all properties we don't later override.
-        return new BlastRecipeBuilder(blastRecipe, targetMap)
+        var builder = new BlastRecipeBuilder(blastRecipe, targetMap)
                 .clearInputs().inputs(finalizedRI(compositeInputs).toArray(new GTRecipeInput[]{}))
                 .clearFluidInputs().fluidInputs(finalizedRI(compositeFluidInputs))
                 .clearOutputs().outputs(finalizedIS(compositeOutputs))
@@ -347,7 +346,14 @@ public class LinearForgingFurnaceLoader {
                 .clearChancedFluidOutputs().chancedFluidOutputs(chancedFluidOutputs)
                 .category(mapCategory)
                 .EUt(newEUt)
-                .duration((int) Math.ceil(newEU / newEUt));
+                .duration((int) (Math.ceil(newEU / newEUt) *
+                        GCYMConfigHolder.linearForgingFurnaceSettings.coolingDurationModifier));
+
+        int temp = blastRecipe.getProperty(TemperatureProperty.getInstance(), 0);
+        builder.applyProperty(TemperatureProperty.getInstance(), null);
+        builder.applyProperty(TemperatureProperty.getInstance(), temp +
+                GCYMConfigHolder.linearForgingFurnaceSettings.coolingTemperaturePenalty);
+        return builder;
     }
 
     private static void registerForgingCooled() {
@@ -373,10 +379,12 @@ public class LinearForgingFurnaceLoader {
                                                                       @NotNull GTRecipeCategory mapCategory) {
         RecipeBuilder<BlastRecipeBuilder> baseBuilder = produceCooledRecipe(blastRecipe, targetMap, mapCategory);
         if (baseBuilder == null) return EMPTY_BUILDER_LIST;
-        baseBuilder.duration((int) (baseBuilder.getDuration() * 1.05)); // 5% duration penalty
+        baseBuilder.duration((int) (baseBuilder.getDuration() *
+                GCYMConfigHolder.linearForgingFurnaceSettings.forgingDurationModifier / 100));
         int temp = baseBuilder.copy().build().getResult().getProperty(TemperatureProperty.getInstance(), 0);
-        baseBuilder.applyProperty(TemperatureProperty.getInstance(), null); // remove the property
-        baseBuilder.applyProperty(TemperatureProperty.getInstance(), temp + 200); // 200K penalty
+        baseBuilder.applyProperty(TemperatureProperty.getInstance(), null);
+        baseBuilder.applyProperty(TemperatureProperty.getInstance(), temp +
+                GCYMConfigHolder.linearForgingFurnaceSettings.forgingTemperaturePenalty);
         List<RecipeBuilder<?>> builders = new ObjectArrayList<>();
         int circuitMeta = 0;
         for (OrePrefix prefix : FORGEABLE_MATERIAL_FLAGS.values()) {
