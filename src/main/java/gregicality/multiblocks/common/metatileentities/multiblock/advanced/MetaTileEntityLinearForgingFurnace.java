@@ -119,10 +119,14 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 (VAs - 70) / 14;
             case 2 -> // Dual
                 (VAs - 106) / 26;
-            // case 3 -> // Freezer
-            // case 4 -> // Blast Cooling
-            // case 5 -> // Alloy Cooling
-            // case 6 -> // Dual Cooling
+            case 3 -> // Freezer
+                (VAs - 2) / 3;
+            case 4 -> // Blast Cooling
+                (VAs - 38) / 15;
+            case 5 -> // Alloy Cooling
+                (VAs - 72) / 17;
+            case 6 -> // Dual Cooling
+                (VAs - 108) / 29;
             // case 7 -> // Blast Forging
             // case 8 -> // Alloy Forging
             // case 9 -> // Dual Forging
@@ -136,21 +140,51 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
         return (switch (index) {
             default -> // Blast
                 FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
-                        .aisle("XXX EFCFFCFE ZZZ", "XSX EICVVCIE ZZZ", "XXX EFCFFCFE ZZZ")
-                        .aisle("XXX ECCCCCCE ZZZ", "XPPPP######PPPPZ", "XXX ECCCCCCE ZZZ").setRepeatable(1, 16)
-                        .aisle("XXX EFCFFCFE ZZZ", "XMX EICVVCIE ZZZ", "XXX EFCFFCFE ZZZ");
+                        .aisle(
+                                "XXX EFCFFCFE ZZZ",
+                                "XSX EICVVCIE ZZZ",
+                                "XXX EFCFFCFE ZZZ")
+                        .aisle(
+                                "XXX ECCCCCCE ZZZ",
+                                "XPPPP######PPPPZ",
+                                "XXX ECCCCCCE ZZZ")
+                        .setRepeatable(1, 16)
+                        .aisle(
+                                "XXX EFCFFCFE ZZZ",
+                                "XMX EICVVCIE ZZZ",
+                                "XXX EFCFFCFE ZZZ");
             case 1 -> // Alloy
                 FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
-                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                        .aisle(
+                                "                 ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
                                 "                 ")
-                        .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XSX A#######A ZZZ", "XXX A#######A ZZZ",
+                        .aisle(
+                                "    AFCFVFCFA    ",
+                                "XXX A#######A ZZZ",
+                                "XSX A#######A ZZZ",
+                                "XXX A#######A ZZZ",
                                 "    AFCFVFCFA    ")
-                        .aisle("    ACCCVCCCA    ", "XXX A#######A ZZZ", "XPPPP#######PPPPZ", "XXX A#######A ZZZ",
+                        .aisle(
+                                "    ACCCVCCCA    ",
+                                "XXX A#######A ZZZ",
+                                "XPPPP#######PPPPZ",
+                                "XXX A#######A ZZZ",
                                 "    ACCCVCCCA    ")
                         .setRepeatable(1, 16)
-                        .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XMX A#######A ZZZ", "XXX A#######A ZZZ",
+                        .aisle(
+                                "    AFCFVFCFA    ",
+                                "XXX A#######A ZZZ",
+                                "XMX A#######A ZZZ",
+                                "XXX A#######A ZZZ",
                                 "    AFCFVFCFA    ")
-                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                        .aisle(
+                                "                 ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
+                                "    AICIVICIA    ",
                                 "                 ");
             case 2 -> {// Dual
                 casing = states(getCasingState()).setMinLayerLimited(20);
@@ -229,10 +263,170 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "    AICIVICIA    ",
                                 "                 ");
             }
-            // case 3 -> // Freezer
-            // case 4 -> // Blast Cooling
-            // case 5 -> // Alloy Cooling
-            // case 6 -> // Dual Cooling
+            case 3 -> // Freezer
+                FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle(
+                                "XXX HHH ZZZ",
+                                "XSX HHH ZZZ",
+                                "XXX HHH ZZZ",
+                                "    BVB    ",
+                                "    BBB    ")
+                        .aisle(
+                                "XXX HHH ZZZ",
+                                "XPPPP#PPPPZ",
+                                "XXX HPH ZZZ",
+                                "    VPV    ",
+                                "    BVB    ")
+                        .setRepeatable(1, 16)
+                        .aisle(
+                                "XXX HHH ZZZ",
+                                "XMX HHH ZZZ",
+                                "XXX HHH ZZZ",
+                                "    BVB    ",
+                                "    BBB    ");
+            case 4 -> // Blast Cooling
+                FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle(
+                                "XXX EFCFFCFE HHH ZZZ",
+                                "XSX EICVVCIE HHH ZZZ",
+                                "XXX EFCFFCFE HHH ZZZ",
+                                "             BVB    ",
+                                "             BBB    ")
+                        .aisle(
+                                "XXX ECCCCCCE HHH ZZZ",
+                                "XPPPP######PPP#PPPPZ",
+                                "XXX ECCCCCCE HPH ZZZ",
+                                "             VPV    ",
+                                "             BVB    ")
+                        .setRepeatable(1, 16)
+                        .aisle(
+                                "XXX EFCFFCFE HHH ZZZ",
+                                "XMX EICVVCIE HHH ZZZ",
+                                "XXX EFCFFCFE HHH ZZZ",
+                                "             BVB    ",
+                                "             BBB    ");
+            case 5 -> // Alloy Cooling
+                FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle(
+                                "                     ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "                     ",
+                                "                     ")
+                        .aisle(
+                                "    AFCFVFCFA        ",
+                                "XXX A#######A HHH ZZZ",
+                                "XSX A#######A HHH ZZZ",
+                                "XXX A#######A HHH ZZZ",
+                                "    AFCFVFCFA BVB    ",
+                                "              BBB    ")
+                        .aisle(
+                                "    ACCCVCCCA        ",
+                                "XXX A#######A HHH ZZZ",
+                                "XPPPP#######PPP#PPPPZ",
+                                "XXX A#######A HPH ZZZ",
+                                "    ACCCVCCCA VPV    ",
+                                "              BVB    ")
+                        .setRepeatable(1, 16)
+                        .aisle(
+                                "    AFCFVFCFA        ",
+                                "XXX A#######A HHH ZZZ",
+                                "XMX A#######A HHH ZZZ",
+                                "XXX A#######A HHH ZZZ",
+                                "    AFCFVFCFA BVB    ",
+                                "              BBB    ")
+                        .aisle(
+                                "                     ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "                     ",
+                                "                     ");
+            case 6 -> {// Dual Cooling
+                casing = states(getCasingState()).setMinLayerLimited(20);
+                yield FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle(
+                                "                     ",
+                                "                     ",
+                                "                     ",
+                                "                     ",
+                                "                     ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "                     ",
+                                "                     ")
+                        .aisle(
+                                "XXX EFCFFCFE  ZZZ    ",
+                                "XXX EICVVCIE  ZZZ    ",
+                                "XXX EFCFFCFE  ZZZ    ",
+                                "                     ",
+                                "    AFCFVFCFA        ",
+                                "XXX A#######A HHH ZZZ",
+                                "XSX A#######A HHH ZZZ",
+                                "XXX A#######A HHH ZZZ",
+                                "    AFCFVFCFA BVB    ",
+                                "              BBB    ")
+                        .aisle(
+                                "XXX ECCCCCCE  ZZZ    ",
+                                "XPPPP######PPPPPZ    ",
+                                "XPX ECCCCCCE  ZPZ    ",
+                                " P             P     ",
+                                " P  ACCCVCCCA  P     ",
+                                "XPX A#######A HPH ZZZ",
+                                "XPPPP#######PPP#PPPPZ",
+                                "XXX A#######A HPH ZZZ",
+                                "    ACCCVCCCA VPV    ",
+                                "              BVB    ")
+                        .setRepeatable(1)
+                        .aisle(
+                                "XXX ECCCCCCE  ZZZ    ",
+                                "XPPPP######PPPPPZ    ",
+                                "XXX ECCCCCCE  ZZZ    ",
+                                "                     ",
+                                "    ACCCVCCCA        ",
+                                "XXX A#######A HHH ZZZ",
+                                "XPPPP#######PPP#PPPPZ",
+                                "XXX A#######A HPH ZZZ",
+                                "    ACCCVCCCA VPV    ",
+                                "              BVB    ")
+                        .setRepeatable(0, 14)
+                        .aisle(
+                                "XXX ECCCCCCE  ZZZ    ",
+                                "XPPPP######PPPPPZ    ",
+                                "XPX ECCCCCCE  ZPZ    ",
+                                " P             P     ",
+                                " P  ACCCVCCCA  P     ",
+                                "XPX A#######A HPH ZZZ",
+                                "XPPPP#######PPP#PPPPZ",
+                                "XXX A#######A HPH ZZZ",
+                                "    ACCCVCCCA VPV    ",
+                                "              BVB    ")
+                        .setRepeatable(0, 1)
+                        .aisle(
+                                "XXX EFCFFCFE  ZZZ    ",
+                                "XXX EICVVCIE  ZZZ    ",
+                                "XXX EFCFFCFE  ZZZ    ",
+                                "                     ",
+                                "    AFCFVFCFA        ",
+                                "XXX A#######A HHH ZZZ",
+                                "XMX A#######A HHH ZZZ",
+                                "XXX A#######A HHH ZZZ",
+                                "    AFCFVFCFA BVB    ",
+                                "              BBB    ")
+                        .aisle(
+                                "                     ",
+                                "                     ",
+                                "                     ",
+                                "                     ",
+                                "                     ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "    AICIVICIA        ",
+                                "                     ",
+                                "                     ");
+            }
             // case 7 -> // Blast Forging
             // case 8 -> // Alloy Forging
             // case 9 -> // Dual Forging
@@ -248,6 +442,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 .where('E', states(getCasingStateEBF()))
                 .where('A', states(getCasingStateABS()))
                 .where('H', states(getCasingStateVacuum()))
+                .where('B', states(getCasingStateStainless()))
                 .where('F', states(getFireboxState()))
                 .where('I', states(getIntakeState()))
                 .where('P', states(getPipeState()))
@@ -267,6 +462,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 .where('E', getCasingStateEBF())
                 .where('A', getCasingStateABS())
                 .where('H', getCasingStateVacuum())
+                .where('B', getCasingStateStainless())
                 .where('F', getFireboxState())
                 .where('I', getIntakeState())
                 .where('P', getPipeState())
@@ -278,7 +474,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 .where('T', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('Y', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.SOUTH)
                 .where('L', getCasingState())
-                .where('H',
+                .where('U',
                         () -> ConfigHolder.machines.enableMaintenance ? MetaTileEntities.MAINTENANCE_HATCH :
                                 getCasingState(),
                         EnumFacing.SOUTH);
@@ -290,7 +486,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 a -> a.where('S', fakeController, EnumFacing.SOUTH)
                         .aisle("XXX EFCFFCFE XXX", "XMX EICVVCIE XXX", "XXX EFCFFCFE XXX"),
                 (a, i, j) -> a.aisle("XXX ECCCCCCE XXX", "XPPPP      PPPPX", "XXX ECCCCCCE XXX"),
-                a -> a.aisle("XXX EFCFFCFE XXX", "YSX EICVVCIE HLX", "ZXN EFCFFCFE OXT"));
+                a -> a.aisle("XXX EFCFFCFE XXX", "YSX EICVVCIE ULX", "ZXN EFCFFCFE OXT"));
         // Alloy
         fakeController.inDisplayWorld(1);
         doRowCopies(shapeInfo, builder,
@@ -301,7 +497,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "    AFCFVFCFA    "),
                 (a, i, j) -> a.aisle("    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX",
                         "    ACCCVCCCA    "),
-                a -> a.aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT",
+                a -> a.aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A ULX", "ZXN A#######A OXT",
                         "    AFCFVFCFA    ")
                         .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
                                 "                 "));
@@ -316,11 +512,7 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX",
                                 "    AFCFVFCFA    "),
                 (a, i, j) -> {
-                    if (j == 0) {
-                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ",
-                                " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX",
-                                "    ACCCVCCCA    ");
-                    } else if (j == i - 1) {
+                    if (j == 0 || j == i - 1) {
                         a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ",
                                 " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX",
                                 "    ACCCVCCCA    ");
@@ -331,11 +523,75 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                     }
                 },
                 a -> a.aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ",
-                        "    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT",
+                        "    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A ULX", "ZXN A#######A OXT",
                         "    AFCFVFCFA    ")
                         .aisle("                 ", "                 ", "                 ", "                 ",
                                 "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
                                 "                 "));
+        // Freezer
+        fakeController.inDisplayWorld(3);
+        doRowCopies(shapeInfo, builder,
+                a -> a.where('S', fakeController, EnumFacing.SOUTH)
+                        .aisle("XXX HHH XXX", "XMX HHH XXX", "XXX HHH XXX", "    BVB    ", "    BBB    "),
+                (a, i, j) -> a.aisle("XXX HHH XXX", "XPPPP#PPPPX", "XXX HPH XXX", "    VPV    ", "    BVB    "),
+                a -> a.aisle("XXX HHH XXX", "YSX HHH ULX", "ZXN HHH OXT", "    BVB    ", "    BBB    "));
+        // Blast Cooling
+        fakeController.inDisplayWorld(4);
+        doRowCopies(shapeInfo, builder,
+                a -> a.where('S', fakeController, EnumFacing.SOUTH)
+                        .aisle("XXX EFCFFCFE HHH XXX", "XMX EICVVCIE HHH XXX", "XXX EFCFFCFE HHH XXX",
+                                "             BVB    ", "             BBB    "),
+                (a, i, j) -> a.aisle("XXX ECCCCCCE HHH XXX", "XPPPP      PPP PPPPX", "XXX ECCCCCCE HPH XXX",
+                        "             VPV    ", "             BVB    "),
+                a -> a.aisle("XXX EFCFFCFE HHH XXX", "YSX EICVVCIE HHH ULX", "ZXN EFCFFCFE HHH OXT",
+                        "             BVB    ", "             BBB    "));
+        // Alloy Cooling
+        fakeController.inDisplayWorld(5);
+        doRowCopies(shapeInfo, builder,
+                a -> a.where('S', fakeController, EnumFacing.SOUTH)
+                        .aisle("                     ", "    AICIVICIA        ", "    AICIVICIA        ",
+                                "    AICIVICIA        ", "                     ", "                     ")
+                        .aisle("    AFCFVFCFA        ", "XXX A#######A HHH XXX", "XMX A#######A HHH XXX",
+                                "XXX A#######A HHH XXX", "    AFCFVFCFA BVB    ", "              BBB    "),
+                (a, i, j) -> a.aisle("    ACCCVCCCA        ", "XXX A#######A HHH XXX", "XPPPP#######PPP#PPPPX",
+                        "XXX A#######A HPH XXX", "    ACCCVCCCA VPV    ", "              BVB    "),
+                a -> a.aisle("    AFCFVFCFA        ", "XXX A#######A HHH XXX", "YSX A#######A HHH ULX",
+                        "ZXN A#######A HHH OXT", "    AFCFVFCFA BVB    ", "              BBB    ")
+                        .aisle("                     ", "    AICIVICIA        ", "    AICIVICIA        ",
+                                "    AICIVICIA        ", "                     ", "                     "));
+        // Dual Cooling
+        fakeController.inDisplayWorld(6);
+        doRowCopies(shapeInfo, builder,
+                a -> a.where('S', fakeController, EnumFacing.SOUTH)
+                        .aisle("                     ", "                     ", "                     ",
+                                "                     ", "                     ", "    AICIVICIA        ",
+                                "    AICIVICIA        ", "    AICIVICIA        ", "                     ",
+                                "                     ")
+                        .aisle("XXX EFCFFCFE  XXX    ", "XXX EICVVCIE  XXX    ", "XXX EFCFFCFE  XXX    ",
+                                "                     ", "    AFCFVFCFA        ", "XXX A#######A HHH XXX",
+                                "XMX A#######A HHH XXX", "XXX A#######A HHH XXX", "    AFCFVFCFA BVB    ",
+                                "              BBB    "),
+                (a, i, j) -> {
+                    if (j == 0 || j == i - 1) {
+                        a.aisle("XXX ECCCCCCE  XXX    ", "XPPPP######PPPPPX    ", "XPX ECCCCCCE  XPX    ",
+                                " P             P     ", " P  ACCCVCCCA  P     ", "XPX A#######A HPH XXX",
+                                "XPPPP#######PPP#PPPPX", "XXX A#######A HPH XXX", "    ACCCVCCCA VPV    ",
+                                "              BVB    ");
+                    } else {
+                        a.aisle("XXX ECCCCCCE  XXX    ", "XPPPP######PPPPPX    ", "XXX ECCCCCCE  XXX    ",
+                                "                     ", "    ACCCVCCCA        ", "XXX A#######A HHH XXX",
+                                "XPPPP#######PPP#PPPPX", "XXX A#######A HPH XXX", "    ACCCVCCCA VPV    ",
+                                "              BVB    ");
+                    }
+                },
+                a -> a.aisle("XXX EFCFFCFE  XXX    ", "XXX EICVVCIE  XXX    ", "XXX EFCFFCFE  XXX    ",
+                        "                     ", "    AFCFVFCFA        ", "XXX A#######A HHH XXX",
+                        "YSX A#######A HHH ULX", "ZXN A#######A HHH OXT", "    AFCFVFCFA BVB    ",
+                        "              BBB    ")
+                        .aisle("                     ", "                     ", "                     ",
+                                "                     ", "                     ", "    AICIVICIA        ",
+                                "    AICIVICIA        ", "    AICIVICIA        ", "                     ",
+                                "                     "));
         return shapeInfo;
     }
 
@@ -376,6 +632,10 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
     private static IBlockState getCasingStateVacuum() {
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF);
+    }
+
+    private static IBlockState getCasingStateStainless() {
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     private static IBlockState getFireboxState() {
