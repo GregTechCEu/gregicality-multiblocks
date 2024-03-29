@@ -28,36 +28,32 @@ public class GCYMConfigHolder {
                 "Default: 1" })
         @Config.RequiresMcRestart
         @Config.RangeDouble(
-                min = 0.1,
-                max = 2.0
-        )
+                            min = 0.1,
+                            max = 2.0)
         public double coolingDurationModifier = 1.0;
 
         @Config.Comment({ "Sets the flat temperature penalty applied for cooling recipes.",
                 "Default: 0" })
         @Config.RequiresMcRestart
         @Config.RangeInt(
-                min = 0,
-                max = 2000
-        )
+                         min = 0,
+                         max = 2000)
         public int coolingTemperaturePenalty = 0;
 
         @Config.Comment({ "Sets the multiplier to duration applied for forging recipes.",
                 "Default: 1.05" })
         @Config.RequiresMcRestart
         @Config.RangeDouble(
-                min = 0.1,
-                max = 2.0
-        )
+                            min = 0.1,
+                            max = 2.0)
         public double forgingDurationModifier = 1.05;
 
         @Config.Comment({ "Sets the flat temperature penalty applied for forging recipes.",
                 "Default: 200" })
         @Config.RequiresMcRestart
         @Config.RangeInt(
-                min = 0,
-                max = 2000
-        )
+                         min = 0,
+                         max = 2000)
         public int forgingTemperaturePenalty = 200;
     }
 }

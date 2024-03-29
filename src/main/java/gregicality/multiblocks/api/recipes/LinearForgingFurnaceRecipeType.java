@@ -1,17 +1,20 @@
 package gregicality.multiblocks.api.recipes;
 
-import com.google.common.collect.Lists;
+import static gregicality.multiblocks.api.recipes.GCYMRecipeMaps.LFF_RECIPES_AS_LIST;
+
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static gregicality.multiblocks.api.recipes.GCYMRecipeMaps.LFF_RECIPES_AS_LIST;
-
 public enum LinearForgingFurnaceRecipeType {
-    NONE, BLAST, ALLOY, BLAST_COOLED, ALLOY_COOLED, BLAST_FORGING_COOLED, ALLOY_FORGING_COOLED;
+
+    NONE,
+    BLAST,
+    ALLOY,
+    BLAST_COOLED,
+    ALLOY_COOLED,
+    BLAST_FORGING_COOLED,
+    ALLOY_FORGING_COOLED;
 
     public static LinearForgingFurnaceRecipeType getRecipeType(Recipe recipe) {
         if (RecipeMaps.BLAST_RECIPES.getRecipeList().contains(recipe))

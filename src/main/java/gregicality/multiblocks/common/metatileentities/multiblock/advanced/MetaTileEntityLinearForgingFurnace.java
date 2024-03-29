@@ -1,14 +1,24 @@
 package gregicality.multiblocks.common.metatileentities.multiblock.advanced;
 
-import gregicality.multiblocks.api.capability.impl.GCYMHeatingCoilRecipeLogic;
-import gregicality.multiblocks.api.metatileentity.GCYMMultiShapeMultiblockController;
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.api.recipes.LinearForgingFurnaceRecipeType;
-import gregicality.multiblocks.api.render.GCYMTextures;
-import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
-import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
-import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
+import java.util.*;
+import java.util.function.Consumer;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.GTValues;
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.block.VariantActiveBlock;
@@ -18,7 +28,6 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.pattern.*;
 import gregtech.api.recipes.Recipe;
@@ -33,23 +42,16 @@ import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
-import java.util.function.Consumer;
+import gregicality.multiblocks.api.capability.impl.GCYMHeatingCoilRecipeLogic;
+import gregicality.multiblocks.api.metatileentity.GCYMMultiShapeMultiblockController;
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.recipes.LinearForgingFurnaceRecipeType;
+import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
+import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 
 public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblockController implements IHeatingCoil {
 
@@ -109,21 +111,21 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
     }
 
     protected int calculateRowCount(PatternMatchContext context) {
-        int VAs = ((LinkedList<?>)context.get("VABlock")).size();
+        int VAs = ((LinkedList<?>) context.get("VABlock")).size();
         return switch (this.getRecipeMapIndex()) {
             default -> // Blast
-                    (VAs - 36) / 12;
+                (VAs - 36) / 12;
             case 1 -> // Alloy
-                    (VAs - 70) / 14;
+                (VAs - 70) / 14;
             case 2 -> // Dual
-                    (VAs - 106) / 26;
-//            case 3 -> // Freezer
-//            case 4 -> // Blast Cooling
-//            case 5 -> // Alloy Cooling
-//            case 6 -> // Dual Cooling
-//            case 7 -> // Blast Forging
-//            case 8 -> // Alloy Forging
-//            case 9 -> // Dual Forging
+                (VAs - 106) / 26;
+            // case 3 -> // Freezer
+            // case 4 -> // Blast Cooling
+            // case 5 -> // Alloy Cooling
+            // case 6 -> // Dual Cooling
+            // case 7 -> // Blast Forging
+            // case 8 -> // Alloy Forging
+            // case 9 -> // Dual Forging
         };
     }
 
@@ -133,17 +135,23 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
         TraceabilityPredicate auto = autoAbilities(true, true, false, false, false, false, false);
         return (switch (index) {
             default -> // Blast
-                    FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
-                            .aisle("XXX EFCFFCFE ZZZ", "XSX EICVVCIE ZZZ", "XXX EFCFFCFE ZZZ")
-                            .aisle("XXX ECCCCCCE ZZZ", "XPPPP######PPPPZ", "XXX ECCCCCCE ZZZ").setRepeatable(1, 16)
-                            .aisle("XXX EFCFFCFE ZZZ", "XMX EICVVCIE ZZZ", "XXX EFCFFCFE ZZZ");
+                FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle("XXX EFCFFCFE ZZZ", "XSX EICVVCIE ZZZ", "XXX EFCFFCFE ZZZ")
+                        .aisle("XXX ECCCCCCE ZZZ", "XPPPP######PPPPZ", "XXX ECCCCCCE ZZZ").setRepeatable(1, 16)
+                        .aisle("XXX EFCFFCFE ZZZ", "XMX EICVVCIE ZZZ", "XXX EFCFFCFE ZZZ");
             case 1 -> // Alloy
-                    FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
-                            .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ")
-                            .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XSX A#######A ZZZ", "XXX A#######A ZZZ", "    AFCFVFCFA    ")
-                            .aisle("    ACCCVCCCA    ", "XXX A#######A ZZZ", "XPPPP#######PPPPZ", "XXX A#######A ZZZ", "    ACCCVCCCA    ").setRepeatable(1, 16)
-                            .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XMX A#######A ZZZ", "XXX A#######A ZZZ", "    AFCFVFCFA    ")
-                            .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ");
+                FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
+                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                                "                 ")
+                        .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XSX A#######A ZZZ", "XXX A#######A ZZZ",
+                                "    AFCFVFCFA    ")
+                        .aisle("    ACCCVCCCA    ", "XXX A#######A ZZZ", "XPPPP#######PPPPZ", "XXX A#######A ZZZ",
+                                "    ACCCVCCCA    ")
+                        .setRepeatable(1, 16)
+                        .aisle("    AFCFVFCFA    ", "XXX A#######A ZZZ", "XMX A#######A ZZZ", "XXX A#######A ZZZ",
+                                "    AFCFVFCFA    ")
+                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                                "                 ");
             case 2 -> {// Dual
                 casing = states(getCasingState()).setMinLayerLimited(20);
                 yield FactoryBlockPattern.start(RelativeDirection.RIGHT, RelativeDirection.UP, RelativeDirection.FRONT)
@@ -176,7 +184,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "XPX A#######A ZPZ",
                                 "XPPPP#######PPPPZ",
                                 "XXX A#######A ZZZ",
-                                "    ACCCVCCCA    ").setRepeatable(1)
+                                "    ACCCVCCCA    ")
+                        .setRepeatable(1)
                         .aisle(
                                 "XXX ECCCCCCE  ZZZ",
                                 "XPPPP######PPPPPZ",
@@ -186,7 +195,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "XXX A#######A ZZZ",
                                 "XPPPP#######PPPPZ",
                                 "XXX A#######A ZZZ",
-                                "    ACCCVCCCA    ").setRepeatable(0, 14)
+                                "    ACCCVCCCA    ")
+                        .setRepeatable(0, 14)
                         .aisle(
                                 "XXX ECCCCCCE  ZZZ",
                                 "XPPPP######PPPPPZ",
@@ -196,7 +206,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "XPX A#######A ZPZ",
                                 "XPPPP#######PPPPZ",
                                 "XXX A#######A ZZZ",
-                                "    ACCCVCCCA    ").setRepeatable(0, 1)
+                                "    ACCCVCCCA    ")
+                        .setRepeatable(0, 1)
                         .aisle(
                                 "XXX EFCFFCFE  ZZZ",
                                 "XXX EICVVCIE  ZZZ",
@@ -218,13 +229,13 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                                 "    AICIVICIA    ",
                                 "                 ");
             }
-//            case 3 -> // Freezer
-//            case 4 -> // Blast Cooling
-//            case 5 -> // Alloy Cooling
-//            case 6 -> // Dual Cooling
-//            case 7 -> // Blast Forging
-//            case 8 -> // Alloy Forging
-//            case 9 -> // Dual Forging
+            // case 3 -> // Freezer
+            // case 4 -> // Blast Cooling
+            // case 5 -> // Alloy Cooling
+            // case 6 -> // Dual Cooling
+            // case 7 -> // Blast Forging
+            // case 8 -> // Alloy Forging
+            // case 9 -> // Dual Forging
         })
                 .where('S', selfPredicate())
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
@@ -271,50 +282,69 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                         () -> ConfigHolder.machines.enableMaintenance ? MetaTileEntities.MAINTENANCE_HATCH :
                                 getCasingState(),
                         EnumFacing.SOUTH);
-        MetaTileEntityLinearForgingFurnace fakeController = (MetaTileEntityLinearForgingFurnace)
-                GCYMMetaTileEntities.LINEAR_FORGING_FURNACE.createMetaTileEntity(null);
-        //Blast
+        MetaTileEntityLinearForgingFurnace fakeController = (MetaTileEntityLinearForgingFurnace) GCYMMetaTileEntities.LINEAR_FORGING_FURNACE
+                .createMetaTileEntity(null);
+        // Blast
         fakeController.inDisplayWorld(0);
         doRowCopies(shapeInfo, builder,
                 a -> a.where('S', fakeController, EnumFacing.SOUTH)
                         .aisle("XXX EFCFFCFE XXX", "XMX EICVVCIE XXX", "XXX EFCFFCFE XXX"),
                 (a, i, j) -> a.aisle("XXX ECCCCCCE XXX", "XPPPP      PPPPX", "XXX ECCCCCCE XXX"),
                 a -> a.aisle("XXX EFCFFCFE XXX", "YSX EICVVCIE HLX", "ZXN EFCFFCFE OXT"));
-        //Alloy
+        // Alloy
         fakeController.inDisplayWorld(1);
         doRowCopies(shapeInfo, builder,
                 a -> a.where('S', fakeController, EnumFacing.SOUTH)
-                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ")
-                        .aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX", "    AFCFVFCFA    "),
-                (a, i, j) -> a.aisle("    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    "),
-                a -> a.aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT", "    AFCFVFCFA    ")
-                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 "));
-        //Dual
+                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                                "                 ")
+                        .aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX",
+                                "    AFCFVFCFA    "),
+                (a, i, j) -> a.aisle("    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX",
+                        "    ACCCVCCCA    "),
+                a -> a.aisle("    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT",
+                        "    AFCFVFCFA    ")
+                        .aisle("                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                                "                 "));
+        // Dual
         fakeController.inDisplayWorld(2);
         doRowCopies(shapeInfo, builder,
                 a -> a.where('S', fakeController, EnumFacing.SOUTH)
-                        .aisle("                 ", "                 ", "                 ", "                 ", "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 ")
-                        .aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ", "    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX", "    AFCFVFCFA    "),
+                        .aisle("                 ", "                 ", "                 ", "                 ",
+                                "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                                "                 ")
+                        .aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ",
+                                "    AFCFVFCFA    ", "XXX A#######A XXX", "XMX A#######A XXX", "XXX A#######A XXX",
+                                "    AFCFVFCFA    "),
                 (a, i, j) -> {
                     if (j == 0) {
-                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ", " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    ");
+                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ",
+                                " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX",
+                                "    ACCCVCCCA    ");
                     } else if (j == i - 1) {
-                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ", " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    ");
+                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XPX ECCCCCCE  XPX", " P             P ",
+                                " P  ACCCVCCCA  P ", "XPX A#######A XPX", "XPPPP#######PPPPX", "XXX A#######A XXX",
+                                "    ACCCVCCCA    ");
                     } else {
-                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XXX ECCCCCCE  XXX", "                 ", "    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX", "    ACCCVCCCA    ");
+                        a.aisle("XXX ECCCCCCE  XXX", "XPPPP######PPPPPX", "XXX ECCCCCCE  XXX", "                 ",
+                                "    ACCCVCCCA    ", "XXX A#######A XXX", "XPPPP#######PPPPX", "XXX A#######A XXX",
+                                "    ACCCVCCCA    ");
                     }
                 },
-                a -> a.aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ", "    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT", "    AFCFVFCFA    ")
-                        .aisle("                 ", "                 ", "                 ", "                 ", "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ", "                 "));
+                a -> a.aisle("XXX EFCFFCFE  XXX", "XXX EICVVCIE  XXX", "XXX EFCFFCFE  XXX", "                 ",
+                        "    AFCFVFCFA    ", "XXX A#######A XXX", "YSX A#######A HLX", "ZXN A#######A OXT",
+                        "    AFCFVFCFA    ")
+                        .aisle("                 ", "                 ", "                 ", "                 ",
+                                "                 ", "    AICIVICIA    ", "    AICIVICIA    ", "    AICIVICIA    ",
+                                "                 "));
         return shapeInfo;
     }
 
     public static void doRowCopies(ArrayList<MultiblockShapeInfo> shapeInfo, MultiblockShapeInfo.Builder builder,
-                               Consumer<MultiblockShapeInfo.Builder> preActions,
-                               TriConsumer<MultiblockShapeInfo.Builder, Integer, Integer> copyActions,
-                               Consumer<MultiblockShapeInfo.Builder> postActions) {
+                                   Consumer<MultiblockShapeInfo.Builder> preActions,
+                                   TriConsumer<MultiblockShapeInfo.Builder, Integer, Integer> copyActions,
+                                   Consumer<MultiblockShapeInfo.Builder> postActions) {
         int z = -1;
-        for (int i = 1; i <= 16; i*=2) { //1, 2, 4, 8, 16
+        for (int i = 1; i <= 16; i *= 2) { // 1, 2, 4, 8, 16
             MultiblockShapeInfo.Builder copy = builder.shallowCopy();
             if (z != -1) {
                 copy.where('L', GCYMMetaTileEntities.PARALLEL_HATCH[z], EnumFacing.SOUTH);
@@ -397,8 +427,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
                 while (var4.hasNext()) {
                     BlockPos blockPos = var4.next();
-                    VariantActiveBlock.setBlockActive(id, blockPos, isActive
-                            && shouldVABlockBeActive(blockPos, this.getRecipeMapIndex(), this.getRecipeType()));
+                    VariantActiveBlock.setBlockActive(id, blockPos, isActive &&
+                            shouldVABlockBeActive(blockPos, this.getRecipeMapIndex(), this.getRecipeType()));
                     buf.writeBlockPos(blockPos);
                 }
 
@@ -422,10 +452,10 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
             int size = buf.readInt();
 
-            for(int i = 0; i < size; ++i) {
+            for (int i = 0; i < size; ++i) {
                 BlockPos blockPos = buf.readBlockPos();
-                VariantActiveBlock.setBlockActive(id, blockPos, isActive
-                        && shouldVABlockBeActive(blockPos, recipeMapIndex, recipeType));
+                VariantActiveBlock.setBlockActive(id, blockPos,
+                        isActive && shouldVABlockBeActive(blockPos, recipeMapIndex, recipeType));
                 minX = Math.min(minX, blockPos.getX());
                 minY = Math.min(minY, blockPos.getY());
                 minZ = Math.min(minZ, blockPos.getZ());
@@ -435,7 +465,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
             }
 
             if (this.getWorld().provider.getDimension() == id) {
-                this.getWorld().markBlockRangeForRenderUpdate(new BlockPos(minX, minY, minZ), new BlockPos(maxX, maxY, maxZ));
+                this.getWorld().markBlockRangeForRenderUpdate(new BlockPos(minX, minY, minZ),
+                        new BlockPos(maxX, maxY, maxZ));
             }
             return;
         }
@@ -443,7 +474,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
         super.receiveCustomData(dataId, buf);
     }
 
-    protected boolean shouldVABlockBeActive(BlockPos pos, int recipeMapIndex, LinearForgingFurnaceRecipeType recipeType) {
+    protected boolean shouldVABlockBeActive(BlockPos pos, int recipeMapIndex,
+                                            LinearForgingFurnaceRecipeType recipeType) {
         if (recipeMapIndex != 2 && recipeMapIndex != 6 && recipeMapIndex != 9) return true;
         return switch (recipeType) {
             default -> true;
@@ -455,9 +487,8 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 int x = comparingPos.getX() - this.getPos().getX();
                 int y = comparingPos.getY() - this.getPos().getY();
                 int z = comparingPos.getZ() - this.getPos().getZ();
-                yield ((pos.getX() - comparingPos.getX()) * x > 0)
-                        || ((pos.getY() - comparingPos.getY()) * y > 0)
-                        || ((pos.getZ() - comparingPos.getZ()) * z > 0);
+                yield ((pos.getX() - comparingPos.getX()) * x > 0) || ((pos.getY() - comparingPos.getY()) * y > 0) ||
+                        ((pos.getZ() - comparingPos.getZ()) * z > 0);
             }
             case ALLOY -> {// top half
                 EnumFacing relativeDown = RelativeDirection.DOWN
@@ -467,21 +498,20 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
                 int x = comparingPos.getX() - this.getPos().getX();
                 int y = comparingPos.getY() - this.getPos().getY();
                 int z = comparingPos.getZ() - this.getPos().getZ();
-                yield ((pos.getX() - comparingPos.getX()) * x < 0)
-                        || ((pos.getY() - comparingPos.getY()) * y < 0)
-                        || ((pos.getZ() - comparingPos.getZ()) * z < 0);
+                yield ((pos.getX() - comparingPos.getX()) * x < 0) || ((pos.getY() - comparingPos.getY()) * y < 0) ||
+                        ((pos.getZ() - comparingPos.getZ()) * z < 0);
             }
-//            case BLAST_COOLED ->
-//            case ALLOY_COOLED ->
-//            case BLAST_FORGING_COOLED ->
-//            case ALLOY_FORGING_COOLED ->
+            // case BLAST_COOLED ->
+            // case ALLOY_COOLED ->
+            // case BLAST_FORGING_COOLED ->
+            // case ALLOY_FORGING_COOLED ->
         };
     }
 
     protected LinearForgingFurnaceRecipeType getRecipeType() {
         Recipe recipe = this.getRecipeMapWorkable().getPreviousRecipe();
-        LinearForgingFurnaceRecipeType type =
-                LinearForgingFurnaceRecipeType.getRecipeType(recipe, this.getCurrentRecipeMap());
+        LinearForgingFurnaceRecipeType type = LinearForgingFurnaceRecipeType.getRecipeType(recipe,
+                this.getCurrentRecipeMap());
         if (type == LinearForgingFurnaceRecipeType.NONE) {
             type = this.lastRecipeType;
         } else this.lastRecipeType = type;

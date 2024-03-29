@@ -1,10 +1,12 @@
 package gregicality.multiblocks.api.metatileentity;
 
+import net.minecraft.util.ResourceLocation;
+
+import org.jetbrains.annotations.NotNull;
+
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.recipes.RecipeMap;
-import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 
 public abstract class GCYMMultiShapeMultiblockController extends GCYMRecipeMapMultiblockController {
 
@@ -14,7 +16,6 @@ public abstract class GCYMMultiShapeMultiblockController extends GCYMRecipeMapMu
 
     @Override
     protected @NotNull BlockPattern createStructurePattern() {
-
         if (this.getWorld() != null && this.getPos() != null) {
             if (this.getWorld().getTileEntity(this.getPos()) instanceof IGregTechTileEntity gtte) {
                 if (gtte.getMetaTileEntity() instanceof GCYMMultiShapeMultiblockController controller) {

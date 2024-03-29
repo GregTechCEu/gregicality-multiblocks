@@ -1,7 +1,19 @@
 package gregicality.multiblocks.loaders.recipe;
 
-import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
-import gregicality.multiblocks.common.GCYMConfigHolder;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
+
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.GTValues;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.Recipe;
@@ -23,21 +35,13 @@ import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
+
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.common.GCYMConfigHolder;
+
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 
 public class LinearForgingFurnaceLoader {
 
@@ -76,7 +80,6 @@ public class LinearForgingFurnaceLoader {
         // skip quadruple and nonuple; they can be straightforwardly crafted.
         FORGEABLE_PIPES.put(OrePrefix.pipeSmallFluid, PropertyKey.FLUID_PIPE);
         FORGEABLE_PIPES.put(OrePrefix.pipeTinyFluid, PropertyKey.FLUID_PIPE);
-
     }
 
     private LinearForgingFurnaceLoader() {}
@@ -110,8 +113,7 @@ public class LinearForgingFurnaceLoader {
 
     private static @Nullable BlastRecipeBuilder produceCooledRecipe(Recipe blastRecipe,
                                                                     RecipeMap<BlastRecipeBuilder> targetMap,
-                                            @NotNull GTRecipeCategory mapCategory) {
-
+                                                                    @NotNull GTRecipeCategory mapCategory) {
         List<ItemStack> compositeOutputs = deepCopyIS(blastRecipe.getOutputs());
         List<FluidStack> compositeFluidOutputs = deepCopyFS(blastRecipe.getFluidOutputs());
         Recipe freezerRecipe = null;
@@ -161,8 +163,8 @@ public class LinearForgingFurnaceLoader {
                 double stackRatio = (double) b.getCount() / a.getAmount();
                 Pair<Integer, Integer> simplestRatio = simplestRatio(stackRatio, b.getCount());
                 // prevent excessively large ratios
-                if (simplestRatio.getLeft() * simplestRatio.getRight()
-                        > MAXIMUM_SEARCH_MULTIPLIER * MAXIMUM_SEARCH_MULTIPLIER / 2)
+                if (simplestRatio.getLeft() * simplestRatio.getRight() >
+                        MAXIMUM_SEARCH_MULTIPLIER * MAXIMUM_SEARCH_MULTIPLIER / 2)
                     return;
                 ratio.set(stackRatio);
                 targetFreezerRepetitions.set(Math.max(b.getCount(), targetFreezerRepetitions.get()));
@@ -174,8 +176,8 @@ public class LinearForgingFurnaceLoader {
                 double stackRatio = (double) b.amount / a.getAmount();
                 Pair<Integer, Integer> simplestRatio = simplestRatio(stackRatio, b.amount);
                 // prevent excessively large ratios
-                if (simplestRatio.getLeft() * simplestRatio.getRight()
-                        > MAXIMUM_SEARCH_MULTIPLIER * MAXIMUM_SEARCH_MULTIPLIER / 2)
+                if (simplestRatio.getLeft() * simplestRatio.getRight() >
+                        MAXIMUM_SEARCH_MULTIPLIER * MAXIMUM_SEARCH_MULTIPLIER / 2)
                     return;
                 ratio.set(stackRatio);
                 targetFreezerRepetitions.set(Math.max(b.amount, targetFreezerRepetitions.get()));
@@ -338,7 +340,7 @@ public class LinearForgingFurnaceLoader {
 
         // builder from the blast recipe to copy all properties we don't later override.
         var builder = new BlastRecipeBuilder(blastRecipe, targetMap)
-                .clearInputs().inputs(finalizedRI(compositeInputs).toArray(new GTRecipeInput[]{}))
+                .clearInputs().inputs(finalizedRI(compositeInputs).toArray(new GTRecipeInput[] {}))
                 .clearFluidInputs().fluidInputs(finalizedRI(compositeFluidInputs))
                 .clearOutputs().outputs(finalizedIS(compositeOutputs))
                 .clearFluidOutputs().fluidOutputs(finalizedFS(compositeFluidOutputs))
@@ -380,7 +382,7 @@ public class LinearForgingFurnaceLoader {
         RecipeBuilder<BlastRecipeBuilder> baseBuilder = produceCooledRecipe(blastRecipe, targetMap, mapCategory);
         if (baseBuilder == null) return EMPTY_BUILDER_LIST;
         baseBuilder.duration((int) (baseBuilder.getDuration() *
-                GCYMConfigHolder.linearForgingFurnaceSettings.forgingDurationModifier / 100));
+                GCYMConfigHolder.linearForgingFurnaceSettings.forgingDurationModifier));
         int temp = baseBuilder.copy().build().getResult().getProperty(TemperatureProperty.getInstance(), 0);
         baseBuilder.applyProperty(TemperatureProperty.getInstance(), null);
         baseBuilder.applyProperty(TemperatureProperty.getInstance(), temp +
@@ -419,7 +421,7 @@ public class LinearForgingFurnaceLoader {
             }
         }
         Optional<Integer> ia = multipliers.stream().reduce(LinearForgingFurnaceLoader::lcm);
-        //noinspection SimplifyOptionalCallChains
+        // noinspection SimplifyOptionalCallChains
         if (!ia.isPresent()) return null;
         int inputMultiplier = Math.max(ia.get(), 1);
 
@@ -429,7 +431,7 @@ public class LinearForgingFurnaceLoader {
 
         internalBaseBuilder.clearInputs().inputs(finalizedRI(baseBuilder.getInputs().stream()
                 .map(a -> a.copyWithAmount(a.getAmount() * inputMultiplier))
-                .collect(Collectors.toList())).toArray(new GTRecipeInput[]{}));
+                .collect(Collectors.toList())).toArray(new GTRecipeInput[] {}));
         internalBaseBuilder.clearFluidInputs().fluidInputs(finalizedRI(baseBuilder.getFluidInputs().stream()
                 .map(a -> a.copyWithAmount(a.getAmount() * inputMultiplier))
                 .collect(Collectors.toList())));
@@ -461,8 +463,8 @@ public class LinearForgingFurnaceLoader {
                 var newStack = OreDictUnifier.get(prefix, mat.material);
                 if (newStack == ItemStack.EMPTY) internalBaseBuilder.output(stack.getItem(), stack.getCount());
                 else {
-                    internalBaseBuilder.output(prefix, mat.material, (int) (inputMultiplier * stack.getCount()
-                            * stackPrefix.getMaterialAmount(mat.material) / prefix.getMaterialAmount(mat.material)));
+                    internalBaseBuilder.output(prefix, mat.material, (int) (inputMultiplier * stack.getCount() *
+                            stackPrefix.getMaterialAmount(mat.material) / prefix.getMaterialAmount(mat.material)));
                     changed = true;
                 }
             }
@@ -536,7 +538,6 @@ public class LinearForgingFurnaceLoader {
     }
 
     private static Pair<Integer, Integer> simplestRatio(double ratio, int denominatorMult) {
-
         int a = (int) (ratio * denominatorMult);
         int b = denominatorMult;
         int gcd = gcd(a, b);

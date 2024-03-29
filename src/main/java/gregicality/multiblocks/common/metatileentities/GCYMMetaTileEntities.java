@@ -3,10 +3,10 @@ package gregicality.multiblocks.common.metatileentities;
 import static gregicality.multiblocks.api.utils.GCYMUtil.gcymId;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
-import gregicality.multiblocks.common.metatileentities.multiblock.advanced.MetaTileEntityLinearForgingFurnace;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 
+import gregicality.multiblocks.common.metatileentities.multiblock.advanced.MetaTileEntityLinearForgingFurnace;
 import gregicality.multiblocks.common.metatileentities.multiblock.generator.MetaTileEntitySteamEngine;
 import gregicality.multiblocks.common.metatileentities.multiblock.standard.*;
 import gregicality.multiblocks.common.metatileentities.multiblockpart.MetaTileEntityParallelHatch;

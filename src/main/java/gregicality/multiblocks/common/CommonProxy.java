@@ -3,7 +3,6 @@ package gregicality.multiblocks.common;
 import java.util.Objects;
 import java.util.function.Function;
 
-import gregicality.multiblocks.loaders.recipe.LinearForgingFurnaceLoader;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -23,6 +22,7 @@ import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.loaders.recipe.GCYMRecipeLoader;
+import gregicality.multiblocks.loaders.recipe.LinearForgingFurnaceLoader;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)
 public class CommonProxy {
