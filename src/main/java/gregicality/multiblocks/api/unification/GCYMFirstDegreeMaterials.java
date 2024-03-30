@@ -98,7 +98,7 @@ public final class GCYMFirstDegreeMaterials {
         CobaltAlloy = new Material.Builder(3010, gcymId("cobalt_alloy"))
                 .ingot().fluid()
                 .color(0x6594B2).iconSet(MaterialIconSet.METALLIC)
-                .flags(GENERATE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_GEAR)
                 .components(Cobalt, 3, Iridium, 3, Aluminium, 1, Tungsten, 1)
                 .blastTemp(5388, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.IV], 1000)
                 .build();

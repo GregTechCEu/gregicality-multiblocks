@@ -283,6 +283,16 @@ public final class GCYMMetaTileEntityLoader {
                 'S', MetaTileEntities.CIRCUIT_ASSEMBLER[LuV].getStackForm(),
                 'W', new UnificationEntry(cableGtSingle, NiobiumTitanium));
 
+        ModHandler.addShapedRecipe(true, "linear_forging_furnace",
+                GCYMMetaTileEntities.LINEAR_FORGING_FURNACE.getStackForm(),
+                "CFC", "EGA", "CMC",
+                'C', new UnificationEntry(circuit, MarkerMaterials.Tier.LuV),
+                'G', new UnificationEntry(gear, CobaltAlloy),
+                'F', MetaTileEntities.VACUUM_FREEZER.getStackForm(),
+                'E', MetaTileEntities.ELECTRIC_BLAST_FURNACE.getStackForm(),
+                'A', GCYMMetaTileEntities.ALLOY_BLAST_SMELTER.getStackForm(),
+                'M', GCYMMetaTileEntities.LARGE_BENDER.getStackForm());
+
         // Parallel Hatches
         ModHandler.addShapedRecipe(true, "parallel_hatch_iv", GCYMMetaTileEntities.PARALLEL_HATCH[0].getStackForm(),
                 "SCE", "CHC", "WCW",
