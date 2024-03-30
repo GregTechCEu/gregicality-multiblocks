@@ -7,10 +7,12 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import com.google.common.collect.ImmutableList;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Tuple;
 import net.minecraftforge.fluids.FluidStack;
 
+import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -436,6 +438,17 @@ public class LinearForgingFurnaceLoader {
     private static List<RecipeBuilder<?>> produceForgingCooledRecipes(Recipe blastRecipe,
                                                                       RecipeMap<BlastRecipeBuilder> targetMap,
                                                                       @NotNull GTRecipeCategory mapCategory) {
+        for (GTRecipeInput input : blastRecipe.getInputs()) {
+            var stacks = input.getInputStacks();
+            if (stacks != null) {
+                var mat = OreDictUnifier.getMaterial(stacks[0]);
+                if (mat != null) {
+                    if (mat.material.hasFlag(GCYMMaterialFlags.NO_FORGING_RECIPES_IN)) return EMPTY_BUILDER_LIST;
+                }
+            }
+        }
+        // also check fluid inputs? How to even do that?
+
         RecipeBuilder<BlastRecipeBuilder> baseBuilder = produceCooledRecipe(blastRecipe, targetMap, mapCategory);
         if (baseBuilder == null) return EMPTY_BUILDER_LIST;
         baseBuilder.duration((int) (baseBuilder.getDuration() *
@@ -465,6 +478,8 @@ public class LinearForgingFurnaceLoader {
             var mat = OreDictUnifier.getMaterial(stack);
             var stackPrefix = OreDictUnifier.getPrefix(stack);
             if (mat != null && stackPrefix != null) {
+                if (mat.material.hasFlag(GCYMMaterialFlags.NO_FORGING_OUT)) continue;
+
                 long cost = prefix.getMaterialAmount(mat.material);
                 long provided = stackPrefix.getMaterialAmount(mat.material) * stack.getCount();
                 multipliers.add(findMultiplier(cost, provided));
@@ -510,7 +525,8 @@ public class LinearForgingFurnaceLoader {
             var mat = OreDictUnifier.getMaterial(stack);
             var stackPrefix = OreDictUnifier.getPrefix(stack);
             if (mat != null && stackPrefix != null) {
-                var newStack = OreDictUnifier.get(prefix, mat.material);
+                boolean flag = mat.material.hasFlag(GCYMMaterialFlags.NO_FORGING_OUT);
+                var newStack = flag ? ItemStack.EMPTY : OreDictUnifier.get(prefix, mat.material);
                 if (newStack == ItemStack.EMPTY) internalBaseBuilder.output(stack.getItem(), stack.getCount());
                 else {
                     internalBaseBuilder.output(prefix, mat.material, (int) (inputMultiplier * stack.getCount() *
