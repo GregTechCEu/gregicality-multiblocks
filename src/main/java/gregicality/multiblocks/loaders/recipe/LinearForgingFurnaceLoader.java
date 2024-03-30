@@ -6,17 +6,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
-import com.google.common.collect.ImmutableList;
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Tuple;
 import net.minecraftforge.fluids.FluidStack;
 
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import com.google.common.collect.ImmutableList;
 
 import gregtech.api.GTValues;
 import gregtech.api.fluids.store.FluidStorageKeys;
@@ -34,12 +32,11 @@ import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.info.MaterialFlags;
-import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.GCYMConfigHolder;
 
