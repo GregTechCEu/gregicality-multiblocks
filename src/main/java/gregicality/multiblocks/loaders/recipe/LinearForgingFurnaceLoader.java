@@ -6,7 +6,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Tuple;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -30,7 +32,6 @@ import gregtech.api.recipes.ingredients.GTRecipeItemInput;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
@@ -48,41 +49,71 @@ public class LinearForgingFurnaceLoader {
 
     private final static int MAXIMUM_SEARCH_MULTIPLIER = 8;
 
-    private static final Map<MaterialFlag, OrePrefix> FORGEABLE_MATERIAL_FLAGS = new Object2ObjectOpenHashMap<>(15, 1);
-
-    private static final Map<OrePrefix, PropertyKey<?>> FORGEABLE_PIPES = new Object2ObjectOpenHashMap<>(9, 1);
+    private static final Map<OrePrefix, List<ItemStack>> PREFIX_MODIFIERS = new Object2ObjectOpenHashMap<>();
 
     private static final List<RecipeBuilder<?>> EMPTY_BUILDER_LIST = new ObjectArrayList<>();
 
     private static int count = 0;
 
     private static void populateReferences() {
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_DENSE, OrePrefix.plateDense);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_FRAME, OrePrefix.frameGt);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_PLATE, OrePrefix.plate);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_DOUBLE_PLATE, OrePrefix.plateDouble);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_FOIL, OrePrefix.foil);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_BOLT_SCREW, OrePrefix.bolt);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_GEAR, OrePrefix.gear);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_SMALL_GEAR, OrePrefix.gearSmall);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_LONG_ROD, OrePrefix.stickLong);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_ROD, OrePrefix.stick);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_RING, OrePrefix.ring);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_ROTOR, OrePrefix.rotor);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_ROUND, OrePrefix.round);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_SPRING, OrePrefix.spring);
-        FORGEABLE_MATERIAL_FLAGS.put(MaterialFlags.GENERATE_SPRING_SMALL, OrePrefix.springSmall);
-
-        FORGEABLE_PIPES.put(OrePrefix.pipeHugeItem, PropertyKey.ITEM_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeLargeItem, PropertyKey.ITEM_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeNormalItem, PropertyKey.ITEM_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeSmallItem, PropertyKey.ITEM_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeHugeFluid, PropertyKey.FLUID_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeLargeFluid, PropertyKey.FLUID_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeNormalFluid, PropertyKey.FLUID_PIPE);
-        // skip quadruple and nonuple; they can be straightforwardly crafted.
-        FORGEABLE_PIPES.put(OrePrefix.pipeSmallFluid, PropertyKey.FLUID_PIPE);
-        FORGEABLE_PIPES.put(OrePrefix.pipeTinyFluid, PropertyKey.FLUID_PIPE);
+        // TODO create unique metaitems to separate out the forging recipes
+        PREFIX_MODIFIERS.put(OrePrefix.nugget, ImmutableList.of(
+                MetaItems.SHAPE_MOLD_NUGGET.getStackForm(), MetaItems.SHAPE_EXTRUDER_INGOT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.ingot, ImmutableList.of(
+                MetaItems.SHAPE_MOLD_INGOT.getStackForm(), MetaItems.SHAPE_EXTRUDER_INGOT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.block, ImmutableList.of(
+                MetaItems.SHAPE_MOLD_BLOCK.getStackForm(), MetaItems.SHAPE_EXTRUDER_INGOT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.plate, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PLATE.getStackForm(), MetaItems.SHAPE_MOLD_INGOT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.plateDouble, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PLATE.getStackForm(), MetaItems.SHAPE_MOLD_PLATE.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.plateDense, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PLATE.getStackForm(), MetaItems.SHAPE_MOLD_BLOCK.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.stick, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROD.getStackForm(), MetaItems.SHAPE_MOLD_INGOT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.stickLong, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROD_LONG.getStackForm(), MetaItems.SHAPE_MOLD_INGOT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.frameGt, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROD.getStackForm(), MetaItems.SHAPE_MOLD_BLOCK.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.bolt, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_BOLT.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.spring, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROD_LONG.getStackForm(), MetaItems.SHAPE_MOLD_CYLINDER.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.springSmall, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROD.getStackForm(), MetaItems.SHAPE_MOLD_CYLINDER.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.round, ImmutableList.of(
+                MetaItems.SHAPE_MOLD_NUGGET.getStackForm(), MetaItems.SHAPE_MOLD_BALL.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.gear, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_GEAR.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.gearSmall, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_GEAR_SMALL.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.rotor, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROTOR.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.turbineBlade, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_ROD_LONG.getStackForm(), MetaItems.SHAPE_EXTRUDER_PLATE.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.foil, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_FOIL.getStackForm()));
+        // this prefix exists but is never used, it's here just in case.
+        PREFIX_MODIFIERS.put(OrePrefix.pipeTinyItem, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_TINY.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeTinyFluid, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_TINY.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeSmallItem, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_SMALL.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeSmallFluid, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_SMALL.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeNormalItem, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_NORMAL.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeNormalFluid, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_NORMAL.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeLargeItem, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_LARGE.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeLargeFluid, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_LARGE.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeHugeItem, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_HUGE.getStackForm()));
+        PREFIX_MODIFIERS.put(OrePrefix.pipeHugeFluid, ImmutableList.of(
+                MetaItems.SHAPE_EXTRUDER_PIPE_HUGE.getStackForm()));
     }
 
     private LinearForgingFurnaceLoader() {}
@@ -414,20 +445,13 @@ public class LinearForgingFurnaceLoader {
         baseBuilder.applyProperty(TemperatureProperty.getInstance(), temp +
                 GCYMConfigHolder.linearForgingFurnaceSettings.forgingTemperaturePenalty);
         List<RecipeBuilder<?>> builders = new ObjectArrayList<>();
-        int circuitMeta = 0;
-        for (OrePrefix prefix : FORGEABLE_MATERIAL_FLAGS.values()) {
-            circuitMeta++;
-            var builder = attemptForgingCooledRecipe(prefix, baseBuilder.copy());
+        for (var pair : PREFIX_MODIFIERS.entrySet()) {
+            var builder = attemptForgingCooledRecipe(pair.getKey(), baseBuilder.copy());
             if (builder != null) {
-                builders.add(builder.circuitMeta(circuitMeta));
-            }
-        }
-
-        for (OrePrefix prefix : FORGEABLE_PIPES.keySet()) {
-            circuitMeta++;
-            var builder = attemptForgingCooledRecipe(prefix, baseBuilder.copy());
-            if (builder != null) {
-                builders.add(builder.circuitMeta(circuitMeta));
+                for (ItemStack stack : pair.getValue()) {
+                    builder.notConsumable(stack);
+                }
+                builders.add(builder);
             }
         }
 
