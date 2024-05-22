@@ -144,3 +144,4 @@ gcym.multiblock.steam_engine.description=Большой Паровой Двиг�
 
 # large multiblock casing
 tile.large_multiblock_casing.macerator_casing.name=Надежный корпус для измельчения
+gcym.tooltip.max_energy_hatches=Макс. Энерг. Разъем: §c%d
