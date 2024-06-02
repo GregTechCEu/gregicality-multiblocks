@@ -29,13 +29,16 @@ import gregtech.api.recipes.chance.output.impl.ChancedItemOutput;
 import gregtech.api.recipes.ingredients.GTRecipeFluidInput;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.ingredients.GTRecipeItemInput;
+import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
+import gregicality.multiblocks.api.recipeproperties.LFFRecipeTypeProperty;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
+import gregicality.multiblocks.api.recipes.LinearForgingFurnaceRecipeType;
 import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.GCYMConfigHolder;
@@ -537,25 +540,38 @@ public class LinearForgingFurnaceLoader {
 
     public static void assembleCompositeMaps() {
         for (Recipe recipe : RecipeMaps.BLAST_RECIPES.getRecipeList()) {
+            assignRecipeType(recipe, LinearForgingFurnaceRecipeType.BLAST);
             buildToMap(recipe, GCYMRecipeMaps.LINEAR_FORGING_RECIPES[2]);
         }
         for (Recipe recipe : GCYMRecipeMaps.ALLOY_BLAST_RECIPES.getRecipeList()) {
+            assignRecipeType(recipe, LinearForgingFurnaceRecipeType.ALLOY);
             buildToMap(recipe, GCYMRecipeMaps.LINEAR_FORGING_RECIPES[2]);
         }
 
         for (Recipe recipe : GCYMRecipeMaps.LINEAR_FORGING_RECIPES[4].getRecipeList()) {
+            assignRecipeType(recipe, LinearForgingFurnaceRecipeType.BLAST_COOLED);
             buildToMap(recipe, GCYMRecipeMaps.LINEAR_FORGING_RECIPES[6]);
         }
         for (Recipe recipe : GCYMRecipeMaps.LINEAR_FORGING_RECIPES[5].getRecipeList()) {
+            assignRecipeType(recipe, LinearForgingFurnaceRecipeType.ALLOY_COOLED);
             buildToMap(recipe, GCYMRecipeMaps.LINEAR_FORGING_RECIPES[6]);
         }
 
         for (Recipe recipe : GCYMRecipeMaps.LINEAR_FORGING_RECIPES[7].getRecipeList()) {
+            assignRecipeType(recipe, LinearForgingFurnaceRecipeType.BLAST_FORGING_COOLED);
             buildToMap(recipe, GCYMRecipeMaps.LINEAR_FORGING_RECIPES[9]);
         }
         for (Recipe recipe : GCYMRecipeMaps.LINEAR_FORGING_RECIPES[8].getRecipeList()) {
+            assignRecipeType(recipe, LinearForgingFurnaceRecipeType.ALLOY_FORGING_COOLED);
             buildToMap(recipe, GCYMRecipeMaps.LINEAR_FORGING_RECIPES[9]);
         }
+    }
+
+    private static void assignRecipeType(Recipe recipe, LinearForgingFurnaceRecipeType type) {
+        IRecipePropertyStorage storage = recipe.getRecipePropertyStorage();
+        storage.freeze(false); // is this illegal?
+        storage.store(LFFRecipeTypeProperty.getInstance(), type);
+        storage.freeze(true);
     }
 
     private static void buildToMap(Recipe recipe, RecipeMap<?> map) {

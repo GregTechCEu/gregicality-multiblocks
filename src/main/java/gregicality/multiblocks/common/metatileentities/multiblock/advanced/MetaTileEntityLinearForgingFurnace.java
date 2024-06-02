@@ -45,6 +45,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 
 import gregicality.multiblocks.api.capability.impl.GCYMHeatingCoilRecipeLogic;
 import gregicality.multiblocks.api.metatileentity.GCYMMultiShapeMultiblockController;
+import gregicality.multiblocks.api.recipeproperties.LFFRecipeTypeProperty;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregicality.multiblocks.api.recipes.LinearForgingFurnaceRecipeType;
 import gregicality.multiblocks.api.render.GCYMTextures;
@@ -1132,8 +1133,10 @@ public class MetaTileEntityLinearForgingFurnace extends GCYMMultiShapeMultiblock
 
     protected LinearForgingFurnaceRecipeType getRecipeType() {
         Recipe recipe = this.getRecipeMapWorkable().getPreviousRecipe();
-        LinearForgingFurnaceRecipeType type = LinearForgingFurnaceRecipeType.getRecipeType(recipe,
-                this.getCurrentRecipeMap());
+        LinearForgingFurnaceRecipeType type = LinearForgingFurnaceRecipeType.NONE;
+        if (recipe != null) {
+            type = recipe.getProperty(LFFRecipeTypeProperty.getInstance(), type);
+        }
         if (type == LinearForgingFurnaceRecipeType.NONE) {
             type = this.lastRecipeType;
         } else this.lastRecipeType = type;
