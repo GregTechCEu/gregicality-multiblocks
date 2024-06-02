@@ -20,6 +20,12 @@
           "all": "gregtech:blocks/casings/large_multiblock_casing/blast_casing"
         }
       },
+      "forging_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casings/large_multiblock_casing/forging_casing"
+        }
+      },
       "assembler_casing": {
         "model": "minecraft:cube_all",
         "textures": {

@@ -12,6 +12,7 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -21,6 +22,7 @@ import gregicality.multiblocks.GregicalityMultiblocks;
 import gregicality.multiblocks.api.utils.GCYMLog;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.loaders.recipe.GCYMRecipeLoader;
+import gregicality.multiblocks.loaders.recipe.LinearForgingFurnaceLoader;
 
 @Mod.EventBusSubscriber(modid = GregicalityMultiblocks.MODID)
 public class CommonProxy {
@@ -66,5 +68,10 @@ public class CommonProxy {
         // This is called AFTER GregTech registers recipes, so
         // anything here is safe to call removals in
         GCYMRecipeLoader.init();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void recipesLate(RegistryEvent.Register<IRecipe> event) {
+        LinearForgingFurnaceLoader.registerLate();
     }
 }

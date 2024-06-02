@@ -32,7 +32,9 @@ gcym.machine.mega_vacuum_freezer.name=Bulk Blast Chiller
 gcym.machine.steam_engine.name=Industrial Steam Engine
 gcym.machine.steam_engine.tooltip.1=Produces up to %s§7 power.
 gcym.machine.large_circuit_assembler.name=Large Circuit Assembler
+gcym.machine.linear_forging_furnace.name=Linear Forging Furnace
 
+gcym.machine.linear_forging_furnace.tooltip=Parallelization cannot exceed the square of the repeatable layer count.
 
 gcym.tooltip.parallel_enabled=Can parallelize with §bParallel Control Hatches
 gcym.tooltip.tiered_hatch_enabled=Requires §bVoltage Control Units§7 to run.
@@ -70,7 +72,7 @@ gcym.multiblock.mega_blast_furnace.description=A massive Electric Blast Furnace 
 gcym.multiblock.mega_vacuum_freezer.description=A massive Vacuum Freezer for extreme volume cooling.
 gcym.multiblock.steam_engine.description=A large Steam Engine for effective power production.
 gcym.multiblock.large_circuit_assembler.description=A multiblock Circuit Assembler for fabricating circuits.
-
+gcym.multiblock.linear_forging_furnace.description=A modular multiblock that can support Blasting, Alloy Blasting, Cooling, and Metalworking all in one.
 
 # hatches
 
@@ -125,9 +127,17 @@ tile.large_multiblock_casing.mixer_casing.name=Reaction-Safe Mixing Casing
 tile.large_multiblock_casing.engraver_casing.name=Laser-Safe Engraving Casing
 tile.large_multiblock_casing.atomic_casing.name=Atomic Casing
 tile.large_multiblock_casing.steam_casing.name=Industrial Steam Casing
+tile.large_multiblock_casing.forging_casing.name=Thermal Forging Casing
 
 # RecipeMaps
 recipemap.alloy_blast_smelter.name=Alloy Blast Smelting
+recipemap.lff_dual.name=Universal Blast Smelting
+recipemap.lff_blast_cooled.name=Cooled Blast Furnace
+recipemap.lff_alloy_cooled.name=Cooled Alloy Blast Smelting
+recipemap.lff_dual_cooled.name=Cooled Universal Blast Smelting
+recipemap.lff_blast_forging_cooled.name=Cooled Blast Forging
+recipemap.lff_alloy_forging_cooled.name=Cooled Alloy Blast Forging
+recipemap.lff_dual_forging_cooled.name=Cooled Universal Blast Forging
 
 # Materials
 gcym.material.stellite_100=Stellite-100
@@ -140,6 +150,7 @@ gcym.material.zeron_100=Zeron-100
 gcym.material.titanium_carbide=Titanium Carbide
 gcym.material.tantalum_carbide=Tantalum Carbide
 gcym.material.molybdenum_disilicide=Molybdenum Disilicide
+gcym.material.cobalt_alloy=Cobalt Thermal Alloy
 
 gcym.material.hsla_steel=HSLA Steel
 gcym.material.titanium_tungsten_carbide=Titanium Tungsten Carbide

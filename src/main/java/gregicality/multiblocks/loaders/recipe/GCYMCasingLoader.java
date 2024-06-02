@@ -8,6 +8,7 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.items.MetaItems;
 
 import gregicality.multiblocks.api.unification.GCYMMaterials;
@@ -20,6 +21,7 @@ public final class GCYMCasingLoader {
     private GCYMCasingLoader() {}
 
     public static void init() {
+        final int numCasings = ConfigHolder.recipes.casingsPerCraft;
         // Multiblock Casings
         ModHandler.addShapedRecipe(true, "casing_large_macerator",
                 GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
@@ -87,6 +89,11 @@ public final class GCYMCasingLoader {
                         .getItemVariant(BlockLargeMultiblockCasing.CasingType.STEAM_CASING, 2),
                 "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, Materials.Brass), 'F',
                 new UnificationEntry(OrePrefix.frameGt, Materials.Brass));
+        ModHandler.addShapedRecipe(true, "casing_forging",
+                GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+                        .getItemVariant(BlockLargeMultiblockCasing.CasingType.FORGING_CASING, numCasings),
+                "PhP", "PFP", "PwP", 'P', new UnificationEntry(OrePrefix.plate, GCYMMaterials.CobaltAlloy), 'F',
+                new UnificationEntry(OrePrefix.frameGt, Materials.Aluminium));
 
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, GCYMMaterials.Zeron100, 6)
@@ -191,6 +198,14 @@ public final class GCYMCasingLoader {
                 .notConsumable(new IntCircuitIngredient(6))
                 .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
                         .getItemVariant(BlockLargeMultiblockCasing.CasingType.STEAM_CASING, 2))
+                .duration(50).EUt(16).buildAndRegister();
+
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(OrePrefix.plate, GCYMMaterials.CobaltAlloy, 6)
+                .input(OrePrefix.frameGt, Materials.Aluminium)
+                .notConsumable(new IntCircuitIngredient(6))
+                .outputs(GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+                        .getItemVariant(BlockLargeMultiblockCasing.CasingType.FORGING_CASING, numCasings))
                 .duration(50).EUt(16).buildAndRegister();
 
         // Unique Casings
