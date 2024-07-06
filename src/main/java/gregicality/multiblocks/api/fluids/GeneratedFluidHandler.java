@@ -45,7 +45,7 @@ public final class GeneratedFluidHandler {
         if (fluidProperty == null) return;
 
         if (alloyBlastProperty.shouldGenerateMolten(material)) {
-            fluidProperty.getStorage().enqueueRegistration(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder()
+            fluidProperty.enqueueRegistration(GCYMFluidStorageKeys.MOLTEN, new FluidBuilder()
                     .temperature(alloyBlastProperty.getTemperature()));
         }
         // if it is not hot enough to produce molten fluid, ABS Producer grabs normal liquid,

@@ -11,7 +11,7 @@ public final class GCYMFluidStorageKeys {
 
     public static final FluidStorageKey MOLTEN = new FluidStorageKey(gcymId("molten"),
             GCYMMaterialIconTypes.molten,
-            s -> "molten." + s,
+            m -> "molten." + m.getName(),
             m -> {
                 if (m.hasProperty(GCYMPropertyKey.ALLOY_BLAST)) {
                     return "gcym.fluid.molten";
