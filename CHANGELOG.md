@@ -133,3 +133,13 @@
 * Fixed Large Distillation Tower being rotatable
 * Fixed Large Distillation Tower allowing > 2 energy hatches
 * Fixed Steam Engine allowing > MV energy hatches
+
+## v1.2.8
+
+* Fix missing Alloy Blast Smelter recipes for alloys with molten fluids
+
+## v1.2.9
+
+* Compat with GTCEu 2.8.9
+* Now respects GTCEu's casings per craft config (#68)
+* No longer requires Gregification to automatically support the "electric_sieve" recipemap (#65)
