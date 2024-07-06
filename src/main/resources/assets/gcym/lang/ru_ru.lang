@@ -3,7 +3,7 @@
 
 gcym.multiblock.large_sifter.description=Многоблочная просеивающая машина для фильтрования материалов.
 gcym.machine.tiered_hatch.tooltip.1=Производит ток до %s§7 вольтажа.
-gcym.machine.tiered_hatch.ulv.name=Блок управления напряжением (§8ULV§r)
+gcym.machine.tiered_hatch.ulv.name=Блок управления напржением
 gcym.machine.tiered_hatch.lv.name=Блок управления напряжением (§7LV§r)
 gcym.machine.tiered_hatch.uxv.name=Блок управления напряжением (§eUXV§r)
 gcym.machine.tiered_hatch.max.name=Блок управления напряжением (§cMAX§r)
@@ -72,7 +72,7 @@ gcym.machine.tiered_hatch.mv.name=Блок управления напряжен
 gcym.machine.tiered_hatch.hv.name=Блок управления напряжением (§6HV§r)
 gcym.machine.tiered_hatch.ev.name=Блок управления напряжением (§5EV§r)
 gcym.machine.tiered_hatch.iv.name=Блок управления напряжением (§1IV§r)
-gcym.machine.tiered_hatch.luv.name=Блок управления напряжением (§dLuV§r)
+gcym.machine.tiered_hatch.luv.name=Блок управления напряжением
 gcym.machine.tiered_hatch.zpm.name=Блок управления напряжением (§fZPM§r)
 gcym.machine.tiered_hatch.uv.name=Блок управления напряжением (§3UV§r)
 gcym.machine.tiered_hatch.uhv.name=Блок управления напряжением (§4UHV§R)
@@ -144,3 +144,4 @@ gcym.multiblock.steam_engine.description=Большой Паровой Двиг�
 
 # large multiblock casing
 tile.large_multiblock_casing.macerator_casing.name=Надежный корпус для измельчения
+gcym.tooltip.max_energy_hatches=Макс. Энерг. Разъем: §c%d
