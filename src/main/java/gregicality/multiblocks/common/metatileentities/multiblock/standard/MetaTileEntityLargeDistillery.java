@@ -52,22 +52,17 @@ import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
  */
 public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockController implements IDistillationTower {
 
-    protected DistillationTowerLogicHandler handler = null;
+    protected final DistillationTowerLogicHandler handler;
 
     public MetaTileEntityLargeDistillery(ResourceLocation metaTileEntityId) {
-        this(metaTileEntityId, false);
-    }
-
-    public MetaTileEntityLargeDistillery(ResourceLocation metaTileEntityId, boolean useAdvHatchLogic) {
         super(metaTileEntityId, new RecipeMap[] { RecipeMaps.DISTILLATION_RECIPES, RecipeMaps.DISTILLERY_RECIPES });
         this.recipeMapWorkable = new LargeDistilleryRecipeLogic(this);
-        if (useAdvHatchLogic)
-            this.handler = new DistillationTowerLogicHandler(this);
+        this.handler = new DistillationTowerLogicHandler(this);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
-        return new MetaTileEntityLargeDistillery(this.metaTileEntityId, usesAdvHatchLogic());
+        return new MetaTileEntityLargeDistillery(this.metaTileEntityId);
     }
 
     /**
@@ -118,7 +113,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
     }
 
     protected boolean usesAdvHatchLogic() {
-        return getCurrentRecipeMap() == RecipeMaps.DISTILLATION_RECIPES && this.handler != null;
+        return getCurrentRecipeMap() == RecipeMaps.DISTILLATION_RECIPES;
     }
 
     @Override
@@ -265,7 +260,10 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
 
         @Override
         protected IMultipleTankHandler getOutputTank() {
-            return handler.getFluidTanks();
+            if (usesAdvHatchLogic())
+                return handler.getFluidTanks();
+
+            return super.getOutputTank();
         }
     }
 }
