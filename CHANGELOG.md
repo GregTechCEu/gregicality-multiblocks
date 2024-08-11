@@ -146,4 +146,8 @@
 
 ## v1.2.10
 
-* Fixed errors JEI preview for the Large Fractionating Distillery
+* Fixed errors in the JEI preview for the Large Fractionating Distillery
+
+## v1.2.11
+
+* Fixed accidental hard-dependency on ModularUI
