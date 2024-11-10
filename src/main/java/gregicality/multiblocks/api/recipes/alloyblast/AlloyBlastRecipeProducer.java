@@ -98,11 +98,14 @@ public class AlloyBlastRecipeProducer {
         // calculate the output amount and add inputs
         int outputAmount = 0;
         int fluidAmount = 0;
+        int dustAmount = 0;
         for (MaterialStack materialStack : material.getMaterialComponents()) {
             final Material msMat = materialStack.material;
             final int msAmount = (int) materialStack.amount;
 
             if (msMat.hasProperty(PropertyKey.DUST)) {
+                if (dustAmount >= 9) return -1; // more than 9 dusts won't fit in the machine
+                dustAmount++;
                 builder.input(OrePrefix.dust, msMat, msAmount);
             } else if (msMat.hasProperty(PropertyKey.FLUID)) {
                 if (fluidAmount >= 2) return -1; // more than 2 fluids won't fit in the machine
