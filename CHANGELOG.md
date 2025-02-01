@@ -143,3 +143,11 @@
 * Compat with GTCEu 2.8.9
 * Now respects GTCEu's casings per craft config (#68)
 * No longer requires Gregification to automatically support the "electric_sieve" recipemap (#65)
+
+## v1.2.10
+
+* Fixed errors in the JEI preview for the Large Fractionating Distillery
+
+## v1.2.11
+
+* Fixed accidental hard-dependency on ModularUI
